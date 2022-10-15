@@ -2,24 +2,41 @@
 
 namespace App\Services\Impl;
 
+use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\PembayaranNotFoundException;
+use App\Exceptions\PembayaranNotSuitableWithNimException;
+use App\Respositories\MahasiswaRepository;
 use App\Respositories\PembayaranRepository;
 use App\Services\PembayaranService;
 
 class PembayaranServiceImpl implements PembayaranService
 {
     private PembayaranRepository $pembayaranRepository;
+    private MahasiswaRepository $mahasiswaRepository;
 
-    public function __construct(PembayaranRepository $pembayaranRepository)
-    {
+
+    public function __construct(
+        PembayaranRepository $pembayaranRepository,
+        MahasiswaRepository $mahasiswaRepository
+    ) {
         $this->pembayaranRepository = $pembayaranRepository;
+        $this->mahasiswaRepository = $mahasiswaRepository;
     }
-    function checkPembayaran($noPembayaran)
+    function checkPembayaran($noPembayaran, $nim)
     {
         $pembayaran = $this->pembayaranRepository->findByNoPembayaran($noPembayaran);
-
         if ($pembayaran == null) {
             throw new PembayaranNotFoundException('pembayaran tidak ditemukan');
+        }
+
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+
+        if ($mahasiswa == null) {
+            throw new MahasiswaNotFoundException('mahasiswa tidak ditemukan');
+        }
+
+        if ($mahasiswa['nim'] != $pembayaran['nim']) {
+            throw new PembayaranNotSuitableWithNimException('Nim dan Nomer Pembayaran tidak sesui');
         }
 
         return true;

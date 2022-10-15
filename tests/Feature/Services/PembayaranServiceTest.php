@@ -2,7 +2,9 @@
 
 namespace Tests\Feature\Services;
 
+use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\PembayaranNotFoundException;
+use App\Exceptions\PembayaranNotSuitableWithNimException;
 use App\Services\PembayaranService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -29,18 +31,40 @@ class PembayaranServiceTest extends TestCase
     public function testCheckPembayaranSuccess()
     {
         $nomerPembayaran = '0001-10.22-SKP';
+        $nim = '2019150080';
 
-        $result = $this->service->checkPembayaran($nomerPembayaran);
+        $result = $this->service->checkPembayaran($nomerPembayaran, $nim);
 
         assertTrue($result);
     }
 
-    public function testCheckPembayaranFail()
+    public function testCheckPembayaranNoPembayaranNull()
     {
         $this->expectErrorMessage('pembayaran tidak ditemukan');
         $this->expectException(PembayaranNotFoundException::class);
         $nomerPembayaran = 'salah';
+        $nim = 'salah';
 
-        $this->service->checkPembayaran($nomerPembayaran);
+        $this->service->checkPembayaran($nomerPembayaran, $nim);
+    }
+
+    public function testCheckPembayaranNimNull()
+    {
+        $this->expectErrorMessage('mahasiswa tidak ditemukan');
+        $this->expectException(MahasiswaNotFoundException::class);
+        $nomerPembayaran = '0001-10.22-SKP';
+        $nim = 'salah';
+
+        $this->service->checkPembayaran($nomerPembayaran, $nim);
+    }
+
+    public function testCheckPembayaranNotSuit()
+    {
+        $this->expectErrorMessage('Nim dan Nomer Pembayaran tidak sesui');
+        $this->expectException(PembayaranNotSuitableWithNimException::class);
+        $nomerPembayaran = '0001-10.22-SKP';
+        $nim = '2019150081';
+
+        $this->service->checkPembayaran($nomerPembayaran, $nim);
     }
 }

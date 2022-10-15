@@ -4,5 +4,5 @@ namespace App\Services;
 
 interface PembayaranService
 {
-    function checkPembayaran($noPembayaran);
+    function checkPembayaran($noPembayaran, $nim);
 }

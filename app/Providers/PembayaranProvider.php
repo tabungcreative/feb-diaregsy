@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Respositories\Api\PembayaranRepositoryApi;
+use App\Respositories\MahasiswaRepository;
 use App\Respositories\PembayaranRepository;
 use App\Services\Impl\PembayaranServiceImpl;
 use App\Services\PembayaranService;
@@ -21,7 +22,8 @@ class PembayaranProvider extends ServiceProvider
         $this->app->bind(PembayaranRepository::class, PembayaranRepositoryApi::class);
         $this->app->singleton(PembayaranService::class, function ($app) {
             $pembayaranRepository = $app->make(PembayaranRepository::class);
-            return new PembayaranServiceImpl($pembayaranRepository);
+            $mahasiswaRepository = $app->make(MahasiswaRepository::class);
+            return new PembayaranServiceImpl($pembayaranRepository, $mahasiswaRepository);
         });
     }
 

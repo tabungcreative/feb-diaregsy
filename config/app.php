@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\PembayaranProvider::class,
+        App\Providers\MahasiswaProvider::class,
+
 
 
     ],

@@ -7,8 +7,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-use function PHPUnit\Framework\assertArrayHasKey;
-
 class PembayaranRepositoryTest extends TestCase
 {
     private PembayaranRepository $repository;
@@ -24,12 +22,21 @@ class PembayaranRepositoryTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function test_find_by_no()
+    public function testFindByNomerPembayaranSuccess()
     {
         $nomerPembayaran = '0001-10.22-SKP';
         $result = $this->repository->findByNoPembayaran($nomerPembayaran);
 
-        assertArrayHasKey('id', $result);
-        assertArrayHasKey('no_pembayaran', $result);
+        $this->assertIsArray($result);
+        $this->assertArrayHasKey('id', $result);
+        $this->assertArrayHasKey('no_pembayaran', $result);
+    }
+
+    public function testFindByNomerPembayaranIsNull()
+    {
+        $nomerPembayaran = 'salah';
+        $result = $this->repository->findByNoPembayaran($nomerPembayaran);
+
+        $this->assertNull($result);
     }
 }
