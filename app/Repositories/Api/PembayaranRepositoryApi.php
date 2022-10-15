@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Respositories\Api;
+namespace App\Repositories\Api;
 
-use App\Respositories\PembayaranRepository;
+use App\Repositories\PembayaranRepository;
 use Illuminate\Support\Facades\Http;
 
 class PembayaranRepositoryApi implements PembayaranRepository

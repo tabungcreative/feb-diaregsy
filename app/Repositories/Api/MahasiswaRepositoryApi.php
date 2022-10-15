@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Respositories\Api;
+namespace App\Repositories\Api;
 
-use App\Respositories\MahasiswaRepository;
+use App\Repositories\MahasiswaRepository;
 use Illuminate\Support\Facades\Http;
 
 class MahasiswaRepositoryApi implements MahasiswaRepository

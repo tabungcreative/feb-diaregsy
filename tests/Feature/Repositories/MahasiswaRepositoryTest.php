@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Repositories;
 
-use App\Respositories\MahasiswaRepository;
+use App\Repositories\MahasiswaRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

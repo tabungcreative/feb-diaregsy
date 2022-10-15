@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Repositories\Api\MahasiswaRepositoryApi;
-use App\Repositories\MahasiswaRepository;
+use App\Repositories\Elequent\TahunAjaranRepositoryImpl;
+use App\Repositories\TahunAjaranRepository;
 use Illuminate\Support\ServiceProvider;
 
-class MahasiswaProvider extends ServiceProvider
+class TahunAjaranProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -15,7 +15,7 @@ class MahasiswaProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(MahasiswaRepository::class, MahasiswaRepositoryApi::class);
+        $this->app->singleton(TahunAjaranRepository::class, TahunAjaranRepositoryImpl::class);
     }
 
     /**

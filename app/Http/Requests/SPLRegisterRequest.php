@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SPLDafterRequest extends FormRequest
+class SPLRegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class SPLDafterRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,7 +24,11 @@ class SPLDafterRequest extends FormRequest
     public function rules()
     {
         return [
-            ''
+            'nim' => 'required',
+            'foto_ktp' => 'required',
+            'no_pembayaran' => 'required',
+            'no_whatsapp' => 'required',
+            'jenis_pendaftaran' => 'required',
         ];
     }
 }

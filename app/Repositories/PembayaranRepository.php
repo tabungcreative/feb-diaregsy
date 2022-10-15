@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Respositories;
+namespace App\Repositories;
 
 interface PembayaranRepository
 {

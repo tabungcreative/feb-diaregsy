@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Respositories\Api\PembayaranRepositoryApi;
-use App\Respositories\MahasiswaRepository;
-use App\Respositories\PembayaranRepository;
+use App\Repositories\Api\PembayaranRepositoryApi;
+use App\Repositories\MahasiswaRepository;
+use App\Repositories\PembayaranRepository;
 use App\Services\Impl\PembayaranServiceImpl;
 use App\Services\PembayaranService;
 use Illuminate\Support\ServiceProvider;

@@ -177,6 +177,10 @@ return [
 
         App\Providers\PembayaranProvider::class,
         App\Providers\MahasiswaProvider::class,
+        App\Providers\TahunAjaranProvider::class,
+        App\Providers\SPLProvider::class,
+
+
 
 
 

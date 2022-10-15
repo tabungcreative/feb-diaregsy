@@ -5,8 +5,8 @@ namespace App\Services\Impl;
 use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\PembayaranNotFoundException;
 use App\Exceptions\PembayaranNotSuitableWithNimException;
-use App\Respositories\MahasiswaRepository;
-use App\Respositories\PembayaranRepository;
+use App\Repositories\MahasiswaRepository;
+use App\Repositories\PembayaranRepository;
 use App\Services\PembayaranService;
 
 class PembayaranServiceImpl implements PembayaranService

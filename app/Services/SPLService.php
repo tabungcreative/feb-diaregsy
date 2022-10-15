@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Http\Requests\SPLDafterRequest;
+use App\Http\Requests\SPLRegisterRequest;
 
 interface SPLService
 {
-    function daftar(SPLDafterRequest $request);
+    function register(SPLRegisterRequest $request);
 }
