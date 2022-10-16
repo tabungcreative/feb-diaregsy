@@ -13,7 +13,7 @@ class SPLRegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class SPLRegisterRequest extends FormRequest
     {
         return [
             'nim' => 'required',
-            'foto_ktp' => 'required',
+            'foto_ktp' => 'required|max:3000',
             'no_pembayaran' => 'required',
             'no_whatsapp' => 'required',
             'jenis_pendaftaran' => 'required',

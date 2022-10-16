@@ -35,7 +35,7 @@ class SPLServiceTest extends TestCase
         TahunAjaran::factory()->create(['is_active' => 1]);
         $request = new SPLRegisterRequest([
             'nim' => '2019150080',
-            'foto_ktp' => $this->faker->imageUrl(),
+            'foto_ktp' => null,
             'no_pembayaran' => '0001-10.22-SKP',
             'no_whatsapp' => $this->faker->phoneNumber(),
             'jenis_pendaftaran' => Arr::random(['kip', 'reguler']),
@@ -59,7 +59,7 @@ class SPLServiceTest extends TestCase
         $this->expectException(TahunAjaranIsNotFound::class);
         $request = new SPLRegisterRequest([
             'nim' => '2019150080',
-            'foto_ktp' => $this->faker->imageUrl(),
+            'foto_ktp' => null,
             'no_pembayaran' => '0001-10.22-SKP',
             'no_whatsapp' => $this->faker->phoneNumber(),
             'jenis_pendaftaran' => Arr::random(['kip', 'reguler']),
@@ -77,7 +77,7 @@ class SPLServiceTest extends TestCase
 
         $request = new SPLRegisterRequest([
             'nim' => '2019150080',
-            'foto_ktp' => $this->faker->imageUrl(),
+            'foto_ktp' => null,
             'no_pembayaran' => '0001-10.22-SKP',
             'no_whatsapp' => $this->faker->phoneNumber(),
             'jenis_pendaftaran' => Arr::random(['kip', 'reguler']),
