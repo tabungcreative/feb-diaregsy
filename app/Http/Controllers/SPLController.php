@@ -9,6 +9,7 @@ use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\SPLRegisterRequest;
 use App\Repositories\MahasiswaRepository;
+use App\Repositories\SPLRepository;
 use App\Services\SPLService;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,13 +17,21 @@ use Illuminate\Http\Request;
 class SPLController extends Controller
 {
     private SPLService $splService;
+    private SPLRepository $SPLRepository;
     private MahasiswaRepository $mahasiswaRepository;
 
-    public function __construct(SPLService $splService, MahasiswaRepository $mahasiswaRepository)
+    public function __construct(SPLService $splService, SPLRepository $SPLRepository ,MahasiswaRepository $mahasiswaRepository)
     {
         $this->splService = $splService;
+        $this->SPLRepository = $SPLRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
+
+    public function list() {
+        $spl = $this->SPLRepository->getALl();
+        return view('spl.list', compact('spl'));
+    }
+
     public function formRegister($nim)
     {
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);

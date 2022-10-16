@@ -12,10 +12,10 @@ trait MediaTrait
         if ($file) {
 
             $fileName   = time();
-            Storage::disk('s3')->put($path . $fileName, File::get($file));
             $file_name  = $file->getClientOriginalName();
             $file_type  = $file->getClientOriginalExtension();
             $filePath   = $path . $fileName . '.' . $file_type;
+            Storage::disk('s3')->put($filePath, File::get($file));
 
             /** @var \Illuminate\Filesystem\FilesystemManager $disk */
             $disk = Storage::disk('s3');

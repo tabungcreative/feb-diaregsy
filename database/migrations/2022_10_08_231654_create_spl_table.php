@@ -17,6 +17,8 @@ class CreateSplTable extends Migration
         Schema::create('spl', function (Blueprint $table) {
             $table->id();
             $table->string('nim');
+            $table->string('nama')->nullable();
+            $table->string('prodi')->nullable();
             $table->string('no_pembayaran');
             $table->string('foto_ktp')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');

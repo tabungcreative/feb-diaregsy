@@ -1,10 +1,9 @@
 <?php
 
-namespace Tests\Feature\Contollers;
+namespace Tests\Feature\Controllers;
 
 use App\Models\TahunAjaran;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Tests\TestCase;

@@ -1,6 +1,11 @@
 @extends("layouts.app")
 
 @section("content")
+    <div class="row">
+        <div class="p-5 bg-info text-center text-white">
+            <h1>SPL (Studi Pengembangan Lapangan) </h1>
+        </div>
+    </div>
     <div class="row py-5">
         <div class="col-md-5 mx-auto">
             <div class="card p-4">
@@ -12,7 +17,7 @@
                 <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">no pembayaran, syarat-syarat dan dokumen pendaftaran</span>, </p>
 
                 <div class="card-body">
-                
+
                     @if(Session::has('error'))
                         <div class="alert alert-danger" role="alert">
                             {{ Session::get('error') }}
@@ -59,6 +64,8 @@
                         @csrf
 
                         <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">
+                        <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
+                        <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
 
                         <div class="mb-3">
                             <label for="no_pembayaran" class="form-label">No Pembayaran</label>
@@ -111,7 +118,7 @@
                             @enderror
                         </div>
 
-                    
+
                         <button type="submit" class="btn btn-primary">Daftar</button>
                     </form>
 

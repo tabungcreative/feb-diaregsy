@@ -22,6 +22,7 @@ class SPLFactory extends Factory
             'tahun_ajaran_id' => TahunAjaran::factory()->create()->id,
             'jenis_pendaftaran' => Arr::random(['kip', 'reguler']),
             'no_whatsapp' => $this->faker->phoneNumber(),
+            'keterangan' => 'keterangan',
         ];
     }
 }

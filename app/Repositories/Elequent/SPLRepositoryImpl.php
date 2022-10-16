@@ -8,6 +8,10 @@ use App\Repositories\SPLRepository;
 
 class SPLRepositoryImpl implements SPLRepository
 {
+    function getALl()
+    {
+        return SPL::orderBy('created_at', 'DESC')->get();
+    }
     function create(array $detailSPL, $tahunAjaranId): SPL
     {
         $tahunAjaran = TahunAjaran::find($tahunAjaranId);
@@ -16,8 +20,21 @@ class SPLRepositoryImpl implements SPLRepository
         return $spl;
     }
 
+    function findById($id)
+    {
+        return SPL::find($id);
+    }
+
     function findByNim($nim): ?SPL
     {
         return SPL::where('nim', $nim)->first();
+    }
+
+    function update(int $id, array $detailSPL): SPL
+    {
+        $spl = SPL::find($id);
+        $spl->update($detailSPL);
+        $spl->save();
+        return $spl;
     }
 }

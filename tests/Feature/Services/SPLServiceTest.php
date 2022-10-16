@@ -4,6 +4,7 @@ namespace Tests\Feature\Services;
 
 use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
+use App\Http\Requests\SPLCreateMessageRequest;
 use App\Http\Requests\SPLRegisterRequest;
 use App\Models\SPL;
 use App\Models\TahunAjaran;
@@ -84,5 +85,39 @@ class SPLServiceTest extends TestCase
         ]);
 
         $this->service->register($request);
+    }
+
+    public function testVerify()
+    {
+        $spl = SPL::factory()->create(['is_verify' => 0]);
+
+        $this->assertDatabaseHas('spl', [
+            'is_verify' => 0
+        ]);
+
+        $result = $this->service->verify($spl->id);
+
+        $this->assertDatabaseHas('spl', [
+            'is_verify' => 1
+        ]);
+    }
+
+    public function testCreateMessage()
+    {
+        $spl = SPL::factory()->create(['keterangan' => 'old message']);
+
+        $request = new SPLCreateMessageRequest([
+            'pesan' => 'new message'
+        ]);
+
+        $this->assertDatabaseHas('spl', [
+            'keterangan' => 'old message'
+        ]);
+
+        $this->service->createMessage($spl->id, $request);
+
+        $this->assertDatabaseHas('spl', [
+            'keterangan' => 'new message'
+        ]);
     }
 }

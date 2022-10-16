@@ -30,6 +30,7 @@ Route::controller(SPLController::class)
         Route::get('/{nim}/register', 'formRegister')->name('form-register');
         Route::post('/register', 'register')->name('register');
         Route::get('/{id}/detail', 'detail')->name('detail');
+        Route::get('/list', 'list')->name('list');
     });
 
 Route::controller(PendaftaranController::class)
@@ -39,4 +40,22 @@ Route::controller(PendaftaranController::class)
         Route::get('/cek-nim', 'formCekNim')->name('form-cek-nim');
         Route::post('/cek-nim', 'cekNim')->name('cek-nim');
         Route::get('/{nim}/list', 'list')->name('list');
+    });
+
+
+
+// Admin  Router
+
+Route::prefix('admin')
+    ->as('admin.')
+    ->group(function () {
+        Route::controller(\App\Http\Controllers\Admin\SPLController::class)
+            ->prefix('spl')
+            ->as('spl.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{id}/detail', 'detail')->name('detail');
+                Route::post('/{id}/verify', 'verify')->name('verify');
+                Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+            });
     });

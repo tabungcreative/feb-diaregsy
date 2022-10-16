@@ -4,6 +4,7 @@ namespace App\Services\Impl;
 
 use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
+use App\Http\Requests\SPLCreateMessageRequest;
 use App\Http\Requests\SPLRegisterRequest;
 use App\Models\SPL;
 use App\Repositories\SPLRepository;
@@ -43,6 +44,8 @@ class SPLServiceImpl implements SPLService
         }
 
         $nim = $request->input('nim');
+        $nama = $request->input('nama');
+        $prodi = $request->input('prodi');
         $noPembayaran = $request->input('no_pembayaran');
         $noWhatsapp = $request->input('no_whatsapp');
         $jenisPendaftaran = $request->input('jenis_pendaftaran');
@@ -52,6 +55,8 @@ class SPLServiceImpl implements SPLService
 
         $detailSPL = [
             'nim' => $nim,
+            'nama' => $nama,
+            'prodi' => $prodi,
             'no_pembayaran' => $noPembayaran,
             'foto_ktp' => null,
             'jenis_pendaftaran' => $jenisPendaftaran,
@@ -74,13 +79,35 @@ class SPLServiceImpl implements SPLService
     {
         $spl = SPL::find($id);
 
-        $dataFile = $this->uploads($fileKtp, 'pengumuman/');
+        $dataFile = $this->uploads($fileKtp, 'diaregsi/spl/foto-ktp/');
 
         $filePath = $dataFile['filePath'];
 
         $spl->foto_ktp = $filePath;
         $spl->save();
 
+        return $spl;
+    }
+
+
+    function verify(int $id)
+    {
+        $detailSPL = [
+            'is_verify' => 1
+        ];
+        $spl = $this->splRepository->update($id, $detailSPL);
+        return $spl;
+    }
+
+
+    function createMessage(int $id, SPLCreateMessageRequest $request)
+    {
+        $pesan = $request->input('pesan');
+        $detailSPL = [
+            'keterangan' => $pesan,
+        ];
+
+        $spl = $this->splRepository->update($id, $detailSPL);
         return $spl;
     }
 }
