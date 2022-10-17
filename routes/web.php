@@ -57,5 +57,7 @@ Route::prefix('admin')
                 Route::get('/{id}/detail', 'detail')->name('detail');
                 Route::post('/{id}/verify', 'verify')->name('verify');
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+                Route::get('/export', 'export')->name('export');
+
             });
     });
