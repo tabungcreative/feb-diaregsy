@@ -19,5 +19,5 @@
 <li class="nav-item {{ Route::is('admin.spl.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.spl.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>
-        <span>Pendaftaran SPL</span></a>
+        <span>Pendaftaran Studi Ekskursi</span></a>
 </li>

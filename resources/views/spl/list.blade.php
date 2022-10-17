@@ -2,9 +2,12 @@
 
 @section("content")
     <div class="row">
-        <div class="p-5 bg-info text-center text-white">
-            <h1>SPL (Studi Pengembangan Lapangan) </h1>
+        <div class="col-md-12 mx-auto">
+            <div class="py-5 bg-danger text-center text-white">
+                <h1>Studi Ekskursi</h1>
+            </div>
         </div>
+
     </div>
     <div class="row py-5">
         <div class="col-md-12 mx-auto">
@@ -13,7 +16,7 @@
                     <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                     <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                 </div>
-                <h4 class="mx-auto mt-4">Mahasiswa Terdaftar SPL (Studi Pengembangan Lapangan) </h4>
+                <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Studi Ekskursi (Studi Pengembangan Lapangan) </h4>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
@@ -53,4 +56,18 @@
             </div>
         </div>
     </div>
+
+    <div class="row py-5">
+        <div class="col-lg-6 md-12 mx-auto">
+            <div class="card">
+                <div class="image mx-auto mt-5">
+                    <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-flui" alt=" logo-diaregsi" width="150px">
+                </div>
+                <div class="card-body text-center">
+                    <img src="https://is3.cloudhost.id/storage-feb/assets/images/alur-akademik/infografis%20feb-02.png" class="img-fluid" alt=" logo-diaregsi">
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

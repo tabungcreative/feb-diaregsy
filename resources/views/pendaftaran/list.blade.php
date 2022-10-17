@@ -10,23 +10,29 @@
         <div class="row mt-5">
             <h3>List Pendaftaran Mahasiswa</h3>
         </div>
-        <div class="row d-flex justify-content-start">
+        <div class="row d-flex justify-content-lg-start justify-content-md-center justify-content-sm-center">
             @php
                 $pendaftaran = [
-                    ['nama' => 'SPL', 'gambar' => 'test.jpg', 'route' => 'spl.form-register'],
-                ]    
+                    ['nama' => 'Studi Ekskursi', 'route' => 'spl.form-register'],
+                    ['nama' => 'Magang', 'route' => 'spl.form-register'],
+                    ['nama' => 'Sempro', 'route' => 'spl.form-register'],
+                    ['nama' => 'Kompre', 'route' => 'spl.form-register'],
+                    ['nama' => 'Bimbingan Skripsi', 'route' => 'spl.form-register'],
+                    ['nama' => 'Ujian Skripsi', 'route' => 'spl.form-register'],
+                    ['nama' => 'Yudisium', 'route' => 'spl.form-register'],
+                    ['nama' => 'Mengulang', 'route' => 'spl.form-register'],
+                    ['nama' => 'Semester Pendek', 'route' => 'spl.form-register'],
+
+                ]
             @endphp
             @foreach($pendaftaran as $value)
-                <div class="card border-0 my-4 shadow me-4" style="width: 18rem">
+                <div class="card border-0 my-4 shadow me-4 bg-danger text-white" style="width: 18rem">
                     <a href="{{ route($value['route'], $nim) }}" class="nav-link">
-                        <div class="card-gambar">
-                            <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="..." />
-                        </div>
                         <div class="card-body">
                             <h5 class="card-title pt-3">
                                 Pendaftaran {{ $value['nama'] }}
                             </h5>
-                            <a href="{{ route($value['route'], $nim) }}" class="btn btn-sm btn-outline-danger">Daftar</a>
+                            <a href="{{ route($value['route'], $nim) }}" class="btn btn-sm btn-outline-light">Daftar</a>
                         </div>
                     </a>
                 </div>

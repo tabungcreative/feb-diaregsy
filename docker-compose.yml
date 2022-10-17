@@ -1,0 +1,27 @@
+version: "3"
+services:
+    feb-diaregsy:
+        image: ahmdrifai/feb-diaregsy:prod
+        container_name: feb-diaregsy
+        restart: unless-stopped
+        tty: true
+        env_file: .env
+        networks:
+            - feb-diaregsy-prod
+
+    feb-diaregsy-webserver:
+        image: ahmdrifai/feb-diaregsy-webserver:prod
+        container_name: feb-diaregsy-webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8010:80"
+        depends_on:
+            - feb-diaregsy
+        networks:
+            - feb-diaregsy-prod
+
+#Docker Networks
+networks:
+    feb-diaregsy-prod:
+        driver: bridge

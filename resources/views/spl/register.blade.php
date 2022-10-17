@@ -2,8 +2,8 @@
 
 @section("content")
     <div class="row">
-        <div class="p-5 bg-info text-center text-white">
-            <h1>SPL (Studi Pengembangan Lapangan) </h1>
+        <div class="p-5 bg-danger text-center text-white">
+            <h1>Studi Ekskursi </h1>
         </div>
     </div>
     <div class="row py-5">
@@ -13,7 +13,7 @@
                     <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                     <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                 </div>
-                <h4 class="mx-auto mt-4">Pendaftaran SPL (Studi Pengembangan Lapangan) </h4>
+                <h4 class="mx-auto mt-4">Pendaftaran Studi Ekskursi</h4>
                 <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">no pembayaran, syarat-syarat dan dokumen pendaftaran</span>, </p>
 
                 <div class="card-body">

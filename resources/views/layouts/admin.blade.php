@@ -43,12 +43,12 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-white sidebar sidebar-light accordion border" id="accordionSidebar">
+    <ul class="navbar-nav bg-danger sidebar sidebar-dark accordion border" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-text mx-3">
-                <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy-putih.png" class="img-fluid" alt="logo-diaregsi" width="200px">
             </div>
         </a>
 

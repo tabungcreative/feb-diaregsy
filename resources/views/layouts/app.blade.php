@@ -20,7 +20,7 @@
     <body>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt="logo-diaregsi" width="80px">
                     <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="150px">
                 </a>
@@ -30,7 +30,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('pendaftaran.cek-nim') }}">Daftar</a>
                     </li>
                     <li class="nav-item">
                     <li class="nav-item dropdown">
@@ -38,7 +41,7 @@
                         Pendaftaran
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">SPL</a></li>
+                        <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
                         <li><a class="dropdown-item" href="#">Magang</a></li>
                         <li><a class="dropdown-item" href="#">Sempro</a></li>
                         <li><a class="dropdown-item" href="#">Kompre</a></li>
@@ -53,7 +56,7 @@
                 </div>
             </div>
         </nav>
-{{-- 
+{{--
         <!-- banner -->
         <div class="container pt-5">
             <div class="row mt-5 banner">
@@ -70,10 +73,63 @@
             </div>
         </div>
         <!-- //banner --> --}}
-        
+
         @yield('content')
 
-        
+        <!-- Footer -->
+        <footer class="text-white text-center text-md-start" style="background-color: #161616; margin-top: 200px;">
+            <div class="container-fluid p-4">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-11 p-3">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-lg-3 col-md-12 mb-4 mb-md-0">
+                                <img src="https://is3.cloudhost.id/storage-feb/assets/images/logo_feb_putih.png" class="d-block" style="height: 100px; width: 100px" alt="" />
+                                <hr style="border: 1px solid #b6b7b7" />
+                                <h5 class="h5" style="color: #b6b7b7">Fakultas Ekonomi dan Bisnis</h5>
+                                <p style="color: #505050">Universitas Sains Al Qur’an Jawa Tengah di Wonosobo</p>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                                <h5 class="text-uppercase">Tentang Fakultas</h5>
+
+                                <p style="color: #505050">Sejarah Feb Unsiq</p>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                                <h5 class="text-uppercase mb-3">Kontak</h5>
+
+                                <div class="text-right" style="color: #505050">
+                                    <p class="text-right">Jl. KH. Hasyim Asy'ari Km. 03, Kalibeber, Kec. Mojotengah, Kab. Wonosobo,</p>
+                                    <p class="text-right">Jawa Tengah - 56351</p>
+                                    <p class="text-right">Telp. : (0286) ******</p>
+                                    <p class="text-right">Fax. : (0286) *******</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row d-flex justify-content-center" style="background-color: #343434">
+                    <div class="col-lg-11 d-flex justify-content-between align-items-center">
+                        <div class="text-left p-3" style="color: #aeaeae">Copyright All Right Reserved 2022, Faculty of Economics and Business, UNSIQ</div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="" class="icon-footer">
+                                <i class="fa fa-facebook-f p-3"></i>
+                            </a>
+                            <a href="" class="icon-footer">
+                                <i class="fa fa-instagram p-3"></i>
+                            </a>
+                            <a href="" class="icon-footer">
+                                <i class="fa fa-twitter p-3" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Akhir Footer -->
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 </html>
