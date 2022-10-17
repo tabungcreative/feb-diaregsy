@@ -14,22 +14,13 @@
                         <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                         <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
-                    <h4 class="mx-auto mt-4">Pendaftaran Studi Ekskursi</h4>
-                    <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">no pembayaran, syarat-syarat dan dokumen pendaftaran</span>, </p>
+                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Studi Ekskrusi</h4>
 
                     <div class="card-body">
 
                         @if(Session::has('error'))
                             <div class="alert alert-danger" role="alert">
                                 {{ Session::get('error') }}
-                            </div>
-                        @endif
-
-                        @if(Session::has('update'))
-                            <div class="alert alert-info" role="alert">
-                                {{ Session::get('update') }}, pilih <span class="fw-bold">update pendaftaran</span> untuk mengubah data pendaftaran <br>
-                                <a href="{{ route('spl.edit', old('nim')) }}" class="btn btn-primary">Update pendaftaran</a>
-                                <button onClick="window.location.reload();" class="btn btn-danger">Batal</button>
                             </div>
                         @endif
 
@@ -60,31 +51,23 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('spl.register') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('spl.update', $spl->id) }}" method="POST" enctype="multipart/form-data">
 
                             @csrf
-
-                            <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">
-                            <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
-                            <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
+                            @method('PUT')
 
                             <div class="mb-3">
                                 <label for="no_pembayaran" class="form-label">No Pembayaran</label>
                                 <input type="text" name="no_pembayaran"
-                                       class="form-control @error('no_pembayaran') is-invalid @enderror" id="no_pembayaran"
-                                       placeholder="SMP-10.10.001" value="{{ old('no_pembayaran') }}">
-                                @error('no_pembayaran')
-                                <div id="no_pembayaran" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                       class="form-control" id="no_pembayaran"
+                                       placeholder="SMP-10.10.001" value="{{ old('no_pembayaran') }}" disabled>
                             </div>
 
                             <div class="mb-3">
                                 <label for="no_whatsapp" class="form-label">No Telephone (WA)</label>
                                 <input type="text" name="no_whatsapp"
                                        class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
-                                       placeholder="ex: 085xx" value="{{ old('no_whatsapp') }}">
+                                       placeholder="ex: 085xx" value="{{ $spl->no_whatsapp }}">
                                 @error('no_whatsapp')
                                 <div id="no_whatsapp" class="invalid-feedback">
                                     {{ $message }}

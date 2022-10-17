@@ -6,6 +6,7 @@ use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\SPLCreateMessageRequest;
 use App\Http\Requests\SPLRegisterRequest;
+use App\Http\Requests\SPLUpdateRequest;
 use App\Models\SPL;
 use App\Models\TahunAjaran;
 use App\Services\SPLService;
@@ -119,5 +120,22 @@ class SPLServiceTest extends TestCase
         $this->assertDatabaseHas('spl', [
             'keterangan' => 'new message'
         ]);
+    }
+
+    public function testUpdate() {
+        $spl = SPL::factory()->create(['jenis_pendaftaran' => 'kip']);
+
+        $request = new SPLUpdateRequest([
+            'no_whatsapp' => 'test',
+            'jenis_pendaftaran' => 'reguler',
+        ]);
+
+        $this->service->update($spl->id, $request);
+
+        $this->assertDatabaseHas('spl', [
+            'no_whatsapp' => 'test',
+            'jenis_pendaftaran' => 'reguler',
+        ]);
+        $this->assertDatabaseCount('spl', 1);
     }
 }
