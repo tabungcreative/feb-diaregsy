@@ -19,10 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route cek nim 
 Route::get('cek-nim', function () {
     return view('mahasiswa.cek-nim');
 });
 
+// Route SPL
 Route::controller(SPLController::class)
     ->prefix('spl')
     ->as('spl.')
@@ -32,7 +34,7 @@ Route::controller(SPLController::class)
         Route::get('/{id}/detail', 'detail')->name('detail');
         Route::get('/list', 'list')->name('list');
     });
-
+// Route Pendaftaran mahasiswa 
 Route::controller(PendaftaranController::class)
     ->prefix('pendaftaran')
     ->as('pendaftaran.')
@@ -45,7 +47,6 @@ Route::controller(PendaftaranController::class)
 
 
 // Admin  Router
-
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
