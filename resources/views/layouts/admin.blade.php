@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Difisy | Sistem Keuangan FEB</title>
+    <title>Diaregsy | Sistem pendaftaran FEB</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sb-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -46,7 +46,7 @@
     <ul class="navbar-nav bg-danger sidebar sidebar-dark accordion border" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin  ">
             <div class="sidebar-brand-text mx-3">
                 <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy-putih.png" class="img-fluid" alt="logo-diaregsi" width="200px">
             </div>

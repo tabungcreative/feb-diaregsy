@@ -78,6 +78,12 @@
                         </a>
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex justify-content-between">
+                                <h6 class="mb-1">Alamat</h6>
+                            </div>
+                            <p class="mb-1 font-weight-bold">{{ $magang->alamat}}</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">Email</h6>
                             </div>
                             <p class="mb-1 font-weight-bold">{{ $magang->email  }}</p>
@@ -100,7 +106,6 @@
                             </div>
                             <p class="mb-1 font-weight-bold">{{ $magang->pimpinan_instansi  }}</p>
                         </a>
-                        
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">Lembar Persetujuan</h6>

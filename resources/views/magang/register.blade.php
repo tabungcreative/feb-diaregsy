@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row py-5">
-        <div class="col-md-5 mx-auto">
+        <div class="col-md-8 mx-auto">
             <div class="card p-4">
                 <div class="image mx-auto">
                     <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
@@ -27,7 +27,7 @@
                     @if(Session::has('update'))
                         <div class="alert alert-info" role="alert">
                             {{ Session::get('update') }}, pilih <span class="fw-bold">update pendaftaran</span> untuk mengubah data pendaftaran <br>
-                            <a href="#" class="btn btn-primary">Update pendaftaran</a>
+                            <a href="{{route('magang.edit', old('nim'))}}" class="btn btn-primary">Update pendaftaran</a>
                             <button onClick="window.location.reload();" class="btn btn-danger">Batal</button>
                         </div>
                     @endif
@@ -67,7 +67,7 @@
 
                         <div class="mb-3">
                             <label for="no_pembayaran" class="form-label">No Pembayaran</label>
-                            <input type="text" name="no_pembayaran" class="form-control @error('no_pembayaran') is-invalid @enderror" id="no_pembayaran" placeholder="SMP-10.10.001" value="{{ old('no_pembayaran') }}">
+                            <input type="text" name="no_pembayaran" class="form-control @error('no_pembayaran') is-invalid @enderror" id="no_pembayaran" placeholder="MGN-10.10.001" value="{{ old('no_pembayaran') }}">
                             @error('no_pembayaran')
                             <div id="no_pembayaran" class="invalid-feedback">
                                 {{ $message }}
@@ -76,7 +76,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="SMP-10.10.001" value="{{ old('alamat') }}">
+                            <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="ex: jalan dieng no 05" value="{{ old('alamat') }}">
                             @error('alamat')
                             <div id="alamat" class="invalid-feedback">
                                 {{ $message }}
@@ -85,7 +85,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="SMP-10.10.001" value="{{ old('email') }}">
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ old('email') }}">
                             @error('email')
                             <div id="email" class="invalid-feedback">
                                 {{ $message }}
@@ -93,8 +93,8 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="instansi_magang" class="form-label">Instansi Magang</label>
-                            <input type="text" name="instansi_magang" class="form-control @error('instansi_magang') is-invalid @enderror" id="instansi_magang" placeholder="SMP-10.10.001" value="{{ old('instansi_magang') }}">
+                            <label for="instsi_magang" class="form-label">Instansi Magang</label>
+                            <input type="text" name="instansi_magang" class="form-control @error('instansi_magang') is-invalid @enderror" id="instansi_magang" placeholder="ex: instansi magang" value="{{ old('instansi_magang') }}">
                             @error('instansi_magang')
                             <div id="instansi_magang" class="invalid-feedback">
                                 {{ $message }}
@@ -103,7 +103,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="pimpinan_instansi" class="form-label">Pimpinan Instansi</label>
-                            <input type="text" name="pimpinan_instansi" class="form-control @error('pimpinan_instansi') is-invalid @enderror" id="pimpinan_instansi" placeholder="SMP-10.10.001" value="{{ old('pimpinan_instansi') }}">
+                            <input type="text" name="pimpinan_instansi" class="form-control @error('pimpinan_instansi') is-invalid @enderror" id="pimpinan_instansi" placeholder="ex: pimpinan instansi" value="{{ old('pimpinan_instansi') }}">
                             @error('pimpinan_instansi')
                             <div id="pimpinan_instansi" class="invalid-feedback">
                                 {{ $message }}

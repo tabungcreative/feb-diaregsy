@@ -6,6 +6,7 @@ use App\Exceptions\MagangIsExistException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\MagangCreateMessageRequest;
 use App\Http\Requests\MagangRegisterRequest;
+use App\Http\Requests\MagangUpdateRequest;
 use App\Repositories\MagangRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\MagangService;
@@ -79,7 +80,7 @@ class MagangServiceImpl implements MagangService
 
     function addLembarPersetujuan(int $id, $fileLembarPersetujuan)
     {
-        $dataFile = $this->uploads($fileLembarPersetujuan, 'diaregsi/magang/lembar-persetujuan');
+        $dataFile = $this->uploads($fileLembarPersetujuan, 'diaregsi/magang/lembar-persetujuan/');
 
         $filePath = $dataFile['filePath'];
 
@@ -108,6 +109,26 @@ class MagangServiceImpl implements MagangService
         $pesan = $request->input('pesan');
         $detailMagang = [
             'keterangan' => $pesan,
+        ];
+
+        $magang = $this->magangRepository->update($id, $detailMagang);
+        return $magang;
+    }
+
+    function update(int $id, MagangUpdateRequest $request)
+    {
+        $alamat = $request->input('alamat');
+        $email = $request->input('email');
+        $instansiMagang = $request->input('instansi_magang');
+        $pimpinanInstansi = $request->input('pimpinan_instansi');
+        $noWhatsapp = $request->input('no_whatsapp');
+
+        $detailMagang = [
+            'alamat' => $alamat,
+            'email' => $email,
+            'instansi_magang' => $instansiMagang,
+            'pimpinan_instansi' => $pimpinanInstansi,
+            'no_whatsapp' => $noWhatsapp,
         ];
 
         $magang = $this->magangRepository->update($id, $detailMagang);

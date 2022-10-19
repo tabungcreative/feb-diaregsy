@@ -122,7 +122,8 @@ class SPLServiceTest extends TestCase
         ]);
     }
 
-    public function testUpdate() {
+    public function testUpdate()
+    {
         $spl = SPL::factory()->create(['jenis_pendaftaran' => 'kip']);
 
         $request = new SPLUpdateRequest([
