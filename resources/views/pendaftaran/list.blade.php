@@ -10,7 +10,7 @@
         <div class="row mt-5">
             <h3>List Pendaftaran Mahasiswa</h3>
         </div>
-        <div class="row d-flex justify-content-lg-start justify-content-md-center justify-content-sm-center">
+        <div class="row d-flex justify-content-center">
             @php
                 $pendaftaran = [
                     ['nama' => 'Studi Ekskursi', 'route' => 'spl.form-register'],

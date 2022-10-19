@@ -6,6 +6,7 @@ use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\SPLCreateMessageRequest;
 use App\Http\Requests\SPLRegisterRequest;
+use App\Http\Requests\SPLUpdateRequest;
 use App\Models\SPL;
 use App\Repositories\SPLRepository;
 use App\Repositories\TahunAjaranRepository;
@@ -89,7 +90,6 @@ class SPLServiceImpl implements SPLService
         return $spl;
     }
 
-
     function verify(int $id)
     {
         $detailSPL = [
@@ -99,7 +99,6 @@ class SPLServiceImpl implements SPLService
         return $spl;
     }
 
-
     function createMessage(int $id, SPLCreateMessageRequest $request)
     {
         $pesan = $request->input('pesan');
@@ -108,6 +107,21 @@ class SPLServiceImpl implements SPLService
         ];
 
         $spl = $this->splRepository->update($id, $detailSPL);
+        return $spl;
+    }
+
+    function update(int $id, SPLUpdateRequest $request)
+    {
+        $noWhatsapp = $request->input('no_whatsapp');
+        $jenisPendaftatan = $request->input('jenis_pendaftaran');
+
+        $detailSPL = [
+            'no_whatsapp' => $noWhatsapp,
+            'jenis_pendaftaran' => $jenisPendaftatan,
+        ];
+
+        $spl = $this->splRepository->update($id, $detailSPL);
+
         return $spl;
     }
 }
