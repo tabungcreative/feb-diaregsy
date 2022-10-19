@@ -8,6 +8,7 @@ use App\Exceptions\PembayaranNotSuitableWithNimException;
 use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\SPLRegisterRequest;
+use App\Http\Requests\SPLUpdateRequest;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SPLRepository;
 use App\Services\SPLService;
@@ -44,7 +45,7 @@ class SPLController extends Controller
             $fileKtp = $request->file('foto_ktp');
             $result = $this->splService->register($request);
             $this->splService->addKtp($result->id, $fileKtp);
-            return $result;
+            return redirect()->route('spl.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         } catch (PembayaranNotFoundException $e) {
@@ -56,8 +57,29 @@ class SPLController extends Controller
         } catch (SPLIsExistsException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
-            dd($e->getMessage());
-            // abort(500, 'terjadi kesalahan pada server');
+             abort(500, 'terjadi kesalahan pada server');
         }
+    }
+
+    public function edit($nim) {
+        $spl = $this->SPLRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+
+        return view('spl.edit', compact('spl', 'mahasiswa'));
+    }
+
+    public function update(SPLUpdateRequest $request, $id) {
+        try {
+            $spl = $this->splService->update($id, $request);
+            return redirect()->route('spl.detail', $spl->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        }catch (Exception $exception) {
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function detail($id){
+        $spl = $this->SPLRepository->findById($id);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($spl->nim);
+        return view('spl.detail', compact('spl', 'mahasiswa'));
     }
 }

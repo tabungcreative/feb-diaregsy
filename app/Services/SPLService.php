@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Requests\SPLCreateMessageRequest;
 use App\Http\Requests\SPLRegisterRequest;
+use App\Http\Requests\SPLUpdateRequest;
 
 interface SPLService
 {
@@ -11,4 +12,5 @@ interface SPLService
     function addKtp(int $id, $fileKtp);
     function verify(int $id);
     function createMessage(int $id, SPLCreateMessageRequest $request);
+    function update(int $id, SPLUpdateRequest $request);
 }
