@@ -44,11 +44,11 @@ class MagangServiceImpl implements MagangService
         $nama = $request->input('nama');
         $prodi = $request->input('prodi');
         $alamat = $request->input('alamat');
-        $noPembayaran = $request->input('no_pembayaran');
-        $noWhatsapp = $request->input('no_whatsapp');
         $email = $request->input('email');
+        $noPembayaran = $request->input('no_pembayaran');
         $instansiMagang = $request->input('instansi_magang');
         $pimpinanInstansi = $request->input('pimpinan_instansi');
+        $noWhatsapp = $request->input('no_whatsapp');
 
         // cek pembayaran
         $this->pembayaranService->checkPembayaran($noPembayaran, $nim);
@@ -58,17 +58,18 @@ class MagangServiceImpl implements MagangService
             'nama' => $nama,
             'prodi' => $prodi,
             'alamat' => $alamat,
-            'no_whatsapp' => $noWhatsapp,
             'email' => $email,
+            'no_pembayaran' => $noPembayaran,
             'instansi_magang' => $instansiMagang,
             'pimpinan_instansi' => $pimpinanInstansi,
+            'no_whatsapp' => $noWhatsapp,
         ];
 
-        // cek apakah sudah pernah mendaftar spl
+        // cek apakah sudah pernah mendaftar magang
         $magang = $this->magangRepository->findByNim($nim);
 
         if ($magang != null) {
-            throw new MagangIsExistException('anda sudah mendaftar magang');
+            throw new MagangIsExistException('anda sudah pernah mendaftar magang');
         }
 
         $magang = $this->magangRepository->create($detailMagang, $tahunAjaran->id);
@@ -109,7 +110,7 @@ class MagangServiceImpl implements MagangService
             'keterangan' => $pesan,
         ];
 
-        $spl = $this->splRepository->update($id, $detailMagang);
-        return $spl;
+        $magang = $this->magangRepository->update($id, $detailMagang);
+        return $magang;
     }
 }

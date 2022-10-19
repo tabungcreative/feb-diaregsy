@@ -2,49 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\MagangIsExistException;
 use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\PembayaranNotFoundException;
 use App\Exceptions\PembayaranNotSuitableWithNimException;
-use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
-use App\Http\Requests\SPLRegisterRequest;
+use App\Http\Requests\MagangRegisterRequest;
+use App\Repositories\MagangRepository;
 use App\Repositories\MahasiswaRepository;
-use App\Repositories\SPLRepository;
-use App\Services\SPLService;
+use App\Services\MagangService;
 use Exception;
 use Illuminate\Http\Request;
 
-class SPLController extends Controller
+class MagangController extends Controller
 {
-    private SPLService $splService;
-    private SPLRepository $SPLRepository;
+    private MagangService $magangService;
+    private MagangRepository $magangRepository;
     private MahasiswaRepository $mahasiswaRepository;
 
-    public function __construct(SPLService $splService, SPLRepository $SPLRepository, MahasiswaRepository $mahasiswaRepository)
+    public function __construct(MagangService $magangService, MagangRepository $magangRepository, MahasiswaRepository $mahasiswaRepository)
     {
-        $this->splService = $splService;
-        $this->SPLRepository = $SPLRepository;
+        $this->magangService = $magangService;
+        $this->magangRepository = $magangRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
 
     public function list()
     {
-        $spl = $this->SPLRepository->getALl();
-        return view('spl.list', compact('spl'));
+        $magang = $this->magangRepository->getALl();
+        return view('magang.list', compact('magang'));
     }
 
     public function formRegister($nim)
     {
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
-        return view('spl.register', compact('mahasiswa'));
+        return view('magang.register', compact('mahasiswa'));
     }
 
-    public function register(SPLRegisterRequest $request)
+    public function register(MagangRegisterRequest $request)
     {
         try {
-            $fileKtp = $request->file('foto_ktp');
-            $result = $this->splService->register($request);
-            $this->splService->addKtp($result->id, $fileKtp);
+            $lembarPersetujuan = $request->file('lembar_persetujuan');
+            $result = $this->magangService->register($request);
+            $this->magangService->addLembarPersetujuan($result->id, $lembarPersetujuan);
             return $result;
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
@@ -54,7 +54,7 @@ class SPLController extends Controller
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         } catch (PembayaranNotSuitableWithNimException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (SPLIsExistsException $e) {
+        } catch (MagangIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
             // dd($e->getMessage());

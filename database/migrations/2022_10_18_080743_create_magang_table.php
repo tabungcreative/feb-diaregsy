@@ -15,21 +15,21 @@ class CreateMagangTable extends Migration
     {
         Schema::create('magang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nim')->nullable();
+            $table->string('nim');
+            $table->string('nama')->nullable();
             $table->string('prodi')->nullable();
-            $table->string('no_pembayaran');
-            $table->string('email');
-            $table->string('instansi_magang');
             $table->string('alamat');
+            $table->string('email');
+            $table->string('no_pembayaran');
+            $table->string('instansi_magang');
             $table->string('pimpinan_instansi');
+            $table->string('no_whatsapp');
+            $table->string('lembar_persetujuan')->nullable();
+            $table->string('keterangan')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
             $table->foreign('tahun_ajaran_id')
                 ->references('id')->on('tahun_ajaran');
-            $table->string('no_whatsapp');
             $table->boolean('is_verify')->default(0);
-            $table->string('keterangan')->nullable();
-            $table->string('lembar_persetujuan')->nullable();
             $table->timestamps();
         });
     }

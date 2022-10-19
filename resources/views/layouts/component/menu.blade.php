@@ -21,3 +21,9 @@
         <i class="fas fa-fw fa-paper-plane"></i>
         <span>Pendaftaran Studi Ekskursi</span></a>
 </li>
+
+<li class="nav-item {{ Route::is('admin.magang.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.magang.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Magang</span></a>
+</li>

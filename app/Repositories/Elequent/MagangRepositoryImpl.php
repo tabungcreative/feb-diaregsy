@@ -30,11 +30,11 @@ class MagangRepositoryImpl implements MagangRepository
         return Magang::where('nim', $nim)->first();
     }
 
-    function update(int $id, array $detailSPL): Magang
+    function update(int $id, array $detailMagang): Magang
     {
-        $spl = Magang::find($id);
-        $spl->update($detailSPL);
-        $spl->save();
-        return $spl;
+        $magang = Magang::find($id);
+        $magang->update($detailMagang);
+        $magang->save();
+        return $magang;
     }
 }

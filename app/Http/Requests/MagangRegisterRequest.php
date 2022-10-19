@@ -32,7 +32,7 @@ class MagangRegisterRequest extends FormRequest
             'no_whatsapp' => 'required',
             'instansi_magang' => 'required',
             'pimpinan_instansi' => 'required',
-            'lembar_persetujuan' => 'required',
+            'lembar_persetujuan' => 'required|mimes:pdf|file|max:3000',
         ];
     }
 }
