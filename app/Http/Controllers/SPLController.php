@@ -21,14 +21,15 @@ class SPLController extends Controller
     private SPLRepository $SPLRepository;
     private MahasiswaRepository $mahasiswaRepository;
 
-    public function __construct(SPLService $splService, SPLRepository $SPLRepository ,MahasiswaRepository $mahasiswaRepository)
+    public function __construct(SPLService $splService, SPLRepository $SPLRepository, MahasiswaRepository $mahasiswaRepository)
     {
         $this->splService = $splService;
         $this->SPLRepository = $SPLRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
 
-    public function list() {
+    public function list()
+    {
         $spl = $this->SPLRepository->getALl();
         return view('spl.list', compact('spl'));
     }
@@ -57,7 +58,7 @@ class SPLController extends Controller
         } catch (SPLIsExistsException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
-             abort(500, 'terjadi kesalahan pada server');
+            abort(500, 'terjadi kesalahan pada server');
         }
     }
 

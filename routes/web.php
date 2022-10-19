@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MagangController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\SPLController;
 use Illuminate\Support\Facades\Route;
@@ -19,10 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route cek nim 
 Route::get('cek-nim', function () {
     return view('mahasiswa.cek-nim');
 });
 
+// Route SPL
 Route::controller(SPLController::class)
     ->prefix('spl')
     ->as('spl.')
@@ -36,6 +39,17 @@ Route::controller(SPLController::class)
 
     });
 
+// Route Magang
+Route::controller(MagangController::class)
+    ->prefix('magang')
+    ->as('magang.')
+    ->group(function () {
+        Route::get('/{nim}/register', 'formRegister')->name('form-register');
+        Route::post('/register', 'register')->name('register');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+        Route::get('/list', 'list')->name('list');
+    });
+// Route Pendaftaran mahasiswa 
 Route::controller(PendaftaranController::class)
     ->prefix('pendaftaran')
     ->as('pendaftaran.')
@@ -44,6 +58,7 @@ Route::controller(PendaftaranController::class)
         Route::post('/cek-nim', 'cekNim')->name('cek-nim');
         Route::get('/{nim}/list', 'list')->name('list');
     });
+
 
 
 /**
@@ -62,5 +77,14 @@ Route::prefix('admin')
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                 Route::get('/export', 'export')->name('export');
 
+            });
+        Route::controller(\App\Http\Controllers\Admin\MagangController::class)
+            ->prefix('magang')
+            ->as('magang.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{id}/detail', 'detail')->name('detail');
+                Route::post('/{id}/verify', 'verify')->name('verify');
+                Route::post('/{id}/create-message', 'createMessage')->name('create-message');
             });
     });

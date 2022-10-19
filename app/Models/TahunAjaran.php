@@ -15,4 +15,8 @@ class TahunAjaran extends Model
     {
         return $this->hasMany(SPL::class);
     }
+    public function magang()
+    {
+        return $this->hasMany(Magang::class);
+    }
 }
