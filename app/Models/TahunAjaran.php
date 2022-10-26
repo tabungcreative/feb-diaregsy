@@ -15,4 +15,9 @@ class TahunAjaran extends Model
     {
         return $this->hasMany(SPL::class);
     }
+
+    public function sempro()
+    {
+        return $this->hasMany(Sempro::class);
+    }
 }

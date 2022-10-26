@@ -16,7 +16,7 @@
                     <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                     <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                 </div>
-                <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Studi Ekskursi (Studi Pengembangan Lapangan) </h4>
+                <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Studi Ekskursi </h4>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">

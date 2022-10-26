@@ -44,4 +44,10 @@ trait MediaTrait
 
         return $size;
     }
+
+    function deleteFile($path) {
+        if (Storage::disk('s3')->exists($path)){
+            Storage::disk('s3')->delete($path);
+        }
+    }
 }

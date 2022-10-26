@@ -179,6 +179,7 @@ return [
         App\Providers\MahasiswaProvider::class,
         App\Providers\TahunAjaranProvider::class,
         App\Providers\SPLProvider::class,
+        App\Providers\SemproProvider::class,
 
         // depend provider
         Maatwebsite\Excel\ExcelServiceProvider::class,

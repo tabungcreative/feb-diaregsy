@@ -23,6 +23,7 @@ Route::get('cek-nim', function () {
     return view('mahasiswa.cek-nim');
 });
 
+
 Route::controller(SPLController::class)
     ->prefix('spl')
     ->as('spl.')
@@ -52,6 +53,9 @@ Route::controller(PendaftaranController::class)
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        });
         Route::controller(\App\Http\Controllers\Admin\SPLController::class)
             ->prefix('spl')
             ->as('spl.')

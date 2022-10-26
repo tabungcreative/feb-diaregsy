@@ -15,8 +15,8 @@
                 $pendaftaran = [
                     ['nama' => 'Studi Ekskursi', 'route' => 'spl.form-register'],
                     ['nama' => 'Magang', 'route' => 'spl.form-register'],
-                    ['nama' => 'Sempro', 'route' => 'spl.form-register'],
-                    ['nama' => 'Kompre', 'route' => 'spl.form-register'],
+                    ['nama' => 'Seminar Proposal', 'route' => 'sempro.form-register'],
+                    ['nama' => 'Komprehensif', 'route' => 'spl.form-register'],
                     ['nama' => 'Bimbingan Skripsi', 'route' => 'spl.form-register'],
                     ['nama' => 'Ujian Skripsi', 'route' => 'spl.form-register'],
                     ['nama' => 'Yudisium', 'route' => 'spl.form-register'],
