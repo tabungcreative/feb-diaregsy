@@ -180,6 +180,7 @@ return [
         App\Providers\TahunAjaranProvider::class,
         App\Providers\SPLProvider::class,
         App\Providers\MagangProvider::class,
+        App\Providers\BimbinganSkripsiProvider::class,
 
         // depend provider
         Maatwebsite\Excel\ExcelServiceProvider::class,

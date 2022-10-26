@@ -27,3 +27,10 @@
         <i class="fas fa-fw fa-paper-plane"></i>
         <span>Pendaftaran Magang</span></a>
 </li>
+
+<li class="nav-item {{ Route::is('admin.bimbinganSkripsi.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.bimbinganSkripsi.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Bimbingan Skripsi</span></a>
+</li>
+
