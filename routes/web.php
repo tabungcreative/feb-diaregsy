@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BimbinganSkripsiController;
 use App\Http\Controllers\MagangController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\SPLController;
+use App\Models\BimbinganSkripsi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +44,18 @@ Route::controller(SPLController::class)
 Route::controller(MagangController::class)
     ->prefix('magang')
     ->as('magang.')
+    ->group(function () {
+        Route::get('/{nim}/register', 'formRegister')->name('form-register');
+        Route::post('/register', 'register')->name('register');
+        Route::get('/list', 'list')->name('list');
+        Route::get('/{nim}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+    });
+// Route BimbinganSkripsi
+Route::controller(BimbinganSkripsiController::class)
+    ->prefix('bimbingan-skripsi')
+    ->as('bimbinganskripsi.')
     ->group(function () {
         Route::get('/{nim}/register', 'formRegister')->name('form-register');
         Route::post('/register', 'register')->name('register');

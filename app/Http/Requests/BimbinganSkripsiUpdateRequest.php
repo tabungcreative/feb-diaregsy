@@ -13,7 +13,7 @@ class BimbinganSkripsiUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,11 @@ class BimbinganSkripsiUpdateRequest extends FormRequest
     {
         return [
             //
+            'email' => 'required',
+            'judul_skripsi' => 'required',
+            'pembimbing1' => 'required',
+            'pembimbing2' => 'required',
+            'no_whatsapp' => 'required',
         ];
     }
 }

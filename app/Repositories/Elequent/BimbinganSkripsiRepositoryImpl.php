@@ -17,7 +17,7 @@ class BimbinganSkripsiRepositoryImpl implements BimbinganSkripsiRepository
     {
         $tahunAjaran = TahunAjaran::find($tahunAjaranId);
         $bimbinganSkripsi = new BimbinganSkripsi($detailBimbinganSkripsi);
-        $tahunAjaran->magang()->save($bimbinganSkripsi);
+        $tahunAjaran->bimbinganSkripsi()->save($bimbinganSkripsi);
         return $bimbinganSkripsi;
     }
 

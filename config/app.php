@@ -177,6 +177,7 @@ return [
 
         App\Providers\PembayaranProvider::class,
         App\Providers\MahasiswaProvider::class,
+        App\Providers\DosenProvider::class,
         App\Providers\TahunAjaranProvider::class,
         App\Providers\SPLProvider::class,
         App\Providers\MagangProvider::class,

@@ -9,10 +9,8 @@ class BimbinganSkripsi extends Model
 {
     use HasFactory;
 
-
     protected $table = 'bimbinganskripsi';
     protected $guarded = [];
-
 
     public function tahunAjaran()
     {
