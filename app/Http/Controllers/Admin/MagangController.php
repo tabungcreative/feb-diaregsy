@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\MagangExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MagangCreateMessageRequest;
 use App\Repositories\MagangRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\MagangService;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MagangController extends Controller
 {
@@ -54,5 +57,12 @@ class MagangController extends Controller
         } catch (\Exception $exception) {
             abort(500, 'Terjadi masalah pada server');
         }
+    }
+
+
+    public function export()
+    {
+        $tahun = Carbon::now()->year;
+        return Excel::download(new MagangExport(), 'daftar-magang-' . $tahun . '.xlsx');
     }
 }

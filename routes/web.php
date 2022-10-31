@@ -36,7 +36,6 @@ Route::controller(SPLController::class)
         Route::get('/{nim}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
         Route::get('/{id}/detail', 'detail')->name('detail');
-
     });
 
 // Route Magang
@@ -46,8 +45,10 @@ Route::controller(MagangController::class)
     ->group(function () {
         Route::get('/{nim}/register', 'formRegister')->name('form-register');
         Route::post('/register', 'register')->name('register');
-        Route::get('/{id}/detail', 'detail')->name('detail');
         Route::get('/list', 'list')->name('list');
+        Route::get('/{nim}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::get('/{id}/detail', 'detail')->name('detail');
     });
 // Route Pendaftaran mahasiswa 
 Route::controller(PendaftaranController::class)
@@ -63,7 +64,7 @@ Route::controller(PendaftaranController::class)
 
 /**
  * Admin  Router
-*/
+ */
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
@@ -76,7 +77,6 @@ Route::prefix('admin')
                 Route::post('/{id}/verify', 'verify')->name('verify');
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                 Route::get('/export', 'export')->name('export');
-
             });
         Route::controller(\App\Http\Controllers\Admin\MagangController::class)
             ->prefix('magang')
@@ -86,5 +86,6 @@ Route::prefix('admin')
                 Route::get('/{id}/detail', 'detail')->name('detail');
                 Route::post('/{id}/verify', 'verify')->name('verify');
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+                Route::get('/export', 'export')->name('export');
             });
     });

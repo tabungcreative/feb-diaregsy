@@ -47,7 +47,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
-                        <li><a class="dropdown-item" href="#">Magang</a></li>
+                        <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
                         <li><a class="dropdown-item" href="#">Sempro</a></li>
                         <li><a class="dropdown-item" href="#">Kompre</a></li>
                         <li><a class="dropdown-item" href="#">Bimbingan Skripsi</a></li>

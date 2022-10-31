@@ -6,6 +6,7 @@ use App\Exceptions\MagangIsExistException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\MagangCreateMessageRequest;
 use App\Http\Requests\MagangRegisterRequest;
+use App\Http\Requests\MagangUpdateRequest;
 use App\Models\Magang;
 use App\Models\TahunAjaran;
 use App\Services\MagangService;
@@ -128,5 +129,29 @@ class MagangServiceTest extends TestCase
         $this->assertDatabaseHas('magang', [
             'keterangan' => 'new message'
         ]);
+    }
+
+    public function testUpdate()
+    {
+        $magang = Magang::factory()->create(['nim' => '2019150080', 'no_pembayaran' => '0004-10.22-MGN',]);
+
+        $request = new MagangUpdateRequest([
+            'alamat' => 'test',
+            'email' => 'test1@gmail.com',
+            'instansi_magang' => 'tatCompany',
+            'pimpinan_instansi' => 'txt',
+            'no_whatsapp' => 'test234',
+        ]);
+
+        $this->service->update($magang->id, $request);
+
+        $this->assertDatabaseHas('magang', [
+            'alamat' => 'test',
+            'email' => 'test1@gmail.com',
+            'instansi_magang' => 'tatCompany',
+            'pimpinan_instansi' => 'txt',
+            'no_whatsapp' => 'test234',
+        ]);
+        $this->assertDatabaseCount('magang', 1);
     }
 }

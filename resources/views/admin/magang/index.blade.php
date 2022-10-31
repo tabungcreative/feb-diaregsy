@@ -3,8 +3,14 @@
 @section('content')
     <!-- Hoverable Table rows -->
     <div class="card">
-        <div class="d-flex align-items-center p-5 flex-row justify-content-around flex-wrap">
-            <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Studi Ekskursi Tahun 2021</h5>
+        <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
+            <div>
+                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Magang Tahun 2021</h5>
+                <a href="{{ route('admin.magang.export') }}" class="btn btn-success">
+                    <i class="fas fa-download"></i>
+                    Export Excel
+                </a>
+            </div>
             <form method="get" class="form-inline my-2 my-lg-0">
                 <input type="text" name="key" class="form-control mr-sm-2" value="{{ $_GET['key'] ?? '' }}" placeholder="Search" aria-label="Search">
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
