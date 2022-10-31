@@ -24,9 +24,6 @@ class CreateBimbinganskripsiTable extends Migration
             $table->string('pembimbing2');
             $table->string('no_whatsapp');
             $table->string('no_pembayaran');
-            $table->unsignedBigInteger('sempro_id')->nullable();
-            // $table->foreign('sempro_id')
-            //     ->references('id')->on('sempro');
             $table->string('keterangan')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
             $table->foreign('tahun_ajaran_id')

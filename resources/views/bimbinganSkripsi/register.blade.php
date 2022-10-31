@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                    <form action="{{route('bimbinganskripsi.register') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('bimbinganSkripsi.register') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">
                         <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
@@ -107,7 +107,7 @@
                         <div class="mb-3">
                             <label for="pembimbing1" class="form-label">Pembimbing 1</label>
                             <select class="form-select" name="pembimbing1" id="pembimbing1">
-                                <option selected>pilih pembimbing</option>
+                                <option selected>Pilih pembimbing</option>
                                 @foreach ($dosen as $data)
                                     <option value="{{$data['nama']}}">{{$data['nama']}}</option>
                                 @endforeach
@@ -121,7 +121,7 @@
                         <div class="mb-3">
                             <label for="pembimbing2" class="form-label">Pembimbing 2</label>
                             <select class="form-select" name="pembimbing2" id="pembimbing2">
-                                <option selected>pilih pembimbing</option>
+                                <option selected>Pilih pembimbing</option>
                                 @foreach ($dosen as $data)
                                     <option value="{{$data['nama']}}">{{$data['nama']}}</option>
                                 @endforeach

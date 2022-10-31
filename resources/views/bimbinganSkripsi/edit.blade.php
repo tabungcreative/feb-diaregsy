@@ -28,7 +28,7 @@
                     @if(Session::has('update'))
                         <div class="alert alert-info" role="alert">
                             {{ Session::get('update') }}, pilih <span class="fw-bold">update pendaftaran</span> untuk mengubah data pendaftaran <br>
-                            <a href="{{route('bimbinganskripsi.edit', old('nim'))}}" class="btn btn-primary">Update pendaftaran</a>
+                            <a href="{{route('bimbinganSkripsi.edit', old('nim'))}}" class="btn btn-primary">Update pendaftaran</a>
                             <button onClick="window.location.reload();" class="btn btn-danger">Batal</button>
                         </div>
                     @endif
@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('bimbinganskripsi.update', $bimbinganSkripsi->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('bimbinganSkripsi.update', $bimbinganSkripsi->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">

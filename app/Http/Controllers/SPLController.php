@@ -62,23 +62,26 @@ class SPLController extends Controller
         }
     }
 
-    public function edit($nim) {
+    public function edit($nim)
+    {
         $spl = $this->SPLRepository->findByNim($nim);
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
 
         return view('spl.edit', compact('spl', 'mahasiswa'));
     }
 
-    public function update(SPLUpdateRequest $request, $id) {
+    public function update(SPLUpdateRequest $request, $id)
+    {
         try {
             $spl = $this->splService->update($id, $request);
             return redirect()->route('spl.detail', $spl->id)->with('success', 'Berhasil mengubah data pendaftaran');
-        }catch (Exception $exception) {
+        } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }
 
-    public function detail($id){
+    public function detail($id)
+    {
         $spl = $this->SPLRepository->findById($id);
         $mahasiswa = $this->mahasiswaRepository->findByNim($spl->nim);
         return view('spl.detail', compact('spl', 'mahasiswa'));
