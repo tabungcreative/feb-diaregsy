@@ -55,7 +55,7 @@ Route::controller(MagangController::class)
 // Route BimbinganSkripsi
 Route::controller(BimbinganSkripsiController::class)
     ->prefix('bimbingan-skripsi')
-    ->as('bimbinganskripsi.')
+    ->as('bimbinganSkripsi.')
     ->group(function () {
         Route::get('/{nim}/register', 'formRegister')->name('form-register');
         Route::post('/register', 'register')->name('register');
@@ -95,6 +95,16 @@ Route::prefix('admin')
         Route::controller(\App\Http\Controllers\Admin\MagangController::class)
             ->prefix('magang')
             ->as('magang.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{id}/detail', 'detail')->name('detail');
+                Route::post('/{id}/verify', 'verify')->name('verify');
+                Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+                Route::get('/export', 'export')->name('export');
+            });
+        Route::controller(\App\Http\Controllers\Admin\BimbinganSkripsiController::class)
+            ->prefix('bimbingan-skripsi')
+            ->as('bimbinganSkripsi.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/{id}/detail', 'detail')->name('detail');

@@ -50,7 +50,7 @@
                         <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
                         <li><a class="dropdown-item" href="#">Sempro</a></li>
                         <li><a class="dropdown-item" href="#">Kompre</a></li>
-                        <li><a class="dropdown-item" href="#">Bimbingan Skripsi</a></li>
+                        <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Skripsi</a></li>
                         <li><a class="dropdown-item" href="#">Ujian Skripsi</a></li>
                         <li><a class="dropdown-item" href="#">Yudisium</a></li>
                         <li><a class="dropdown-item" href="#">Mengulang</a></li>
