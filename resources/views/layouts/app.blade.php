@@ -42,20 +42,20 @@
                     </li>
                     <li class="nav-item">
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Pendaftaran
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
-                        <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
-                        <li><a class="dropdown-item" href="#">Sempro</a></li>
-                        <li><a class="dropdown-item" href="#">Kompre</a></li>
-                        <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Skripsi</a></li>
-                        <li><a class="dropdown-item" href="#">Ujian Skripsi</a></li>
-                        <li><a class="dropdown-item" href="#">Yudisium</a></li>
-                        <li><a class="dropdown-item" href="#">Mengulang</a></li>
-                        <li><a class="dropdown-item" href="#">Semester Pendek</a></li>
-                    </ul>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pendaftaran
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
+                            <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
+                            <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Sempro</a></li>
+                            <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Kompre</a></li>
+                            <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Skripsi</a></li>
+                            <li><a class="dropdown-item" href="#">Ujian Skripsi</a></li>
+                            <li><a class="dropdown-item" href="#">Yudisium</a></li>
+                            <li><a class="dropdown-item" href="#">Mengulang</a></li>
+                            <li><a class="dropdown-item" href="#">Semester Pendek</a></li>
+                        </ul>
                     </li>
                 </ul>
                 </div>

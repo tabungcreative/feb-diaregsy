@@ -24,4 +24,12 @@ class TahunAjaran extends Model
     {
         return $this->hasMany(BimbinganSkripsi::class);
     }
+    public function sempro()
+    {
+        return $this->hasMany(Sempro::class);
+    }
+    public function kompre()
+    {
+        return $this->hasMany(Kompre::class);
+    }
 }

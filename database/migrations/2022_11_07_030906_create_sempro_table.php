@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBimbinganskripsiTable extends Migration
+class CreateSemproTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateBimbinganskripsiTable extends Migration
      */
     public function up()
     {
-        Schema::create('bimbinganskripsi', function (Blueprint $table) {
+        Schema::create('sempro', function (Blueprint $table) {
             $table->id();
             $table->string('nim');
             $table->string('nama')->nullable();
             $table->string('prodi')->nullable();
             $table->string('email');
-            $table->string('judul_skripsi');
-            $table->string('pembimbing1');
-            $table->string('pembimbing2');
+            $table->string('judul_sempro');
             $table->string('no_whatsapp');
             $table->string('no_pembayaran');
+            $table->string('nota_kaprodi')->nullable();
+            $table->string('berkas_sempro')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('status')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
@@ -41,6 +41,6 @@ class CreateBimbinganskripsiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bimbinganskripsi');
+        Schema::dropIfExists('sempro');
     }
 }

@@ -14,9 +14,8 @@
                     <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                     <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                 </div>
-                <h4 class="mx-auto mt-4">Pendaftaran Bimbingan Skripsi</h4>
-                <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">no pembayaran, syarat-syarat dan dokumen pendaftaran</span>, </p>
-
+                <h4 class="mx-auto mt-4">Ubah data pendaftaran Bimbingan Skripsi</h4>
+                
                 <div class="card-body">
 
                     @if(Session::has('error'))
