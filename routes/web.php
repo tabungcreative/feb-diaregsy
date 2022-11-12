@@ -153,4 +153,14 @@ Route::prefix('admin')
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                 Route::get('/export', 'export')->name('export');
             });
+        Route::controller(\App\Http\Controllers\Admin\KompreController::class)
+            ->prefix('ujian-komprehensif')
+            ->as('kompre.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{id}/detail', 'detail')->name('detail');
+                Route::post('/{id}/verify', 'verify')->name('verify');
+                Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+                Route::get('/export', 'export')->name('export');
+            });
     });
