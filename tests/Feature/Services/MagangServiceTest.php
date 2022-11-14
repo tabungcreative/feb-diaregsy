@@ -12,7 +12,6 @@ use App\Models\TahunAjaran;
 use App\Services\MagangService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class MagangServiceTest extends TestCase
