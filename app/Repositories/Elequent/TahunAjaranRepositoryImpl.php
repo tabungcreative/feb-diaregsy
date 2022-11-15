@@ -7,6 +7,12 @@ use App\Repositories\TahunAjaranRepository;
 
 class TahunAjaranRepositoryImpl implements TahunAjaranRepository
 {
+
+    function getALl()
+    {
+        return TahunAjaran::orderBy('created_at', 'DESC')->get();
+    }
+
     function create(array $detailTahunAjaran): TahunAjaran
     {
         $tahunAjaran = new TahunAjaran($detailTahunAjaran);
