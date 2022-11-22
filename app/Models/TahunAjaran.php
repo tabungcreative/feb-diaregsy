@@ -24,4 +24,8 @@ class TahunAjaran extends Model
     {
         return $this->hasMany(BimbinganSkripsi::class);
     }
+    public function ujianAkhir()
+    {
+        return $this->hasMany(UjianAkhir::class);
+    }
 }
