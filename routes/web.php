@@ -192,9 +192,8 @@ Route::prefix('admin')
             ->as('tahunAjaran.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
-                Route::post('/', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
                 Route::post('/{id}/active', 'active')->name('active');
                 Route::post('/{id}/inActive', 'inActive')->name('inActive');
             });
-
     });

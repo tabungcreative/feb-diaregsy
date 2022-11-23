@@ -54,7 +54,7 @@ class TahunAjaranServiceImpl implements TahunAjaranService
     function active(int $id)
     {
         $detailTahunAjaran = [
-            'is_verify' => 1
+            'is_active' => 1
         ];
         $tahunAjaran = $this->tahunAjaranRepository->update($id, $detailTahunAjaran);
         return $tahunAjaran;
@@ -63,7 +63,7 @@ class TahunAjaranServiceImpl implements TahunAjaranService
     function inActive(int $id)
     {
         $detailTahunAjaran = [
-            'is_verify' => 0
+            'is_active' => 0
         ];
         $tahunAjaran = $this->tahunAjaranRepository->update($id, $detailTahunAjaran);
         return $tahunAjaran;
