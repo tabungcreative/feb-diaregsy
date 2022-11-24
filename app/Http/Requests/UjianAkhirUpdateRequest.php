@@ -13,7 +13,7 @@ class UjianAkhirUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,14 @@ class UjianAkhirUpdateRequest extends FormRequest
     {
         return [
             //
+            'email' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'nik' => 'required',
+            'judul_skripsi' => 'required',
+            'pembimbing1' => 'required',
+            'pembimbing2' => 'required',
+            'no_whatsapp' => 'required',
         ];
     }
 }

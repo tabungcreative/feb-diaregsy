@@ -4,7 +4,7 @@ use App\Http\Controllers\BimbinganSkripsiController;
 use App\Http\Controllers\MagangController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\SPLController;
-use App\Models\BimbinganSkripsi;
+use App\Http\Controllers\UjianAkhirController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +64,18 @@ Route::controller(BimbinganSkripsiController::class)
         Route::put('/{id}', 'update')->name('update');
         Route::get('/{id}/detail', 'detail')->name('detail');
     });
+// Route BimbinganSkripsi
+Route::controller(UjianAkhirController::class)
+    ->prefix('ujian-akhir')
+    ->as('ujianAkhir.')
+    ->group(function () {
+        Route::get('/{nim}/register', 'formRegister')->name('form-register');
+        Route::post('/register', 'register')->name('register');
+        Route::get('/list', 'list')->name('list');
+        Route::get('/{nim}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+    });
 // Route Pendaftaran mahasiswa 
 Route::controller(PendaftaranController::class)
     ->prefix('pendaftaran')
@@ -105,6 +117,16 @@ Route::prefix('admin')
         Route::controller(\App\Http\Controllers\Admin\BimbinganSkripsiController::class)
             ->prefix('bimbingan-skripsi')
             ->as('bimbinganSkripsi.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{id}/detail', 'detail')->name('detail');
+                Route::post('/{id}/verify', 'verify')->name('verify');
+                Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+                Route::get('/export', 'export')->name('export');
+            });
+        Route::controller(\App\Http\Controllers\Admin\UjianAkhirController::class)
+            ->prefix('ujian-akhir')
+            ->as('ujianAkhir.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/{id}/detail', 'detail')->name('detail');

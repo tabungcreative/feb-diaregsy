@@ -22,9 +22,10 @@ class CreateUjianakhirTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('nik');
+            $table->string('judul_skripsi');
             $table->string('pembimbing1');
             $table->string('pembimbing2');
-            $table->string('judul_skripsi');
+            $table->string('no_whatsapp');
             $table->string('berkas_skripsi')->nullable();
             $table->string('ijazah_terakhir')->nullable();
             $table->string('transkrip_nilai')->nullable();
@@ -35,8 +36,6 @@ class CreateUjianakhirTable extends Migration
             $table->string('slip_pembayaransemesterterakhir')->nullable();
             $table->string('slip_pembayaranSkripsi')->nullable();
             $table->string('sertifikat')->nullable();
-            $table->string('no_whatsapp');
-            $table->string('no_pembayaran');
             $table->string('keterangan')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
             $table->foreign('tahun_ajaran_id')

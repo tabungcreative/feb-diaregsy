@@ -13,7 +13,7 @@ class UjianAkhirCreateMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class UjianAkhirCreateMessageRequest extends FormRequest
     {
         return [
             //
+            'pesan' => 'required',
+
         ];
     }
 }

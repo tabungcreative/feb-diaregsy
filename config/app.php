@@ -182,6 +182,7 @@ return [
         App\Providers\SPLProvider::class,
         App\Providers\MagangProvider::class,
         App\Providers\BimbinganSkripsiProvider::class,
+        App\Providers\UjianAkhirProvider::class,
 
         // depend provider
         Maatwebsite\Excel\ExcelServiceProvider::class,

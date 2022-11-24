@@ -18,7 +18,7 @@
                     ['nama' => 'Sempro', 'route' => 'spl.form-register'],
                     ['nama' => 'Kompre', 'route' => 'spl.form-register'],
                     ['nama' => 'Bimbingan Skripsi', 'route' => 'bimbinganSkripsi.form-register'],
-                    ['nama' => 'Ujian Skripsi', 'route' => 'spl.form-register'],
+                    ['nama' => 'Ujian Skripsi', 'route' => 'ujianAkhir.form-register'],
                     ['nama' => 'Yudisium', 'route' => 'spl.form-register'],
                     ['nama' => 'Mengulang', 'route' => 'spl.form-register'],
                     ['nama' => 'Semester Pendek', 'route' => 'spl.form-register'],
