@@ -47,6 +47,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
         $nim = $request->input('nim');
         $nama = $request->input('nama');
         $prodi = $request->input('prodi');
+        $email = $request->input('email');
         $noWhatsapp = $request->input('no_whatsapp');
         $tempatLahir = $request->input('tempat_lahir');
         $tanggalLahir = $request->input('tanggal_lahir');
@@ -62,6 +63,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
             'nim' => $nim,
             'nama' => $nama,
             'prodi' => $prodi,
+            'email' => $email,
             'no_whatsapp' => $noWhatsapp,
             'tempat_lahir' => $tempatLahir,
             'tanggal_lahir' => $tanggalLahir,
@@ -159,7 +161,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $filePath = $dataFile['filePath'];
 
-        $ujianAkhir->foto_ktp = $filePath;
+        $ujianAkhir->ktp = $filePath;
         $ujianAkhir->save();
 
         return $ujianAkhir;

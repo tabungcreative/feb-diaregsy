@@ -70,14 +70,14 @@ class UjianAkhirController extends Controller
         } catch (UjianAkhirIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
-            abort(500, 'terjadi kesalahan pada server');
             dd($e);
+            // abort(500, 'terjadi kesalahan pada server');
         }
     }
 
     public function edit($nim)
     {
-        $ujianAkhir = $this->UjianAkhirRepository->findByNim($nim);
+        $ujianAkhir = $this->ujianAkhirRepository->findByNim($nim);
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
 
         return view('ujianAkhir.edit', compact('ujianAkhir', 'mahasiswa'));
@@ -86,6 +86,7 @@ class UjianAkhirController extends Controller
     public function update(UjianAkhirUpdateRequest $request, $id)
     {
         try {
+
             $ujianAkhir = $this->ujianAkhirService->update($id, $request);
             return redirect()->route('ujianAkhir.detail', $ujianAkhir->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
@@ -95,10 +96,8 @@ class UjianAkhirController extends Controller
 
     public function detail($id)
     {
-        $ujianAkhir = $this->UjianAkhirRepository->findById($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
         $mahasiswa = $this->mahasiswaRepository->findByNim($ujianAkhir->nim);
         return view('ujianAkhir.detail', compact('ujianAkhir', 'mahasiswa'));
     }
 }
-
-    // function addSertifikat(int $id, $fileSertifikat);

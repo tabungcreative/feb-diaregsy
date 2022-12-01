@@ -34,7 +34,7 @@ class UjianAkhirController extends Controller
 
     public function detail($id)
     {
-        $ujianAkhir = $this->UjianAkhirRepository->findById($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
         $mahasiswa = $this->mahasiswaRepository->findByNim($ujianAkhir->nim);
         return view('admin.ujianAkhir.detail', compact('ujianAkhir', 'mahasiswa'));
     }

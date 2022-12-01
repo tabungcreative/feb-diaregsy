@@ -256,15 +256,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="sertifikat" class="form-label">Sertifikat</label>
-                                <input type="file" name="sertifikat	"
-                                       class="form-control @error('sertifikat') is-invalid @enderror" id="sertifikat	"
+                                <input type="file" name="sertifikat"
+                                       class="form-control @error('sertifikat') is-invalid @enderror" id="sertifikat"
                                        placeholder="file skripsi" value="{{ old('sertifikat') }}">
                                 @error('sertifikat')
-                                <div id="sertifikat	" class="invalid-feedback">
+                                <div id="sertifikat" class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
+                      
 
 
                             <button type="submit" class="btn btn-primary">Daftar</button>
