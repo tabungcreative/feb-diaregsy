@@ -3,7 +3,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="/admin/dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -57,5 +57,11 @@
     <a class="nav-link" href="{{ route('admin.mengulang.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>
         <span>Pendaftaran Mengulang</span></a>
+</li>
+
+<li class="nav-item {{ Route::is('admin.yudisium.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.yudisium.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Yudisium</span></a>
 </li>
 
