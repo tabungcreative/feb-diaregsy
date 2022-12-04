@@ -46,3 +46,9 @@
         <span>Pendaftaran Ujian Komprehensif</span></a>
 </li>
 
+<li class="nav-item {{ Route::is('admin.mengulang.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.mengulang.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Mengulang</span></a>
+</li>
+

@@ -32,4 +32,10 @@ class TahunAjaran extends Model
     {
         return $this->hasMany(Kompre::class);
     }
+
+    
+    public function mengulang()
+    {
+        return $this->hasMany(Mengulang::class);
+    }
 }

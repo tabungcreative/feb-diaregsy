@@ -184,6 +184,7 @@ return [
         App\Providers\BimbinganSkripsiProvider::class,
         App\Providers\SemproProvider::class,
         App\Providers\KompreProvider::class,
+        App\Providers\MengulangProvider::class,
 
         // depend provider
         Maatwebsite\Excel\ExcelServiceProvider::class,

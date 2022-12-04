@@ -20,7 +20,7 @@
                     ['nama' => 'Bimbingan Skripsi', 'route' => 'bimbinganSkripsi.form-register'],
                     ['nama' => 'Ujian Skripsi', 'route' => 'spl.form-register'],
                     ['nama' => 'Yudisium', 'route' => 'spl.form-register'],
-                    ['nama' => 'Mengulang', 'route' => 'spl.form-register'],
+                    ['nama' => 'Mengulang', 'route' => 'mengulang.form-register'],
                     ['nama' => 'Semester Pendek', 'route' => 'spl.form-register'],
 
                 ]

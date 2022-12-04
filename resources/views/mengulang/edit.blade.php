@@ -3,7 +3,7 @@
 @section("content")
     <div class="row">
         <div class="p-5 bg-danger text-center text-white">
-            <h1>Seminar Proposal </h1>
+            <h1>Mengulang </h1>
         </div>
     </div>
     <div class="container">
@@ -14,20 +14,13 @@
                         <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                         <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
-                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Seminar Proposal</h4>
+                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Mengulang</h4>
+
                     <div class="card-body">
 
                         @if(Session::has('error'))
                             <div class="alert alert-danger" role="alert">
                                 {{ Session::get('error') }}
-                            </div>
-                        @endif
-
-                        @if(Session::has('update'))
-                            <div class="alert alert-info" role="alert">
-                                {{ Session::get('update') }}, pilih <span class="fw-bold">update pendaftaran</span> untuk mengubah data pendaftaran <br>
-                                <a href="{{ route('sempro.edit', old('nim')) }}" class="btn btn-primary">Update pendaftaran</a>
-                                <button onClick="window.location.reload();" class="btn btn-danger">Batal</button>
                             </div>
                         @endif
 
@@ -58,27 +51,14 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('sempro.update') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('mengulang.update', $mengulang->id) }}" method="POST" enctype="multipart/form-data">
+
                             @csrf
                             @method('PUT')
-                            <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">
-                            <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
-                            <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
 
                             <div class="mb-3">
-                                <label for="judul_sempro" class="form-label">Judul Seminar Proposal</label>
-                                <input type="text" name="judul_sempro"
-                                       class="form-control @error('judul_sempro') is-invalid @enderror" id="judul_sempro"
-                                       placeholder="ex: 085xx" value="{{ old('judul_sempro',$sempro->judul_sempro) }}">
-                                @error('judul_sempro')
-                                <div id="judul_sempro" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ old('email',$sempro->email) }}">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ old('email') }}">
                                 @error('email')
                                 <div id="email" class="invalid-feedback">
                                     {{ $message }}
@@ -89,7 +69,7 @@
                                 <label for="no_whatsapp" class="form-label">No Telephone (WA)</label>
                                 <input type="text" name="no_whatsapp"
                                        class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
-                                       placeholder="ex: 085xx" value="{{ old('no_whatsapp',$sempro->no_whatsapp) }}">
+                                       placeholder="ex: 085xx" value="{{ old('no_whatsapp') }}">
                                 @error('no_whatsapp')
                                 <div id="no_whatsapp" class="invalid-feedback">
                                     {{ $message }}
@@ -98,24 +78,12 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="nota_kaprodi" class="form-label">Nota Dinas Kaprodi</label>
-                                <input type="file" name="nota_kaprodi"
-                                       class="form-control @error('nota_kaprodi') is-invalid @enderror" id="nota_kaprodi"
-                                       placeholder="foto" value="{{ old('nota_kaprodi') }}">
-                                @error('nota_kaprodi')
-                                <div id="nota_kaprodi" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="berkas_sempro" class="form-label">Berkas Seminar Proposal</label>
-                                <input type="file" name="berkas_sempro"
-                                       class="form-control @error('berkas_sempro') is-invalid @enderror" id="berkas_sempro"
-                                       placeholder="foto" value="{{ old('berkas_sempro') }}">
-                                @error('berkas_sempro')
-                                <div id="berkas_sempro" class="invalid-feedback">
+                                <label for="khs" class="form-label">Berkas KHS</label>
+                                <input type="file" name="khs"
+                                       class="form-control @error('khs') is-invalid @enderror" id="khs"
+                                       placeholder="foto" value="{{ old('khs') }}">
+                                @error('khs')
+                                <div id="khs" class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
