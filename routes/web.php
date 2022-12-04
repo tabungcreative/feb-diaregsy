@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\KompreController;
 use App\Http\Controllers\BimbinganSkripsiController;
 use App\Http\Controllers\MagangController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\SemproController;
 use App\Http\Controllers\SPLController;
-use App\Models\BimbinganSkripsi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +65,33 @@ Route::controller(BimbinganSkripsiController::class)
         Route::put('/{id}', 'update')->name('update');
         Route::get('/{id}/detail', 'detail')->name('detail');
     });
+
+// Route Seminar Proposal
+Route::controller(SemproController::class)
+    ->prefix('seminar-proposal')
+    ->as('sempro.')
+    ->group(function () {
+        Route::get('/{nim}/register', 'formRegister')->name('form-register');
+        Route::post('/register', 'register')->name('register');
+        Route::get('/list', 'list')->name('list');
+        Route::get('/{nim}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+    });
+// Route Ujian Komprehensif
+Route::controller(KompreController::class)
+    ->prefix('ujian-komprehensif')
+    ->as('kompre.')
+    ->group(function () {
+        Route::get('/{nim}/register', 'formRegister')->name('form-register');
+        Route::post('/register', 'register')->name('register');
+        Route::get('/list', 'list')->name('list');
+        Route::get('/{nim}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+    });
+
+
 // Route Pendaftaran mahasiswa 
 Route::controller(PendaftaranController::class)
     ->prefix('pendaftaran')
@@ -82,6 +110,9 @@ Route::controller(PendaftaranController::class)
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin/index');
+        });
         Route::controller(\App\Http\Controllers\Admin\SPLController::class)
             ->prefix('spl')
             ->as('spl.')
@@ -105,6 +136,16 @@ Route::prefix('admin')
         Route::controller(\App\Http\Controllers\Admin\BimbinganSkripsiController::class)
             ->prefix('bimbingan-skripsi')
             ->as('bimbinganSkripsi.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{id}/detail', 'detail')->name('detail');
+                Route::post('/{id}/verify', 'verify')->name('verify');
+                Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+                Route::get('/export', 'export')->name('export');
+            });
+        Route::controller(\App\Http\Controllers\Admin\SemproController::class)
+            ->prefix('seminar-proposal')
+            ->as('sempro.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/{id}/detail', 'detail')->name('detail');

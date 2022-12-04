@@ -34,3 +34,9 @@
         <span>Pendaftaran Bimbingan Skripsi</span></a>
 </li>
 
+<li class="nav-item {{ Route::is('admin.sempro.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.sempro.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Seminar Proposal</span></a>
+</li>
+
