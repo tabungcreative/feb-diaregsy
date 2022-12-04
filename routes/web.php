@@ -186,4 +186,14 @@ Route::prefix('admin')
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                 Route::get('/export', 'export')->name('export');
             });
+
+        Route::controller(\App\Http\Controllers\Admin\TahunAjaranController::class)
+            ->prefix('tahun-ajaran')
+            ->as('tahunAjaran.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::post('/', 'store')->name('store');
+                Route::post('/{id}/active', 'active')->name('active');
+                Route::post('/{id}/inActive', 'inActive')->name('inActive');
+            });
     });

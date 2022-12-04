@@ -8,6 +8,13 @@
         <span>Dashboard</span></a>
 </li>
 
+<!-- Nav Item - Dashboard -->
+<li class="nav-item {{ Route::is('admin.tahunAjaran.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.tahunAjaran.index') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Tahun Ajaran</span></a>
+</li>
+
 <!-- Divider -->
 <hr class="sidebar-divider">
 
