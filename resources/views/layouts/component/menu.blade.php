@@ -40,3 +40,9 @@
         <span>Pendaftaran Seminar Proposal</span></a>
 </li>
 
+<li class="nav-item {{ Route::is('admin.kompre.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.kompre.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Ujian Komprehensif</span></a>
+</li>
+
