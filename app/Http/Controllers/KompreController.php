@@ -6,6 +6,7 @@ use App\Exceptions\KompreIsExistException;
 use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\KompreRegisterRequest;
+use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\DosenRepository;
 use App\Repositories\KompreRepository;
 use App\Repositories\MahasiswaRepository;
@@ -18,16 +19,17 @@ class KompreController extends Controller
     private KompreService $kompreService;
     private KompreRepository $kompreRepository;
     private MahasiswaRepository $mahasiswaRepository;
-    private DosenRepository $dosenRepository;
+    private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
 
 
 
-    public function __construct(KompreService $kompreService, KompreRepository $kompreRepository, MahasiswaRepository $mahasiswaRepository, DosenRepository $dosenRepository)
+
+    public function __construct(KompreService $kompreService, KompreRepository $kompreRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository)
     {
         $this->kompreService = $kompreService;
         $this->kompreRepository = $kompreRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
-        $this->dosenRepository = $dosenRepository;
+        $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
     }
 
     public function list()
@@ -39,8 +41,8 @@ class KompreController extends Controller
     public function formRegister($nim)
     {
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
-        $dosen = $this->dosenRepository->getAllDosen();
-        return view('kompre.register', compact('mahasiswa', 'dosen'));
+        $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
+        return view('kompre.register', compact('mahasiswa', 'skripsi'));
     }
 
     public function register(KompreRegisterRequest $request)

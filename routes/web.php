@@ -7,6 +7,7 @@ use App\Http\Controllers\MengulangController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\SemproController;
 use App\Http\Controllers\SPLController;
+use App\Http\Controllers\YudisiumController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -103,6 +104,18 @@ Route::controller(MengulangController::class)
         Route::put('/{id}', 'update')->name('update');
         Route::get('/{id}/detail', 'detail')->name('detail');
     });
+// Route Yudisium
+Route::controller(YudisiumController::class)
+    ->prefix('yudisium')
+    ->as('yudisium.')
+    ->group(function () {
+        Route::get('/{nim}/register', 'formRegister')->name('form-register');
+        Route::post('/register', 'register')->name('register');
+        Route::get('/list', 'list')->name('list');
+        Route::get('/{nim}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::get('/{id}/detail', 'detail')->name('detail');
+    });
 
 
 // Route Pendaftaran mahasiswa 
@@ -179,6 +192,16 @@ Route::prefix('admin')
         Route::controller(\App\Http\Controllers\Admin\MengulangController::class)
             ->prefix('mengulang')
             ->as('mengulang.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{id}/detail', 'detail')->name('detail');
+                Route::post('/{id}/verify', 'verify')->name('verify');
+                Route::post('/{id}/create-message', 'createMessage')->name('create-message');
+                Route::get('/export', 'export')->name('export');
+            });
+        Route::controller(\App\Http\Controllers\Admin\YudisiumController::class)
+            ->prefix('yudisium')
+            ->as('yudisium.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/{id}/detail', 'detail')->name('detail');
