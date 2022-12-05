@@ -66,7 +66,7 @@ Route::controller(BimbinganSkripsiController::class)
     });
 // Route BimbinganSkripsi
 Route::controller(UjianAkhirController::class)
-    ->prefix('ujian-akhir')
+    ->prefix('ujian-skripsi')
     ->as('ujianAkhir.')
     ->group(function () {
         Route::get('/{nim}/register', 'formRegister')->name('form-register');
@@ -125,7 +125,7 @@ Route::prefix('admin')
                 Route::get('/export', 'export')->name('export');
             });
         Route::controller(\App\Http\Controllers\Admin\UjianAkhirController::class)
-            ->prefix('ujian-akhir')
+            ->prefix('ujian-skripsi')
             ->as('ujianAkhir.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');

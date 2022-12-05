@@ -37,6 +37,7 @@ class CreateUjianakhirTable extends Migration
             $table->string('slip_pembayaranSkripsi')->nullable();
             $table->string('sertifikat')->nullable();
             $table->string('keterangan')->nullable();
+            $table->string('status')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
             $table->foreign('tahun_ajaran_id')
                 ->references('id')->on('tahun_ajaran');

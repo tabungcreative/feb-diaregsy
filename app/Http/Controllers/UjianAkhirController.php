@@ -7,6 +7,7 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Exceptions\UjianAkhirIsExistException;
 use App\Http\Requests\UjianAkhirRegisterRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
+use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\UjianAkhirRepository;
 use App\Services\UjianAkhirService;
@@ -18,12 +19,14 @@ class UjianAkhirController extends Controller
     private UjianAkhirService $ujianAkhirService;
     private UjianAkhirRepository $ujianAkhirRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
 
-    public function __construct(UjianAkhirService $ujianAkhirService, UjianAkhirRepository $ujianAkhirRepository, MahasiswaRepository $mahasiswaRepository)
+    public function __construct(UjianAkhirService $ujianAkhirService, UjianAkhirRepository $ujianAkhirRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository)
     {
         $this->ujianAkhirService = $ujianAkhirService;
         $this->ujianAkhirRepository = $ujianAkhirRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
     }
 
     public function list()
@@ -35,7 +38,8 @@ class UjianAkhirController extends Controller
     public function formRegister($nim)
     {
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
-        return view('ujianAkhir.register', compact('mahasiswa'));
+        $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
+        return view('ujianAkhir.register', compact('mahasiswa','skripsi'));
     }
 
     public function register(UjianAkhirRegisterRequest $request)
