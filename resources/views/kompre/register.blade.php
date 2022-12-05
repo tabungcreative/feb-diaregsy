@@ -90,12 +90,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pembimbing1" class="form-label">Pembimbing 1</label>
-                                <select class="form-select" name="pembimbing1" id="pembimbing1">
-                                    <option selected>Pilih pembimbing</option>
-                                    @foreach ($dosen as $data)
-                                        <option value="{{$data['nama']}}">{{$data['nama']}}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="pembimbing1"
+                                       class="form-control @error('pembimbing1') is-invalid @enderror" id="pembimbing1"
+                                       placeholder="ex: 085xx" value="{{ $skripsi['pembimbing1']}}" readonly>
                                 @error('pembimbing1')
                                 <div id="pembimbing1" class="invalid-feedback">
                                     {{ $message }}
@@ -104,12 +101,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pembimbing2" class="form-label">Pembimbing 2</label>
-                                <select class="form-select" name="pembimbing2" id="pembimbing2">
-                                    <option selected>Pilih pembimbing</option>
-                                    @foreach ($dosen as $data)
-                                        <option value="{{$data['nama']}}">{{$data['nama']}}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="pembimbing2"
+                                       class="form-control @error('pembimbing2') is-invalid @enderror" id="pembimbing2"
+                                       placeholder="ex: 085xx" value="{{ $skripsi['pembimbing2'] }}" readonly>
                                 @error('pembimbing2')
                                 <div id="pembimbing2" class="invalid-feedback">
                                     {{ $message }}

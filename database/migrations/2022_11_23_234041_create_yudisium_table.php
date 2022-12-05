@@ -21,7 +21,7 @@ class CreateYudisiumTable extends Migration
             $table->string('judul_skripsi');
             $table->date('tanggal_mulai');
             $table->date('tanggal_ujian');
-            $table->string('jenis_kelamin');
+            $table->enum('jenis_kelamin',['L','P']);
             $table->string('pembimbing1');
             $table->string('pembimbing2');
             $table->string('no_whatsapp');

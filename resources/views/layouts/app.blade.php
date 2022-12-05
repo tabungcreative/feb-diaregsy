@@ -78,6 +78,7 @@
             </div>
         </div>
         <!-- //banner --> --}}
+    
         <div class="container-fluid p-0">
             @yield('content')
         </div>

@@ -16,7 +16,6 @@
                     </div>
                     <h4 class="mx-auto mt-4">Pendaftaran Yudisium</h4>
                     <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">no pembayaran, syarat-syarat dan dokumen pendaftaran</span>, </p>
-
                     <div class="card-body">
 
                         @if(Session::has('error'))
@@ -63,7 +62,6 @@
                         <form action="{{ route('yudisium.register') }}" method="POST" enctype="multipart/form-data">
 
                             @csrf
-
                             <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">
                             <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
                             <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
@@ -71,7 +69,7 @@
                                 <label for="judul_skripsi" class="form-label">Judul Skripsi</label>
                                 <input type="text" name="judul_skripsi"
                                     class="form-control @error('judul_skripsi') is-invalid @enderror" id="judul_skripsi"
-                                    placeholder="ex: 085xx" value="{{ old('judul_skripsi') }}">
+                                    placeholder="ex: 085xx" value="{{ $skripsi['judul_skripsi']}}" readonly>
                                 @error('judul_skripsi')
                                 <div id="judul_skripsi" class="invalid-feedback">
                                     {{ $message }}
@@ -81,8 +79,7 @@
                             <div class="mb-3">
                                 <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
                                 <input type="date" name="tanggal_mulai"
-                                class="form-control @error('tanggal_mulai') is-invalid @enderror" id="tanggal_mulai"
-                                placeholder="ex: 085xx" value="{{ old('tanggal_mulai') }}">
+                                class="form-control @error('tanggal_mulai') is-invalid @enderror" id="tanggal_mulai" value="{{ old('tanggal_mulai') }}">
                                 @error('tanggal_mulai')
                                 <div id="tanggal_mulai" class="invalid-feedback">
                                     {{ $message }}
@@ -92,8 +89,7 @@
                             <div class="mb-3">
                                 <label for="tanggal_ujian" class="form-label">Tanggal Ujian</label>
                                 <input type="date" name="tanggal_ujian"
-                                class="form-control @error('tanggal_ujian') is-invalid @enderror" id="tanggal_ujian"
-                                placeholder="ex: 085xx" value="{{ old('tanggal_ujian') }}">
+                                class="form-control @error('tanggal_ujian') is-invalid @enderror" id="tanggal_ujian" value="{{ old('tanggal_ujian') }}">
                                 @error('tanggal_ujian')
                                 <div id="tanggal_ujian" class="invalid-feedback">
                                     {{ $message }}
@@ -101,21 +97,21 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" name="jenis_kelamin"
-                                       class="form-control @error('jenis_kelamin') is-invalid @enderror" id="jenis_kelamin"
-                                       placeholder="ex: 085xx" value="{{ old('jenis_kelamin') }}">
-                                @error('jenis_kelamin')
-                                <div id="jenis_kelamin" class="invalid-feedback">
-                                    {{ $message }}
+                            <label for="jenis_kelamin">Jenis Kelamin</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" value="L" id="jenis_kelamin" type="radio" name="jenis_kelamin" @if(old('jenis_kelamin') == 'L') checked @endif checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">laki - laki</label>
                                 </div>
-                                @enderror
+                                <div class="form-check">
+                                    <input class="form-check-input" value="P" id="jenis_kelamin" type="radio" name="jenis_kelamin" @if(old('jenis_kelamin') == 'P') checked @endif>
+                                    <label class="form-check-label" for="flexRadioDefault2">perempuan</label>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="pembimbing1" class="form-label">Pembimbing 1</label>
                                 <input type="text" name="pembimbing1"
                                        class="form-control @error('pembimbing1') is-invalid @enderror" id="pembimbing1"
-                                       placeholder="ex: 085xx" value="{{ old('pembimbing1') }}">
+                                       placeholder="ex: 085xx" value="{{ $skripsi['pembimbing1']}}" readonly>
                                 @error('pembimbing1')
                                 <div id="pembimbing1" class="invalid-feedback">
                                     {{ $message }}
@@ -126,7 +122,7 @@
                                 <label for="pembimbing2" class="form-label">Pembimbing 2</label>
                                 <input type="text" name="pembimbing2"
                                        class="form-control @error('pembimbing2') is-invalid @enderror" id="pembimbing2"
-                                       placeholder="ex: 085xx" value="{{ old('pembimbing2') }}">
+                                       placeholder="ex: 085xx" value="{{ $skripsi['pembimbing2'] }}" readonly>
                                 @error('pembimbing2')
                                 <div id="pembimbing2" class="invalid-feedback">
                                     {{ $message }}
@@ -146,9 +142,14 @@
                             </div>
                             <div class="mb-3">
                                 <label for="ukuran_toga" class="form-label">Ukuran Toga</label>
-                                <input type="text" name="ukuran_toga"
-                                       class="form-control @error('ukuran_toga') is-invalid @enderror" id="ukuran_toga"
-                                       placeholder="ex: 085xx" value="{{ old('ukuran_toga') }}">
+                                <select class="form-select" name="ukuran_toga" id="ukuran_toga">
+                                    <option selected>pilih ukuran toga</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                </select>
                                 @error('ukuran_toga')
                                 <div id="ukuran_toga" class="invalid-feedback">
                                     {{ $message }}

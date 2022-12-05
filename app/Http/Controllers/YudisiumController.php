@@ -7,6 +7,7 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Exceptions\YudisiumIsExistException;
 use App\Http\Requests\YudisiumRegisterRequest;
 use App\Http\Requests\YudisiumUpdateRequest;
+use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\YudisiumRepository;
 use App\Services\YudisiumService;
@@ -18,12 +19,14 @@ class YudisiumController extends Controller
     private YudisiumService $yudisiumService;
     private YudisiumRepository $yudisiumRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
 
-    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository)
+    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository,BimbinganSkripsiRepository $bimbinganSkripsiRepository)
     {
         $this->yudisiumService = $yudisiumService;
         $this->yudisiumRepository = $yudisiumRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
     }
 
     public function list()
@@ -35,7 +38,8 @@ class YudisiumController extends Controller
     public function formRegister($nim)
     {
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
-        return view('yudisium.register', compact('mahasiswa'));
+        $skripsi=$this->bimbinganSkripsiRepository->findByNim($nim);
+        return view('yudisium.register', compact('mahasiswa','skripsi'));
     }
 
     public function register(YudisiumRegisterRequest $request)
