@@ -51,7 +51,7 @@
                             <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Sempro</a></li>
                             <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Kompre</a></li>
                             <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Skripsi</a></li>
-                            <li><a class="dropdown-item" href="#">Ujian Skripsi</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ujianAkhir.list') }}">Ujian Skripsi</a></li>
                             <li><a class="dropdown-item" href="{{ route('yudisium.list') }}">Yudisium</a></li>
                             <li><a class="dropdown-item" href="{{ route('mengulang.list') }}">Mengulang</a></li>
                             <li><a class="dropdown-item" href="#">Semester Pendek</a></li>
@@ -78,6 +78,11 @@
             </div>
         </div>
         <!-- //banner --> --}}
+        <div class="container-fluid p-0">
+            <div class="row">
+                <img src="img/baner-diaregsy.png" alt="">
+            </div>
+        </div>
     
         <div class="container-fluid p-0">
             @yield('content')
