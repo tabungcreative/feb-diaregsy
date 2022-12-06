@@ -59,6 +59,11 @@
         <span>Pendaftaran Mengulang</span></a>
 </li>
 
+<li class="nav-item {{ Route::is('admin.ujianAkhir.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.ujianAkhir.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Ujian Skripsi</span></a>
+</li>
 <li class="nav-item {{ Route::is('admin.yudisium.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.yudisium.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>

@@ -185,6 +185,7 @@ return [
         App\Providers\SemproProvider::class,
         App\Providers\KompreProvider::class,
         App\Providers\MengulangProvider::class,
+        App\Providers\UjianAkhirProvider::class,
         App\Providers\YudisiumProvider::class,
 
         // depend provider

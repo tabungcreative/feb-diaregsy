@@ -39,6 +39,11 @@ class TahunAjaran extends Model
         return $this->hasMany(Mengulang::class);
     }
 
+    public function ujianAkhir()
+    {
+        return $this->hasMany(UjianAkhir::class);
+    }
+
     public function yudisium()
     {
         return $this->hasMany(Yudisium::class);
