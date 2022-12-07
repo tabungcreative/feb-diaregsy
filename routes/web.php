@@ -33,7 +33,7 @@ Route::get('cek-nim', function () {
 
 // Route SPL
 Route::controller(SPLController::class)
-    ->prefix('spl')
+    ->prefix('studi-ekskursi')
     ->as('spl.')
     ->group(function () {
         Route::get('/{nim}/register', 'formRegister')->name('form-register');
@@ -153,7 +153,7 @@ Route::prefix('admin')
             return view('admin/index');
         });
         Route::controller(\App\Http\Controllers\Admin\SPLController::class)
-            ->prefix('spl')
+            ->prefix('studi-ekskursi')
             ->as('spl.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
@@ -171,6 +171,8 @@ Route::prefix('admin')
                 Route::post('/{id}/verify', 'verify')->name('verify');
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                 Route::get('/export', 'export')->name('export');
+                Route::get('/{id}/cetak-surat-magang', 'print')->name('print');
+
             });
         Route::controller(\App\Http\Controllers\Admin\BimbinganSkripsiController::class)
             ->prefix('bimbingan-skripsi')

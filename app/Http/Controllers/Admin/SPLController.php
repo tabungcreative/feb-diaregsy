@@ -9,7 +9,6 @@ use App\Repositories\MahasiswaRepository;
 use App\Repositories\SPLRepository;
 use App\Services\SPLService;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SPLController extends Controller
