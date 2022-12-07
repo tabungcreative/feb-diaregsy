@@ -171,8 +171,7 @@ Route::prefix('admin')
                 Route::post('/{id}/verify', 'verify')->name('verify');
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                 Route::get('/export', 'export')->name('export');
-                Route::get('/{id}/cetak-surat-magang', 'print')->name('print');
-
+                Route::get('/{id}/surat-penempatan-magang', 'print')->name('print');
             });
         Route::controller(\App\Http\Controllers\Admin\BimbinganSkripsiController::class)
             ->prefix('bimbingan-skripsi')

@@ -56,7 +56,7 @@
                                     <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
                                 </form>
                                 <a href="{{ route('admin.magang.detail', $value->id) }}" class="btn btn-info mx-1">Detail</a>
-                                <a href="{{ route('admin.magang.print', $value->id) }}" class="btn btn-warning">Cetak</a>
+                                <a href="{{ route('admin.magang.print', $value->id) }}" class="btn btn-warning" target="_blank">Cetak</a>
                             </td>
                         </tr>
                     @endforeach

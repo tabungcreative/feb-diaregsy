@@ -70,6 +70,7 @@ class MagangController extends Controller
     public function print($id)
     {
         try {
+            $title = 'surat penempatan magang';
             $magang = $this->magangRepository->findById($id);
             $mahasiswa = $this->mahasiswaRepository->findByNim($magang->nim);
             $tanggal = Carbon::parse(now())->translatedFormat('d F Y');
@@ -80,7 +81,7 @@ class MagangController extends Controller
             $pdf = Pdf::loadView('admin.magang.pdf', compact('magang', 'mahasiswa', 'tanggal'));
 
             $pdf->setPaper('a4', 'potrait');
-            return $pdf->stream();
+            return $pdf->stream($title);
         } catch (\Exception $e) {
             return response()->view('errors.500', ['message' => 'Terjadi kesalahan pada server .' . $e->getMessage()], 500);
         }
