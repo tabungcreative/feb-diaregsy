@@ -23,7 +23,6 @@
                                 {{ Session::get('success') }}
                             </div>
                         @endif
-
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-row">
@@ -36,8 +35,8 @@
                                         <p class="fw-bold"> {{ $mahasiswa['nama'] }} </p>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPassword4">Jenis Pendaftaran</label>
-                                        <p class="fw-bold">{{ $spl->jenis_pendaftaran }} </p>
+                                        <label for="inputEmail4">Prodi</label>
+                                        <p class="fw-bold"> {{ $mahasiswa['prodi'] }} </p>
                                     </div>
                                 </div>
                             </div>
@@ -47,13 +46,9 @@
                                         <label for="inputEmail4">Nomer Telephone</label>
                                         <p class="fw-bold"> {{ $spl->no_whatsapp }} </p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail4">Prodi</label>
-                                        <p class="fw-bold"> {{ $mahasiswa['prodi'] }} </p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword4">Tempat Lahir</label>
-                                        <p class="fw-bold">{{ $mahasiswa['tempat_lahir'] }} </p>
+                                     <div class="form-group">
+                                        <label for="inputPassword4">Jenis Pendaftaran</label>
+                                        <p class="fw-bold">{{ $spl->jenis_pendaftaran }} </p>
                                     </div>
                                 </div>
                             </div>
