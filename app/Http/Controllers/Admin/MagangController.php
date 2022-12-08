@@ -80,7 +80,7 @@ class MagangController extends Controller
 
             $pdf = Pdf::loadView('admin.magang.pdf', compact('magang', 'mahasiswa', 'tanggal'));
 
-            $pdf->setPaper('a4', 'potrait');
+            $pdf->setPaper('A4', 'potrait');
             return $pdf->stream($title);
         } catch (\Exception $e) {
             return response()->view('errors.500', ['message' => 'Terjadi kesalahan pada server .' . $e->getMessage()], 500);
