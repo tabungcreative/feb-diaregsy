@@ -114,7 +114,7 @@
             <p style="text-indent: 1cm;text-align: justify;">Dengan hormat, bersama surat ini kami sampaikan bahwa mahasiswa/i kami dibawah ini :</p>
             <br>
             <table class="table table-bordered mahasiswa">
-                <thead>
+                <thead class="text-center">
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
@@ -122,7 +122,7 @@
                         <th>Program Studi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <tr>
                         <td>1</td>
                         <td>{{$mahasiswa['nama']}}</td>
@@ -135,7 +135,28 @@
             <p style="text-indent: 1cm;text-align: justify;">Demikian surat penempatan ini, atas perhatiannya kami sampaikan terima kasih.</p>
             <p>Wassalamu’alaikum Wr.Wb.</p>
         </div>
-        
+        <br>
+        <img src="img/tanda-tangan.png" style="position: absolute;margin-left:18rem;width:80rem;height:80rem;">
+        <table class="table">
+            <tr>
+                <td style="width: 20px"></td>
+                <td style="width: 20px"></td>
+                <td style="width: 150px"></td>
+                <td style="width: 20px"></td>
+                <td style="width: 20px"></td>
+                <td style="width: 150px">Dekan</td>
+            </tr>
+            <br>
+            <br>
+            <tr>
+                <td style="width: 20px"></td>
+                <td style="width: 20px"></td>
+                <td style="width: 150px"></td>
+                <td style="width: 20px"></td>
+                <td style="width: 20px"></td>
+                <td style="width: 180px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u></td>
+            </tr>
+        </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
