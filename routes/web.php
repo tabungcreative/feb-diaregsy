@@ -182,6 +182,8 @@ Route::prefix('admin')
                 Route::post('/{id}/verify', 'verify')->name('verify');
                 Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                 Route::get('/export', 'export')->name('export');
+                Route::get('/{id}/surat-tugas', 'suratTugas')->name('surat-tugas');
+                Route::get('/{id}/surat-bimbingan', 'suratBimbingan')->name('surat-bimbingan');
             });
         Route::controller(\App\Http\Controllers\Admin\SemproController::class)
             ->prefix('seminar-proposal')

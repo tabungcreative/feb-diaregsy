@@ -59,7 +59,10 @@
                                     @csrf
                                     <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
                                 </form>
-                                <a href="{{ route('admin.bimbinganSkripsi.detail', $value->id) }}" class="btn btn-info">Detail</a>
+                                <a href="{{ route('admin.bimbinganSkripsi.detail', $value->id) }}" class="btn btn-info mx-1">Detail</a>
+                                <a href="{{ route('admin.bimbinganSkripsi.surat-tugas', $value->id) }}" class="btn btn-warning mx-1" target="_blank">Surat Tugas</a>
+                                <a href="{{ route('admin.bimbinganSkripsi.surat-bimbingan', $value->id) }}" class="btn btn-warning" target="_blank">Surat Bimbingan</a>
+
                             </td>
                         </tr>
                     @endforeach

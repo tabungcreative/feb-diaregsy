@@ -10,6 +10,7 @@ use App\Repositories\DosenRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\BimbinganSkripsiService;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
@@ -63,5 +64,45 @@ class BimbinganSkripsiController extends Controller
     {
         $tahun = Carbon::now()->year;
         return Excel::download(new BimbinganSkripsiExport(), 'daftar-bimbingan-skripsi' . $tahun . '.xlsx');
+    }
+
+    public function suratTugas($id)
+    {
+        try {
+            $title = 'surat tugas bimbingan';
+            $bimbinganSkripsi = $this->bimbinganSkripsiRepository->findById($id);
+            $mahasiswa = $this->mahasiswaRepository->findByNim($bimbinganSkripsi->nim);
+            $tanggal = Carbon::parse(now())->translatedFormat('d F Y');
+
+            // $kop = base64_encode(file_get_contents(public_path('')));
+            // $footerKop = base64_encode(file_get_contents(public_path('')));
+
+            $pdf = Pdf::loadView('admin.bimbinganSkripsi.surat_tugas', compact('bimbinganSkripsi', 'mahasiswa', 'tanggal'));
+
+            $pdf->setPaper('A4', 'potrait');
+            return $pdf->stream($title);
+        } catch (\Exception $e) {
+            return response()->view('errors.500', ['message' => 'Terjadi kesalahan pada server .' . $e->getMessage()], 500);
+        }
+    }
+
+    public function suratBimbingan($id)
+    {
+        try {
+            $title = 'surat tugas bimbingan';
+            $bimbinganSkripsi = $this->bimbinganSkripsiRepository->findById($id);
+            $mahasiswa = $this->mahasiswaRepository->findByNim($bimbinganSkripsi->nim);
+            $tanggal = Carbon::parse(now())->translatedFormat('d F Y');
+
+            // $kop = base64_encode(file_get_contents(public_path('')));
+            // $footerKop = base64_encode(file_get_contents(public_path('')));
+
+            $pdf = Pdf::loadView('admin.bimbinganSkripsi.surat_bimbingan', compact('bimbinganSkripsi', 'mahasiswa', 'tanggal'));
+
+            $pdf->setPaper('A4', 'potrait');
+            return $pdf->stream($title);
+        } catch (\Exception $e) {
+            return response()->view('errors.500', ['message' => 'Terjadi kesalahan pada server .' . $e->getMessage()], 500);
+        }
     }
 }

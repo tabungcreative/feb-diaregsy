@@ -114,7 +114,7 @@
             <p style="text-indent: 1cm;text-align: justify;">Dengan hormat, bersama surat ini kami sampaikan bahwa mahasiswa/i kami dibawah ini :</p>
             <br>
             <table class="table table-bordered mahasiswa">
-                <thead>
+                <thead class="text-center">
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
@@ -122,7 +122,7 @@
                         <th>Program Studi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <tr>
                         <td>1</td>
                         <td>{{$mahasiswa['nama']}}</td>
@@ -134,6 +134,27 @@
             <p style="text-indent: 1cm;text-align: justify;">Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal 1 Agustus s.d 1 Oktober 2022  di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang. Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal 1 Agustus s.d 1 Oktober 2022  di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang.</p>
             <p style="text-indent: 1cm;text-align: justify;">Demikian surat penempatan ini, atas perhatiannya kami sampaikan terima kasih.</p>
             <p>Wassalamu’alaikum Wr.Wb.</p>
+            <br>
+            <table class="table">
+                <tr>
+                    <td style="width: 20px"> </td>
+                    <td style="width: 20px"></td>
+                    <td style="width: 150px"></td>
+                    <td style="width: 20px"></td>
+                    <td style="width: 20px"></td>
+                    <td style="width: 150px">Dekan</td>
+                </tr>
+                <br>
+                <br>
+                <tr>
+                    <td style="width: 20px"> </td>
+                    <td style="width: 20px"></td>
+                    <td style="width: 150px"></td>
+                    <td style="width: 20px"></td>
+                    <td style="width: 20px"></td>
+                    <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u></td>
+                </tr>
+            </table>
         </div>
         
     </div>
