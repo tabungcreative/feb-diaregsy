@@ -22,7 +22,7 @@ class PembayaranServiceImpl implements PembayaranService
         $this->pembayaranRepository = $pembayaranRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
-    function checkPembayaran($noPembayaran, $nim)
+    function checkPembayaran($noPembayaran, $nim, $kodePembayaran = null)
     {
         $pembayaran = $this->pembayaranRepository->findByNoPembayaran($noPembayaran);
         if ($pembayaran == null) {
@@ -36,7 +36,11 @@ class PembayaranServiceImpl implements PembayaranService
         }
 
         if ($mahasiswa['nim'] != $pembayaran['nim']) {
-            throw new PembayaranNotSuitableWithNimException('Nim dan Nomer Pembayaran tidak sesui');
+            throw new PembayaranNotSuitableWithNimException('Nim dan Nomer Pembayaran tidak sesuai');
+        }
+
+        if ($kodePembayaran != $pembayaran['kode_pembayaran']) {
+            throw new PembayaranNotSuitableWithNimException('Pembayaran tidak sesuai');
         }
 
         return true;

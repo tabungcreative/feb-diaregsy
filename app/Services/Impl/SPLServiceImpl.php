@@ -52,7 +52,8 @@ class SPLServiceImpl implements SPLService
         $jenisPendaftaran = $request->input('jenis_pendaftaran');
 
         // cek pembayaran
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim);
+        $kodePembayaran = env('KODE_SPL');
+        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailSPL = [
             'nim' => $nim,

@@ -33,31 +33,31 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('pendaftaran.cek-nim') }}">Daftar</a>
-                    </li>
-                    <li class="nav-item">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pendaftaran
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
-                            <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
-                            <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Sempro</a></li>
-                            <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Kompre</a></li>
-                            <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Skripsi</a></li>
-                            <li><a class="dropdown-item" href="{{ route('ujianAkhir.list') }}">Ujian Skripsi</a></li>
-                            <li><a class="dropdown-item" href="{{ route('yudisium.list') }}">Yudisium</a></li>
-                            <li><a class="dropdown-item" href="{{ route('mengulang.list') }}">Mengulang</a></li>
-                            <li><a class="dropdown-item" href="#">Semester Pendek</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('pendaftaran.cek-nim') }}">Daftar</a>
+                        </li>
+                        <li class="nav-item">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pendaftaran
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
+                                <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
+                                <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Sempro</a></li>
+                                <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Kompre</a></li>
+                                <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Skripsi</a></li>
+                                <li><a class="dropdown-item" href="{{ route('ujianAkhir.list') }}">Ujian Skripsi</a></li>
+                                <li><a class="dropdown-item" href="{{ route('yudisium.list') }}">Yudisium</a></li>
+                                <li><a class="dropdown-item" href="{{ route('mengulang.list') }}">Mengulang</a></li>
+                                <li><a class="dropdown-item" href="#">Semester Pendek</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -78,11 +78,6 @@
             </div>
         </div>
         <!-- //banner --> --}}
-        <div class="container-fluid p-0">
-            <div class="row">
-                <img src="https://is3.cloudhost.id/storage-feb/assets/images/baner-diaregsy.png" alt="">
-            </div>
-        </div>
     
         <div class="container-fluid p-0">
             @yield('content')
