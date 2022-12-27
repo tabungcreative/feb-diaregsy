@@ -53,7 +53,9 @@ class BimbinganSkripsiServiceImpl implements BimbinganSkripsiService
         $noWhatsapp = $request->input('no_whatsapp');
 
         // cek pembayaran
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim);
+        $kodePembayaran = env('KODE_BIMBINGAN_SKRIPSI');
+
+        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailBimbinganSkripsi = [
             'nim' => $nim,
