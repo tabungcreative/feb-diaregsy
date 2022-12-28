@@ -35,10 +35,10 @@
         <span>Pendaftaran Magang</span></a>
 </li>
 
-<li class="nav-item {{ Route::is('admin.bimbinganSkripsi.*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('admin.bimbinganSkripsi.index') }}">
+<li class="nav-item {{ Route::is('admin.mengulang.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.mengulang.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>
-        <span>Pendaftaran Bimbingan Skripsi</span></a>
+        <span>Pendaftaran Mengulang</span></a>
 </li>
 
 <li class="nav-item {{ Route::is('admin.sempro.*') ? 'active' : '' }}">
@@ -47,22 +47,22 @@
         <span>Pendaftaran Seminar Proposal</span></a>
 </li>
 
+<li class="nav-item {{ Route::is('admin.bimbinganSkripsi.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.bimbinganSkripsi.index') }}">
+        <i class="fas fa-fw fa-paper-plane"></i>
+        <span>Pendaftaran Bimbingan Skripsi</span></a>
+</li>
+
 <li class="nav-item {{ Route::is('admin.kompre.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.kompre.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>
         <span>Pendaftaran Ujian Komprehensif</span></a>
 </li>
 
-<li class="nav-item {{ Route::is('admin.mengulang.*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('admin.mengulang.index') }}">
-        <i class="fas fa-fw fa-paper-plane"></i>
-        <span>Pendaftaran Mengulang</span></a>
-</li>
-
 <li class="nav-item {{ Route::is('admin.ujianAkhir.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.ujianAkhir.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>
-        <span>Pendaftaran Ujian Skripsi</span></a>
+        <span>Pendaftaran Ujian Tugas Akhir</span></a>
 </li>
 <li class="nav-item {{ Route::is('admin.yudisium.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.yudisium.index') }}">

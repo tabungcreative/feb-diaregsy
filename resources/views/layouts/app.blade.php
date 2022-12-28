@@ -48,13 +48,13 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
                                 <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
-                                <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Sempro</a></li>
-                                <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Kompre</a></li>
-                                <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Skripsi</a></li>
-                                <li><a class="dropdown-item" href="{{ route('ujianAkhir.list') }}">Ujian Skripsi</a></li>
-                                <li><a class="dropdown-item" href="{{ route('yudisium.list') }}">Yudisium</a></li>
                                 <li><a class="dropdown-item" href="{{ route('mengulang.list') }}">Mengulang</a></li>
-                                <li><a class="dropdown-item" href="#">Semester Pendek</a></li>
+                                <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Seminar Proposal</a></li>
+                                <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Ujian Komprehensif</a></li>
+                                <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Tugas Akhir</a></li>
+                                <li><a class="dropdown-item" href="{{ route('ujianAkhir.list') }}">Ujian Tugas Akhir</a></li>
+                                <li><a class="dropdown-item" href="{{ route('yudisium.list') }}">Yudisium</a></li>
+                                {{-- <li><a class="dropdown-item" href="#">Semester Pendek</a></li> --}}
                             </ul>
                         </li>
                     </ul>

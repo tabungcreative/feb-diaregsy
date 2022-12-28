@@ -16,13 +16,12 @@
                     ['nama' => 'Studi Ekskursi', 'route' => 'spl.form-register'],
                     ['nama' => 'Magang', 'route' => 'magang.form-register'],
                     ['nama' => 'Mengulang', 'route' => 'mengulang.form-register'],
-                    ['nama' => 'Sempro', 'route' => 'sempro.form-register'],
-                    ['nama' => 'Bimbingan Skripsi', 'route' => 'bimbinganSkripsi.form-register'],
-                    ['nama' => 'Kompre', 'route' => 'kompre.form-register'],
-                    ['nama' => 'Ujian Skripsi', 'route' => 'ujianAkhir.form-register'],
+                    ['nama' => 'Seminar Proposal', 'route' => 'sempro.form-register'],
+                    ['nama' => 'Bimbingan Tugas Akhir', 'route' => 'bimbinganSkripsi.form-register'],
+                    ['nama' => 'Ujian Komprehensif', 'route' => 'kompre.form-register'],
+                    ['nama' => 'Ujian Tugas Akhir', 'route' => 'ujianAkhir.form-register'],
                     ['nama' => 'Yudisium', 'route' => 'yudisium.form-register'],
                     // ['nama' => 'Semester Pendek', 'route' => 'spl.form-register'],
-
                 ]
             @endphp
             @foreach($pendaftaran as $value)
