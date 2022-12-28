@@ -52,7 +52,8 @@ class MagangServiceImpl implements MagangService
         $noWhatsapp = $request->input('no_whatsapp');
 
         // cek pembayaran
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim);
+        $kodePembayaran = env('KODE_MAGANG');
+        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailMagang = [
             'nim' => $nim,
@@ -82,7 +83,7 @@ class MagangServiceImpl implements MagangService
     {
         $dataFile = $this->uploads($fileLembarPersetujuan, 'diaregsi/magang/lembar-persetujuan/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $detailMagang = [
             'lembar_persetujuan' => $filePath

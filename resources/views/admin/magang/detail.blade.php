@@ -110,7 +110,7 @@
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">Lembar Persetujuan</h6>
                             </div>
-                            <iframe src="{{ Storage::disk('s3')->url($magang->lembar_persetujuan) }}" width="100%" height="500px" />
+                            <iframe src="{{ Storage::disk('public')->url($magang->lembar_persetujuan) }}" width="100%" height="500px" />
                         </a>
                     </div>
                 </div>

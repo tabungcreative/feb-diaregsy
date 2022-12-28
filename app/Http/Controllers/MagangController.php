@@ -73,7 +73,9 @@ class MagangController extends Controller
     public function update(MagangUpdateRequest $request, $id)
     {
         try {
+            $lembarPersetujuan = $request->file('lembar_persetujuan');
             $magang = $this->magangService->update($id, $request);
+            $this->magangService->addLembarPersetujuan($magang->id, $lembarPersetujuan);
             return redirect()->route('magang.detail', $magang->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

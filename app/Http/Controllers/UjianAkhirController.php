@@ -7,6 +7,7 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Exceptions\UjianAkhirIsExistException;
 use App\Http\Requests\UjianAkhirRegisterRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
+use App\Models\Kompre;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\UjianAkhirRepository;
@@ -37,9 +38,13 @@ class UjianAkhirController extends Controller
 
     public function formRegister($nim)
     {
+        $kompre = Kompre::where('is_verify', 1)->where('nim', $nim)->first();
+        if ($kompre == null) {
+            return 'Anda belum dapat mendaftar Ujian Komprehensif';
+        }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
-        return view('ujianAkhir.register', compact('mahasiswa','skripsi'));
+        return view('ujianAkhir.register', compact('mahasiswa', 'skripsi'));
     }
 
     public function register(UjianAkhirRegisterRequest $request)

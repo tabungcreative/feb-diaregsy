@@ -54,7 +54,6 @@ class BimbinganSkripsiServiceImpl implements BimbinganSkripsiService
 
         // cek pembayaran
         $kodePembayaran = env('KODE_BIMBINGAN_SKRIPSI');
-
         $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailBimbinganSkripsi = [

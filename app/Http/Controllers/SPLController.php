@@ -42,8 +42,8 @@ class SPLController extends Controller
 
     public function register(SPLRegisterRequest $request)
     {
+        $fileKtp = $request->file('foto_ktp');
         try {
-            $fileKtp = $request->file('foto_ktp');
             $result = $this->splService->register($request);
             $this->splService->addKtp($result->id, $fileKtp);
             return redirect()->route('spl.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
@@ -72,8 +72,10 @@ class SPLController extends Controller
 
     public function update(SPLUpdateRequest $request, $id)
     {
+        $fileKtp = $request->file('foto_ktp');
         try {
             $spl = $this->splService->update($id, $request);
+            $this->splService->addKtp($spl->id, $fileKtp);
             return redirect()->route('spl.detail', $spl->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

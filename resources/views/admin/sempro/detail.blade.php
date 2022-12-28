@@ -98,7 +98,17 @@
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">Nota Dinas Kaprodi</h6>
                             </div>
-                            <a href="{{ Storage::disk('s3')->url($sempro->nota_kaprodi) }}" class="mb-1 font-weight-bold"> file </a>
+                            <p class="mb-1 font-weight-bold">
+                                <a href="{{ Storage::disk('public')->url($sempro->nota_kaprodi) }}" target="_blank"> File </a>
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="mb-1">Berkas Sempro</h6>
+                            </div>
+                            <p class="mb-1 font-weight-bold">
+                                <a href="{{ Storage::disk('public')->url($sempro->berkas_sempro) }}" target="_blank" >File</a>
+                            </p>
                         </a>
                     </div>
                 </div>

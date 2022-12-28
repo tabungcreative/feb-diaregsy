@@ -52,7 +52,8 @@ class SemproServiceImpl implements SemproService
         $noPembayaran = $request->input('no_pembayaran');
 
         // cek pembayaran
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim);
+        $kodePembayaran = env('KODE_SEMPRO');
+        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailSempro = [
             'nim' => $nim,
@@ -84,7 +85,7 @@ class SemproServiceImpl implements SemproService
 
         $dataFile = $this->uploads($fileNotaKaprodi, 'diaregsi/sempro/nota-kaprodi/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $sempro->nota_kaprodi = $filePath;
         $sempro->save();
@@ -98,7 +99,7 @@ class SemproServiceImpl implements SemproService
 
         $dataFile = $this->uploads($fileBerkasSempro, 'diaregsi/sempro/berkas-sempro/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $sempro->berkas_sempro = $filePath;
         $sempro->save();

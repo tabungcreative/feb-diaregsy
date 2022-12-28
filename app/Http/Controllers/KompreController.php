@@ -6,6 +6,8 @@ use App\Exceptions\KompreIsExistException;
 use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\KompreRegisterRequest;
+use App\Models\BimbinganSkripsi;
+use App\Models\Sempro;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\DosenRepository;
 use App\Repositories\KompreRepository;
@@ -20,9 +22,6 @@ class KompreController extends Controller
     private KompreRepository $kompreRepository;
     private MahasiswaRepository $mahasiswaRepository;
     private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
-
-
-
 
     public function __construct(KompreService $kompreService, KompreRepository $kompreRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository)
     {
@@ -40,6 +39,10 @@ class KompreController extends Controller
 
     public function formRegister($nim)
     {
+        $sempro = BimbinganSkripsi::where('is_verify', 1)->where('nim', $nim)->first();
+        if ($sempro == null) {
+            return 'Anda belum dapat mendaftar Ujian Komprehensif';
+        }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
         return view('kompre.register', compact('mahasiswa', 'skripsi'));

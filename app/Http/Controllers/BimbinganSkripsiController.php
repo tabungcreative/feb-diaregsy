@@ -9,6 +9,8 @@ use App\Exceptions\PembayaranNotSuitableWithNimException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\BimbinganSkripsiRegisterRequest;
 use App\Http\Requests\BimbinganSkripsiUpdateRequest;
+use App\Models\BimbinganSkripsi;
+use App\Models\Sempro;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\DosenRepository;
 use App\Repositories\MahasiswaRepository;
@@ -36,6 +38,10 @@ class BimbinganSkripsiController extends Controller
 
     public function formRegister($nim)
     {
+        $sempro = Sempro::where('is_verify', 1)->where('nim', $nim)->first();
+        if ($sempro == null) {
+            return 'Anda belum dapat mendaftar Ujian Komprehensif';
+        }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $dosen = $this->dosenRepository->getAllDosen();
         return view('bimbinganSkripsi.register', compact('mahasiswa', 'dosen'));

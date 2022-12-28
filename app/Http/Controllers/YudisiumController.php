@@ -7,6 +7,7 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Exceptions\YudisiumIsExistException;
 use App\Http\Requests\YudisiumRegisterRequest;
 use App\Http\Requests\YudisiumUpdateRequest;
+use App\Models\UjianAkhir;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\YudisiumRepository;
@@ -21,7 +22,7 @@ class YudisiumController extends Controller
     private MahasiswaRepository $mahasiswaRepository;
     private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
 
-    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository,BimbinganSkripsiRepository $bimbinganSkripsiRepository)
+    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository)
     {
         $this->yudisiumService = $yudisiumService;
         $this->yudisiumRepository = $yudisiumRepository;
@@ -37,9 +38,13 @@ class YudisiumController extends Controller
 
     public function formRegister($nim)
     {
+        $ujianAkhir = UjianAkhir::where('is_verify', 1)->where('nim', $nim)->first();
+        if ($ujianAkhir == null) {
+            return 'Anda belum dapat mendaftar Ujian Komprehensif';
+        }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
-        $skripsi=$this->bimbinganSkripsiRepository->findByNim($nim);
-        return view('yudisium.register', compact('mahasiswa','skripsi'));
+        $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
+        return view('yudisium.register', compact('mahasiswa', 'skripsi'));
     }
 
     public function register(YudisiumRegisterRequest $request)
@@ -77,6 +82,7 @@ class YudisiumController extends Controller
     }
     public function edit($nim)
     {
+
         $yudisium = $this->yudisiumRepository->findByNim($nim);
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
 
@@ -99,5 +105,4 @@ class YudisiumController extends Controller
         $mahasiswa = $this->mahasiswaRepository->findByNim($yudisium->nim);
         return view('yudisium.detail', compact('yudisium', 'mahasiswa'));
     }
-
 }

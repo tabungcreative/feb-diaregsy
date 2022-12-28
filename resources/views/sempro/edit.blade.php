@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('sempro.update') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('sempro.update', $sempro->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">

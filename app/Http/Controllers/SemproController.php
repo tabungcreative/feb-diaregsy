@@ -77,8 +77,12 @@ class SemproController extends Controller
 
     public function update(SemproUpdateRequest $request, $id)
     {
+        $notaKaprodi = $request->file('nota_kaprodi');
+        $berkasSempro = $request->file('berkas_sempro');
         try {
             $sempro = $this->semproService->update($id, $request);
+            $this->semproService->addNotaKaprodi($sempro->id, $notaKaprodi);
+            $this->semproService->addBerkasSempro($sempro->id, $berkasSempro);
             return redirect()->route('sempro.detail', $sempro->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

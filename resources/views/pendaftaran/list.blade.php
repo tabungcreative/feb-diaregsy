@@ -15,13 +15,13 @@
                 $pendaftaran = [
                     ['nama' => 'Studi Ekskursi', 'route' => 'spl.form-register'],
                     ['nama' => 'Magang', 'route' => 'magang.form-register'],
+                    ['nama' => 'Mengulang', 'route' => 'mengulang.form-register'],
                     ['nama' => 'Sempro', 'route' => 'sempro.form-register'],
-                    ['nama' => 'Kompre', 'route' => 'kompre.form-register'],
                     ['nama' => 'Bimbingan Skripsi', 'route' => 'bimbinganSkripsi.form-register'],
+                    ['nama' => 'Kompre', 'route' => 'kompre.form-register'],
                     ['nama' => 'Ujian Skripsi', 'route' => 'ujianAkhir.form-register'],
                     ['nama' => 'Yudisium', 'route' => 'yudisium.form-register'],
-                    ['nama' => 'Mengulang', 'route' => 'mengulang.form-register'],
-                    ['nama' => 'Semester Pendek', 'route' => 'spl.form-register'],
+                    // ['nama' => 'Semester Pendek', 'route' => 'spl.form-register'],
 
                 ]
             @endphp
