@@ -7,6 +7,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Surat Penempatan - {{ $mahasiswa['nama'] }} - {{ $mahasiswa['nim'] }}</title>
     <style>
+        header {
+            /* position: fixed; */
+            top: 0cm;
+            left: 0cm;
+            right: 0cm;
+            padding: 30px;
+        }
+        /** Define the footer rules **/
+        footer {
+            padding: 30px;
+            /* position: fixed; */
+            bottom: 0cm;
+            left: 0cm;
+            right: 0cm;
+        }
         * {
             font-family: 'Times New Roman', Times, serif;
         }
@@ -14,7 +29,7 @@
             margin-left: 3cm;
             margin-right:3cm;
             margin-bottom: 3cm; 
-            margin-top:0.1cm; 
+            margin-top: 0cm; 
             font-size: 12px;
         }
         .kop{
@@ -49,15 +64,7 @@
 
 <body>
     <header>
-        <div class="container">
-            <div class="mb-3">
-                <img src="img/logo-kop-feb.png" alt="" class="kop">
-                <h3 class="text-center mt-2 head">UNIVERSITAS SAINS AL QURAN(UNSIQ) <br> JAWA TENGAH DI WONOSOBO <br>FAKULTAS EKONOMI DAN BISNIS</h3>
-            </div>
-            <div class="kop-alamat p-2 text-center">
-                Alamat Kampus : Jl. KH. Hasyim Asy’ari Km 03 Kalibeber, Mojotengah, Wonosobo 56351 | Telp. (0286) 3399204 | Fax. (0286) 324160 | https://feb-unsiq.ac.id
-            </div>
-        </div>
+        <img src="img/kop-feb.png" width="60%"/>
     </header>
     <div id="halaman">
         <br>
@@ -110,20 +117,15 @@
                 </tr>
             </tbody>
         </table>
+        {{-- <footer>
+            <img src="img/footer-kop.png" width="100%"/>
+        </footer> --}}
     </div>
 
 
 
     <header>
-        <div class="container">
-            <div class="mb-3">
-                <img src="img/logo-kop-feb.png" alt="" class="kop">
-                <h3 class="text-center mt-2 head">UNIVERSITAS SAINS AL QURAN(UNSIQ) <br> JAWA TENGAH DI WONOSOBO <br>FAKULTAS EKONOMI DAN BISNIS</h3>
-            </div>
-            <div class="kop-alamat p-2 text-center">
-                Alamat Kampus : Jl. KH. Hasyim Asy’ari Km 03 Kalibeber, Mojotengah, Wonosobo 56351 | Telp. (0286) 3399204 | Fax. (0286) 324160 | https://feb-unsiq.ac.id
-            </div>
-        </div>
+        <img src="img/kop-feb.png" width="60%"/>
     </header>
     <div id="halaman">
         <br>
@@ -176,6 +178,9 @@
                 </tr>
             </tbody>
         </table>
+        {{-- <footer>
+            <img src="img/footer-kop.png" width="100%"/>
+        </footer> --}}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
