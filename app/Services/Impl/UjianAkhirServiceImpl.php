@@ -91,7 +91,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileSkripsi, 'diaregsi/ujianAkhir/file-skripsi/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->berkas_skripsi = $filePath;
         $ujianAkhir->save();
@@ -105,7 +105,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileIjazahTerakhir, 'diaregsi/ujianAkhir/ijazah-terakhir/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->ijazah_terakhir = $filePath;
         $ujianAkhir->save();
@@ -119,7 +119,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileTranskripNilai, 'diaregsi/ujianAkhir/transkrip-nilai/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->transkrip_nilai = $filePath;
         $ujianAkhir->save();
@@ -132,7 +132,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileAkta, 'diaregsi/ujianAkhir/akta-kelahiran/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->akta_kelahiran = $filePath;
         $ujianAkhir->save();
@@ -145,7 +145,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileKK, 'diaregsi/ujianAkhir/kartu-keluarga/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->kartu_keluarga = $filePath;
         $ujianAkhir->save();
@@ -159,7 +159,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileKtp, 'diaregsi/ujianAkhir/foto-ktp/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->ktp = $filePath;
         $ujianAkhir->save();
@@ -173,7 +173,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileLembarBimbingan, 'diaregsi/ujianAkhir/lembar-bimbingan/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->lembar_bimbingan = $filePath;
         $ujianAkhir->save();
@@ -187,7 +187,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileSlipSemesterTerakhir, 'diaregsi/ujianAkhir/slip-semester-terakhir/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->slip_pembayaransemesterterakhir = $filePath;
         $ujianAkhir->save();
@@ -201,7 +201,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($filePembayaranSkripsi, 'diaregsi/ujianAkhir/slip-pembayaran-skripsi/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->slip_pembayaranSkripsi = $filePath;
         $ujianAkhir->save();
@@ -215,7 +215,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $dataFile = $this->uploads($fileSertifikat, 'diaregsi/ujianAkhir/sertifikat/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $ujianAkhir->sertifikat = $filePath;
         $ujianAkhir->save();
