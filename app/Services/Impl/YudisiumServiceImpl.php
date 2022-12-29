@@ -130,7 +130,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileBuktiPembayaran, 'diaregsi/yudisium/bukti-pembayaran/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->bukti_pembayaran = $filePath;
         $yudisium->save();
@@ -144,7 +144,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileBebasSpp, 'diaregsi/yudisium/bebas-spp/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->bebas_spp = $filePath;
         $yudisium->save();
@@ -158,7 +158,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileTranskripNilai, 'diaregsi/yudisium/transkrip-nilai/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->transkrip_nilai = $filePath;
         $yudisium->save();
@@ -172,7 +172,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileBebasPerpus, 'diaregsi/yudisium/bebas-perpus/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->bebas_perpus = $filePath;
         $yudisium->save();
@@ -186,7 +186,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileArtikel, 'diaregsi/yudisium/artikel/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->artikel = $filePath;
         $yudisium->save();
@@ -200,7 +200,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileSkripsi, 'diaregsi/yudisium/file-skripsi/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->file_skripsi = $filePath;
         $yudisium->save();
@@ -214,7 +214,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileBebasPlagiasi, 'diaregsi/yudisium/bebas-plagiasi/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->bebas_plagiasi = $filePath;
         $yudisium->save();
@@ -228,7 +228,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileBuktiPenjilidan, 'diaregsi/yudisium/bukti-penjilidan/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->bukti_penjilidan = $filePath;
         $yudisium->save();
@@ -242,7 +242,7 @@ class YudisiumServiceImpl implements YudisiumService
 
         $dataFile = $this->uploads($fileBuktiPengumpulan, 'diaregsi/yudisium/bukti-pengumpulan/');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $yudisium->bukti_pengumpulan = $filePath;
         $yudisium->save();
