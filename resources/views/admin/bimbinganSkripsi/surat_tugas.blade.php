@@ -27,8 +27,8 @@
             font-family: 'Times New Roman', Times, serif;
         }
         #halaman{
-            margin-left: 3cm;
-            margin-right:3cm;
+            margin-left: 2cm;
+            margin-right:2cm;
             margin-bottom: 3cm; 
             margin-top:3cm; 
             font-size: 12px;
@@ -68,7 +68,7 @@
     <div id="halaman">
         <br>
         <h3 class="text-center"><u>SURAT TUGAS PEMBIMBINGAN TUGAS AKHIR/ SKRIPSI</u></h3>
-        <h3 class="text-center">..../FEB-UNSIQ/..../....</h3>
+        <h3 class="text-center">.../SKP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</h3>
         <br>
         <p class="fw-bold fst-italic">Assalamu’alaikum Wr. Wb.</p>
         <br>
@@ -135,7 +135,7 @@
                     <td style="width: 150px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
-                    <td style="width: 150px">Dekan</td>
+                    <td style="width: 150px">   Dekan<br>{{$tanggal}}</td>
                 </tr>
                 <br>
                 <br>

@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Exports\MagangExport;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\MagangCreateMessageRequest;
-use App\Repositories\MagangRepository;
 use App\Repositories\MahasiswaRepository;
+use App\Repositories\MagangRepository;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use Romans\Filter\IntToRoman;
 use App\Services\MagangService;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\MagangExport;
 use Carbon\Carbon;
-use Maatwebsite\Excel\Facades\Excel;
+
 
 class MagangController extends Controller
 {
@@ -74,11 +76,16 @@ class MagangController extends Controller
             $magang = $this->magangRepository->findById($id);
             $mahasiswa = $this->mahasiswaRepository->findByNim($magang->nim);
             $tanggal = Carbon::parse(now())->translatedFormat('d F Y');
+            $bulan = Carbon::now()->month;
+            $tahun = Carbon::now()->year;
+            $filter = new IntToRoman();
+            $rbulan = $filter->filter($bulan);
 
-            // $kop = base64_encode(file_get_contents(public_path('')));
-            // $footerKop = base64_encode(file_get_contents(public_path('')));
+            $tanggalAkhir = Carbon::parse(now()->addDays(60))->translatedFormat('d F Y');
 
-            $pdf = Pdf::loadView('admin.magang.pdf', compact('magang', 'mahasiswa', 'tanggal'));
+
+
+            $pdf = Pdf::loadView('admin.magang.pdf', compact('magang', 'mahasiswa', 'tanggal', 'bulan', 'tahun', 'rbulan', 'tanggalAkhir'));
 
             $pdf->setPaper('A4', 'potrait');
             return $pdf->stream($title);

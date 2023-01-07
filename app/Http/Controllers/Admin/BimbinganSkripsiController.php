@@ -6,13 +6,13 @@ use App\Exports\BimbinganSkripsiExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BimbinganSkripsiCreateMessageRequest;
 use App\Repositories\BimbinganSkripsiRepository;
-use App\Repositories\DosenRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\BimbinganSkripsiService;
-use Carbon\Carbon;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Repositories\DosenRepository;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Romans\Filter\IntToRoman;
+use Carbon\Carbon;
 
 class BimbinganSkripsiController extends Controller
 {
@@ -73,11 +73,13 @@ class BimbinganSkripsiController extends Controller
             $bimbinganSkripsi = $this->bimbinganSkripsiRepository->findById($id);
             $mahasiswa = $this->mahasiswaRepository->findByNim($bimbinganSkripsi->nim);
             $tanggal = Carbon::parse(now())->translatedFormat('d F Y');
+            $bulan = Carbon::now()->month;
+            $tahun = Carbon::now()->year;
+            $filter = new IntToRoman();
+            $rbulan = $filter->filter($bulan);
 
-            // $kop = base64_encode(file_get_contents(public_path('')));
-            // $footerKop = base64_encode(file_get_contents(public_path('')));
 
-            $pdf = Pdf::loadView('admin.bimbinganSkripsi.surat_tugas', compact('bimbinganSkripsi', 'mahasiswa', 'tanggal'));
+            $pdf = Pdf::loadView('admin.bimbinganSkripsi.surat_tugas', compact('bimbinganSkripsi', 'mahasiswa', 'bulan', 'tahun', 'rbulan', 'tanggal'));
 
             $pdf->setPaper('A4', 'potrait');
             return $pdf->stream($title);

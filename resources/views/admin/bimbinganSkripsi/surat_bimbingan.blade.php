@@ -26,8 +26,8 @@
             font-family: 'Times New Roman', Times, serif;
         }
         #halaman{
-            margin-left: 3cm;
-            margin-right:3cm;
+            margin-left: 2cm;
+            margin-right:2cm;
             margin-bottom: 3cm; 
             margin-top: 0cm; 
             font-size: 12px;
@@ -70,7 +70,6 @@
         <br>
         <h1 class="text-center">KARTU PEMBIMBING SKRIPSI</h1>
         <br>
-        <p class="fw-bold fst-italic">Assalamu’alaikum Wr. Wb.</p>
         <table class="table">
             <tr>
                 <td style="width: 20px">Nama Mahasiswa</td>
@@ -131,7 +130,6 @@
         <br>
         <h1 class="text-center">KARTU PEMBIMBING SKRIPSI</h1>
         <br>
-        <p class="fw-bold fst-italic">Assalamu’alaikum Wr. Wb.</p>
         <table class="table">
             <tr>
                 <td style="width: 20px">Nama Mahasiswa</td>

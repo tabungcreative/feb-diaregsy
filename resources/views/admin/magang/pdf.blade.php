@@ -26,8 +26,8 @@
             font-family: 'Times New Roman', Times, serif;
         }
         #halaman{
-            margin-left: 3cm;
-            margin-right:3cm;
+            margin-left: 2cm;
+            margin-right:2cm;
             margin-bottom: 3cm; 
             margin-top:3cm; 
             font-size: 12px;
@@ -69,10 +69,10 @@
             <tr>
                 <td style="width: 20px">Nomor </td>
                 <td style="width: 20px">:</td>
-                <td style="width: 150px">.../ FEB-UNSIQ / ... / ....</td>
+                <td style="width: 150px">.../MG/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
-                <td style="width: 150px">Wonosobo, ............ </td>
+                <td style="width: 150px">Wonosobo, {{$tanggal}} </td>
             </tr>
             <tr>
                 <td style="width: 20px">Lamp </td>
@@ -138,7 +138,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p style="text-indent: 1cm;text-align: justify;">Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal ............................ di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang. Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal .............................  di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang.</p>
+            <p style="text-indent: 1cm;text-align: justify;">Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal {{$tanggal}} di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang. Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal {{$tanggalAkhir}} di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang.</p>
             <p style="text-indent: 1cm;text-align: justify;">Demikian surat penempatan ini, atas perhatiannya kami sampaikan terima kasih.</p>
             <p>Wassalamu’alaikum Wr.Wb.</p>
             <br>

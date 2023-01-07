@@ -60,8 +60,8 @@
                                     <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
                                 </form>
                                 <a href="{{ route('admin.bimbinganSkripsi.detail', $value->id) }}" class="btn btn-info mx-1">Detail</a>
-                                <a href="{{ route('admin.bimbinganSkripsi.surat-tugas', $value->id) }}" class="btn btn-warning mx-1" target="_blank">Surat Tugas</a>
-                                <a href="{{ route('admin.bimbinganSkripsi.surat-bimbingan', $value->id) }}" class="btn btn-warning" target="_blank">Surat Bimbingan</a>
+                                <a href="{{ route('admin.bimbinganSkripsi.surat-tugas', $value->id) }}" class="btn btn-warning mx-1" target="_blank">Cetak Surat</a>
+                                <a href="{{ route('admin.bimbinganSkripsi.surat-bimbingan', $value->id) }}" class="btn btn-warning" target="_blank">Cetak Kartu</a>
 
                             </td>
                         </tr>
