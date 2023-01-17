@@ -17,6 +17,11 @@ class MengulangServiceImpl implements MengulangService
 {
     use MediaTrait;
 
+    private $mengulangRepository;
+    private $tahunAjaranRepository;
+    private $pembayaranService;
+
+
     public function __construct(
         MengulangRepository $mengulangRepository,
         TahunAjaranRepository $tahunAjaranRepository,
@@ -45,7 +50,8 @@ class MengulangServiceImpl implements MengulangService
         $noPembayaran = $request->input('no_pembayaran');
 
         // cek pembayaran
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim);
+        $kodePembayaran = env('KODE_MENGULANG');
+        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailMengulang = [
             'nim' => $nim,
@@ -70,9 +76,9 @@ class MengulangServiceImpl implements MengulangService
 
     function addKhs(int $id, $fileKhs)
     {
-        $dataFile = $this->uploads($fileKhs, 'diaregsi/mengulang/lhs/');
+        $dataFile = $this->uploads($fileKhs, 'diaregsi/mengulang/lhs');
 
-        $filePath = $dataFile['filePath'];
+        $filePath = $dataFile;
 
         $detailMengulang = [
             'khs' => $filePath

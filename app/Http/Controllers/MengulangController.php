@@ -36,7 +36,7 @@ class MengulangController extends Controller
         return view('mengulang.list', compact('mengulang'));
     }
 
-     public function formRegister($nim)
+    public function formRegister($nim)
     {
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         return view('mengulang.register', compact('mahasiswa'));
@@ -60,6 +60,7 @@ class MengulangController extends Controller
         } catch (MengulangIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
+            dd($e->getMessage());
             abort(500, 'terjadi kesalahan pada server');
         }
     }
@@ -75,6 +76,7 @@ class MengulangController extends Controller
     {
         try {
             $mengulang = $this->mengulangService->update($id, $request);
+            $this->mengulangService->addKhs($mengulang->id, $request->file('khs'));
             return redirect()->route('mengulang.detail', $mengulang->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

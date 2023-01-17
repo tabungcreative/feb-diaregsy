@@ -35,6 +35,18 @@
                                         <label for="inputPassword4">Nama</label>
                                         <p class="fw-bold"> {{ $mahasiswa['nama'] }} </p>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Judul Seminar Proposal</label>
+                                        <p class="fw-bold"> {{ $sempro->judul_sempro }} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Berkas Seminar Proposal</label>
+                                        <p class="fw-bold"><a href="{{Storage::disk('s3')->url($sempro->berkas_sempro)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Nota Kaprodi</label>
+                                        <p class="fw-bold"><a href="{{Storage::disk('s3')->url($sempro->nota_kaprodi)}}" target="_blank"> preview </a></p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -42,6 +54,10 @@
                                     <div class="form-group">
                                         <label for="inputEmail4">Nomer Telephone</label>
                                         <p class="fw-bold"> {{ $sempro->no_whatsapp }} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail4">Email</label>
+                                        <p class="fw-bold"> {{ $sempro->email }} </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail4">Prodi</label>

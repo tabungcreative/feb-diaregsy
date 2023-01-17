@@ -35,6 +35,18 @@
                                         <label for="inputPassword4">Nama</label>
                                         <p class="fw-bold"> {{ $mahasiswa['nama'] }} </p>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Email</label>
+                                        <p class="fw-bold">{{ $yudisium->email }} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Judul Tugas Akhir</label>
+                                        <p class="fw-bold"> {{ $yudisium->judul_skripsi}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Ukuran Toga</label>
+                                        <p class="fw-bold"> {{ $yudisium->ukuran_toga}} </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -46,6 +58,11 @@
                                     <div class="form-group">
                                         <label for="inputEmail4">Prodi</label>
                                         <p class="fw-bold"> {{ $mahasiswa['prodi'] }} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Pembimbing</label>
+                                        <p class="fw-bold">{{ $ujianAkhir->pembimbing1 }} </p>
+                                        <p class="fw-bold">{{ $ujianAkhir->pembimbing2 }} </p>
                                     </div>
                                 </div>
                             </div>

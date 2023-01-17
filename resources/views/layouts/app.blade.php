@@ -115,8 +115,8 @@
                     <ul class="list-unstyled">
                         <li class="text-white-50">Jl. KH. Hasyim Asy'ari Km. 03, Kalibeber, Kec. Mojotengah, Kab. Wonosobo,</li>
                         <li class="text-white-50">Jawa Tengah - 56351</li>
-                        <li class="text-white-50">Telp. : (0286) ******</li>
-                        <li class="text-white-50">Whatsapp. : (0286) *******</li>
+                        <li class="text-white-50">Telp. : (0286) 3396204</li>
+                        {{-- <li class="text-white-50">Whatsapp. : (0286) *******</li> --}}
                     </ul>
                 </div>
                 <!--Grid column-->
