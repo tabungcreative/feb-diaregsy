@@ -7,6 +7,8 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\MagangCreateMessageRequest;
 use App\Http\Requests\MagangRegisterRequest;
 use App\Http\Requests\MagangUpdateRequest;
+use App\Models\Magang;
+use App\Models\SPL;
 use App\Repositories\MagangRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\MagangService;
@@ -81,10 +83,13 @@ class MagangServiceImpl implements MagangService
 
     function addLembarPersetujuan(int $id, $fileLembarPersetujuan)
     {
-        $dataFile = $this->uploads($fileLembarPersetujuan, 'diaregsi/magang/lembar-persetujuan/');
+        $magang = Magang::find($id);
 
-        $filePath = $dataFile;
+        if ($magang->lembar_persetujuan != null) {
+            $this->delete($magang->lembar_persetujuan);
+        }
 
+        $filePath = $this->uploads($fileLembarPersetujuan, 'diaregsi/magang/lembar-persetujuan/');
         $detailMagang = [
             'lembar_persetujuan' => $filePath
         ];

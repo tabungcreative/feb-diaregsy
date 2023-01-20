@@ -58,6 +58,7 @@ class MagangController extends Controller
         } catch (MagangIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
+            dd($e->getMessage());
             abort(500, 'terjadi kesalahan pada server');
         }
     }

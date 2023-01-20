@@ -81,7 +81,11 @@ class SPLServiceImpl implements SPLService
     {
         $spl = SPL::find($id);
 
-        $dataFile = $this->uploads($fileKtp, '/diaregsi/spl/foto-ktp/');
+        if ($spl->foto_ktp != null) {
+            $this->delete($spl->foto_ktp);
+        }
+
+        $dataFile = $this->uploads($fileKtp, 'diaregsi/spl/foto-ktp/');
 
         $spl->foto_ktp = $dataFile;
         $spl->save();
