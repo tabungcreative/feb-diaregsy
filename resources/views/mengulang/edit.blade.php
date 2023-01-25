@@ -58,7 +58,7 @@
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ old('email') }}">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ $mengulang->email }}">
                                 @error('email')
                                 <div id="email" class="invalid-feedback">
                                     {{ $message }}
@@ -69,7 +69,7 @@
                                 <label for="no_whatsapp" class="form-label">No Telephone (WA)</label>
                                 <input type="text" name="no_whatsapp"
                                        class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
-                                       placeholder="ex: 085xx" value="{{ old('no_whatsapp') }}">
+                                       placeholder="ex: 085xx" value="{{ $mengulang->no_whatsapp}}">
                                 @error('no_whatsapp')
                                 <div id="no_whatsapp" class="invalid-feedback">
                                     {{ $message }}
@@ -82,6 +82,8 @@
                                 <input type="file" name="khs"
                                        class="form-control @error('khs') is-invalid @enderror" id="khs"
                                        placeholder="foto" value="{{ old('khs') }}">
+                                <a href="{{Storage::disk('s3')->url($mengulang->khs)}}" target="_blank"> Preview </a>
+
                                 @error('khs')
                                 <div id="khs" class="invalid-feedback">
                                     {{ $message }}
@@ -90,7 +92,7 @@
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary">Daftar</button>
+                            <button type="submit" class="btn btn-primary">Ubah data</button>
                         </form>
 
                     </div>

@@ -76,9 +76,15 @@ class MengulangServiceImpl implements MengulangService
 
     function addKhs(int $id, $fileKhs)
     {
-        $dataFile = $this->uploads($fileKhs, 'diaregsi/mengulang/lhs');
 
-        $filePath = $dataFile;
+        $mengulang = $this->mengulangRepository->findById($id);
+
+
+        if ($mengulang->khs != null) {
+            $this->delete($mengulang->khs);
+        }
+
+        $filePath = $this->uploads($fileKhs, 'diaregsi/mengulang/lhs');
 
         $detailMengulang = [
             'khs' => $filePath

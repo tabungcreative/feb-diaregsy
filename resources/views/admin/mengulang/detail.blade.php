@@ -89,6 +89,12 @@
                             <p class="mb-1 font-weight-bold">{{ $mengulang->no_whatsapp  }}</p>
                         </a>
                     </div>
+                    <ul class="list-group">
+                        <li class="list-group-item" aria-disabled="true">
+                            File KHS <br>
+                            <a class="font-weight-bold" href="{{Storage::disk('s3')->url($mengulang->khs)}}" target="_blank"> Preview </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
