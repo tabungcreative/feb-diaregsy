@@ -79,8 +79,8 @@
                                 <label for="jenis_pendaftaran" class="form-label">Jenis Pendaftaran</label>
                                 <select class="form-control" name="jenis_pendaftaran">
                                     <option value="">Jenis Pendaftaran</option>
-                                    <option value="kip">KIP</option>
-                                    <option value="reguler">Reguler</option>
+                                    <option value="kip" @if($spl->jenis_pendaftaran == 'kip') selected @endif>KIP</option>
+                                    <option value="reguler" @if($spl->jenis_pendaftaran == 'reguler') selected @endif>Reguler</option>
 
                                 </select>
                                 @error('jenis_pendaftaran')
@@ -103,7 +103,7 @@
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary">Daftar</button>
+                            <button type="submit" class="btn btn-primary">Ubah Data</button>
                         </form>
 
                     </div>

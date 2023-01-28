@@ -93,7 +93,7 @@
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">KTP</h6>
                             </div>
-                            <embed src="{{ Storage::disk('public')->url($spl->foto_ktp) }}" width="100%" height="500px" />
+                            <embed src="{{ Storage::disk('s3')->url($spl->foto_ktp) }}" width="100%" height="500px" />
                         </a>
                     </div>
                 </div>

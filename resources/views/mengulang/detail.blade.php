@@ -49,6 +49,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="inputEmail4">E-mail</label>
+                                        <p class="fw-bold"> {{ $mengulang->email }} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail4">No HP (Whatsapp)</label>
+                                        <p class="fw-bold"> {{ $mengulang->no_whatsapp }} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="inputEmail4">File KHS</label>
+                                        <p class="fw-bold">
+                                            <a href="{{Storage::disk('s3')->url($mengulang->khs)}}" target="_blank"> Preview </a>
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

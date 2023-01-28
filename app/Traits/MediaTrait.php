@@ -13,8 +13,12 @@ trait MediaTrait
             $fileName   = time();
             $fileType  = $file->getClientOriginalExtension();
             $filePath   = $path . $fileName . '.' . $fileType;
-            Storage::disk('public')->put($filePath, File::get($file));
+            Storage::disk('s3')->put($filePath, File::get($file));
             return $filePath;
         }
+    }
+
+    public function delete($path) {
+        Storage::disk('s3')->delete($path);
     }
 }

@@ -26,7 +26,6 @@
                                 <th>Nim</th>
                                 <th>Nama</th>
                                 <th>Prodi</th></th>
-                                <th>Jenis Pendaftaran</th>
                                 <th>Status</th>
                                 <th>Keterangan</th>
                             </tr>
@@ -38,7 +37,6 @@
                                     <td>{{ $value->nim }}</td>
                                     <td>{{ $value->nama }}</td>
                                     <td>{{ $value->prodi }}</td>
-                                    <td class="text-uppercase">{{ $value->jenis_pendaftaran }}</td>
                                     <td>
                                         @if($value->is_verify)
                                             <span class="badge bg-primary">Terverifikasi</span>
