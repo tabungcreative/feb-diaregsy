@@ -10,6 +10,7 @@ interface MagangService
 {
     function register(MagangRegisterRequest $request);
     function addLembarPersetujuan(int $id, $fileLembarPersetujuan);
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran);
     function verify(int $id);
     function createMessage(int $id, MagangCreateMessageRequest $request);
     function update(int $id, MagangUpdateRequest $request);

@@ -10,6 +10,7 @@ interface MengulangService
 {
     function register(MengulangRegisterRequest $request);
     function addKhs(int $id, $fileKhs);
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran);
     function verify(int $id);
     function createMessage(int $id, MengulangCreateMessageRequest $request);
     function update(int $id, MengulangUpdateRequest $request);

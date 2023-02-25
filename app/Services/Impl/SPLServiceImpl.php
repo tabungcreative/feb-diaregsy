@@ -47,19 +47,17 @@ class SPLServiceImpl implements SPLService
         $nim = $request->input('nim');
         $nama = $request->input('nama');
         $prodi = $request->input('prodi');
-        $noPembayaran = $request->input('no_pembayaran');
         $noWhatsapp = $request->input('no_whatsapp');
         $jenisPendaftaran = $request->input('jenis_pendaftaran');
 
         // cek pembayaran
-        $kodePembayaran = env('KODE_SPL');
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
+        // $kodePembayaran = env('KODE_SPL');
+        // $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailSPL = [
             'nim' => $nim,
             'nama' => $nama,
             'prodi' => $prodi,
-            'no_pembayaran' => $noPembayaran,
             'foto_ktp' => null,
             'jenis_pendaftaran' => $jenisPendaftaran,
             'no_whatsapp' => $noWhatsapp,
@@ -85,10 +83,26 @@ class SPLServiceImpl implements SPLService
             $this->delete($spl->foto_ktp);
         }
 
-        $dataFile = $this->uploads($fileKtp, 'diaregsi/spl/foto-ktp/');
+        $dataFile = $this->uploads($fileKtp, 'spl/foto-ktp/');
 
         $spl->foto_ktp = $dataFile;
         $spl->save();
+        return $spl;
+    }
+
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
+    {
+        $spl = SPL::find($id);
+
+        if ($spl->bukti_pembayaran != null) {
+            $this->delete($spl->bukti_pembayaran);
+        }
+
+        $filePath = $this->uploads($fileBuktiPembayaran, 'spl/bukti-pembayaran/');
+
+        $spl->bukti_pembayaran = $filePath;
+        $spl->save();
+
         return $spl;
     }
 

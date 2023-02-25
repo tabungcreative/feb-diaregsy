@@ -19,8 +19,9 @@ class CreateSplTable extends Migration
             $table->string('nim');
             $table->string('nama')->nullable();
             $table->string('prodi')->nullable();
-            $table->string('no_pembayaran');
-            $table->string('foto_ktp')->nullable();
+            // $table->string('no_pembayaran');
+            // $table->string('foto_ktp')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
             $table->foreign('tahun_ajaran_id')
                 ->references('id')->on('tahun_ajaran');

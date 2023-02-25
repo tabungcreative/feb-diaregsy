@@ -8,7 +8,6 @@ use App\Http\Requests\MagangCreateMessageRequest;
 use App\Http\Requests\MagangRegisterRequest;
 use App\Http\Requests\MagangUpdateRequest;
 use App\Models\Magang;
-use App\Models\SPL;
 use App\Repositories\MagangRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\MagangService;
@@ -48,14 +47,13 @@ class MagangServiceImpl implements MagangService
         $prodi = $request->input('prodi');
         $alamat = $request->input('alamat');
         $email = $request->input('email');
-        $noPembayaran = $request->input('no_pembayaran');
         $instansiMagang = $request->input('instansi_magang');
         $pimpinanInstansi = $request->input('pimpinan_instansi');
         $noWhatsapp = $request->input('no_whatsapp');
 
         // cek pembayaran
-        $kodePembayaran = env('KODE_MAGANG');
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
+        // $kodePembayaran = env('KODE_MAGANG');
+        // $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailMagang = [
             'nim' => $nim,
@@ -63,7 +61,6 @@ class MagangServiceImpl implements MagangService
             'prodi' => $prodi,
             'alamat' => $alamat,
             'email' => $email,
-            'no_pembayaran' => $noPembayaran,
             'instansi_magang' => $instansiMagang,
             'pimpinan_instansi' => $pimpinanInstansi,
             'no_whatsapp' => $noWhatsapp,
@@ -89,12 +86,26 @@ class MagangServiceImpl implements MagangService
             $this->delete($magang->lembar_persetujuan);
         }
 
-        $filePath = $this->uploads($fileLembarPersetujuan, 'diaregsi/magang/lembar-persetujuan/');
-        $detailMagang = [
-            'lembar_persetujuan' => $filePath
-        ];
+        $filePath = $this->uploads($fileLembarPersetujuan, 'magang/lembar-persetujuan/');
 
-        $magang = $this->magangRepository->update($id, $detailMagang);
+        $magang->lembar_persetujuan = $filePath;
+        $magang->save();
+
+        return $magang;
+    }
+
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
+    {
+        $magang = Magang::find($id);
+
+        if ($magang->bukti_pembayaran != null) {
+            $this->delete($magang->bukti_pembayaran);
+        }
+
+        $filePath = $this->uploads($fileBuktiPembayaran, 'magang/bukti-pembayaran/');
+
+        $magang->bukti_pembayaran = $filePath;
+        $magang->save();
 
         return $magang;
     }

@@ -69,7 +69,7 @@
             <tr>
                 <td style="width: 20px">Nomor </td>
                 <td style="width: 20px">:</td>
-                <td style="width: 150px">.../MG/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</td>
+                <td style="width: 150px">.../KP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
                 <td style="width: 150px">Wonosobo, {{$tanggal}} </td>
@@ -85,7 +85,7 @@
             <tr>
                 <td style="width: 20px">Perihal </td>
                 <td style="width: 20px">:</td>
-                <td style="width: 150px"><b><u>Surat Penempatan Magang</u></b></td>
+                <td style="width: 150px"><b><u>Surat Penempatan Kerja Praktik</u></b></td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
                 <td style="width: 150px">Kepada Yth.</td>
@@ -151,6 +151,8 @@
                     <td style="width: 20px"></td>
                     <td style="width: 150px">Dekan</td>
                 </tr>
+                <br>
+                <br>
                 <br>
                 <br>
                 <tr>

@@ -20,11 +20,12 @@ class CreateMagangTable extends Migration
             $table->string('prodi')->nullable();
             $table->string('alamat');
             $table->string('email');
-            $table->string('no_pembayaran');
+            // $table->string('no_pembayaran');
             $table->string('instansi_magang');
             $table->string('pimpinan_instansi');
             $table->string('no_whatsapp');
             $table->string('lembar_persetujuan')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('keterangan')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
             $table->foreign('tahun_ajaran_id')

@@ -50,7 +50,12 @@
                                     
                                     <div class="form-group">
                                         <label for="inputPassword4">Lembar Persetujuan</label>
-                                        <p class="fw-bold"><a href="{{Storage::disk('s3')->url($magang->lembar_persetujuan)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $magang->lembar_persetujuan)}}" target="_blank"> preview </a></p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bukti Pembayaran</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $magang->bukti_pembayaran)}}" target="_blank"> preview </a></p>
                                     </div>
                                 </div>
                             </div>

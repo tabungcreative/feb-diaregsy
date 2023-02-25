@@ -28,11 +28,12 @@ class MagangRegisterRequest extends FormRequest
             'nama' => 'required',
             'prodi' => 'required',
             'alamat' => 'required',
-            'no_pembayaran' => 'required',
-            'no_whatsapp' => 'required',
+            // 'no_pembayaran' => 'required',
+            'no_whatsapp' => 'required|numeric',
             'instansi_magang' => 'required',
             'pimpinan_instansi' => 'required',
-            'lembar_persetujuan' => 'required|mimes:pdf|file|max:3000',
+            'lembar_persetujuan' => 'required|mimes:pdf|file|max:500',
+            'bukti_pembayaran' => 'required|max:500',
         ];
     }
 }

@@ -42,20 +42,26 @@ class SPLController extends Controller
 
     public function register(SPLRegisterRequest $request)
     {
-        $fileKtp = $request->file('foto_ktp');
+        // $fileKtp = $request->file('foto_ktp');
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $result = $this->splService->register($request);
-            $this->splService->addKtp($result->id, $fileKtp);
+            // $this->splService->addKtp($result->id, $fileKtp);
+            $this->splService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('spl.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotFoundException $e) {
+        } 
+        // catch (PembayaranNotFoundException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // } 
+        catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (MahasiswaNotFoundException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotSuitableWithNimException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (SPLIsExistsException $e) {
+        } 
+        // catch (PembayaranNotSuitableWithNimException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // }
+        catch (SPLIsExistsException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
             abort(500, 'terjadi kesalahan pada server');
@@ -72,10 +78,10 @@ class SPLController extends Controller
 
     public function update(SPLUpdateRequest $request, $id)
     {
-        $fileKtp = $request->file('foto_ktp');
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $spl = $this->splService->update($id, $request);
-            $this->splService->addKtp($spl->id, $fileKtp);
+            $this->splService->addBuktiPembayaran($id, $filePembayaran);
             return redirect()->route('spl.detail', $spl->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

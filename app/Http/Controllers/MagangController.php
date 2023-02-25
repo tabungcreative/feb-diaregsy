@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\MagangIsExistException;
 use App\Exceptions\MahasiswaNotFoundException;
-use App\Exceptions\PembayaranNotFoundException;
-use App\Exceptions\PembayaranNotSuitableWithNimException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\MagangRegisterRequest;
 use App\Http\Requests\MagangUpdateRequest;
@@ -13,7 +11,6 @@ use App\Repositories\MagangRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\MagangService;
 use Exception;
-use Illuminate\Http\Request;
 
 class MagangController extends Controller
 {
@@ -42,20 +39,26 @@ class MagangController extends Controller
 
     public function register(MagangRegisterRequest $request)
     {
+        $lembarPersetujuan = $request->file('lembar_persetujuan');
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
-            $lembarPersetujuan = $request->file('lembar_persetujuan');
             $result = $this->magangService->register($request);
             $this->magangService->addLembarPersetujuan($result->id, $lembarPersetujuan);
+            $this->magangService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('magang.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotFoundException $e) {
+        } 
+        // catch (PembayaranNotFoundException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // } 
+        catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (MahasiswaNotFoundException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotSuitableWithNimException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (MagangIsExistException $e) {
+        } 
+        // catch (PembayaranNotSuitableWithNimException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // } 
+        catch (MagangIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -73,12 +76,15 @@ class MagangController extends Controller
 
     public function update(MagangUpdateRequest $request, $id)
     {
+        $lembarPersetujuan = $request->file('lembar_persetujuan');
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
-            $lembarPersetujuan = $request->file('lembar_persetujuan');
             $magang = $this->magangService->update($id, $request);
-            $this->magangService->addLembarPersetujuan($magang->id, $lembarPersetujuan);
+            $this->magangService->addLembarPersetujuan($id, $lembarPersetujuan);
+            $this->magangService->addBuktiPembayaran($id, $filePembayaran);
             return redirect()->route('magang.detail', $magang->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
+            // dd($exception);
             abort(500, 'terjadi kesalahan pada server');
         }
     }

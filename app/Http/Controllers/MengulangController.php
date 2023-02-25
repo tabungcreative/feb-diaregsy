@@ -44,10 +44,12 @@ class MengulangController extends Controller
 
     public function register(MengulangRegisterRequest $request)
     {
+        $fileKhs = $request->file('khs');
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
-            $fileKhs = $request->file('khs');
             $result = $this->mengulangService->register($request);
             $this->mengulangService->addKhs($result->id, $fileKhs);
+            $this->mengulangService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('mengulang.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());

@@ -23,7 +23,8 @@ class CreateBimbinganskripsiTable extends Migration
             $table->string('pembimbing1');
             $table->string('pembimbing2');
             $table->string('no_whatsapp');
-            $table->string('no_pembayaran');
+            // $table->string('no_pembayaran');
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('status')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');

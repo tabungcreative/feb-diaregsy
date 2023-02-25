@@ -21,9 +21,10 @@ class CreateSemproTable extends Migration
             $table->string('email');
             $table->string('judul_sempro');
             $table->string('no_whatsapp');
-            $table->string('no_pembayaran');
+            // $table->string('no_pembayaran');
             $table->string('nota_kaprodi')->nullable();
             $table->string('berkas_sempro')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('status')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');

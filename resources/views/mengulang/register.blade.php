@@ -66,7 +66,7 @@
                             <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
                             <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
 
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="no_pembayaran" class="form-label">No Pembayaran</label>
                                 <input type="text" name="no_pembayaran"
                                        class="form-control @error('no_pembayaran') is-invalid @enderror" id="no_pembayaran"
@@ -76,7 +76,7 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ old('email') }}">
@@ -105,6 +105,16 @@
                                        placeholder="foto" value="{{ old('khs') }}">
                                 @error('khs')
                                 <div id="khs" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            
+                             <div class="mb-3">
+                                <label for="bukti_pembayaran" class="form-label">Bukti Pembayaran</label>
+                                <input type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran">
+                                @error('bukti_pembayaran')
+                                <div id="bukti_pembayaran" class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror

@@ -29,8 +29,9 @@ class MagangUpdateRequest extends FormRequest
             'email' => 'required',
             'instansi_magang' => 'required',
             'pimpinan_instansi' => 'required',
-            'no_whatsapp' => 'required',
-            'lembar_persetujuan' => 'mimes:pdf|file|max:3000',
+            'no_whatsapp' => 'required|numeric',
+            'lembar_persetujuan' => 'mimes:pdf|file|max:500',
+            'bukti_pembayaran' => 'mimes:pdf|required|max:500',
         ];
     }
 }

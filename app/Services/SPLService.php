@@ -10,6 +10,7 @@ interface SPLService
 {
     function register(SPLRegisterRequest $request);
     function addKtp(int $id, $fileKtp);
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran);
     function verify(int $id);
     function createMessage(int $id, SPLCreateMessageRequest $request);
     function update(int $id, SPLUpdateRequest $request);

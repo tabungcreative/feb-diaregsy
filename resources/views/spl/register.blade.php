@@ -15,7 +15,7 @@
                         <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Pendaftaran Studi Ekskursi</h4>
-                    <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">no pembayaran, syarat-syarat dan dokumen pendaftaran</span>, </p>
+                    <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">syarat-syarat dan dokumen pendaftaran</span>, </p>
 
                     <div class="card-body">
 
@@ -69,19 +69,7 @@
                             <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
 
                             <div class="mb-3">
-                                <label for="no_pembayaran" class="form-label">No Pembayaran</label>
-                                <input type="text" name="no_pembayaran"
-                                       class="form-control @error('no_pembayaran') is-invalid @enderror" id="no_pembayaran"
-                                       placeholder="SMP-10.10.001" value="{{ old('no_pembayaran') }}">
-                                @error('no_pembayaran')
-                                <div id="no_pembayaran" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="no_whatsapp" class="form-label">No Telephone (WA)</label>
+                                <label for="no_whatsapp" class="form-label fw-bolder">No Telephone (WA)</label>
                                 <input type="text" name="no_whatsapp"
                                        class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
                                        placeholder="ex: 085xx" value="{{ old('no_whatsapp') }}">
@@ -91,14 +79,12 @@
                                 </div>
                                 @enderror
                             </div>
-
                             <div class="mb-3">
-                                <label for="jenis_pendaftaran" class="form-label">Jenis Pendaftaran</label>
-                                <select class="form-control" name="jenis_pendaftaran">
+                                <label for="jenis_pendaftaran" class="form-label fw-bolder">Jenis Pendaftaran</label>
+                                <select class="form-control" id="jenis_pendaftaran" name="jenis_pendaftaran" required="required">
                                     <option value="">Jenis Pendaftaran</option>
-                                    <option value="kip">KIP</option>
-                                    <option value="reguler">Reguler</option>
-
+                                    <option value="kip" {{ old('jenis_pendaftaran') == "kip" ? 'selected' : '' }}>KIP</option>
+                                    <option value="reguler" {{ old('jenis_pendaftaran') == "reguler" ? 'selected' : '' }}>Reguler</option>
                                 </select>
                                 @error('jenis_pendaftaran')
                                 <div id="jenis_pendaftaran" class="invalid-feedback">
@@ -106,14 +92,16 @@
                                 </div>
                                 @enderror
                             </div>
-
                             <div class="mb-3">
-                                <label for="foto_ktp" class="form-label">Foto KTP</label>
-                                <input type="file" name="foto_ktp"
-                                       class="form-control @error('foto_ktp') is-invalid @enderror" id="foto_ktp"
-                                       placeholder="foto" value="{{ old('foto_ktp') }}">
-                                @error('foto_ktp')
-                                <div id="foto_ktp" class="invalid-feedback">
+                                <label for="bukti_pembayaran" class="form-label fw-bolder">Bukti Pembayaran</label>
+                                <input type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran">
+                                <div class="text-danger fs-6 text">
+                                    <strong>
+                                        maximum upload file size : 500kb.
+                                    </strong>
+                                </div>
+                                @error('bukti_pembayaran')
+                                <div id="bukti_pembayaran" class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror

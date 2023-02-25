@@ -27,9 +27,9 @@ class SPLRegisterRequest extends FormRequest
             'nim' => 'required',
             'nama' => 'required',
             'prodi' => 'required',
-            'foto_ktp' => 'required|max:3000',
-            'no_pembayaran' => 'required',
-            'no_whatsapp' => 'required',
+            'bukti_pembayaran' => 'required|max:500',
+            // 'no_pembayaran' => 'required',
+            'no_whatsapp' => 'required|numeric',
             'jenis_pendaftaran' => 'required',
         ];
     }

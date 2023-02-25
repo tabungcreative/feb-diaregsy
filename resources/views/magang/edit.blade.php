@@ -3,18 +3,18 @@
 @section("content")
     <div class="row">
         <div class="p-5 bg-danger text-center text-white">
-            <h1>Magang </h1>
+            <h1>Kerja Praktik </h1>
         </div>
     </div>
     <div class="container">
         <div class="row my-5 d-flex justify-content-center">
-            <div class="col-md-8 my-5">
+            <div class="col-md-8 mx-auto">
                 <div class="card p-4">
                     <div class="image mx-auto">
                         <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                         <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
-                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Magang</h4>
+                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Kerja Praktik</h4>
 
                     <div class="card-body">
 
@@ -55,12 +55,6 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="no_pembayaran" class="form-label">No Pembayaran</label>
-                            <input type="text" name="no_pembayaran"
-                                    class="form-control" id="no_pembayaran"
-                                    placeholder="SMP-10.10.001" value="{{ old('no_pembayaran') }}" disabled>
-                        </div>
-                        <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="ex: jalan dieng no 05" value="{{ old('alamat',$magang->alamat) }}">
                             @error('alamat')
@@ -99,8 +93,8 @@
                         <div class="mb-3">
                             <label for="no_whatsapp" class="form-label">No Telephone (WA)</label>
                             <input type="text" name="no_whatsapp"
-                                   class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
-                                   placeholder="ex: 085xx" value="{{ old('no_whatsapp',$magang->no_whatsapp) }}">
+                                class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
+                                placeholder="ex: 085xx" value="{{ old('no_whatsapp',$magang->no_whatsapp) }}">
                             @error('no_whatsapp')
                             <div id="no_whatsapp" class="invalid-feedback">
                                 {{ $message }}
@@ -110,9 +104,29 @@
                         <div class="mb-3">
                             <label for="lembar_persetujuan" class="form-label">Lembar Persetujuan</label>
                             <input type="file" name="lembar_persetujuan" class="form-control @error('lembar_persetujuan') is-invalid @enderror" id="lembar_persetujuan" placeholder="foto" value="{{ old('lembar_persetujuan') }}">
-                            <a href="{{Storage::disk('s3')->url($magang->lembar_persetujuan)}}" target="_blank"> preview </a>
+                            <div class="text-danger fs-6 text">
+                                <strong>
+                                    maximum upload file size : 500kb.
+                                </strong>
+                            </div>
+                            <a href="{{asset('storage/' . $magang->bukti_pembayaran)}}" target="_blank"> preview </a>
                             @error('lembar_persetujuan')
                             <div id="lembar_persetujuan" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="bukti_pembayaran" class="form-label">Bukti Pembayaran</label>
+                            <input type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran">
+                            <div class="text-danger fs-6 text">
+                                <strong>
+                                    maximum upload file size : 500kb.
+                                </strong>
+                            </div>
+                            <a href="{{asset('storage/' . $magang->bukti_pembayaran)}}" target="_blank"> preview </a>
+                            @error('bukti_pembayaran')
+                            <div id="bukti_pembayaran" class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror

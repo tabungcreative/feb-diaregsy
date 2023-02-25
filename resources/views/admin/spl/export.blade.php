@@ -21,6 +21,7 @@
         <th>Prodi</th>
         <th>Nomer Telp</th>
         <th>Jenis Pendaftaran</th>
+        <th>Bukti Pembayaran</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@
             <td>{{ $value->prodi }}</td>
             <td>{{ $value->no_whatsapp }}</td>
             <td>{{ $value->jenis_pendaftaran }}</td>
+            <td>{{asset('storage/' . $value->bukti_pembayaran)}}</td>
         </tr>
         @php($i++)
     @endforeach

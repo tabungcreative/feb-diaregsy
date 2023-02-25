@@ -20,8 +20,9 @@ class CreateMengulangTable extends Migration
             $table->string('prodi')->nullable();
             $table->string('email');
             $table->string('no_whatsapp');
-            $table->string('no_pembayaran');
+            // $table->string('no_pembayaran');
             $table->string('khs')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('keterangan')->nullable();
             $table->unsignedBigInteger('tahun_ajaran_id');
             $table->foreign('tahun_ajaran_id')

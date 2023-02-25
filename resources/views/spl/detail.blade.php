@@ -38,6 +38,11 @@
                                         <label for="inputEmail4">Prodi</label>
                                         <p class="fw-bold"> {{ $mahasiswa['prodi'] }} </p>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bukti Pembayaran</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $spl->bukti_pembayaran)}}" target="_blank"> preview </a></p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">

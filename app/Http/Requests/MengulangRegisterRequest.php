@@ -29,9 +29,10 @@ class MengulangRegisterRequest extends FormRequest
             'nama' => 'required',
             'prodi' => 'required',
             'email' => 'required',
-            'no_whatsapp' => 'required',
+            // 'no_whatsapp' => 'required',
             'no_pembayaran' => 'required',
             'khs' => 'required|mimes:pdf|file|max:3000',
+            'bukti_pembayaran' => 'required|mimes:pdf|file|max:3000',
         ];
     }
 }

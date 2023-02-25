@@ -7,6 +7,7 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\MengulangCreateMessageRequest;
 use App\Http\Requests\MengulangRegisterRequest;
 use App\Http\Requests\MengulangUpdateRequest;
+use App\Models\Mengulang;
 use App\Repositories\MengulangRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\MengulangService;
@@ -47,18 +48,18 @@ class MengulangServiceImpl implements MengulangService
         $prodi = $request->input('prodi');
         $email = $request->input('email');
         $noWhatsapp = $request->input('no_whatsapp');
-        $noPembayaran = $request->input('no_pembayaran');
+        // $noPembayaran = $request->input('no_pembayaran');
 
         // cek pembayaran
-        $kodePembayaran = env('KODE_MENGULANG');
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
+        // $kodePembayaran = env('KODE_MENGULANG');
+        // $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailMengulang = [
             'nim' => $nim,
             'nama' => $nama,
             'prodi' => $prodi,
             'email' => $email,
-            'no_pembayaran' => $noPembayaran,
+            // 'no_pembayaran' => $noPembayaran,
             'no_whatsapp' => $noWhatsapp,
         ];
 
@@ -91,6 +92,20 @@ class MengulangServiceImpl implements MengulangService
         ];
 
         $mengulang = $this->mengulangRepository->update($id, $detailMengulang);
+
+        return $mengulang;
+    }
+
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
+    {
+        $mengulang = Mengulang::find($id);
+
+        $dataFile = $this->uploads($fileBuktiPembayaran, 'diaregsi/mengulang/bukti-pembayaran/');
+
+        $filePath = $dataFile;
+
+        $mengulang->bukti_pembayaran = $filePath;
+        $mengulang->save();
 
         return $mengulang;
     }
