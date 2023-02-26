@@ -44,23 +44,28 @@ class SemproController extends Controller
 
     public function register(SemproRegisterRequest $request)
     {
+        $notaKaprodi = $request->file('nota_kaprodi');
+        $berkasSempro = $request->file('berkas_sempro');
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
-            $notaKaprodi = $request->file('nota_kaprodi');
-            $berkasSempro = $request->file('berkas_sempro');
             $result = $this->semproService->register($request);
-
             $this->semproService->addNotaKaprodi($result->id, $notaKaprodi);
             $this->semproService->addBerkasSempro($result->id, $berkasSempro);
+            $this->semproService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('sempro.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotFoundException $e) {
+        }
+        //  catch (PembayaranNotFoundException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // } 
+        catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (MahasiswaNotFoundException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotSuitableWithNimException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (SemproIsExistException $e) {
+        } 
+        // catch (PembayaranNotSuitableWithNimException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // } 
+        catch (SemproIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
             abort(500, 'terjadi kesalahan pada server');
@@ -79,18 +84,17 @@ class SemproController extends Controller
     {
         $notaKaprodi = $request->file('nota_kaprodi');
         $berkasSempro = $request->file('berkas_sempro');
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $sempro = $this->semproService->update($id, $request);
             $this->semproService->addNotaKaprodi($sempro->id, $notaKaprodi);
             $this->semproService->addBerkasSempro($sempro->id, $berkasSempro);
+            $this->semproService->addBuktiPembayaran($sempro->id, $filePembayaran);
             return redirect()->route('sempro.detail', $sempro->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }
-
-
-
 
     public function detail($id)
     {

@@ -15,7 +15,7 @@
                         <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Pendaftaran Seminar Proposal</h4>
-                    <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">no pembayaran, syarat-syarat dan dokumen pendaftaran</span>, </p>
+                    <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">syarat-syarat dan dokumen pendaftaran</span>, </p>
 
                     <div class="card-body">
 
@@ -69,30 +69,7 @@
                             <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
 
                             <div class="mb-3">
-                                <label for="no_pembayaran" class="form-label">No Pembayaran</label>
-                                <input type="text" name="no_pembayaran"
-                                       class="form-control @error('no_pembayaran') is-invalid @enderror" id="no_pembayaran"
-                                       placeholder="SMP-10.10.001" value="{{ old('no_pembayaran') }}">
-                                @error('no_pembayaran')
-                                <div id="no_pembayaran" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="judul_sempro" class="form-label">Judul Seminar Proposal</label>
-                                <input type="text" name="judul_sempro"
-                                       class="form-control @error('judul_sempro') is-invalid @enderror" id="judul_sempro"
-                                       placeholder="ex: 085xx" value="{{ old('judul_sempro') }}">
-                                @error('judul_sempro')
-                                <div id="judul_sempro" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label fw-bolder">Email</label>
                                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ old('email') }}">
                                 @error('email')
                                 <div id="email" class="invalid-feedback">
@@ -101,10 +78,10 @@
                             @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="no_whatsapp" class="form-label">No Telephone (WA)</label>
+                                <label for="no_whatsapp" class="form-label fw-bolder">No Telephone (WA)</label>
                                 <input type="text" name="no_whatsapp"
-                                       class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
-                                       placeholder="ex: 085xx" value="{{ old('no_whatsapp') }}">
+                                    class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
+                                    placeholder="ex: 085xx" value="{{ old('no_whatsapp') }}">
                                 @error('no_whatsapp')
                                 <div id="no_whatsapp" class="invalid-feedback">
                                     {{ $message }}
@@ -113,10 +90,27 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="nota_kaprodi" class="form-label">Nota Dinas Kaprodi</label>
+                                <label for="judul_sempro" class="form-label fw-bolder">Judul Seminar Proposal</label>
+                                <input type="text" name="judul_sempro"
+                                    class="form-control @error('judul_sempro') is-invalid @enderror" id="judul_sempro"
+                                    placeholder="ex: judul seminar proposal" value="{{ old('judul_sempro') }}">
+                                @error('judul_sempro')
+                                <div id="judul_sempro" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nota_kaprodi" class="form-label fw-bolder">Nota Dinas Kaprodi</label>
                                 <input type="file" name="nota_kaprodi"
-                                       class="form-control @error('nota_kaprodi') is-invalid @enderror" id="nota_kaprodi"
-                                       placeholder="foto" value="{{ old('nota_kaprodi') }}">
+                                    class="form-control @error('nota_kaprodi') is-invalid @enderror" id="nota_kaprodi"
+                                    placeholder="foto" value="{{ old('nota_kaprodi') }}">
+                                <div class="text-danger fs-6 text">
+                                    <strong>
+                                        maximum upload file size : 500kb.
+                                    </strong>
+                                </div>
                                 @error('nota_kaprodi')
                                 <div id="nota_kaprodi" class="invalid-feedback">
                                     {{ $message }}
@@ -125,12 +119,31 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="berkas_sempro" class="form-label">Berkas Seminar Proposal</label>
+                                <label for="berkas_sempro" class="form-label fw-bolder">Berkas Seminar Proposal</label>
                                 <input type="file" name="berkas_sempro"
-                                       class="form-control @error('berkas_sempro') is-invalid @enderror" id="berkas_sempro"
-                                       placeholder="foto" value="{{ old('berkas_sempro') }}">
+                                    class="form-control @error('berkas_sempro') is-invalid @enderror" id="berkas_sempro"
+                                    placeholder="foto" value="{{ old('berkas_sempro') }}">
+                                <div class="text-danger fs-6 text">
+                                    <strong>
+                                        maximum upload file size : 500kb.
+                                    </strong>
+                                </div>
                                 @error('berkas_sempro')
                                 <div id="berkas_sempro" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="bukti_pembayaran" class="form-label fw-bolder">Bukti Pembayaran</label>
+                                <input type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran">
+                                <div class="text-danger fs-6 text">
+                                    <strong>
+                                        maximum upload file size : 500kb.
+                                    </strong>
+                                </div>
+                                @error('bukti_pembayaran')
+                                <div id="bukti_pembayaran" class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror

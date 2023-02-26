@@ -41,11 +41,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Berkas Seminar Proposal</label>
-                                        <p class="fw-bold"><a href="{{Storage::disk('s3')->url($sempro->berkas_sempro)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $sempro->berkas_sempro)}}" target="_blank"> preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Nota Kaprodi</label>
-                                        <p class="fw-bold"><a href="{{Storage::disk('s3')->url($sempro->nota_kaprodi)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $sempro->nota_kaprodi)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bukti Pembayaran</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $sempro->bukti_pembayaran)}}" target="_blank"> preview </a></p>
                                     </div>
                                 </div>
                             </div>

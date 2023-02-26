@@ -49,11 +49,6 @@ class SemproServiceImpl implements SemproService
         $email = $request->input('email');
         $judulSempro = $request->input('judul_sempro');
         $noWhatsapp = $request->input('no_whatsapp');
-        $noPembayaran = $request->input('no_pembayaran');
-
-        // cek pembayaran
-        $kodePembayaran = env('KODE_SEMPRO');
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailSempro = [
             'nim' => $nim,
@@ -62,9 +57,7 @@ class SemproServiceImpl implements SemproService
             'email' => $email,
             'judul_sempro' => $judulSempro,
             'no_whatsapp' => $noWhatsapp,
-            'no_pembayaran' => $noPembayaran,
-            'nota_kaprodi' => null,
-            'berkas_sempro' => null,
+            // 'no_pembayaran' => $noPembayaran,
         ];
 
         // cek apakah sudah pernah mendaftar sempro
@@ -81,27 +74,48 @@ class SemproServiceImpl implements SemproService
 
     function addNotaKaprodi(int $id, $fileNotaKaprodi)
     {
-        $sempro = Sempro::find($id);
+        $sempro = $this->semproRepository->findById($id);
 
-        $dataFile = $this->uploads($fileNotaKaprodi, 'diaregsi/sempro/nota-kaprodi/');
+        if ($sempro->nota_kaprodi != null) {
+            $this->delete($sempro->nota_kaprodi);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileNotaKaprodi, 'seminar-proposal/nota-kaprodi/');
 
         $sempro->nota_kaprodi = $filePath;
         $sempro->save();
-
+        
         return $sempro;
     }
 
     function addBerkasSempro(int $id, $fileBerkasSempro)
     {
-        $sempro = Sempro::find($id);
+        $sempro = $this->semproRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBerkasSempro, 'diaregsi/sempro/berkas-sempro/');
+        if ($sempro->berkas_sempro != null) {
+            $this->delete($sempro->berkas_sempro);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileBerkasSempro, 'seminar-proposal/berkas-seminar-proposal/');
 
         $sempro->berkas_sempro = $filePath;
+        $sempro->save();
+        
+        return $sempro;
+    }
+
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
+    {
+        $sempro = $this->semproRepository->findById($id);
+
+        if ($sempro->bukti_pembayaran != null) {
+            $this->delete($sempro->bukti_pembayaran);
+        }
+
+        $filePath = $this->uploads($fileBuktiPembayaran, 'seminar-proposal/bukti-pembayaran/');
+
+
+        $sempro->bukti_pembayaran = $filePath;
         $sempro->save();
 
         return $sempro;

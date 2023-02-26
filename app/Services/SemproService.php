@@ -11,6 +11,7 @@ interface SemproService
     function register(SemproRegisterRequest $request);
     function addNotaKaprodi(int $id, $fileNotaKaprodi);
     function addBerkasSempro(int $id, $fileBerkasSempro);
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran);
     function verify(int $id);
     function createMessage(int $id, SemproCreateMessageRequest $request);
     function update(int $id, SemproUpdateRequest $request);

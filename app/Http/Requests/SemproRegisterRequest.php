@@ -30,8 +30,11 @@ class SemproRegisterRequest extends FormRequest
             'prodi' => 'required',
             'email' => 'required',
             'judul_sempro' => 'required',
-            'no_whatsapp' => 'required',
-            'no_pembayaran' => 'required',
+            'no_whatsapp' => 'required|numeric',
+            // 'no_pembayaran' => 'required',
+            'nota_kaprodi' => 'required|mimes:pdf|file|max:500',
+            'berkas_sempro' => 'required|mimes:pdf|file|max:500',
+            'bukti_pembayaran' => 'required|mimes:pdf|file|max:500',
         ];
     }
 }

@@ -39,7 +39,7 @@
                         <div class="mb-3">
                             <label for="pesan" class="form-label">Keterangan</label>
                             <textarea name="pesan"
-                                      class="form-control @error('pesan') is-invalid @enderror" id="pesan" rows="4">
+                                    class="form-control @error('pesan') is-invalid @enderror" id="pesan" rows="4">
                                 {!! $spl->keterangan !!}
                             </textarea>
                             @error('pesan')

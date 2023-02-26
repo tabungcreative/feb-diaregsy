@@ -38,7 +38,7 @@
                         <div class="mb-3">
                             <label for="pesan" class="form-label">Keterangan</label>
                             <textarea name="pesan"
-                                      class="form-control @error('pesan') is-invalid @enderror" id="pesan" rows="4">
+                                class="form-control @error('pesan') is-invalid @enderror" id="pesan" rows="4">
                                 {!! $magang->keterangan !!}
                             </textarea>
                             @error('pesan')
@@ -104,7 +104,7 @@
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">Lembar Persetujuan</h6>
                             </div>
-                             <p class="fw-bold"><a href="{{Storage::disk('s3')->url($magang->lembar_persetujuan)}}" target="_blank"><b> preview </b></a></p>
+                            <p class="fw-bold"><a href="{{asset('storage/' . $magang->lembar_persetujuan)}}" target="_blank"><b> preview </b></a></p>
                         </div>
                     </div>
                 </div>
