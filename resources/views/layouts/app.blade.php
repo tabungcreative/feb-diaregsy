@@ -47,7 +47,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('spl.list') }}">Studi Ekskursi</a></li>
-                                <li><a class="dropdown-item" href="{{ route('magang.list') }}">Magang</a></li>
+                                <li><a class="dropdown-item" href="{{ route('magang.list') }}">Kerja Praktik</a></li>
                                 <li><a class="dropdown-item" href="{{ route('mengulang.list') }}">Mengulang</a></li>
                                 <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Seminar Proposal</a></li>
                                 <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Ujian Komprehensif</a></li>

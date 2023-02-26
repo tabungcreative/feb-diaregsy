@@ -77,32 +77,30 @@ class MengulangServiceImpl implements MengulangService
 
     function addKhs(int $id, $fileKhs)
     {
-
         $mengulang = $this->mengulangRepository->findById($id);
-
 
         if ($mengulang->khs != null) {
             $this->delete($mengulang->khs);
         }
 
-        $filePath = $this->uploads($fileKhs, 'diaregsi/mengulang/lhs');
+        $filePath = $this->uploads($fileKhs, 'mengulang/khs/');
 
-        $detailMengulang = [
-            'khs' => $filePath
-        ];
-
-        $mengulang = $this->mengulangRepository->update($id, $detailMengulang);
-
+        $mengulang->khs = $filePath;
+        $mengulang->save();
+        
         return $mengulang;
     }
 
     function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
     {
-        $mengulang = Mengulang::find($id);
+        $mengulang = $this->mengulangRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBuktiPembayaran, 'diaregsi/mengulang/bukti-pembayaran/');
+        if ($mengulang->bukti_pembayaran != null) {
+            $this->delete($mengulang->bukti_pembayaran);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileBuktiPembayaran, 'mengulang/bukti-pembayaran/');
+
 
         $mengulang->bukti_pembayaran = $filePath;
         $mengulang->save();

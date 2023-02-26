@@ -64,10 +64,15 @@
                             <div class="col-lg-6">
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="inputEmail4">File KHS</label>
+                                        <label for="inputEmail4">KHS</label>
                                         <p class="fw-bold">
-                                            <a href="{{Storage::disk('s3')->url($mengulang->khs)}}" target="_blank"> Preview </a>
-
+                                            <a href="{{asset('storage/' . $mengulang->khs)}}" target="_blank"> Preview </a>
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail4">Bukti Pembayaran</label>
+                                        <p class="fw-bold">
+                                            <a href="{{asset('storage/' . $mengulang->bukti_pembayaran)}}" target="_blank"> Preview </a>
                                         </p>
                                     </div>
                                 </div>

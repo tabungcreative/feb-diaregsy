@@ -32,7 +32,7 @@
 <li class="nav-item {{ Route::is('admin.magang.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.magang.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>
-        <span>Pendaftaran Magang</span></a>
+        <span>Pendaftaran Kerja Praktik</span></a>
 </li>
 
 <li class="nav-item {{ Route::is('admin.mengulang.*') ? 'active' : '' }}">
@@ -50,7 +50,7 @@
 <li class="nav-item {{ Route::is('admin.bimbinganSkripsi.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.bimbinganSkripsi.index') }}">
         <i class="fas fa-fw fa-paper-plane"></i>
-        <span>Pendaftaran Bimbingan Skripsi</span></a>
+        <span>Pendaftaran Bimbingan Tugas Akhir</span></a>
 </li>
 
 <li class="nav-item {{ Route::is('admin.kompre.*') ? 'active' : '' }}">
