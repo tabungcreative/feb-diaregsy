@@ -43,6 +43,10 @@
                                         <label for="inputPassword4">Judul Skripsi</label>
                                         <p class="fw-bold">{{ $bimbinganSkripsi->judul_skripsi }} </p>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bukti Pembayaran</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $bimbinganSkripsi->bukti_pembayaran)}}" target="_blank"> preview </a></p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">

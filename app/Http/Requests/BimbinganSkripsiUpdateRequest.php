@@ -30,6 +30,7 @@ class BimbinganSkripsiUpdateRequest extends FormRequest
             'pembimbing1' => 'required',
             'pembimbing2' => 'required',
             'no_whatsapp' => 'required',
+            'bukti_pembayaran' => 'mimes:pdf|file|max:500',
         ];
     }
 }

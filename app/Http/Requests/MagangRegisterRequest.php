@@ -33,7 +33,7 @@ class MagangRegisterRequest extends FormRequest
             'instansi_magang' => 'required',
             'pimpinan_instansi' => 'required',
             'lembar_persetujuan' => 'required|mimes:pdf|file|max:500',
-            'bukti_pembayaran' => 'required|max:500',
+            'bukti_pembayaran' => 'required|mimes:pdf|file|max:500',
         ];
     }
 }

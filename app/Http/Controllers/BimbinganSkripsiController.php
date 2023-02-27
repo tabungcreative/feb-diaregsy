@@ -20,7 +20,11 @@ use Illuminate\Http\Request;
 
 class BimbinganSkripsiController extends Controller
 {
-    //
+    private BimbinganSkripsiService $bimbinganSkripsiService;
+    private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
+    private MahasiswaRepository $mahasiswaRepository;
+    private DosenRepository $dosenRepository;
+
     public function __construct(BimbinganSkripsiService $bimbinganSkripsiService, BimbinganSkripsiRepository $bimbinganSkripsiRepository, MahasiswaRepository $mahasiswaRepository, DosenRepository $dosenRepository)
     {
         $this->bimbinganSkripsiService = $bimbinganSkripsiService;
@@ -40,7 +44,7 @@ class BimbinganSkripsiController extends Controller
     {
         $sempro = Sempro::where('is_verify', 1)->where('nim', $nim)->first();
         if ($sempro == null) {
-            return 'Anda belum dapat mendaftar Ujian Komprehensif';
+            return 'Anda belum dapat mendaftar Bimbingan Tugas Akhir';
         }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $dosen = $this->dosenRepository->getAllDosen();
@@ -49,18 +53,24 @@ class BimbinganSkripsiController extends Controller
 
     public function register(BimbinganSkripsiRegisterRequest $request)
     {
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $result = $this->bimbinganSkripsiService->register($request);
+            $this->bimbinganSkripsiService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('bimbinganSkripsi.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotFoundException $e) {
+        } 
+        // catch (PembayaranNotFoundException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // } 
+        catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (MahasiswaNotFoundException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (PembayaranNotSuitableWithNimException $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } catch (BimbinganSkripsiIsExistException $e) {
+        } 
+        // catch (PembayaranNotSuitableWithNimException $e) {
+        //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        // } 
+        catch (BimbinganSkripsiIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
             abort(500, 'terjadi kesalahan pada server');
@@ -78,8 +88,10 @@ class BimbinganSkripsiController extends Controller
 
     public function update(BimbinganSkripsiUpdateRequest $request, $id)
     {
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $bimbinganSkripsi = $this->bimbinganSkripsiService->update($id, $request);
+            $this->bimbinganSkripsiService->addBuktiPembayaran($id, $filePembayaran);
             return redirect()->route('bimbinganSkripsi.detail', $bimbinganSkripsi->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

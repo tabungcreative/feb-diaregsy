@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Surat Penempatan - {{ $mahasiswa['nama'] }} - {{ $mahasiswa['nim'] }}</title>
+    <title>Surat tugas bimbingan tugas akhir - {{ $mahasiswa['nama'] }} - {{ $mahasiswa['nim'] }}</title>
     <style>
          /** Define the header rules **/
         header {
@@ -67,7 +67,7 @@
     </header>
     <div id="halaman">
         <br>
-        <h3 class="text-center"><u>SURAT TUGAS PEMBIMBINGAN TUGAS AKHIR/ SKRIPSI</u></h3>
+        <h3 class="text-center"><u>SURAT TUGAS PEMBIMBINGAN TUGAS AKHIR</u></h3>
         <h3 class="text-center">.../SKP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</h3>
         <br>
         <p class="fw-bold fst-italic">Assalamu’alaikum Wr. Wb.</p>
@@ -98,7 +98,7 @@
                 <td style="width: 20px">( Selaku Pembimbing II )</td>
             </tr>
         </table>
-        <p>Untuk memberikan bimbingan Tugas Akhir (TA) / Skripsi kepada mahasiswa tersebut di bawah ini :</p>
+        <p>Untuk memberikan bimbingan Tugas Akhir (TA) kepada mahasiswa tersebut di bawah ini :</p>
         <table class="table">
             <tr>
                 <td style="width: 20px">Nama</td>
@@ -116,7 +116,7 @@
                 <td style="width: 50px">{{$bimbinganSkripsi['prodi']}}</td>
             </tr>
             <tr>
-                <td style="width: 20px">Judul TA / Skripsi</td>
+                <td style="width: 20px">Judul TA </td>
                 <td style="width: 1px">:</td>
                 <td style="width: 50px">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
@@ -135,8 +135,10 @@
                     <td style="width: 150px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
-                    <td style="width: 150px">   Dekan<br>{{$tanggal}}</td>
+                    <td style="width: 150px">Dekan<br>{{$tanggal}}</td>
                 </tr>
+                <br>
+                <br>
                 <br>
                 <br>
                 <tr>
@@ -145,7 +147,10 @@
                     <td style="width: 150px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
-                    <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u></td>
+                    <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u>
+                    <br>
+                    <strong>Nidn : 0627088202 </strong>
+                    </td>
                 </tr>
             </table>
         </div>

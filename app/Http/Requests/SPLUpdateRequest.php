@@ -26,8 +26,7 @@ class SPLUpdateRequest extends FormRequest
         return [
             'no_whatsapp' => 'required',
             'jenis_pendaftaran' => 'required',
-            // 'foto_ktp' => 'required|max:3000',
-            'bukti_pembayaran' => 'required|max:3000',
+            'bukti_pembayaran' => 'mimes:pdf|required|max:500',
         ];
     }
 }

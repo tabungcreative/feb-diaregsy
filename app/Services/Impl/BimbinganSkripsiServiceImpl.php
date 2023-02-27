@@ -49,12 +49,12 @@ class BimbinganSkripsiServiceImpl implements BimbinganSkripsiService
         $judulSkripsi = $request->input('judul_skripsi');
         $pembimbing1 = $request->input('pembimbing1');
         $pembimbing2 = $request->input('pembimbing2');
-        $noPembayaran = $request->input('no_pembayaran');
+        // $noPembayaran = $request->input('no_pembayaran');
         $noWhatsapp = $request->input('no_whatsapp');
 
         // cek pembayaran
-        $kodePembayaran = env('KODE_BIMBINGAN_SKRIPSI');
-        $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
+        // $kodePembayaran = env('KODE_BIMBINGAN_SKRIPSI');
+        // $this->pembayaranService->checkPembayaran($noPembayaran, $nim, $kodePembayaran);
 
         $detailBimbinganSkripsi = [
             'nim' => $nim,
@@ -64,7 +64,7 @@ class BimbinganSkripsiServiceImpl implements BimbinganSkripsiService
             'judul_skripsi' => $judulSkripsi,
             'pembimbing1' => $pembimbing1,
             'pembimbing2' => $pembimbing2,
-            'no_pembayaran' => $noPembayaran,
+            // 'no_pembayaran' => $noPembayaran,
             'no_whatsapp' => $noWhatsapp
         ];
 
@@ -80,7 +80,22 @@ class BimbinganSkripsiServiceImpl implements BimbinganSkripsiService
         return $bimbinganSkripsi;
     }
 
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
+    {
+        $bimbinganSkripsi = $this->bimbinganSkripsiRepository->findById($id);
 
+        if ($bimbinganSkripsi->bukti_pembayaran != null) {
+            $this->delete($bimbinganSkripsi->bukti_pembayaran);
+        }
+
+        $filePath = $this->uploads($fileBuktiPembayaran, 'bimbingan-tugas-akhir/bukti-pembayaran/');
+
+
+        $bimbinganSkripsi->bukti_pembayaran = $filePath;
+        $bimbinganSkripsi->save();
+
+        return $bimbinganSkripsi;
+    }
     function verify(int $id)
     {
         $detailBimbinganSkripsi = [

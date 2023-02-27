@@ -17,6 +17,11 @@ use Carbon\Carbon;
 class BimbinganSkripsiController extends Controller
 {
     //
+    private BimbinganSkripsiService $bimbinganSkripsiService;
+    private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
+    private MahasiswaRepository $mahasiswaRepository;
+    private DosenRepository $dosenRepository;
+
     public function __construct(BimbinganSkripsiService $bimbinganSkripsiService, BimbinganSkripsiRepository $bimbinganSkripsiRepository, MahasiswaRepository $mahasiswaRepository, DosenRepository $dosenRepository)
     {
         $this->bimbinganSkripsiService = $bimbinganSkripsiService;
@@ -28,7 +33,7 @@ class BimbinganSkripsiController extends Controller
 
     public function index()
     {
-        $title = 'Pendaftaran Bimbingan Skripsi';
+        $title = 'Pendaftaran Tugas Akhir';
         $bimbinganSkripsi = $this->bimbinganSkripsiRepository->getALl();
         return view('admin.bimbinganSkripsi.index', compact('title', 'bimbinganSkripsi'));
     }

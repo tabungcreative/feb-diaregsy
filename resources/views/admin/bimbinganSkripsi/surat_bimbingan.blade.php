@@ -68,7 +68,7 @@
     </header>
     <div id="halaman">
         <br>
-        <h1 class="text-center">KARTU PEMBIMBING SKRIPSI</h1>
+        <h1 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h1>
         <br>
         <table class="table">
             <tr>
@@ -128,7 +128,7 @@
     </header>
     <div id="halaman">
         <br>
-        <h1 class="text-center">KARTU PEMBIMBING SKRIPSI</h1>
+        <h1 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h1>
         <br>
         <table class="table">
             <tr>

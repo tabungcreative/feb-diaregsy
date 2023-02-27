@@ -19,7 +19,7 @@ class CreateKompreTable extends Migration
             $table->string('nama')->nullable();
             $table->string('prodi')->nullable();
             $table->string('email');
-            // $table->string('no_whatsapp');
+            $table->string('no_whatsapp');
             $table->string('pembimbing1');
             $table->string('pembimbing2');
             $table->string('kartu_konfirmasi')->nullable();

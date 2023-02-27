@@ -6,6 +6,7 @@ use App\Exceptions\KompreIsExistException;
 use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\KompreRegisterRequest;
+use App\Http\Requests\KompreUpdateRequest;
 use App\Models\BimbinganSkripsi;
 use App\Models\Sempro;
 use App\Repositories\BimbinganSkripsiRepository;
@@ -22,13 +23,16 @@ class KompreController extends Controller
     private KompreRepository $kompreRepository;
     private MahasiswaRepository $mahasiswaRepository;
     private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
+    private DosenRepository $dosenRepository;
 
-    public function __construct(KompreService $kompreService, KompreRepository $kompreRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository)
+
+    public function __construct(KompreService $kompreService, KompreRepository $kompreRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository, DosenRepository $dosenRepository)
     {
         $this->kompreService = $kompreService;
         $this->kompreRepository = $kompreRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
         $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
+        $this->dosenRepository = $dosenRepository;
     }
 
     public function list()
@@ -49,9 +53,11 @@ class KompreController extends Controller
     }
 
     public function register(KompreRegisterRequest $request)
-    {
+    {        
+        $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $result = $this->kompreService->register($request);
+            $this->kompreService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('kompre.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
@@ -60,10 +66,31 @@ class KompreController extends Controller
         } catch (KompreIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
+            dd($e);
             abort(500, 'terjadi kesalahan pada server');
         }
     }
 
+    public function edit($nim)
+    {
+        $kompre = $this->kompreRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+        $dosen = $this->dosenRepository->getAllDosen();
+
+        return view('kompre.edit', compact('kompre', 'mahasiswa', 'dosen'));
+    }
+
+    public function update(KompreUpdateRequest $request, $id)
+    {
+        $filePembayaran = $request->file('bukti_pembayaran');
+        try {
+            $kompre = $this->kompreService->update($id, $request);
+            $this->kompreService->addBuktiPembayaran($id, $filePembayaran);
+            return redirect()->route('kompre.detail', $kompre->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
 
 
     public function detail($id)

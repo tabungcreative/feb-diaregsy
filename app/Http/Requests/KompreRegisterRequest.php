@@ -32,6 +32,7 @@ class KompreRegisterRequest extends FormRequest
             'no_whatsapp' => 'required',
             'pembimbing1' => 'required',
             'pembimbing2' => 'required',
+            'bukti_pembayaran' => 'required|mimes:pdf|file|max:500',
         ];
     }
 }

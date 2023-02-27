@@ -27,8 +27,8 @@ class MengulangUpdateRequest extends FormRequest
             //
             'email' => 'required',
             'no_whatsapp' => 'required',
-            'khs' => 'required|mimes:pdf|file|max:500',
-            'bukti_pembayaran' => 'required|mimes:pdf|file|max:500',
+            'khs' => 'mimes:pdf|file|max:500',
+            'bukti_pembayaran' => 'mimes:pdf|file|max:500',
         ];
     }
 }

@@ -28,9 +28,9 @@ class SemproUpdateRequest extends FormRequest
             'email' => 'required',
             'judul_sempro' => 'required',
             'no_whatsapp' => 'required|numeric',
-            'nota_kaprodi' => 'required|mimes:pdf|file|max:500',
-            'berkas_sempro' => 'required|mimes:pdf|file|max:500',
-            'bukti_pembayaran' => 'required|mimes:pdf|file|max:500',
+            'nota_kaprodi' => 'mimes:pdf|file|max:500',
+            'berkas_sempro' => 'mimes:pdf|file|max:500',
+            'bukti_pembayaran' => 'mimes:pdf|file|max:500',
         ];
     }
 }

@@ -5,7 +5,7 @@
     <div class="card">
         <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
             <div>
-                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Bimbingan Skripsi Tahun 2021</h5>
+                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Bimbingan Tugas Akhir Tahun 2021</h5>
                 <a href="{{ route('admin.bimbinganSkripsi.export') }}" class="btn btn-success">
                     <i class="fas fa-download"></i>
                     Export Excel
@@ -28,7 +28,7 @@
                         <th>Prodi</th>
                         <th>No Telp (WA)</th>
                         <th>Email</th>
-                        <th>Judul Skripsi</th>
+                        <th>Judul TA</th>
                         <th>Pembimbing 1</th>
                         <th>Pembimbing 2</th>
                         <th>Verifikasi</th>

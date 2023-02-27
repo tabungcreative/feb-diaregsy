@@ -9,6 +9,7 @@ use App\Http\Requests\BimbinganSkripsiUpdateRequest;
 interface BimbinganSkripsiService
 {
     function register(BimbinganSkripsiRegisterRequest $request);
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran);
     function verify(int $id);
     function createMessage(int $id, BimbinganSkripsiCreateMessageRequest $request);
     function update(int $id, BimbinganSkripsiUpdateRequest $request);

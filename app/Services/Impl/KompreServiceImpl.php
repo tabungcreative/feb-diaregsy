@@ -10,9 +10,13 @@ use App\Http\Requests\KompreUpdateRequest;
 use App\Repositories\KompreRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\KompreService;
+use App\Traits\MediaTrait;
+
 
 class KompreServiceImpl implements KompreService
 {
+    use MediaTrait;
+
     private KompreRepository $kompreRepository;
     private TahunAjaranRepository $tahunAjaranRepository;
 
@@ -61,6 +65,23 @@ class KompreServiceImpl implements KompreService
         }
 
         $kompre = $this->kompreRepository->create($detailKompre, $tahunAjaran->id);
+
+        return $kompre;
+    }
+
+    function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
+    {
+        $kompre = $this->kompreRepository->findById($id);
+
+        if ($kompre->bukti_pembayaran != null) {
+            $this->delete($kompre->bukti_pembayaran);
+        }
+
+        $filePath = $this->uploads($fileBuktiPembayaran, 'ujian-komprehensif/bukti-pembayaran/');
+
+
+        $kompre->bukti_pembayaran = $filePath;
+        $kompre->save();
 
         return $kompre;
     }

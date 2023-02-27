@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Diaregsi | Layanan Pendaftaran Mahasiswa</title>
+        <title>Diaregsy | Layanan Pendaftaran Mahasiswa</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         {{-- fonts --}}
@@ -50,8 +50,8 @@
                                 <li><a class="dropdown-item" href="{{ route('magang.list') }}">Kerja Praktik</a></li>
                                 <li><a class="dropdown-item" href="{{ route('mengulang.list') }}">Mengulang</a></li>
                                 <li><a class="dropdown-item" href="{{ route('sempro.list') }}">Seminar Proposal</a></li>
-                                <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Ujian Komprehensif</a></li>
                                 <li><a class="dropdown-item" href="{{ route('bimbinganSkripsi.list') }}">Bimbingan Tugas Akhir</a></li>
+                                <li><a class="dropdown-item" href="{{ route('kompre.list') }}">Ujian Komprehensif</a></li>
                                 <li><a class="dropdown-item" href="{{ route('ujianAkhir.list') }}">Ujian Tugas Akhir</a></li>
                                 <li><a class="dropdown-item" href="{{ route('yudisium.list') }}">Yudisium</a></li>
                                 {{-- <li><a class="dropdown-item" href="#">Semester Pendek</a></li> --}}
