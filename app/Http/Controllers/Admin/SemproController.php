@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SemproCreateMessageRequest;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SemproRepository;
+use App\Repositories\TahunAjaranRepository;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\SemproService;
 use Carbon\Carbon;
@@ -19,19 +20,23 @@ class SemproController extends Controller
     private SemproService $semproService;
     private SemproRepository $semproRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
-    public function __construct(SemproService $semproService, SemproRepository $semproRepository, MahasiswaRepository $mahasiswaRepository)
+
+    public function __construct(SemproService $semproService, SemproRepository $semproRepository, MahasiswaRepository $mahasiswaRepository,TahunAjaranRepository $tahunAjaranRepository)
     {
         $this->semproService = $semproService;
         $this->semproRepository = $semproRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
     public function index()
     {
         $title = 'Pendaftaran Seminar Proposal';
         $sempro = $this->semproRepository->getALl();
-        return view('admin.sempro.index', compact('title', 'sempro'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+        return view('admin.sempro.index', compact('title', 'sempro','tahunAjaran'));
     }
 
     public function detail($id)

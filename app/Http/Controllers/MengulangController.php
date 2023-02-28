@@ -84,8 +84,8 @@ class MengulangController extends Controller
         $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $mengulang = $this->mengulangService->update($id, $request);
-            $this->mengulangService->addKhs($mengulang->id, $fileKhs);
-            $this->mengulangService->addBuktiPembayaran($mengulang->id, $filePembayaran);
+            if ($fileKhs != null) $this->mengulangService->addKhs($mengulang->id, $fileKhs);
+            if ($filePembayaran != null) $this->mengulangService->addBuktiPembayaran($mengulang->id, $filePembayaran);
             return redirect()->route('mengulang.detail', $mengulang->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

@@ -40,7 +40,7 @@ class UjianAkhirController extends Controller
     {
         $kompre = Kompre::where('is_verify', 1)->where('nim', $nim)->first();
         if ($kompre == null) {
-            return 'Anda belum dapat mendaftar Ujian Komprehensif';
+            return 'Anda belum dapat mendaftar Ujian Tugas Akhir';
         }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
@@ -49,17 +49,17 @@ class UjianAkhirController extends Controller
 
     public function register(UjianAkhirRegisterRequest $request)
     {
+        $fileSkripsi = $request->file('berkas_skripsi');
+        $fileIjazahTerakhir = $request->file('ijazah_terakhir');
+        $fileTranskripNilai = $request->file('transkrip_nilai');
+        $fileAkta = $request->file('akta_kelahiran');
+        $fileKK = $request->file('kartu_keluarga');
+        $fileKtp = $request->file('ktp');
+        $fileLembarBimbingan = $request->file('lembar_bimbingan');
+        $fileSlipSemesterTerakhir = $request->file('slip_pembayaransemesterterakhir');
+        $filePembayaranSkripsi = $request->file('slip_pembayaranSkripsi');
+        $fileSertifikat = $request->file('sertifikat');
         try {
-            $fileSkripsi = $request->file('berkas_skripsi');
-            $fileIjazahTerakhir = $request->file('ijazah_terakhir');
-            $fileTranskripNilai = $request->file('transkrip_nilai');
-            $fileAkta = $request->file('akta_kelahiran');
-            $fileKK = $request->file('kartu_keluarga');
-            $fileKtp = $request->file('ktp');
-            $fileLembarBimbingan = $request->file('lembar_bimbingan');
-            $fileSlipSemesterTerakhir = $request->file('slip_pembayaransemesterterakhir');
-            $filePembayaranSkripsi = $request->file('slip_pembayaranSkripsi');
-            $fileSertifikat = $request->file('sertifikat');
             $result = $this->ujianAkhirService->register($request);
             $this->ujianAkhirService->addBerkasSkripsi($result->id, $fileSkripsi);
             $this->ujianAkhirService->addIjazahTerakhir($result->id, $fileIjazahTerakhir);
@@ -93,10 +93,29 @@ class UjianAkhirController extends Controller
     }
 
     public function update(UjianAkhirUpdateRequest $request, $id)
-    {
+    {   
+        $fileSkripsi = $request->file('berkas_skripsi');
+        $fileIjazahTerakhir = $request->file('ijazah_terakhir');
+        $fileTranskripNilai = $request->file('transkrip_nilai');
+        $fileAkta = $request->file('akta_kelahiran');
+        $fileKK = $request->file('kartu_keluarga');
+        $fileKtp = $request->file('ktp');
+        $fileLembarBimbingan = $request->file('lembar_bimbingan');
+        $fileSlipSemesterTerakhir = $request->file('slip_pembayaransemesterterakhir');
+        $filePembayaranSkripsi = $request->file('slip_pembayaranSkripsi');
+        $fileSertifikat = $request->file('sertifikat');
         try {
-
             $ujianAkhir = $this->ujianAkhirService->update($id, $request);
+            if ($fileSkripsi != null) $this->ujianAkhirService->addBerkasSkripsi($id, $fileSkripsi);
+            if ($fileIjazahTerakhir != null) $this->ujianAkhirService->addIjazahTerakhir($id, $fileIjazahTerakhir);
+            if ($fileTranskripNilai != null) $this->ujianAkhirService->addTranskripNilai($id, $fileTranskripNilai);
+            if ($fileAkta != null) $this->ujianAkhirService->addAkta($id, $fileAkta);
+            if ($fileKK != null) $this->ujianAkhirService->addKK($id, $fileKK);
+            if ($fileKtp != null) $this->ujianAkhirService->addKtp($id, $fileKtp);
+            if ($fileLembarBimbingan != null) $this->ujianAkhirService->addLembarBimbingan($id, $fileLembarBimbingan);
+            if ($fileSlipSemesterTerakhir != null) $this->ujianAkhirService->addSlipSemesterTerakhir($id, $fileSlipSemesterTerakhir);
+            if ($filePembayaranSkripsi != null) $this->ujianAkhirService->addPembayaranSkripsi($id, $filePembayaranSkripsi);
+            if ($fileSertifikat != null) $this->ujianAkhirService->addSertifikat($id, $fileSertifikat);
             return redirect()->route('ujianAkhir.detail', $ujianAkhir->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

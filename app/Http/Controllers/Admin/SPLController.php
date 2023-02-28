@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SPLCreateMessageRequest;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SPLRepository;
+use App\Repositories\TahunAjaranRepository;
 use App\Services\SPLService;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,22 +18,27 @@ class SPLController extends Controller
     private SPLService $SPLService;
     private SPLRepository $SPLRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
     public function __construct(
         SPLService $SPLService,
         SPLRepository $SPLRepository,
-        MahasiswaRepository $mahasiswaRepository
+        MahasiswaRepository $mahasiswaRepository,
+        TahunAjaranRepository $tahunAjaranRepository
     ) {
         $this->SPLService = $SPLService;
         $this->SPLRepository = $SPLRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
+        
     }
 
     public function index()
     {
-        $title = 'Pendaftaran SPL';
+        $title = 'Pendaftaran Studi Ekskursi';
         $spl = $this->SPLRepository->getALl();
-        return view('admin.spl.index', compact('title', 'spl'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+        return view('admin.spl.index', compact('title', 'spl','tahunAjaran'));
     }
 
     public function detail($id)

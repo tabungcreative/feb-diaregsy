@@ -81,7 +81,7 @@ class SPLController extends Controller
         $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $spl = $this->splService->update($id, $request);
-            $this->splService->addBuktiPembayaran($id, $filePembayaran);
+            if ($filePembayaran != null) $this->splService->addBuktiPembayaran($id, $filePembayaran);
             return redirect()->route('spl.detail', $spl->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

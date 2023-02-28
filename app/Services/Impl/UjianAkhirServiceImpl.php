@@ -7,7 +7,6 @@ use App\Exceptions\UjianAkhirIsExistException;
 use App\Http\Requests\UjianAkhirCreateMessageRequest;
 use App\Http\Requests\UjianAkhirRegisterRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
-use App\Models\UjianAkhir;
 use App\Repositories\TahunAjaranRepository;
 use App\Repositories\UjianAkhirRepository;
 use App\Services\PembayaranService;
@@ -87,11 +86,13 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addBerkasSkripsi(int $id, $fileSkripsi)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileSkripsi, 'diaregsi/ujianAkhir/file-skripsi/');
+        if ($ujianAkhir->berkas_skripsi != null) {
+            $this->delete($ujianAkhir->berkas_skripsi);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileSkripsi, 'ujian-tugas-akhir/file-tugas-akhir/');
 
         $ujianAkhir->berkas_skripsi = $filePath;
         $ujianAkhir->save();
@@ -101,11 +102,12 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addIjazahTerakhir(int $id, $fileIjazahTerakhir)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileIjazahTerakhir, 'diaregsi/ujianAkhir/ijazah-terakhir/');
-
-        $filePath = $dataFile;
+        if ($ujianAkhir->ijazah_terakhir != null) {
+            $this->delete($ujianAkhir->ijazah_terakhir);
+        }
+        $filePath = $this->uploads($fileIjazahTerakhir, 'ujian-tugas-akhir/ijazah-terakhir/');
 
         $ujianAkhir->ijazah_terakhir = $filePath;
         $ujianAkhir->save();
@@ -115,11 +117,13 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addTranskripNilai(int $id, $fileTranskripNilai)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileTranskripNilai, 'diaregsi/ujianAkhir/transkrip-nilai/');
+        if ($ujianAkhir->transkrip_nilai != null) {
+            $this->delete($ujianAkhir->transkrip_nilai);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileTranskripNilai, 'ujian-tugas-akhir/transkrip-nilai/');
 
         $ujianAkhir->transkrip_nilai = $filePath;
         $ujianAkhir->save();
@@ -128,11 +132,13 @@ class UjianAkhirServiceImpl implements UjianAkhirService
     }
     function addAkta(int $id, $fileAkta)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileAkta, 'diaregsi/ujianAkhir/akta-kelahiran/');
+        if ($ujianAkhir->akta_kelahiran != null) {
+            $this->delete($ujianAkhir->akta_kelahiran);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileAkta, 'ujian-tugas-akhir/akta-kelahiran/');
 
         $ujianAkhir->akta_kelahiran = $filePath;
         $ujianAkhir->save();
@@ -141,11 +147,14 @@ class UjianAkhirServiceImpl implements UjianAkhirService
     }
     function addKK(int $id, $fileKK)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileKK, 'diaregsi/ujianAkhir/kartu-keluarga/');
+        if ($ujianAkhir->kartu_keluarga != null) {
+            $this->delete($ujianAkhir->kartu_keluarga);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileKK, 'ujian-tugas-akhir/kartu-keluarga/');
+
 
         $ujianAkhir->kartu_keluarga = $filePath;
         $ujianAkhir->save();
@@ -155,11 +164,14 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addKtp(int $id, $fileKtp)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileKtp, 'diaregsi/ujianAkhir/foto-ktp/');
+        if ($ujianAkhir->ktp != null) {
+            $this->delete($ujianAkhir->ktp);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileKtp, 'ujian-tugas-akhir/foto-ktp/');
+
 
         $ujianAkhir->ktp = $filePath;
         $ujianAkhir->save();
@@ -169,11 +181,14 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addLembarBimbingan(int $id, $fileLembarBimbingan)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileLembarBimbingan, 'diaregsi/ujianAkhir/lembar-bimbingan/');
+        if ($ujianAkhir->lembar_bimbingan != null) {
+            $this->delete($ujianAkhir->lembar_bimbingan);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileLembarBimbingan, 'ujian-tugas-akhir/lembar-bimbingan/');
+
 
         $ujianAkhir->lembar_bimbingan = $filePath;
         $ujianAkhir->save();
@@ -183,11 +198,13 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addSlipSemesterTerakhir(int $id, $fileSlipSemesterTerakhir)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileSlipSemesterTerakhir, 'diaregsi/ujianAkhir/slip-semester-terakhir/');
+        if ($ujianAkhir->slip_pembayaransemesterterakhir != null) {
+            $this->delete($ujianAkhir->slip_pembayaransemesterterakhir);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileSlipSemesterTerakhir, 'ujian-tugas-akhir/slip-pembayaran-semester-terakhir/');
 
         $ujianAkhir->slip_pembayaransemesterterakhir = $filePath;
         $ujianAkhir->save();
@@ -197,11 +214,14 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addPembayaranSkripsi(int $id, $filePembayaranSkripsi)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($filePembayaranSkripsi, 'diaregsi/ujianAkhir/slip-pembayaran-skripsi/');
+        if ($ujianAkhir->slip_pembayaranSkripsi != null) {
+            $this->delete($ujianAkhir->slip_pembayaranSkripsi);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($filePembayaranSkripsi, 'ujian-tugas-akhir/slip-pembayaran-skripsi/');
+
 
         $ujianAkhir->slip_pembayaranSkripsi = $filePath;
         $ujianAkhir->save();
@@ -211,11 +231,14 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
     function addSertifikat(int $id, $fileSertifikat)
     {
-        $ujianAkhir = UjianAkhir::find($id);
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $dataFile = $this->uploads($fileSertifikat, 'diaregsi/ujianAkhir/sertifikat/');
+        if ($ujianAkhir->sertifikat != null) {
+            $this->delete($ujianAkhir->sertifikat);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileSertifikat, 'ujian-tugas-akhir/sertifikat/');
+
 
         $ujianAkhir->sertifikat = $filePath;
         $ujianAkhir->save();

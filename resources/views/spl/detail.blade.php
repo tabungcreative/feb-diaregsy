@@ -51,7 +51,7 @@
                                         <label for="inputEmail4">Nomer Telephone</label>
                                         <p class="fw-bold"> {{ $spl->no_whatsapp }} </p>
                                     </div>
-                                     <div class="form-group">
+                                    <div class="form-group">
                                         <label for="inputPassword4">Jenis Pendaftaran</label>
                                         <p class="fw-bold">{{ $spl->jenis_pendaftaran }} </p>
                                     </div>

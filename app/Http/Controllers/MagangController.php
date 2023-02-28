@@ -80,8 +80,8 @@ class MagangController extends Controller
         $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $magang = $this->magangService->update($id, $request);
-            $this->magangService->addLembarPersetujuan($id, $lembarPersetujuan);
-            $this->magangService->addBuktiPembayaran($id, $filePembayaran);
+            if ($lembarPersetujuan != null) $this->magangService->addLembarPersetujuan($id, $lembarPersetujuan);
+            if ($filePembayaran != null) $this->magangService->addBuktiPembayaran($id, $filePembayaran);
             return redirect()->route('magang.detail', $magang->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             // dd($exception);

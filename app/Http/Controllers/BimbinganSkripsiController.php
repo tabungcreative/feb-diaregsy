@@ -91,7 +91,7 @@ class BimbinganSkripsiController extends Controller
         $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $bimbinganSkripsi = $this->bimbinganSkripsiService->update($id, $request);
-            $this->bimbinganSkripsiService->addBuktiPembayaran($id, $filePembayaran);
+            if ($filePembayaran != null) $this->bimbinganSkripsiService->addBuktiPembayaran($id, $filePembayaran);
             return redirect()->route('bimbinganSkripsi.detail', $bimbinganSkripsi->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

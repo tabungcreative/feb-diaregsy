@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MengulangCreateMessageRequest;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\MengulangRepository;
+use App\Repositories\TahunAjaranRepository;
 use App\Services\MengulangService;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,18 +19,23 @@ class MengulangController extends Controller
     private MengulangService $mengulangService;
     private MengulangRepository $mengulangRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
-    public function __construct(MengulangService $mengulangService, MengulangRepository $mengulangRepository, MahasiswaRepository $mahasiswaRepository)
+
+    public function __construct(MengulangService $mengulangService, MengulangRepository $mengulangRepository, MahasiswaRepository $mahasiswaRepository,TahunAjaranRepository $tahunAjaranRepository)
     {
         $this->mengulangService = $mengulangService;
         $this->mengulangRepository = $mengulangRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
+
     }
     public function index()
     {
         $title = 'Pendaftaran Mengulang';
         $mengulang = $this->mengulangRepository->getALl();
-        return view('admin.mengulang.index', compact('title', 'mengulang'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+        return view('admin.mengulang.index', compact('title', 'mengulang','tahunAjaran'));
     }
 
     public function detail($id)

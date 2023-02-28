@@ -6,6 +6,7 @@ use App\Exports\YudisiumExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\YudisiumCreateMessageRequest;
 use App\Repositories\MahasiswaRepository;
+use App\Repositories\TahunAjaranRepository;
 use App\Repositories\YudisiumRepository;
 use App\Services\YudisiumService;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,19 +18,24 @@ class YudisiumController extends Controller
     private YudisiumService $yudisiumService;
     private YudisiumRepository $yudisiumRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
-    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository)
+
+    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository,TahunAjaranRepository $tahunAjaranRepository)
     {
         $this->yudisiumService = $yudisiumService;
         $this->yudisiumRepository = $yudisiumRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
     public function index()
     {
         $title = 'Pendaftaran Yudisium';
         $yudisium = $this->yudisiumRepository->getALl();
-        return view('admin.yudisium.index', compact('title', 'yudisium'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+
+        return view('admin.yudisium.index', compact('title', 'yudisium','tahunAjaran'));
     }
 
     public function detail($id)

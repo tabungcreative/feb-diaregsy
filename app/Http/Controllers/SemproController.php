@@ -87,9 +87,9 @@ class SemproController extends Controller
         $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $sempro = $this->semproService->update($id, $request);
-            $this->semproService->addNotaKaprodi($sempro->id, $notaKaprodi);
-            $this->semproService->addBerkasSempro($sempro->id, $berkasSempro);
-            $this->semproService->addBuktiPembayaran($sempro->id, $filePembayaran);
+            if ($notaKaprodi != null) $this->semproService->addNotaKaprodi($sempro->id, $notaKaprodi);
+            if ($berkasSempro != null) $this->semproService->addBerkasSempro($sempro->id, $berkasSempro);
+            if ($filePembayaran != null) $this->semproService->addBuktiPembayaran($sempro->id, $filePembayaran);
             return redirect()->route('sempro.detail', $sempro->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

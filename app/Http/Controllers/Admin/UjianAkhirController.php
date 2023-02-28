@@ -6,6 +6,7 @@ use App\Exports\UjianAkhirExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UjianAkhirCreateMessageRequest;
 use App\Repositories\MahasiswaRepository;
+use App\Repositories\TahunAjaranRepository;
 use App\Repositories\UjianAkhirRepository;
 use App\Services\UjianAkhirService;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,19 +19,23 @@ class UjianAkhirController extends Controller
     private UjianAkhirService $ujianAkhirService;
     private UjianAkhirRepository $ujianAkhirRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
-    public function __construct(UjianAkhirService $ujianAkhirService, UjianAkhirRepository $ujianAkhirRepository, MahasiswaRepository $mahasiswaRepository)
+
+    public function __construct(UjianAkhirService $ujianAkhirService, UjianAkhirRepository $ujianAkhirRepository, MahasiswaRepository $mahasiswaRepository,TahunAjaranRepository $tahunAjaranRepository)
     {
         $this->ujianAkhirService = $ujianAkhirService;
         $this->ujianAkhirRepository = $ujianAkhirRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
     public function index()
     {
-        $title = 'Pendaftaran Ujian Akhir';
+        $title = 'Pendaftaran Ujian Tugas Akhir';
         $ujianAkhir = $this->ujianAkhirRepository->getALl();
-        return view('admin.ujianAkhir.index', compact('title', 'ujianAkhir'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+        return view('admin.ujianAkhir.index', compact('title', 'ujianAkhir','tahunAjaran'));
     }
 
     public function detail($id)

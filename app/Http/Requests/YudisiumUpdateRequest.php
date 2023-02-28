@@ -31,8 +31,17 @@ class YudisiumUpdateRequest extends FormRequest
             'jenis_kelamin' => 'required',
             'pembimbing1' => 'required',
             'pembimbing2' => 'required',
-            'no_whatsapp' => 'required',
+            'no_whatsapp' => 'required|numeric',
             'ukuran_toga' => 'required',
+            'bukti_pembayaran' => 'mimes:pdf|file|max:500',
+            'bebas_spp' => 'mimes:pdf|file|max:500',
+            'transkrip_nilai' => 'mimes:pdf|file|max:500',
+            'bebas_perpus' => 'mimes:pdf|file|max:500',
+            'artikel' => 'mimes:pdf|file|max:500',
+            'file_skripsi' => 'mimes:pdf|file|max:500',
+            'bebas_plagiasi' => 'mimes:pdf|file|max:500',
+            'bukti_penjilidan' => 'mimes:pdf|file|max:500',
+            'bukti_pengumpulan' => 'mimes:pdf|file|max:500',
         ];
     }
 }

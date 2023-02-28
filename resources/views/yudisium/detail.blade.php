@@ -1,4 +1,5 @@
 @extends("layouts.app")
+@inject('carbon', 'Carbon\Carbon')
 
 @section("content")
     <div class="row">
@@ -44,8 +45,28 @@
                                         <p class="fw-bold"> {{ $yudisium->judul_skripsi}} </p>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPassword4">Ukuran Toga</label>
-                                        <p class="fw-bold"> {{ $yudisium->ukuran_toga}} </p>
+                                        <label for="inputPassword4">Tanggal Mulai Tugas Akhir</label>
+                                        <p class="fw-bold"> {{ $carbon::parse($yudisium->tanggal_mulai)->translatedFormat('d F Y')}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Tanggal Ujian Tugas Akhir</label>
+                                        <p class="fw-bold"> {{ $carbon::parse($yudisium->tanggal_ujian)->translatedFormat('d F Y')}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bukti Pembayaran</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bukti_pembayaran)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bebas Spp</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_spp)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Transkrip Nilai</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->transkrip_nilai)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bebas Spp</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_spp)}}" target="_blank"> preview </a></p>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +82,32 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Pembimbing</label>
-                                        <p class="fw-bold">{{ $ujianAkhir->pembimbing1 }} </p>
-                                        <p class="fw-bold">{{ $ujianAkhir->pembimbing2 }} </p>
+                                        <p class="fw-bold">{{ $yudisium->pembimbing1 }} </p>
+                                        <p class="fw-bold">{{ $yudisium->pembimbing2 }} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Ukuran Toga</label>
+                                        <p class="fw-bold"> {{ $yudisium->ukuran_toga}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Artikel</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->artikel)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Berkas Tugas Akhir</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->file_skripsi)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bebas Plagiasi</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_plagiasi)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bukti Penjilidan</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bukti_penjilidan)}}" target="_blank"> preview </a></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Bebas Perpustakaan</label>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_perpus)}}" target="_blank"> preview </a></p>
                                     </div>
                                 </div>
                             </div>

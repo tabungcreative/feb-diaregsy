@@ -9,6 +9,7 @@ use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\BimbinganSkripsiService;
 use App\Repositories\DosenRepository;
+use App\Repositories\TahunAjaranRepository;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Romans\Filter\IntToRoman;
@@ -21,21 +22,25 @@ class BimbinganSkripsiController extends Controller
     private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
     private MahasiswaRepository $mahasiswaRepository;
     private DosenRepository $dosenRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
-    public function __construct(BimbinganSkripsiService $bimbinganSkripsiService, BimbinganSkripsiRepository $bimbinganSkripsiRepository, MahasiswaRepository $mahasiswaRepository, DosenRepository $dosenRepository)
+
+    public function __construct(BimbinganSkripsiService $bimbinganSkripsiService, BimbinganSkripsiRepository $bimbinganSkripsiRepository, MahasiswaRepository $mahasiswaRepository, DosenRepository $dosenRepository,TahunAjaranRepository $tahunAjaranRepository)
     {
         $this->bimbinganSkripsiService = $bimbinganSkripsiService;
         $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
         $this->dosenRepository = $dosenRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
 
     public function index()
     {
-        $title = 'Pendaftaran Tugas Akhir';
+        $title = 'Pendaftaran Bimbingan Tugas Akhir';
         $bimbinganSkripsi = $this->bimbinganSkripsiRepository->getALl();
-        return view('admin.bimbinganSkripsi.index', compact('title', 'bimbinganSkripsi'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+        return view('admin.bimbinganSkripsi.index', compact('title', 'bimbinganSkripsi','tahunAjaran'));
     }
     public function detail($id)
     {

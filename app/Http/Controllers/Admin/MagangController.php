@@ -11,6 +11,7 @@ use Romans\Filter\IntToRoman;
 use App\Services\MagangService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\MagangExport;
+use App\Repositories\TahunAjaranRepository;
 use Carbon\Carbon;
 
 
@@ -20,20 +21,24 @@ class MagangController extends Controller
     private MagangService $magangService;
     private MagangRepository $magangRepository;
     private MahasiswaRepository $mahasiswaRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
-    public function __construct(MagangService $magangService, MagangRepository $magangRepository, MahasiswaRepository $mahasiswaRepository)
+
+    public function __construct(MagangService $magangService, MagangRepository $magangRepository, MahasiswaRepository $mahasiswaRepository,TahunAjaranRepository $tahunAjaranRepository)
     {
         $this->magangService = $magangService;
         $this->magangRepository = $magangRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
 
     public function index()
     {
-        $title = 'Pendaftaran Magang';
+        $title = 'Pendaftaran Kerja Praktik';
         $magang = $this->magangRepository->getALl();
-        return view('admin.magang.index', compact('title', 'magang'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+        return view('admin.magang.index', compact('title', 'magang','tahunAjaran'));
     }
     public function detail($id)
     {
@@ -72,7 +77,7 @@ class MagangController extends Controller
     public function print($id)
     {
         try {
-            $title = 'surat penempatan magang';
+            $title = 'surat penempatan kerja praktik';
             $magang = $this->magangRepository->findById($id);
             $mahasiswa = $this->mahasiswaRepository->findByNim($magang->nim);
             $tanggal = Carbon::parse(now())->translatedFormat('d F Y');

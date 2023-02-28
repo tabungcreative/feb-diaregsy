@@ -85,7 +85,7 @@ class KompreController extends Controller
         $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $kompre = $this->kompreService->update($id, $request);
-            $this->kompreService->addBuktiPembayaran($id, $filePembayaran);
+            if ($filePembayaran != null) $this->kompreService->addBuktiPembayaran($id, $filePembayaran);
             return redirect()->route('kompre.detail', $kompre->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');

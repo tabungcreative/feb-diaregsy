@@ -5,7 +5,13 @@
     <div class="card">
         <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
             <div>
-                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Ujian Skripsi Tahun 2021</h5>
+                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Ujian Tugas Akhir Tahun 
+                    @if($tahunAjaran)
+                        {{$tahunAjaran->tahun}}
+                    @else
+                        
+                    @endif
+                </h5>
                 <a href="{{ route('admin.ujianAkhir.export') }}" class="btn btn-success">
                     <i class="fas fa-download"></i>
                     Export Excel

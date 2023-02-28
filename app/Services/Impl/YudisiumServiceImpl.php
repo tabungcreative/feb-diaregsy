@@ -50,7 +50,6 @@ class YudisiumServiceImpl implements YudisiumService
         $noWhatsapp = $request->input('no_whatsapp');
         $ukuranToga = $request->input('ukuran_toga');
         
-      
         $detailYudisium = [
             'nim' => $nim,
             'nama' => $nama,
@@ -125,12 +124,13 @@ class YudisiumServiceImpl implements YudisiumService
     }
 
     function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
-    {
-        $yudisium = Yudisium::find($id);
+    {   
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBuktiPembayaran, 'diaregsi/yudisium/bukti-pembayaran/');
-
-        $filePath = $dataFile;
+        if ($yudisium->bukti_pembayaran != null) {
+            $this->delete($yudisium->bukti_pembayaran);
+        }
+        $filePath = $this->uploads($fileBuktiPembayaran, 'yudisium/bukti-pembayaran/');
 
         $yudisium->bukti_pembayaran = $filePath;
         $yudisium->save();
@@ -140,11 +140,13 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addBebasSpp(int $id, $fileBebasSpp)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBebasSpp, 'diaregsi/yudisium/bebas-spp/');
+        if ($yudisium->bebas_spp != null) {
+            $this->delete($yudisium->bebas_spp);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileBebasSpp, 'yudisium/bebas-spp/');
 
         $yudisium->bebas_spp = $filePath;
         $yudisium->save();
@@ -154,11 +156,13 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addTranskripNilai(int $id, $fileTranskripNilai)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileTranskripNilai, 'diaregsi/yudisium/transkrip-nilai/');
+        if ($yudisium->transkrip_nilai != null) {
+            $this->delete($yudisium->transkrip_nilai);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileTranskripNilai, 'yudisium/transkrip-nilai/');
 
         $yudisium->transkrip_nilai = $filePath;
         $yudisium->save();
@@ -168,11 +172,13 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addBebasPerpus(int $id, $fileBebasPerpus)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBebasPerpus, 'diaregsi/yudisium/bebas-perpus/');
+        if ($yudisium->bebas_perpus != null) {
+            $this->delete($yudisium->bebas_perpus);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileBebasPerpus, 'yudisium/bebas-perpus/');
 
         $yudisium->bebas_perpus = $filePath;
         $yudisium->save();
@@ -182,11 +188,14 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addArtikel(int $id, $fileArtikel)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileArtikel, 'diaregsi/yudisium/artikel/');
+        if ($yudisium->artikel != null) {
+            $this->delete($yudisium->artikel);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileArtikel, 'yudisium/artikel/');
+
 
         $yudisium->artikel = $filePath;
         $yudisium->save();
@@ -196,11 +205,14 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addFileSkripsi(int $id, $fileSkripsi)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileSkripsi, 'diaregsi/yudisium/file-skripsi/');
+        if ($yudisium->file_skripsi != null) {
+            $this->delete($yudisium->file_skripsi);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileSkripsi, 'yudisium/file-skripsi/');
+
 
         $yudisium->file_skripsi = $filePath;
         $yudisium->save();
@@ -210,11 +222,13 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addBebasPlagiasi(int $id, $fileBebasPlagiasi)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBebasPlagiasi, 'diaregsi/yudisium/bebas-plagiasi/');
+        if ($yudisium->bebas_plagiasi != null) {
+            $this->delete($yudisium->bebas_plagiasi);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileBebasPlagiasi, 'yudisium/bebas-plagiasi/');
 
         $yudisium->bebas_plagiasi = $filePath;
         $yudisium->save();
@@ -224,11 +238,14 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addBuktiPenjilidan(int $id, $fileBuktiPenjilidan)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBuktiPenjilidan, 'diaregsi/yudisium/bukti-penjilidan/');
+        if ($yudisium->bukti_penjilidan != null) {
+            $this->delete($yudisium->bukti_penjilidan);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileBuktiPenjilidan, 'yudisium/bukti-penjilidan/');
+
 
         $yudisium->bukti_penjilidan = $filePath;
         $yudisium->save();
@@ -238,11 +255,13 @@ class YudisiumServiceImpl implements YudisiumService
 
     function addBuktiPegumpulan(int $id, $fileBuktiPengumpulan)
     {
-        $yudisium = Yudisium::find($id);
+        $yudisium = $this->yudisiumRepository->findById($id);
 
-        $dataFile = $this->uploads($fileBuktiPengumpulan, 'diaregsi/yudisium/bukti-pengumpulan/');
+        if ($yudisium->bukti_pengumpulan != null) {
+            $this->delete($yudisium->bukti_pengumpulan);
+        }
 
-        $filePath = $dataFile;
+        $filePath = $this->uploads($fileBuktiPengumpulan, 'yudisium/bukti-pengumpulan/');
 
         $yudisium->bukti_pengumpulan = $filePath;
         $yudisium->save();

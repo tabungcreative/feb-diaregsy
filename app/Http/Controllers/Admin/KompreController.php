@@ -8,6 +8,7 @@ use App\Http\Requests\KompreCreateMessageRequest;
 use App\Repositories\DosenRepository;
 use App\Repositories\KompreRepository;
 use App\Repositories\MahasiswaRepository;
+use App\Repositories\TahunAjaranRepository;
 use App\Services\KompreService;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
@@ -19,21 +20,23 @@ class KompreController extends Controller
     private KompreRepository $kompreRepository;
     private MahasiswaRepository $mahasiswaRepository;
     private DosenRepository $dosenRepository;
+    private TahunAjaranRepository $tahunAjaranRepository;
 
-
-    public function __construct(KompreService $kompreService, KompreRepository $kompreRepository, MahasiswaRepository $mahasiswaRepository, DosenRepository $dosenRepository)
+    public function __construct(KompreService $kompreService, KompreRepository $kompreRepository, MahasiswaRepository $mahasiswaRepository, DosenRepository $dosenRepository,TahunAjaranRepository $tahunAjaranRepository)
     {
         $this->kompreService = $kompreService;
         $this->kompreRepository = $kompreRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
         $this->dosenRepository = $dosenRepository;
+        $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
     public function index()
     {
         $title = 'Pendaftaran Ujian Komprehensif';
         $kompre = $this->kompreRepository->getALl();
-        return view('admin.kompre.index', compact('title', 'kompre'));
+        $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
+        return view('admin.kompre.index', compact('title', 'kompre','tahunAjaran'));
     }
 
     public function detail($id)
