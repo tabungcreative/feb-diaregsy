@@ -11,8 +11,8 @@
             <div class="col-md-8 my-5">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src={{asset('storage/logo/logo_feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src={{asset('storage/logo/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Detail pendaftaran Seminar Proposal</h4>
 

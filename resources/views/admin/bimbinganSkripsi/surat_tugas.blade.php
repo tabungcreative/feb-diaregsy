@@ -148,8 +148,8 @@
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u>
-                    <br>
-                    <strong>Nidn : 0627088202 </strong>
+                        <br>
+                        <strong>NIDN : 0627088202 </strong>
                     </td>
                 </tr>
             </table>

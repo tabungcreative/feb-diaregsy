@@ -6,6 +6,8 @@
         <title>Diaregsy | Layanan Pendaftaran Mahasiswa</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="icon" href={{asset('storage/logo/logo-diaregsy.png')}}>
+
         {{-- fonts --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +28,8 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt="logo-diaregsi" width="80px">
-                    <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="150px">
+                    <img src="{{asset('storage/logo/logo_feb.png')}}" class="img-fluid p-2" alt="logo-diaregsi" width="80px">
+                    <img src={{asset('storage/logo/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="150px">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,28 +63,9 @@
                 </div>
             </div>
         </nav>
-        {{--
-        <!-- banner -->
-        <div class="container pt-5">
-            <div class="row mt-5 banner">
-                <div class="col-md-6">
-                    <h1 class="text-dark">Diaregsi FEB</h1>
-                    <p class="text-black-50">
-                        Daftarkan Keperluan akademik kamu disini
-                    </p>
-                    <a href="#" class="btn btn-danger text-white shadow mt-4">Daftar Sekarang</a>
-                </div>
-                <div class="col-md-6">
-                    <img src="{{ asset('img/banner.svg') }}" alt="" class="img-fluid" width="400px"/>
-                </div>
-            </div>
-        </div>
-        <!-- //banner --> --}}
-    
-        <div class="container-fluid p-0">
+        <div class="container-fluid">
             @yield('content')
         </div>
-        
 
         <!-- Footer -->
         <footer class="text-center text-white text-lg-start mt-5" style="background-color: #000">
@@ -91,20 +74,25 @@
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <img src="https://is3.cloudhost.id/storage-feb/assets/images/logo_feb_putih.png" class="d-block" alt="logo feb" width="150" />
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <img src={{asset('storage/logo/logo_feb_putih.png')}} class="d-block" alt="logo feb" width="150" />
                         <hr style="border: 1px solid #b6b7b7" />
                         <h5 class="h5">Fakultas Ekonomi dan Bisnis</h5>
                         <p class="text-white-50">Universitas Sains Al Qur’an Jawa Tengah di Wonosobo</p>
                     </div>
                     <!--Grid column-->
-
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase">Tentang Fakultas</h5>
                     <ul class="list-unstyled">
                     <li>
-                        <a href="#!" class="text-white-50" style="text-decoration: none">Sejarah Feb Unsiq</a>
+                        <a href="https://feb-unsiq.ac.id/sejarah-feb" class="text-white-50" style="text-decoration: none">Sejarah Feb Unsiq</a>
+                    </li>
+                    <li>
+                        <a href="https://akademik.unsiq.ac.id/login.php" class="text-white-50" style="text-decoration: none">Akademik Unsiq</a>
+                    </li>
+                    <li>
+                        <a href="https://pmb.unsiq.ac.id/2023/" class="text-white-50" style="text-decoration: none">PMB Unsiq</a>
                     </li>          
                 </div>
                 <!--Grid column-->

@@ -149,7 +149,7 @@
                     <td style="width: 150px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
-                    <td style="width: 150px">Dekan</td>
+                    <td style="width: 150px">Dekan<br>{{$tanggal}}</td>
                 </tr>
                 <br>
                 <br>
@@ -161,7 +161,10 @@
                     <td style="width: 150px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
-                    <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u></td>
+                    <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u>
+                        <br>
+                        <strong>NIDN : 0627088202 </strong>
+                    </td>
                 </tr>
             </table>
         </div>
