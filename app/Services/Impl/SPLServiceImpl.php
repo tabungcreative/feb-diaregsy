@@ -58,7 +58,6 @@ class SPLServiceImpl implements SPLService
             'nim' => $nim,
             'nama' => $nama,
             'prodi' => $prodi,
-            'foto_ktp' => null,
             'jenis_pendaftaran' => $jenisPendaftaran,
             'no_whatsapp' => $noWhatsapp,
         ];
