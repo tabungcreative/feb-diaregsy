@@ -11,8 +11,8 @@
             <div class="col-md-8 my-5">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src={{asset('storage/logo/logo_feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src={{asset('storage/logo/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src={{asset('/img/logo-feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src={{asset('/img/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Detail pendaftaran Magang</h4>
 
@@ -47,7 +47,7 @@
                                         <label for="inputPassword4">Instansi Magang</label>
                                         <p class="fw-bold">{{ $magang->instansi_magang }} </p>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="inputPassword4">Lembar Persetujuan</label>
                                         <p class="fw-bold"><a href="{{asset('storage/' . $magang->lembar_persetujuan)}}" target="_blank"> preview </a></p>

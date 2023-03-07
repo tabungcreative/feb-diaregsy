@@ -11,20 +11,20 @@
             <div class="col-md-8 mx-auto">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Pendaftaran Kerja Praktik</h4>
                     <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">syarat-syarat dan dokumen pendaftaran</span>, </p>
-    
+
                     <div class="card-body">
-    
+
                         @if(Session::has('error'))
                             <div class="alert alert-danger" role="alert">
                                 {{ Session::get('error') }}
                             </div>
                         @endif
-    
+
                         @if(Session::has('update'))
                             <div class="alert alert-info" role="alert">
                                 {{ Session::get('update') }}, pilih <span class="fw-bold">update pendaftaran</span> untuk mengubah data pendaftaran <br>
@@ -32,7 +32,7 @@
                                 <button onClick="window.location.reload();" class="btn btn-danger">Batal</button>
                             </div>
                         @endif
-    
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-row">
@@ -59,13 +59,13 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <form action="{{ route('magang.register') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">
                             <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
                             <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
-    
+
                             <div class="mb-3">
                                 <label for="alamat" class="form-label fw-bolder">Alamat</label>
                                 <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="ex: jalan dieng no 05" value="{{ old('alamat') }}">

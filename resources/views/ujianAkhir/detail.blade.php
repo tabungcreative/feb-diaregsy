@@ -11,8 +11,8 @@
             <div class="col-md-8 my-5">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src={{asset('storage/logo/logo_feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src={{asset('storage/logo/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src={{asset('/img/logo-feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src={{asset('/img/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Detail pendaftaran Ujian Skripsi</h4>
 
@@ -63,7 +63,7 @@
                                         <label for="inputPassword4">Lembar Bimbingan</label>
                                         <p class="fw-bold"><a href="{{asset('storage/' . $ujianAkhir->lembar_bimbingan)}}" target="_blank"> preview </a></p>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6">

@@ -12,19 +12,19 @@
             <div class="col-md-8 mx-auto">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Ubah data pendaftaran Bimbingan Skripsi</h4>
-                    
+
                     <div class="card-body">
-    
+
                         @if(Session::has('error'))
                             <div class="alert alert-danger" role="alert">
                                 {{ Session::get('error') }}
                             </div>
                         @endif
-    
+
                         @if(Session::has('update'))
                             <div class="alert alert-info" role="alert">
                                 {{ Session::get('update') }}, pilih <span class="fw-bold">update pendaftaran</span> untuk mengubah data pendaftaran <br>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <form action="{{ route('bimbinganSkripsi.update', $bimbinganSkripsi->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

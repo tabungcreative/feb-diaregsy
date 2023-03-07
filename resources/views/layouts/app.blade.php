@@ -28,8 +28,8 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <img src="{{asset('storage/logo/logo_feb.png')}}" class="img-fluid p-2" alt="logo-diaregsi" width="80px">
-                    <img src={{asset('storage/logo/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="150px">
+                    <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt="logo-diaregsi" width="80px">
+                    <img src={{asset('/img/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="150px">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -75,7 +75,7 @@
                 <div class="row">
                     <!--Grid column-->
                     <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                        <img src={{asset('storage/logo/logo_feb_putih.png')}} class="d-block" alt="logo feb" width="150" />
+                        <img src={{asset('/img/logo-feb.png')}} class="d-block" alt="logo feb" width="150" />
                         <hr style="border: 1px solid #b6b7b7" />
                         <h5 class="h5">Fakultas Ekonomi dan Bisnis</h5>
                         <p class="text-white-50">Universitas Sains Al Qur’an Jawa Tengah di Wonosobo</p>
@@ -93,7 +93,7 @@
                     </li>
                     <li>
                         <a href="https://pmb.unsiq.ac.id/2023/" class="text-white-50" style="text-decoration: none">PMB Unsiq</a>
-                    </li>          
+                    </li>
                 </div>
                 <!--Grid column-->
 

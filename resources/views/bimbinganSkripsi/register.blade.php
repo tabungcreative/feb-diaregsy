@@ -6,26 +6,26 @@
             <h1>Bimbingan Tugas Akhir</h1>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="row py-5">
             <div class="col-md-8 mx-auto">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Pendaftaran Bimbingan Skripsi</h4>
                     <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">syarat-syarat dan dokumen pendaftaran</span>, </p>
-    
+
                     <div class="card-body">
-    
+
                         @if(Session::has('error'))
                             <div class="alert alert-danger" role="alert">
                                 {{ Session::get('error') }}
                             </div>
                         @endif
-    
+
                         @if(Session::has('update'))
                             <div class="alert alert-info" role="alert">
                                 {{ Session::get('update') }}, pilih <span class="fw-bold">update pendaftaran</span> untuk mengubah data pendaftaran <br>
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <form action="{{route('bimbinganSkripsi.register') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">

@@ -11,8 +11,8 @@
             <div class="col-md-8 my-5">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src={{asset('/img/logo-feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src={{asset('/img/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Pendaftaran Ujian Tugas Akhir</h4>
                     <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">syarat-syarat dan dokumen pendaftaran</span>, </p>
@@ -65,17 +65,17 @@
                             @csrf
 
                             <input type="hidden" name="nim" value="{{ $mahasiswa['nim'] }}">
-                        
+
                             <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
-                        
+
                             <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
-                        
+
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-bolder">E-Mail</label>
                                 <input type="text" name="email"
                                     class="form-control @error('email') is-invalid @enderror" id="email"
                                     placeholder="ex: nama@email.com" value="{{ old('email') }}">
-                                
+
                                 @error('email')
                                 <div id="email" class="invalid-feedback">
                                     {{ $message }}
@@ -87,7 +87,7 @@
                                 <input type="text" name="tempat_lahir"
                                     class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir"
                                     placeholder="ex: Tempat lahir" value="{{ old('tempat_lahir') }}">
-                                
+
                                 @error('tempat_lahir')
                                 <div id="tempat_lahir" class="invalid-feedback">
                                     {{ $message }}

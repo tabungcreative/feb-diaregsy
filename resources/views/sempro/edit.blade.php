@@ -11,8 +11,8 @@
             <div class="col-md-8 my-5">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Ubah data pendaftaran Seminar Proposal</h4>
                     <div class="card-body">
@@ -65,7 +65,7 @@
                             <input type="hidden" name="nama" value="{{ $mahasiswa['nama'] }}">
                             <input type="hidden" name="prodi" value="{{ $mahasiswa['prodi'] }}">
 
-                            
+
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-bolder">Email</label>
                                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="ex: nama@gmail.com " value="{{ old('email',$sempro->email) }}">
@@ -125,7 +125,7 @@
                                     <strong>
                                         maximum upload file size : 500kb.
                                     </strong>
-                                </div> 
+                                </div>
                                 <a href="{{asset('storage/' . $sempro->berkas_sempro)}}" target="_blank"> Preview </a>
                                 @error('berkas_sempro')
                                 <div id="berkas_sempro" class="invalid-feedback">

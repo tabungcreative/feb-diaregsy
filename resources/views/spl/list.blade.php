@@ -13,8 +13,8 @@
             <div class="col-md-12 mx-auto">
                 <div class="card p-4">
                     <div class="image mx-auto">
-                        <img src={{asset('storage/logo/logo_feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src={{asset('storage/logo/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
+                        <img src={{asset('/img/logo-feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                        <img src={{asset('/img/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
                     <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Studi Ekskursi (Studi Pengembangan Lapangan) </h4>
                     <div class="card-body">
@@ -60,10 +60,10 @@
         <div class="col-lg-6 md-12 mx-auto">
             <div class="card">
                 <div class="image mx-auto mt-5">
-                    <img src={{asset('storage/logo/logo_feb.png')}} class="img-fluid" alt=" logo-diaregsi" width="150px">
+                    <img src={{asset('/img/logo-feb.png')}} class="img-fluid" alt=" logo-diaregsi" width="150px">
                 </div>
                 <div class="card-body text-center">
-                    <img src={{asset('storage/alur-akademik/infografis%20feb-02.png')}} class="img-fluid" alt=" logo-diaregsi">
+                    <img src={{asset('/img/alur-akademik/infografis%20feb-02.png')}} class="img-fluid" alt=" logo-diaregsi">
                 </div>
             </div>
         </div>

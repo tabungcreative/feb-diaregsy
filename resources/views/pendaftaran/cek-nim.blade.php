@@ -7,8 +7,8 @@
                 <div class="card border-0 mx-auto shadow">
                     <div class="card-header text-center bg-white">
                         <div class="image mx-auto">
-                            <img src="https://is3.cloudhost.id/storage-feb/logo-feb.png" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                            <img src="https://is3.cloudhost.id/storage-feb/logo-sistem/logo-diaregsy.png" class="img-fluid" alt="logo-diaregsi" width="200px">
+                            <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
+                            <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
                         </div>
                         <h3 class="mx-auto mt-4">Cek Mahasiswa Terdaftar</h3>
                     </div>

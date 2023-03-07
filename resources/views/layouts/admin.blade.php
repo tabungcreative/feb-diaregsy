@@ -48,10 +48,10 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin  ">
             <div class="sidebar-brand-text mx-3">
-                <img src="{{asset('storage/logo-diaregsy-putih.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
+                <img src="{{asset('img/logo-diaregsy-putih.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
             </div>
         </a>
-        
+
 
         @include('layouts.component.menu')
 
