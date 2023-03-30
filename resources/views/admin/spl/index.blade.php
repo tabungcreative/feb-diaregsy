@@ -6,11 +6,11 @@
         <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
             <div>
                 <h5 class="bg-white flex-grow-1">
-                    Daftar Pendaftaran Studi Ekskursi Tahun 
+                    Daftar Pendaftaran Studi Ekskursi Tahun
                     @if($tahunAjaran)
                         {{$tahunAjaran->tahun}}
                     @else
-                        
+                        -
                     @endif
                 </h5>
                 <a href="{{ route('admin.spl.export') }}" class="btn btn-success">
@@ -32,9 +32,7 @@
                         <th>No</th>
                         <th>Nim</th>
                         <th>Nama</th>
-                        <th>Prodi</th></th>
-                        <th>No Telp (WA)</th>
-                        <th>Jenis Pendaftaran</th>
+                        <th>Prodi</th>
                         <th>Verifikasi</th>
                         <th>Actions</th>
                     </tr>
@@ -46,8 +44,6 @@
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
                             <td>{{ $value->prodi }}</td>
-                            <td>{{ $value->no_whatsapp }}</td>
-                            <td class="text-uppercase">{{ $value->jenis_pendaftaran }}</td>
                             <td>
                                 @if($value->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>

@@ -5,11 +5,11 @@
     <div class="card">
         <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
             <div>
-                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Kerja Praktik Tahun 
+                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Kerja Praktik Tahun
                     @if($tahunAjaran)
                         {{$tahunAjaran->tahun}}
                     @else
-                        
+
                     @endif
                 </h5>
                 <a href="{{ route('admin.magang.export') }}" class="btn btn-success">
@@ -32,9 +32,6 @@
                         <th>Nim</th>
                         <th>Nama</th>
                         <th>Prodi</th>
-                        <th>No Telp (WA)</th>
-                        <th>Email</th>
-                        <th>Instansi</th>
                         <th>Verifikasi</th>
                         <th>Actions</th>
                     </tr>
@@ -46,15 +43,12 @@
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
                             <td>{{ $value->prodi }}</td>
-                            <td>{{ $value->no_whatsapp }}</td>
-                            <td>{{ $value->email }}</td>
-                            <td>{{ $value->instansi_magang }}</td>
                             <td>
                                 @if($value->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>
                                 @else
                                     <span class="badge badge-warning">Berlum Terverifikasi</span>
-                                @endif  
+                                @endif
                             </td>
                             <td class="d-flex ">
                                 <form method="post" action="{{ route('admin.magang.verify', $value->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
