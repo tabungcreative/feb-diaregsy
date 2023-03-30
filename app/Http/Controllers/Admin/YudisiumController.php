@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\YudisiumExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\YudisiumCreateMessageRequest;
+use App\Models\Yudisium;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Repositories\YudisiumRepository;
 use App\Services\YudisiumService;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class YudisiumController extends Controller
 {
@@ -29,10 +31,18 @@ class YudisiumController extends Controller
         $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Pendaftaran Yudisium';
-        $yudisium = $this->yudisiumRepository->getALl();
+        $yudisium = Yudisium::paginate(20);
+
+        $key = $request->get('key');
+        if ($key != null) {
+            $yudisium = Yudisium::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
+
         $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
 
         return view('admin.yudisium.index', compact('title', 'yudisium','tahunAjaran'));
@@ -65,7 +75,7 @@ class YudisiumController extends Controller
         }
     }
 
-    
+
     public function export()
     {
         $tahun = Carbon::now()->year;

@@ -5,11 +5,11 @@
     <div class="card">
         <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
             <div>
-                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Ujian Tugas Akhir Tahun 
+                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Ujian Tugas Akhir Tahun
                     @if($tahunAjaran)
                         {{$tahunAjaran->tahun}}
                     @else
-                        
+
                     @endif
                 </h5>
                 <a href="{{ route('admin.ujianAkhir.export') }}" class="btn btn-success">
@@ -32,7 +32,6 @@
                         <th>Nim</th>
                         <th>Nama</th>
                         <th>Prodi</th></th>
-                        <th>No Telp (WA)</th>
                         <th>Verifikasi</th>
                         <th>Actions</th>
                     </tr>
@@ -40,11 +39,10 @@
                     <tbody class="table-border-bottom-0">
                     @foreach($ujianAkhir as $value)
                         <tr>
-                            <td>#</td>
+                            <td>{{ $loop->iteration + $ujianAkhir->firstItem() - 1}}</td>
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
                             <td>{{ $value->prodi }}</td>
-                            <td>{{ $value->no_whatsapp }}</td>
                             <td>
                                 @if($value->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>
@@ -65,7 +63,7 @@
                 </table>
             </div>
             <div class="mx-3 my-3">
-                {{--            {{ $data->links() }}--}}
+                {{ $ujianAkhir->appends($_GET)->links() }}
             </div>
         </div>
     </div>

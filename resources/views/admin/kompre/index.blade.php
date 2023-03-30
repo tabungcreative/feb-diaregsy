@@ -5,11 +5,11 @@
     <div class="card">
         <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
             <div>
-                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Ujian Komprehensif Tahun 
+                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Ujian Komprehensif Tahun
                     @if($tahunAjaran)
                         {{$tahunAjaran->tahun}}
                     @else
-                        
+
                     @endif
                 </h5>
                 <a href="{{ route('admin.kompre.export') }}" class="btn btn-success">
@@ -32,10 +32,6 @@
                         <th>Nim</th>
                         <th>Nama</th>
                         <th>Prodi</th>
-                        <th>No Telp (WA)</th>
-                        <th>Email</th>
-                        <th>Pembimbing1</th>
-                        <th>Pembimbing2</th>
                         <th>Verifikasi</th>
                         <th>Actions</th>
                     </tr>
@@ -43,20 +39,16 @@
                     <tbody class="table-border-bottom-0">
                     @foreach($kompre as $value)
                         <tr>
-                            <td>#</td>
+                            <td>{{ $loop->iteration + $kompre->firstItem() - 1}}</td>
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
                             <td>{{ $value->prodi }}</td>
-                            <td>{{ $value->no_whatsapp }}</td>
-                            <td>{{ $value->email }}</td>
-                            <td>{{ $value->pembimbing1 }}</td>
-                            <td>{{ $value->pembimbing2 }}</td>
                             <td>
                                 @if($value->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>
                                 @else
                                     <span class="badge badge-warning">Berlum Terverifikasi</span>
-                                @endif  
+                                @endif
                             </td>
                             <td class="d-flex ">
                                 <form method="post" action="{{ route('admin.kompre.verify', $value->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
@@ -71,7 +63,7 @@
                 </table>
             </div>
             <div class="mx-3 my-3">
-                {{--            {{ $data->links() }}--}}
+                {{ $kompre->appends($_GET)->links() }}
             </div>
         </div>
     </div>

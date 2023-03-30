@@ -11,9 +11,10 @@ use Romans\Filter\IntToRoman;
 use App\Services\MagangService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\MagangExport;
+use App\Models\Magang;
 use App\Repositories\TahunAjaranRepository;
 use Carbon\Carbon;
-
+use Illuminate\Http\Request;
 
 class MagangController extends Controller
 {
@@ -33,10 +34,18 @@ class MagangController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Pendaftaran Kerja Praktik';
-        $magang = $this->magangRepository->getALl();
+        $magang = Magang::paginate(20);
+
+        $key = $request->get('key');
+        if ($key != null) {
+            $magang = Magang::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
+
         $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
         return view('admin.magang.index', compact('title', 'magang','tahunAjaran'));
     }

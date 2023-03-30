@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\UjianAkhirExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UjianAkhirCreateMessageRequest;
+use App\Models\UjianAkhir;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Repositories\UjianAkhirRepository;
 use App\Services\UjianAkhirService;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
-
+use Illuminate\Http\Request;
 
 class UjianAkhirController extends Controller
 {
@@ -30,10 +31,18 @@ class UjianAkhirController extends Controller
         $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Pendaftaran Ujian Tugas Akhir';
-        $ujianAkhir = $this->ujianAkhirRepository->getALl();
+        $ujianAkhir = UjianAkhir::paginate(20);
+
+        $key = $request->get('key');
+        if ($key != null) {
+            $ujianAkhir = UjianAkhir::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
+
         $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
         return view('admin.ujianAkhir.index', compact('title', 'ujianAkhir','tahunAjaran'));
     }
