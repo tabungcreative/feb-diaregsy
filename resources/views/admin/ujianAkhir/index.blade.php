@@ -39,7 +39,7 @@
                     <tbody class="table-border-bottom-0">
                     @foreach($ujianAkhir as $value)
                         <tr>
-                            <td>#</td>
+                            <td>{{ $loop->iteration + $ujianAkhir->firstItem() - 1}}</td>
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
                             <td>{{ $value->prodi }}</td>

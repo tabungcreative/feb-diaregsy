@@ -28,7 +28,7 @@
                             <tbody class="table-border-bottom-0">
                             @foreach($tahunAjaran as $value)
                                 <tr>
-                                    <td>#</td>
+                                    <td>{{ $loop->iteration + $tahunAjaran->firstItem() - 1}}</td>
                                     <td>{{ $value->tahun }}</td>
                                     <td>{{ $value->semester }}</td>
                                     <td>
