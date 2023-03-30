@@ -6,6 +6,7 @@ use App\Http\Requests\TahunAjaran;
 use App\Http\Requests\TahunAjaranUpdate;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\TahunAjaranService;
+use Illuminate\Support\Facades\DB;
 
 class TahunAjaranServiceImpl implements TahunAjaranService
 {
@@ -21,7 +22,7 @@ class TahunAjaranServiceImpl implements TahunAjaranService
     {
         $tahun = $request->input('tahun');
         $semester = $request->input('semester');
-    
+
         $detailTahunAjaran = [
             'tahun' => $tahun,
             'semester' => $semester,
@@ -36,7 +37,7 @@ class TahunAjaranServiceImpl implements TahunAjaranService
 
         $tahun = $request->input('tahun');
         $semester = $request->input('semester');
-    
+
         $detailTahunAjaran = [
             'tahun' => $tahun,
             'semester' => $semester,
@@ -48,18 +49,29 @@ class TahunAjaranServiceImpl implements TahunAjaranService
     }
     function deleteTahunAjaran(int $id)
     {
-        
+
     }
 
     function active(int $id)
     {
-        $detailTahunAjaran = [
-            'is_active' => 1
-        ];
-        $tahunAjaran = $this->tahunAjaranRepository->update($id, $detailTahunAjaran);
-        return $tahunAjaran;
+        try {
+            DB::beginTransaction();
+            // inactive all record
+            $this->tahunAjaranRepository->updateIsActiveAll(0);
+            // make tahun ajaran active
+            $tahunAjaran = $this->tahunAjaranRepository->update($id, [
+                'is_active' => 1
+            ]);
+
+            DB::commit();
+            return $tahunAjaran;
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollBack();
+        }
+
     }
-    
+
     function inActive(int $id)
     {
         $detailTahunAjaran = [
@@ -68,5 +80,4 @@ class TahunAjaranServiceImpl implements TahunAjaranService
         $tahunAjaran = $this->tahunAjaranRepository->update($id, $detailTahunAjaran);
         return $tahunAjaran;
     }
-
 }

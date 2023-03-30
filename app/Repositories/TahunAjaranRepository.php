@@ -11,4 +11,5 @@ interface TahunAjaranRepository
     function findByIsActive(): ?TahunAjaran;
     function update(int $id, $detailTahunAjaran): TahunAjaran;
     function updateNotActive(): void;
+    function updateIsActiveAll($isActive);
 }
