@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\SPLExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SPLCreateMessageRequest;
+use App\Models\SPL;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SPLRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\SPLService;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SPLController extends Controller
@@ -30,13 +32,20 @@ class SPLController extends Controller
         $this->SPLRepository = $SPLRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
         $this->tahunAjaranRepository = $tahunAjaranRepository;
-        
+
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Pendaftaran Studi Ekskursi';
-        $spl = $this->SPLRepository->getALl();
+        $spl = SPL::paginate(20);
+        $key = $request->get('key');
+        if ($key != null) {
+            $spl = SPL::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
+
         $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
         return view('admin.spl.index', compact('title', 'spl','tahunAjaran'));
     }

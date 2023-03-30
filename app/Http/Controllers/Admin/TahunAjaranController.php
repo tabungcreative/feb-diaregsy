@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TahunAjaran;
+use App\Http\Requests\TahunAjaran as TahunAjaranRequest;
+use App\Models\TahunAjaran;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\TahunAjaranService;
 use Illuminate\Http\Request;
@@ -26,11 +27,11 @@ class TahunAjaranController extends Controller
     public function index()
     {
         $title = 'Tahun Ajaran';
-        $tahunAjaran = $this->tahunAjaranRepository->getALl();
+        $tahunAjaran = TahunAjaran::paginate(10);
         return view('admin.tahunAjaran.index', compact('title', 'tahunAjaran'));
     }
 
-    public function store(TahunAjaran $request)
+    public function store(TahunAjaranRequest $request)
     {
         try {
             $tahunAjaran = $this->tahunAjaranService->addTahunAjaran($request);

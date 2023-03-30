@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\BimbinganSkripsiExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BimbinganSkripsiCreateMessageRequest;
+use App\Models\BimbinganSkripsi;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\BimbinganSkripsiService;
@@ -14,6 +15,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Romans\Filter\IntToRoman;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class BimbinganSkripsiController extends Controller
 {
@@ -35,10 +37,18 @@ class BimbinganSkripsiController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Pendaftaran Bimbingan Tugas Akhir';
-        $bimbinganSkripsi = $this->bimbinganSkripsiRepository->getALl();
+        $bimbinganSkripsi = BimbinganSkripsi::paginate(20);
+
+        $key = $request->get('key');
+        if ($key != null) {
+            $bimbinganSkripsi = BimbinganSkripsi::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
+
         $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
         return view('admin.bimbinganSkripsi.index', compact('title', 'bimbinganSkripsi','tahunAjaran'));
     }

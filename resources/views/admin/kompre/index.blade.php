@@ -63,7 +63,7 @@
                 </table>
             </div>
             <div class="mx-3 my-3">
-                {{--            {{ $data->links() }}--}}
+                {{ $kompre->appends($_GET)->links() }}
             </div>
         </div>
     </div>

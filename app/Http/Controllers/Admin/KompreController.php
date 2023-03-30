@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\KompreExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KompreCreateMessageRequest;
+use App\Models\Kompre;
 use App\Repositories\DosenRepository;
 use App\Repositories\KompreRepository;
 use App\Repositories\MahasiswaRepository;
@@ -12,6 +13,7 @@ use App\Repositories\TahunAjaranRepository;
 use App\Services\KompreService;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class KompreController extends Controller
 {
@@ -31,10 +33,17 @@ class KompreController extends Controller
         $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Pendaftaran Ujian Komprehensif';
-        $kompre = $this->kompreRepository->getALl();
+        $kompre = Kompre::paginate(20);
+
+        $key = $request->get('key');
+        if ($key != null) {
+            $kompre = Kompre::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
         return view('admin.kompre.index', compact('title', 'kompre','tahunAjaran'));
     }

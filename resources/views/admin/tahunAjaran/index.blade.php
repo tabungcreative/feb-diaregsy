@@ -54,7 +54,7 @@
                         </table>
                     </div>
                     <div class="mx-3 my-3">
-                        {{--            {{ $data->links() }}--}}
+                        {{ $tahunAjaran->links() }}
                     </div>
                 </div>
             </div>
@@ -80,5 +80,5 @@
             </div>
         </div>
     </div>
-   
+
 @endsection

@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\SemproExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SemproCreateMessageRequest;
+use App\Models\Sempro;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SemproRepository;
 use App\Repositories\TahunAjaranRepository;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\SemproService;
 use Carbon\Carbon;
-
-
+use Illuminate\Http\Request;
 
 class SemproController extends Controller
 {
@@ -31,10 +31,18 @@ class SemproController extends Controller
         $this->tahunAjaranRepository = $tahunAjaranRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Pendaftaran Seminar Proposal';
-        $sempro = $this->semproRepository->getALl();
+        $sempro = Sempro::paginate(20);
+
+        $key = $request->get('key');
+        if ($key != null) {
+            $sempro = Sempro::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
+
         $tahunAjaran = $this->tahunAjaranRepository->findByIsActive();
         return view('admin.sempro.index', compact('title', 'sempro','tahunAjaran'));
     }
