@@ -40,7 +40,7 @@ class BimbinganSkripsiController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Bimbingan Tugas Akhir';
-        $bimbinganSkripsi = BimbinganSkripsi::paginate(20);
+        $bimbinganSkripsi = BimbinganSkripsi::orderBy('is_verify', 'ASC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {

@@ -35,7 +35,7 @@ class MengulangController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Mengulang';
-        $mengulang = Mengulang::paginate(20);
+        $mengulang = Mengulang::orderBy('is_verify', 'ASC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {

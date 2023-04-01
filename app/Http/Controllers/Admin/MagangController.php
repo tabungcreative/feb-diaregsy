@@ -37,7 +37,7 @@ class MagangController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Kerja Praktik';
-        $magang = Magang::paginate(20);
+        $magang = Magang::orderBy('is_verify', 'ASC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {

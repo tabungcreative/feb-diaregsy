@@ -36,7 +36,7 @@ class KompreController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Ujian Komprehensif';
-        $kompre = Kompre::paginate(20);
+        $kompre = Kompre::orderBy('is_verify', 'ASC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {

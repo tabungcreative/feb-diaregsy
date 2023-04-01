@@ -34,7 +34,7 @@ class YudisiumController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Yudisium';
-        $yudisium = Yudisium::paginate(20);
+        $yudisium = Yudisium::orderBy('is_verify', 'ASC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {

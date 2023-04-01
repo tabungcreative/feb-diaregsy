@@ -38,7 +38,7 @@ class SPLController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Studi Ekskursi';
-        $spl = SPL::paginate(20);
+        $spl = SPL::orderBy('is_verify', 'ASC')->paginate(20);
         $key = $request->get('key');
         if ($key != null) {
             $spl = SPL::where('nim', 'LIKE', "%" . $key ."%")
