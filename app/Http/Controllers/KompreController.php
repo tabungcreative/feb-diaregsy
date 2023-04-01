@@ -8,13 +8,14 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\KompreRegisterRequest;
 use App\Http\Requests\KompreUpdateRequest;
 use App\Models\BimbinganSkripsi;
-use App\Models\Sempro;
+use App\Models\Kompre;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\DosenRepository;
 use App\Repositories\KompreRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\KompreService;
 use Exception;
+use Illuminate\Http\Request;
 
 class KompreController extends Controller
 {
@@ -35,9 +36,17 @@ class KompreController extends Controller
         $this->dosenRepository = $dosenRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $kompre = $this->kompreRepository->getALl();
+        $kompre = Kompre::orderBy('created_at', 'DESC')->paginate(20);
+
+        $key = $request->get('key');
+        if ($key != null) {
+            $kompre = Kompre::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
+
         return view('kompre.list', compact('kompre'));
     }
 
@@ -53,7 +62,7 @@ class KompreController extends Controller
     }
 
     public function register(KompreRegisterRequest $request)
-    {        
+    {
         $filePembayaran = $request->file('bukti_pembayaran');
         try {
             $result = $this->kompreService->register($request);

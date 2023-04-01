@@ -9,6 +9,7 @@ use App\Exceptions\SPLIsExistsException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\SPLRegisterRequest;
 use App\Http\Requests\SPLUpdateRequest;
+use App\Models\SPL;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SPLRepository;
 use App\Services\SPLService;
@@ -28,9 +29,15 @@ class SPLController extends Controller
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $spl = $this->SPLRepository->getALl();
+        $spl = SPL::orderBy('is_verify', 'DESC')->paginate(20);
+        $key = $request->get('key');
+        if ($key != null) {
+            $spl = SPL::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         return view('spl.list', compact('spl'));
     }
 
@@ -51,13 +58,13 @@ class SPLController extends Controller
             return redirect()->route('spl.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotFoundException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotSuitableWithNimException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         // }

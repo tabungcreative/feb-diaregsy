@@ -16,8 +16,16 @@
                         <img src={{asset('/img/logo-feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                         <img src={{asset('/img/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
-                    <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Seminar Proposal </h4>
+                    <h4 class="mx-auto mt-4 align-center">
+                        Mahasiswa Terdaftar Seminar Proposal
+                    </h4>
                     <div class="card-body">
+                        <div class="mb-4">
+                            <form method="get" class="input-group mb-3" style="width: 300px">
+                                <input type="text" name="key" class="form-control" value="{{ $_GET['key'] ?? '' }}" placeholder="Cari mahasiswa">
+                                <button class="btn btn-danger" type="button" id="button-addon2">Cari</button>
+                            </form>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
                                 <thead>
@@ -25,18 +33,21 @@
                                     <th>No</th>
                                     <th>Nim</th>
                                     <th>Nama</th>
-                                    <th>Prodi</th></th>
+                                    <th>Program Studi</th>
                                     <th>Status</th>
                                     <th>Keterangan</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @if($sempro->count() == 0 )
+                                    <td class="p-3" colspan="6">Mahasiswa tidak ditemukan</td>
+                                @endif
                                 @foreach($sempro as $value)
                                     <tr>
-                                        <td>#</td>
+                                        <td>{{ $loop->iteration + $sempro->firstItem() - 1 }}</td>
                                         <td>{{ $value->nim }}</td>
                                         <td>{{ $value->nama }}</td>
-                                        <td>{{ $value->prodi }}</td>
+                                        <td>{{ ucfirst($value->prodi) }}</td>
                                         <td>
                                             @if($value->is_verify)
                                                 <span class="badge bg-primary">Terverifikasi</span>
@@ -44,11 +55,14 @@
                                                 <span class="badge bg-warning">Berlum Terverifikasi</span>
                                             @endif
                                         </td>
-                                        <td>{{ $value->keterangan ?? '-'}}</td>
+                                        <td width="200px">{{ $value->keterangan ?? '-'}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="mx-3 my-3">
+                            {{ $sempro->appends($_GET)->links() }}
                         </div>
                     </div>
                 </div>

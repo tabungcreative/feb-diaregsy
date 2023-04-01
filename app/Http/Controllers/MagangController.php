@@ -7,10 +7,12 @@ use App\Exceptions\MahasiswaNotFoundException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\MagangRegisterRequest;
 use App\Http\Requests\MagangUpdateRequest;
+use App\Models\Magang;
 use App\Repositories\MagangRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Services\MagangService;
 use Exception;
+use Illuminate\Http\Request;
 
 class MagangController extends Controller
 {
@@ -25,9 +27,15 @@ class MagangController extends Controller
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $magang = $this->magangRepository->getALl();
+        $magang = Magang::orderBy('created_at', 'DESC')->paginate(20);
+        $key = $request->get('key');
+        if ($key != null) {
+            $magang = Magang::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         return view('magang.list', compact('magang'));
     }
 
@@ -48,16 +56,16 @@ class MagangController extends Controller
             return redirect()->route('magang.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotFoundException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotSuitableWithNimException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (MagangIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {

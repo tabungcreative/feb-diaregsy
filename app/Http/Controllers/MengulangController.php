@@ -9,6 +9,7 @@ use App\Exceptions\PembayaranNotSuitableWithNimException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\MengulangRegisterRequest;
 use App\Http\Requests\MengulangUpdateRequest;
+use App\Models\Mengulang;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\MengulangRepository;
 use App\Services\MengulangService;
@@ -30,9 +31,15 @@ class MengulangController extends Controller
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $mengulang = $this->mengulangRepository->getALl();
+        $mengulang = Mengulang::orderBy('created_at', 'DESC')->paginate();
+        $key = $request->get('key');
+        if ($key != null) {
+            $mengulang = Mengulang::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         return view('mengulang.list', compact('mengulang'));
     }
 
@@ -53,16 +60,16 @@ class MengulangController extends Controller
             return redirect()->route('mengulang.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotFoundException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotSuitableWithNimException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (MengulangIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {

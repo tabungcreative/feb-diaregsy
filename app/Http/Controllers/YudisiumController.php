@@ -8,11 +8,13 @@ use App\Exceptions\YudisiumIsExistException;
 use App\Http\Requests\YudisiumRegisterRequest;
 use App\Http\Requests\YudisiumUpdateRequest;
 use App\Models\UjianAkhir;
+use App\Models\Yudisium;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\YudisiumRepository;
 use App\Services\YudisiumService;
 use Exception;
+use Illuminate\Http\Request;
 
 class YudisiumController extends Controller
 {
@@ -30,9 +32,15 @@ class YudisiumController extends Controller
         $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $yudisium = $this->yudisiumRepository->getALl();
+        $yudisium = Yudisium::orderBy('created_at', 'DESC')->paginate(20);
+        $key = $request->get('key');
+        if ($key != null) {
+            $yudisium = Yudisium::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         return view('yudisium.list', compact('yudisium'));
     }
 

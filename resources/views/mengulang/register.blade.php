@@ -14,7 +14,7 @@
                         <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                         <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
-                    <h4 class="mx-auto mt-4">Pendaftaran Seminar Proposal</h4>
+                    <h4 class="mx-auto mt-4">Pendaftaran Mengulang</h4>
                     <p class="text-justify m-3">Pastikan kebenaran data diri Anda, kemudian masukan <span class="fw-bold">syarat-syarat dan dokumen pendaftaran</span>, </p>
 
                     <div class="card-body">

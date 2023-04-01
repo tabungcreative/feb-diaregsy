@@ -33,9 +33,15 @@ class BimbinganSkripsiController extends Controller
         $this->dosenRepository = $dosenRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $bimbinganSkripsi = $this->bimbinganSkripsiRepository->getALl();
+        $bimbinganSkripsi = BimbinganSkripsi::orderBy('created_at', 'DESC')->paginate(20);
+        $key = $request->get('key');
+        if ($key != null) {
+            $bimbinganSkripsi = Sempro::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         return view('bimbinganSkripsi.list', compact('bimbinganSkripsi'));
     }
 
@@ -60,16 +66,16 @@ class BimbinganSkripsiController extends Controller
             return redirect()->route('bimbinganSkripsi.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
         } catch (TahunAjaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotFoundException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotSuitableWithNimException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (BimbinganSkripsiIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {

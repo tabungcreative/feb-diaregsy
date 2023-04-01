@@ -18,6 +18,12 @@
                     </div>
                     <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Kerja Praktik </h4>
                     <div class="card-body">
+                        <div class="mb-4">
+                            <form method="get" class="input-group mb-3" style="width: 300px">
+                                <input type="text" name="key" class="form-control" value="{{ $_GET['key'] ?? '' }}" placeholder="Cari mahasiswa">
+                                <button class="btn btn-danger" type="button" id="button-addon2">Cari</button>
+                            </form>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
                                 <thead>
@@ -25,19 +31,22 @@
                                     <th>No</th>
                                     <th>Nim</th>
                                     <th>Nama</th>
-                                    <th>Prodi</th>
-                                    <th>Instansi</th>
+                                    <th>Program Studi</th>
+                                    <th>Instansi Magang</th>
                                     <th>Status</th>
                                     <th>Keterangan</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                    @if($magang->count() == 0 )
+                                    <td class="p-3" colspan="6">Mahasiswa tidak ditemukan</td>
+                                @endif
                                 @foreach($magang as $value)
                                     <tr>
-                                        <td>#</td>
+                                        <td>{{ $loop->iteration + $magang->firstItem() - 1 }}</td>
                                         <td>{{ $value->nim }}</td>
                                         <td>{{ $value->nama }}</td>
-                                        <td>{{ $value->prodi }}</td>
+                                        <td>{{ ucfirst($value->prodi) }}</td>
                                         <td>{{ $value->instansi_magang }}</td>
                                         <td>
                                             @if($value->is_verify)
@@ -46,11 +55,14 @@
                                                 <span class="badge bg-warning">Berlum Terverifikasi</span>
                                             @endif
                                         </td>
-                                        <td>{{ $value->keterangan ?? '-'}}</td>
+                                        <td class="width: 200px;">{{ $value->keterangan ?? '-'}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="mx-3 my-3">
+                            {{ $magang->appends($_GET)->links() }}
                         </div>
                     </div>
                 </div>

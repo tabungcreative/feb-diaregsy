@@ -1,6 +1,7 @@
 <?php
 
 use App\Helper\AuthUser;
+use App\Models\TahunAjaran;
 
 return [
 
@@ -255,6 +256,8 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'AuthUser' => AuthUser::class,
+        'TahunAjaran' => TahunAjaran::class,
+
 
 
 

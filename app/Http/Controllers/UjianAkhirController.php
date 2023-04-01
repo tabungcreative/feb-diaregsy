@@ -8,11 +8,13 @@ use App\Exceptions\UjianAkhirIsExistException;
 use App\Http\Requests\UjianAkhirRegisterRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
 use App\Models\Kompre;
+use App\Models\UjianAkhir;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\UjianAkhirRepository;
 use App\Services\UjianAkhirService;
 use Exception;
+use Illuminate\Http\Request;
 
 class UjianAkhirController extends Controller
 {
@@ -30,9 +32,15 @@ class UjianAkhirController extends Controller
         $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $ujianAkhir = $this->ujianAkhirRepository->getALl();
+        $ujianAkhir = UjianAkhir::orderBy('created_at','DESC')->paginate(20);
+        $key = $request->get('key');
+        if ($key != null) {
+            $ujianAkhir = UjianAkhir::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         return view('ujianAkhir.list', compact('ujianAkhir'));
     }
 
@@ -93,7 +101,7 @@ class UjianAkhirController extends Controller
     }
 
     public function update(UjianAkhirUpdateRequest $request, $id)
-    {   
+    {
         $fileSkripsi = $request->file('berkas_skripsi');
         $fileIjazahTerakhir = $request->file('ijazah_terakhir');
         $fileTranskripNilai = $request->file('transkrip_nilai');

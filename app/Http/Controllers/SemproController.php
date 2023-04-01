@@ -9,6 +9,7 @@ use App\Exceptions\PembayaranNotSuitableWithNimException;
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\SemproRegisterRequest;
 use App\Http\Requests\SemproUpdateRequest;
+use App\Models\Sempro;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SemproRepository;
 use App\Services\SemproService;
@@ -30,9 +31,15 @@ class SemproController extends Controller
         $this->mahasiswaRepository = $mahasiswaRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $sempro = $this->semproRepository->getALl();
+        $sempro = Sempro::orderBy('created_at', 'DESC')->paginate(20);
+        $key = $request->get('key');
+        if ($key != null) {
+            $sempro = Sempro::where('nim', 'LIKE', "%" . $key ."%")
+                ->orWhere('nama', 'LIKE', "%" . $key ."%")
+                ->paginate(20);
+        }
         return view('sempro.list', compact('sempro'));
     }
 
@@ -58,13 +65,13 @@ class SemproController extends Controller
         }
         //  catch (PembayaranNotFoundException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (MahasiswaNotFoundException $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        } 
+        }
         // catch (PembayaranNotSuitableWithNimException $e) {
         //     return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
-        // } 
+        // }
         catch (SemproIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
