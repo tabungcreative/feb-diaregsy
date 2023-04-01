@@ -38,7 +38,7 @@ class BimbinganSkripsiController extends Controller
         $bimbinganSkripsi = BimbinganSkripsi::orderBy('created_at', 'DESC')->paginate(20);
         $key = $request->get('key');
         if ($key != null) {
-            $bimbinganSkripsi = Sempro::where('nim', 'LIKE', "%" . $key ."%")
+            $bimbinganSkripsi = BimbinganSkripsi::where('nim', 'LIKE', "%" . $key ."%")
                 ->orWhere('nama', 'LIKE', "%" . $key ."%")
                 ->paginate(20);
         }
