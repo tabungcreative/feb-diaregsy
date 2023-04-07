@@ -26,11 +26,12 @@
             font-family: 'Times New Roman', Times, serif;
         }
         #halaman{
-            margin-left: 2cm;
-            margin-right:2cm;
+            margin-left:0.5cm;
+            margin-right:0.5cm;
             margin-bottom: 3cm; 
             margin-top: 0cm; 
             font-size: 12px;
+            max-height: 100vh;
         }
         .kop{
             float: left;
@@ -67,7 +68,6 @@
         <img src="img/kop-feb.png" width="60%"/>
     </header>
     <div id="halaman">
-        <br>
         <h1 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h1>
         <br>
         <table class="table">
@@ -94,7 +94,7 @@
             <tr>
                 <td style="width: 20px">Judul Skripsi</td>
                 <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['judul_skripsi']}}</td>
+                <td style="width: 50px;text-align:justify">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
             <br>
         </table>
@@ -127,7 +127,6 @@
         <img src="img/kop-feb.png" width="60%"/>
     </header>
     <div id="halaman">
-        <br>
         <h1 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h1>
         <br>
         <table class="table">
@@ -154,7 +153,7 @@
             <tr>
                 <td style="width: 20px">Judul Skripsi</td>
                 <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['judul_skripsi']}}</td>
+                <td style="width: 50px;text-align:justify">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
             <br>
         </table>

@@ -68,7 +68,7 @@
                                 @if($ujianAkhir->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>
                                 @else
-                                    <span class="badge badge-warning">Berlum Terverifikasi</span>
+                                    <span class="badge badge-warning">Belum Terverifikasi</span>
                                 @endif
                             </p>
                         </div>

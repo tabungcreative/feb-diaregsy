@@ -19,7 +19,9 @@
         <th>Nim</th>
         <th>Nama</th>
         <th>Prodi</th>
-        <th>Nomer Telp</th>
+        <th>Nomer Telepon</th>
+        <th>Status</th>
+        <th>Keterangan</th>
     </tr>
     </thead>
     <tbody>
@@ -31,6 +33,14 @@
             <td>{{ $value->nama }}</td>
             <td>{{ $value->prodi }}</td>
             <td>{{ $value->no_whatsapp }}</td>
+            <td>{{ $value->keterangan }}</td>
+            <td>
+                @if($value->is_verify)
+                    Terverifikasi
+                @else
+                    Belum Terverifikasi
+                @endif
+            </td>
         </tr>
         @php($i++)
     @endforeach

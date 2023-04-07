@@ -26,6 +26,9 @@
         * {
             font-family: 'Times New Roman', Times, serif;
         }
+        body{
+            max-height: 100vh
+        }
         #halaman{
             margin-left: 2cm;
             margin-right:2cm;
@@ -75,27 +78,19 @@
         <p>Dekan Fakultas Ekonomi dan Bisnis (FEB) Universitas Sains Al-Qur’an (UNSIQ) Jawa Tengah di Wonosobo, memberikan tugas kepada:</p>
         <table class="table">
             <tr>
-                <td style="width: 1px">1.</td>
-                <td style="width: 1px">Nama</td>
-                <td style="width: 1px">:</td>
-                <td style="width: 20px">{{$bimbinganSkripsi['pembimbing1']}}</td>
+                <td style="width: 1px">1. Nama:</td>
+                <td style="width: 10px">{{$bimbinganSkripsi['pembimbing1']}}</td>
             </tr>
             <tr>
                 <td style="width: 1px"></td>
-                <td style="width: 1px"></td>
-                <td style="width: 1px"></td>
-                <td style="width: 20px">( Selaku Pembimbing I )</td>
+                <td style="width: 10px">( Selaku Pembimbing I )</td>
             </tr>
             <tr>
-                <td style="width: 1px">2.</td>
-                <td style="width: 1px">Nama</td>
-                <td style="width: 1px">:</td>
-                <td style="width: 20px">{{$bimbinganSkripsi['pembimbing2']}}</td>
+                <td style="width: 1px">2. Nama :</td>
+                <td style="width: 10px">{{$bimbinganSkripsi['pembimbing2']}}</td>
             <tr>
                 <td style="width: 1px"></td>
-                <td style="width: 1px"></td>
-                <td style="width: 1px"></td>
-                <td style="width: 20px">( Selaku Pembimbing II )</td>
+                <td style="width: 10px">( Selaku Pembimbing II )</td>
             </tr>
         </table>
         <p>Untuk memberikan bimbingan Tugas Akhir (TA) kepada mahasiswa tersebut di bawah ini :</p>
@@ -120,7 +115,6 @@
                 <td style="width: 1px">:</td>
                 <td style="width: 50px">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
-            <br>
         </table>
         <p align="justify">Selama melakukan pembimbingan, harus dilaksanakan dengan sungguh-sungguh dan tidak menyimpang dari kaidah keilmuannya. Pembimbingan TA / Skripsi maksimal dilakukan selama 12 bulan (2 Semester). Jika sampai batas waktu yang telah ditentukan mahasiswa tersebut belum menyelesaikan TA / Skripsi, maka TA / Skripsi mahasiswa harus melakukan perpanjangan TA /  Skripsi.</p>
         <br>
@@ -140,7 +134,6 @@
                 <br>
                 <br>
                 <br>
-                <br>
                 <tr>
                     <td style="width: 20px"> </td>
                     <td style="width: 20px"></td>
@@ -148,7 +141,6 @@
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u>
-                        <br>
                         <strong>NIDN : 0627088202 </strong>
                     </td>
                 </tr>

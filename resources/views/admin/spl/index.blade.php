@@ -48,7 +48,7 @@
                                 @if($value->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>
                                 @else
-                                    <span class="badge badge-warning">Berlum Terverifikasi</span>
+                                    <span class="badge badge-warning">Belum Terverifikasi</span>
                                 @endif
                             </td>
                             <td class="d-flex ">

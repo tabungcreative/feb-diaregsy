@@ -23,7 +23,9 @@
         <th>Email</th>
         <th>Instansi Magang</th>
         <th>Pimpinan Instansi</th>
-        <th>Nomer Telp</th>
+        <th>Nomer Telepon</th>
+        <th>Keterangan</th>
+        <th>Status</th>
     </tr>
     </thead>
     <tbody>
@@ -39,6 +41,14 @@
             <td>{{ $value->instansi_magang }}</td>
             <td>{{ $value->pimpinan_instansi }}</td>
             <td>{{ $value->no_whatsapp }}</td>
+            <td>{{ $value->keterangan }}</td>
+            <td>
+                @if($value->is_verify)
+                    Terverifikasi
+                @else
+                    Belum Terverifikasi
+                @endif
+            </td>
         </tr>
         @php($i++)
     @endforeach

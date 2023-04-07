@@ -19,12 +19,13 @@
         <th>Nim</th>
         <th>Nama</th>
         <th>Prodi</th>
-        <th>Alamat</th>
         <th>Email</th>
-        <th>Nomer Telp</th>
-        <th>Judul Skripsi</th>
+        <th>Nomer Telepon</th>
+        <th>Judul Tugas Akhir</th>
         <th>Pembimbing 1</th>
         <th>Pembimbing 2</th>
+        <th>Keterangan</th>
+        <th>Status</th>
     </tr>
     </thead>
     <tbody>
@@ -35,12 +36,19 @@
             <td>{{ $value->nim }}</td>
             <td>{{ $value->nama }}</td>
             <td>{{ $value->prodi }}</td>
-            <td>{{ $value->alamat }}</td>
             <td>{{ $value->email }}</td>
             <td>{{ $value->no_whatsapp }}</td>
             <td>{{ $value->judul_skripsi }}</td>
             <td>{{ $value->pembimbing1 }}</td>
             <td>{{ $value->pembimbing2 }}</td>
+            <td>{{ $value->keterangan }}</td>
+            <td>
+                @if($value->is_verify)
+                    Terverifikasi
+                @else
+                    Belum Terverifikasi
+                @endif
+            </td>
         </tr>
         @php($i++)
     @endforeach
