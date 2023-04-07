@@ -127,4 +127,15 @@ class BimbinganSkripsiController extends Controller
             return response()->view('errors.500', ['message' => 'Terjadi kesalahan pada server .' . $e->getMessage()], 500);
         }
     }
+
+
+    public function delete($id) {
+        try {
+            $this->bimbinganSkripsiService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
 }

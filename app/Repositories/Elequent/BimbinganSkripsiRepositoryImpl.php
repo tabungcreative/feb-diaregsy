@@ -38,4 +38,9 @@ class BimbinganSkripsiRepositoryImpl implements BimbinganSkripsiRepository
         $bimbinganSkripsi->save();
         return $bimbinganSkripsi;
     }
+
+    function delete($id)
+    {
+        return BimbinganSkripsi::where('id', $id)->delete();
+    }
 }

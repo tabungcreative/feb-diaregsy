@@ -11,4 +11,5 @@ interface BimbinganSkripsiRepository
     function create(array $detailMagang, $tahunAjaranId): BimbinganSkripsi;
     function findByNim($nim): ?BimbinganSkripsi;
     function update(int $id, array $detailBimbinganSkripsi): BimbinganSkripsi;
+    function delete($id);
 }

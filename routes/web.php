@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route cek nim 
+// Route cek nim
 Route::get('cek-nim', function () {
     return view('mahasiswa.cek-nim');
 });
@@ -132,7 +132,7 @@ Route::controller(YudisiumController::class)
     });
 
 
-// Route Pendaftaran mahasiswa 
+// Route Pendaftaran mahasiswa
 Route::controller(PendaftaranController::class)
     ->prefix('pendaftaran')
     ->as('pendaftaran.')
@@ -143,7 +143,7 @@ Route::controller(PendaftaranController::class)
     });
 
 
-// authentication 
+// authentication
 
 Route::controller(AuthController::class)
     ->prefix('auth')
@@ -198,6 +198,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::get('/export', 'export')->name('export');
                     Route::get('/{id}/surat-tugas', 'suratTugas')->name('surat-tugas');
                     Route::get('/{id}/surat-bimbingan', 'suratBimbingan')->name('surat-bimbingan');
+                    Route::delete('/{id}', 'delete')->name('delete');
                 });
             Route::controller(\App\Http\Controllers\Admin\SemproController::class)
                 ->prefix('seminar-proposal')

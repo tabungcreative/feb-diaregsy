@@ -56,6 +56,11 @@
                                     <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
                                 </form>
                                 <a href="{{ route('admin.bimbinganSkripsi.detail', $value->id) }}" class="btn btn-info mx-1">Detail</a>
+                                <form method="post" action="{{ route('admin.bimbinganSkripsi.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mx-1">Hapus</button>
+                                </form>
                                 <a href="{{ route('admin.bimbinganSkripsi.surat-tugas', $value->id) }}" class="btn btn-warning mx-1" target="_blank">Cetak Surat</a>
                                 <a href="{{ route('admin.bimbinganSkripsi.surat-bimbingan', $value->id) }}" class="btn btn-warning" target="_blank">Cetak Kartu</a>
 
