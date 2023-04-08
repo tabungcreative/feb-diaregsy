@@ -139,4 +139,15 @@ class SPLServiceImpl implements SPLService
 
         return $spl;
     }
+
+    public function destroy($id)
+    {
+        $spl = $this->splRepository->findById($id);
+
+        if ($spl->bukti_pembayaran != null) {
+            $this->delete($spl->bukti_pembayaran);
+        }
+
+        $this->splRepository->delete($id);
+    }
 }

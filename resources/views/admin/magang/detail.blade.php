@@ -102,6 +102,12 @@
                         </div>
                         <div class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex justify-content-between">
+                                <h6 class="mb-1">Bukti Pembayaran</h6>
+                            </div>
+                            <p class="fw-bold"><a href="{{asset('storage/' . $magang->bukti_pembayaran)}}" target="_blank"><b> preview </b></a></p>
+                        </div>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">Lembar Persetujuan</h6>
                             </div>
                             <p class="fw-bold"><a href="{{asset('storage/' . $magang->lembar_persetujuan)}}" target="_blank"><b> preview </b></a></p>

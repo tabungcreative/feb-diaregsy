@@ -14,4 +14,5 @@ interface MagangService
     function verify(int $id);
     function createMessage(int $id, MagangCreateMessageRequest $request);
     function update(int $id, MagangUpdateRequest $request);
+    function destroy($id);  
 }

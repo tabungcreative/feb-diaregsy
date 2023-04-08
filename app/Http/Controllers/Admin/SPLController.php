@@ -82,4 +82,14 @@ class SPLController extends Controller
         $tahun = Carbon::now()->year;
         return Excel::download(new SPLExport(), 'daftar-spl-' . $tahun . '.xlsx');
     }
+
+    public function delete($id) {
+        try {
+            $this->SPLService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
 }

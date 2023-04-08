@@ -151,4 +151,19 @@ class MagangServiceImpl implements MagangService
         $magang = $this->magangRepository->update($id, $detailMagang);
         return $magang;
     }
+
+    public function destroy($id)
+    {
+        $magang = $this->magangRepository->findById($id);
+
+        if ($magang->bukti_pembayaran != null) {
+            $this->delete($magang->bukti_pembayaran);
+        }
+
+        if ($magang->lembar_persetujuan != null) {
+            $this->delete($magang->lembar_persetujuan);
+        }
+
+        $this->magangRepository->delete($id);
+    }
 }

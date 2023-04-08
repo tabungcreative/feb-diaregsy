@@ -79,4 +79,14 @@ class SemproController extends Controller
         $tahun = Carbon::now()->year;
         return Excel::download(new SemproExport(), 'daftar-seminar-proposal-' . $tahun . '.xlsx');
     }
+
+    public function delete($id) {
+        try {
+            $this->semproService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
 }

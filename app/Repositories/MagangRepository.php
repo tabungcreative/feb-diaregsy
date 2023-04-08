@@ -11,4 +11,5 @@ interface MagangRepository
     function create(array $detailMagang, $tahunAjaranId): Magang;
     function findByNim($nim): ?Magang;
     function update(int $id, array $detailMagang): Magang;
+    function delete($id);
 }

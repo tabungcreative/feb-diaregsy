@@ -14,4 +14,5 @@ interface MengulangService
     function verify(int $id);
     function createMessage(int $id, MengulangCreateMessageRequest $request);
     function update(int $id, MengulangUpdateRequest $request);
+    function destroy($id);  
 }

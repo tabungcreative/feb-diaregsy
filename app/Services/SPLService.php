@@ -14,4 +14,5 @@ interface SPLService
     function verify(int $id);
     function createMessage(int $id, SPLCreateMessageRequest $request);
     function update(int $id, SPLUpdateRequest $request);
+    function destroy($id);
 }
