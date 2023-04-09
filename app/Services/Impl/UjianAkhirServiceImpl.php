@@ -286,8 +286,54 @@ class UjianAkhirServiceImpl implements UjianAkhirService
             'judul_skripsi' => $judulSkripsi,
         ];
 
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
+
+        $this->deleteFileExist($ujianAkhir);
+
         $ujianAkhir = $this->ujianAkhirRepository->update($id, $detailUjianAkhir);
 
         return $ujianAkhir;
+    }
+
+    function destroy($id)
+    {
+        $ujianAkhir = $this->ujianAkhirRepository->findById($id);
+
+        $this->deleteFileExist($ujianAkhir);
+
+        $this->ujianAkhirRepository->delete($id);
+    }
+
+    private function deleteFileExist($ujianAkhir){
+        if ($ujianAkhir->berkas_skripsi != null) {
+            $this->delete($ujianAkhir->berkas_skripsi);
+        }
+        if ($ujianAkhir->ijazah_terakhir != null) {
+            $this->delete($ujianAkhir->ijazah_terakhir);
+        }
+        if ($ujianAkhir->transkrip_nilai != null) {
+            $this->delete($ujianAkhir->transkrip_nilai);
+        }
+        if ($ujianAkhir->akta_kelahiran != null) {
+            $this->delete($ujianAkhir->akta_kelahiran);
+        }
+        if ($ujianAkhir->kartu_keluarga != null) {
+            $this->delete($ujianAkhir->kartu_keluarga);
+        }
+        if ($ujianAkhir->ktp != null) {
+            $this->delete($ujianAkhir->ktp);
+        }
+        if ($ujianAkhir->lembar_bimbingan != null) {
+            $this->delete($ujianAkhir->lembar_bimbingan);
+        }
+        if ($ujianAkhir->slip_pembayaransemesterterakhir != null) {
+            $this->delete($ujianAkhir->slip_pembayaransemesterterakhir);
+        }
+        if ($ujianAkhir->slip_pembayaranSkripsi != null) {
+            $this->delete($ujianAkhir->slip_pembayaranSkripsi);
+        }
+        if ($ujianAkhir->sertifikat != null) {
+            $this->delete($ujianAkhir->sertifikat);
+        }
     }
 }

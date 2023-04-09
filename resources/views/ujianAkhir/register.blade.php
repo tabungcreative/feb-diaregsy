@@ -130,7 +130,7 @@
                             <div class="mb-3">
                                 <label for="judul_skripsi" class="form-label fw-bolder">Judul Skripsi</label>
                                 <input type="text" name="judul_skripsi"
-                                    class="form-control @error('judul_skripsi') is-invalid @enderror" id="judul_skripsi" placeholder="ex: 085xx" value="{{ $skripsi['judul_skripsi'] }}" readonly>
+                                    class="form-control @error('judul_skripsi') is-invalid @enderror" id="judul_skripsi" placeholder="ex: 085xx" value="{{ $skripsi['judul_skripsi'] ?? '' }}" readonly>
                                 @error('judul_skripsi')
                                 <div id="judul_skripsi" class="invalid-feedback">
                                     {{ $message }}
@@ -140,8 +140,8 @@
                             <div class="mb-3">
                                 <label for="pembimbing1" class="form-label fw-bolder">Pembimbing 1</label>
                                 <input type="text" name="pembimbing1"
-                                    class="form-control @error('pembimbing1') is-invalid @enderror" id="pembimbing1"
-                                    placeholder="ex: 085xx" value="{{ $skripsi['pembimbing1'] }}" readonly>
+                                    class="form-control @error('pembimbing1') is-invalid @enderror disabled" id="pembimbing1"
+                                    placeholder="ex: 085xx" value="{{ $skripsi['pembimbing1'] ?? ''}}" readonly>
                                 @error('pembimbing1')
                                 <div id="pembimbing1" class="invalid-feedback">
                                     {{ $message }}
@@ -152,7 +152,7 @@
                                 <label for="pembimbing2" class="form-label fw-bolder">Pembimbing 2</label>
                                 <input type="text" name="pembimbing2"
                                     class="form-control @error('pembimbing2') is-invalid @enderror" id="pembimbing2"
-                                    placeholder="ex: 085xx" value="{{ $skripsi['pembimbing2'] }}" readonly>
+                                    placeholder="ex: 085xx" value="{{ $skripsi['pembimbing2'] ?? ''}}" readonly>
                                 @error('pembimbing2')
                                 <div id="pembimbing2" class="invalid-feedback">
                                     {{ $message }}

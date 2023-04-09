@@ -78,4 +78,14 @@ class UjianAkhirController extends Controller
         $tahun = Carbon::now()->year;
         return Excel::download(new UjianAkhirExport(), 'daftar-ujian-akhir-' . $tahun . '.xlsx');
     }
+
+    public function delete($id) {
+        try {
+            $this->ujianAkhirService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
 }
