@@ -8,7 +8,7 @@ use App\Repositories\MengulangRepository;
 
 class MengulangRepositoryImpl implements MengulangRepository
 {
-     function getALl()
+    function getALl()
     {
         return Mengulang::orderBy('created_at', 'DESC')->get();
     }
@@ -36,5 +36,10 @@ class MengulangRepositoryImpl implements MengulangRepository
         $mengulang->update($detailMengulang);
         $mengulang->save();
         return $mengulang;
+    }
+
+    function delete($id)
+    {
+        return Mengulang::where('id', $id)->delete();
     }
 }

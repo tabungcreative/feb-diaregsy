@@ -37,4 +37,8 @@ class SemproRepositoryImpl implements SemproRepository
         $sempro->save();
         return $sempro;
     }
+    function delete($id)
+    {
+        return Sempro::where('id', $id)->delete();
+    }
 }

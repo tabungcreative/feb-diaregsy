@@ -144,4 +144,17 @@ class MengulangServiceImpl implements MengulangService
         $mengulang = $this->mengulangRepository->update($id, $detailMengulang);
         return $mengulang;
     }
+    public function destroy($id)
+    {
+        $mengulang = $this->mengulangRepository->findById($id);
+
+        if ($mengulang->khs != null) {
+            $this->delete($mengulang->khs);
+        }
+        if ($mengulang->bukti_pembayaran != null) {
+            $this->delete($mengulang->bukti_pembayaran);
+        }
+
+        $this->mengulangRepository->delete($id);
+    }
 }

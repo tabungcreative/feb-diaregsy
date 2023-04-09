@@ -80,5 +80,16 @@ class MengulangController extends Controller
         $tahun = Carbon::now()->year;
         return Excel::download(new MengulangExport(), 'daftar-mengulang-' . $tahun . '.xlsx');
     }
+
+
+    public function delete($id) {
+        try {
+            $this->mengulangService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
 }
 

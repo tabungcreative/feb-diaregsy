@@ -15,4 +15,5 @@ interface SemproService
     function verify(int $id);
     function createMessage(int $id, SemproCreateMessageRequest $request);
     function update(int $id, SemproUpdateRequest $request);
+    function destroy($id);
 }

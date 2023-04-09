@@ -37,4 +37,8 @@ class SPLRepositoryImpl implements SPLRepository
         $spl->save();
         return $spl;
     }
+    function delete($id)
+    {
+        return SPL::where('id', $id)->delete();
+    }
 }

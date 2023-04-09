@@ -37,4 +37,9 @@ class MagangRepositoryImpl implements MagangRepository
         $magang->save();
         return $magang;
     }
+    
+    function delete($id)
+    {
+        return Magang::where('id', $id)->delete();
+    }
 }

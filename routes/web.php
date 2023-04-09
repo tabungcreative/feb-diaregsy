@@ -175,6 +175,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/verify', 'verify')->name('verify');
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
+                    Route::delete('/{id}', 'delete')->name('delete');
                 });
             Route::controller(\App\Http\Controllers\Admin\MagangController::class)
                 ->prefix('magang')
@@ -186,6 +187,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
                     Route::get('/{id}/surat-penempatan-magang', 'print')->name('print');
+                    Route::delete('/{id}', 'delete')->name('delete');
                 });
             Route::controller(\App\Http\Controllers\Admin\BimbinganSkripsiController::class)
                 ->prefix('bimbingan-skripsi')
@@ -209,6 +211,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/verify', 'verify')->name('verify');
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
+                    Route::delete('/{id}', 'delete')->name('delete');
                 });
             Route::controller(\App\Http\Controllers\Admin\KompreController::class)
                 ->prefix('ujian-komprehensif')
@@ -229,6 +232,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/verify', 'verify')->name('verify');
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
+                    Route::delete('/{id}', 'delete')->name('delete');
                 });
 
             Route::controller(\App\Http\Controllers\Admin\UjianAkhirController::class)

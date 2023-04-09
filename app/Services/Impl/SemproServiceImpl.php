@@ -157,4 +157,23 @@ class SemproServiceImpl implements SemproService
 
         return $sempro;
     }
+
+    public function destroy($id)
+    {
+        $sempro = $this->semproRepository->findById($id);
+
+        if ($sempro->bukti_pembayaran != null) {
+            $this->delete($sempro->bukti_pembayaran);
+        }
+        
+        if ($sempro->nota_kaprodi != null) {
+            $this->delete($sempro->nota_kaprodi);
+        }
+
+        if ($sempro->berkas_sempro != null) {
+            $this->delete($sempro->berkas_sempro);
+        }
+
+        $this->semproRepository->delete($id);
+    }
 }
