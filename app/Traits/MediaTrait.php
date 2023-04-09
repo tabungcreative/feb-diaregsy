@@ -19,6 +19,8 @@ trait MediaTrait
     }
 
     public function delete($path) {
-        Storage::disk('public')->delete($path);
+        if (Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->delete($path);
+        }
     }
 }

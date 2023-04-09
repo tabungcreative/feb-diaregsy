@@ -13,4 +13,5 @@ interface BimbinganSkripsiService
     function verify(int $id);
     function createMessage(int $id, BimbinganSkripsiCreateMessageRequest $request);
     function update(int $id, BimbinganSkripsiUpdateRequest $request);
+    function destroy($id);
 }

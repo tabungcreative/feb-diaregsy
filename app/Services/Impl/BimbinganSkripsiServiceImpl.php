@@ -135,4 +135,15 @@ class BimbinganSkripsiServiceImpl implements BimbinganSkripsiService
         $bimbinganSkripsi = $this->bimbinganSkripsiRepository->update($id, $detailBimbinganSkripsi);
         return $bimbinganSkripsi;
     }
+
+    public function destroy($id)
+    {
+        $bimbinganSkripsi = $this->bimbinganSkripsiRepository->findById($id);
+
+        if ($bimbinganSkripsi->bukti_pembayaran != null) {
+            $this->delete($bimbinganSkripsi->bukti_pembayaran);
+        }
+
+        $this->bimbinganSkripsiRepository->delete($id);
+    }
 }
