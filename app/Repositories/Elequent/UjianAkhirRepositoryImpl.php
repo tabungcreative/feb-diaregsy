@@ -37,4 +37,9 @@ class UjianAkhirRepositoryImpl implements UjianAkhirRepository
         $ujianAkhir->save();
         return $ujianAkhir;
     }
+
+    function delete($id)
+    {
+        return UjianAkhir::where('id', $id)->delete();
+    }
 }

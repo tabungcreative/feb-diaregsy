@@ -22,4 +22,5 @@ interface UjianAkhirService
     function verify(int $id);
     function createMessage(int $id, UjianAkhirCreateMessageRequest $request);
     function update(int $id, UjianAkhirUpdateRequest $request);
+    function destroy($id);
 }
