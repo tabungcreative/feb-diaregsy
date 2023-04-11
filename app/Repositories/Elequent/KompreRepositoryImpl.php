@@ -36,4 +36,9 @@ class KompreRepositoryImpl implements KompreRepository
         $kompre->save();
         return $kompre;
     }
+
+    function delete($id)
+    {
+        return Kompre::where('id', $id)->delete();
+    }
 }
