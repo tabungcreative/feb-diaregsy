@@ -13,4 +13,5 @@ interface KompreService
     function verify(int $id);
     function createMessage(int $id, KompreCreateMessageRequest $request);
     function update(int $id, KompreUpdateRequest $request);
+    function destroy($id);
 }

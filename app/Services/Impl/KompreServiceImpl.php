@@ -124,4 +124,19 @@ class KompreServiceImpl implements KompreService
 
         return $kompre;
     }
+
+    function destroy($id)
+    {
+        $kompre = $this->kompreRepository->findById($id);
+
+        $this->deleteFileExist($kompre);
+
+        $this->kompreRepository->delete($id);
+    }
+
+    private function deleteFileExist($kompre){
+        if ($kompre->bukti_pembayaran != null) {
+            $this->delete($kompre->bukti_pembayaran);
+        }
+    }
 }

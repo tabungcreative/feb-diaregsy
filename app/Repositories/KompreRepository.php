@@ -11,4 +11,5 @@ interface KompreRepository
     function create(array $detailKompre, $tahunAjaranId): Kompre;
     function findByNim($nim): ?Kompre;
     function update(int $id, array $detailKompre): Kompre;
+    function delete($id);
 }

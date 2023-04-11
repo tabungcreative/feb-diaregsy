@@ -222,6 +222,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/verify', 'verify')->name('verify');
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
+                    Route::delete('/{id}', 'delete')->name('delete');
                 });
             Route::controller(\App\Http\Controllers\Admin\MengulangController::class)
                 ->prefix('mengulang')

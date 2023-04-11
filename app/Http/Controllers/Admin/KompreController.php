@@ -80,4 +80,13 @@ class KompreController extends Controller
         $tahun = Carbon::now()->year;
         return Excel::download(new KompreExport(), 'daftar-ujian-komprehensif-' . $tahun . '.xlsx');
     }
+
+    public function delete($id) {
+        try {
+            $this->kompreService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
 }
