@@ -35,6 +35,7 @@
                 <td>{{ $value->nim }}</td>
                 <td>{{ $value->nama }}</td>
                 <td>{{ $value->prodi }}</td>
+                <td>{{ $value->alamat }}</td>
                 <td>{{ $value->email }}</td>
                 <td>{{ $value->judul_sempro }}</td>
                 <td>{{ $value->no_whatsapp }}</td>
