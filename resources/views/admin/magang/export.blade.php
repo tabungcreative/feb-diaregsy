@@ -24,6 +24,8 @@
         <th>Instansi Magang</th>
         <th>Pimpinan Instansi</th>
         <th>Nomer Telepon</th>
+        <th>Bukti Pembayaran</th>
+        <th>Lembar Persetujuan</th>
         <th>Keterangan</th>
         <th>Status</th>
     </tr>
@@ -41,6 +43,8 @@
             <td>{{ $value->instansi_magang }}</td>
             <td>{{ $value->pimpinan_instansi }}</td>
             <td>{{ $value->no_whatsapp }}</td>
+            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
+            <td>{{ asset('storage/' . $value->lembar_persetujuan) }}</td>
             <td>{{ $value->keterangan }}</td>
             <td>
                 @if($value->is_verify)

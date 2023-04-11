@@ -22,6 +22,9 @@
         <th>Email</th>
         <th>Judul Seminar Proposal</th>
         <th>Nomer Telepon</th>
+        <th>Bukti Pembayaran</th>
+        <th>Nota Dinas Kaprodi</th>
+        <th>Berkas Sempro</th>
         <th>Keterangan</th>
         <th>Status</th>
     </tr>
@@ -37,6 +40,9 @@
                 <td>{{ $value->email }}</td>
                 <td>{{ $value->judul_sempro }}</td>
                 <td>{{ $value->no_whatsapp }}</td>
+                <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
+                <td>{{ asset('storage/' . $value->nota_kaprodi) }}</td>
+                <td>{{ asset('storage/' . $value->berkas_sempro) }}</td>
                 <td>{{ $value->keterangan }}</td>
                 <td>
                     @if($value->is_verify)

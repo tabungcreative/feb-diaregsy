@@ -23,6 +23,7 @@
         <th>Nomer Telepon</th>
         <th>Pembimbing 1</th>
         <th>Pembimbing 2</th>
+        <th>Bukti Pembayaran</th>
         <th>Keterangan</th>
         <th>Status</th>
     </tr>
@@ -39,6 +40,7 @@
             <td>{{ $value->no_whatsapp }}</td>
             <td>{{ $value->pembimbing1 }}</td>
             <td>{{ $value->pembimbing2 }}</td>
+            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
             <td>{{ $value->keterangan }}</td>
             <td>
                 @if($value->is_verify)

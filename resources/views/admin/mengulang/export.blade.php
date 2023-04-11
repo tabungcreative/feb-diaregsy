@@ -21,6 +21,8 @@
         <th>Prodi</th>
         <th>Email</th>
         <th>Nomer Telepon</th>
+        <th>Bukti Pembayaran</th>
+        <th>KHS</th>
         <th>Keterangan</th>
         <th>Status</th>
     </tr>
@@ -35,6 +37,8 @@
                 <td>{{ $value->prodi }}</td>
                 <td>{{ $value->email }}</td>
                 <td>{{ $value->no_whatsapp }}</td>
+                <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
+                <td>{{ asset('storage/' . $value->khs) }}</td>
                 <td>{{ $value->keterangan }}</td>
                 <td>
                     @if($value->is_verify)
