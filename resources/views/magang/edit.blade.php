@@ -3,7 +3,7 @@
 @section("content")
     <div class="row">
         <div class="p-5 bg-danger text-center text-white">
-            <h1>Kerja Praktik </h1>
+            <h1>Kerja Praktek </h1>
         </div>
     </div>
     <div class="container">
@@ -14,7 +14,7 @@
                         <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                         <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
-                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Kerja Praktik</h4>
+                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Kerja Praktek</h4>
 
                     <div class="card-body">
 

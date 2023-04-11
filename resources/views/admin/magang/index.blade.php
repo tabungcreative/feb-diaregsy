@@ -5,7 +5,7 @@
     <div class="card">
         <div class="d-flex align-items-center p-5 flex-row justify-content-between flex-wrap">
             <div>
-                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Kerja Praktik Tahun
+                <h5 class="bg-white flex-grow-1">Daftar Pendaftaran Kerja Praktek Tahun
                     @if($tahunAjaran)
                         {{$tahunAjaran->tahun}}
                     @else

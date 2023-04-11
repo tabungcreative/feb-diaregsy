@@ -28,8 +28,8 @@
         #halaman{
             margin-left: 2cm;
             margin-right:2cm;
-            margin-bottom: 3cm; 
-            margin-top:3cm; 
+            margin-bottom: 3cm;
+            margin-top:3cm;
             font-size: 12px;
         }
         .kop{
@@ -46,7 +46,7 @@
             line-height: 0.7cm;
         }
         .isi{
-            margin-left:1cm; 
+            margin-left:1cm;
         }
         .isi p{
             margin: 0;
@@ -85,7 +85,7 @@
             <tr>
                 <td style="width: 20px">Perihal </td>
                 <td style="width: 20px">:</td>
-                <td style="width: 150px"><b><u>Surat Penempatan Kerja Praktik</u></b></td>
+                <td style="width: 150px"><b><u>Surat Penempatan Kerja Praktek</u></b></td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
                 <td style="width: 150px">Kepada Yth.</td>
@@ -168,7 +168,7 @@
                 </tr>
             </table>
         </div>
-        
+
     </div>
     <footer>
         <img src="img/footer-kop.png" width="100%"/>

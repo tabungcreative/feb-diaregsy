@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12 mx-auto px-0">
                 <div class="py-5 bg-danger text-center text-white">
-                    <h1>Kerja Praktik</h1>
+                    <h1>Kerja Praktek</h1>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                         <img src={{asset('/img/logo-feb.png')}} class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
                         <img src={{asset('/img/logo-diaregsy.png')}} class="img-fluid" alt="logo-diaregsi" width="200px">
                     </div>
-                    <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Kerja Praktik </h4>
+                    <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Kerja Praktek </h4>
                     <div class="card-body">
                         <div class="mb-4">
                             <form method="get" class="input-group mb-3" style="width: 300px">
