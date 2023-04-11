@@ -14,7 +14,7 @@
             @php
                 $pendaftaran = [
                     ['nama' => 'Studi Ekskursi', 'route' => 'spl.form-register'],
-                    ['nama' => 'Magang', 'route' => 'magang.form-register'],
+                    ['nama' => 'Kerja Praktek', 'route' => 'magang.form-register'],
                     ['nama' => 'Mengulang', 'route' => 'mengulang.form-register'],
                     ['nama' => 'Seminar Proposal', 'route' => 'sempro.form-register'],
                     ['nama' => 'Bimbingan Tugas Akhir', 'route' => 'bimbinganSkripsi.form-register'],
