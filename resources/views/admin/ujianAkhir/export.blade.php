@@ -20,6 +20,16 @@
         <th>Nama</th>
         <th>Prodi</th>
         <th>Nomer Telepon</th>
+        <th>Bukti Pembayaran</th>
+        <th>File Skripsi</th>
+        <th>Ijazah Terakhir</th>
+        <th>Transkrips Nilai</th>
+        <th>Akta Kelahiran</th>
+        <th>Kartu Keluarga</th>
+        <th>KTP</th>
+        <th>Lembar Bimbingan</th>
+        <th>Pembayaran Semester Akhir</th>
+        <th>Sertifikat</th>
         <th>Keterangan</th>
         <th>Status</th>
     </tr>
@@ -33,6 +43,17 @@
             <td>{{ $value->nama }}</td>
             <td>{{ $value->prodi }}</td>
             <td>{{ $value->no_whatsapp }}</td>
+            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
+            <td>{{ asset('storage/' . $value->berkas_skripsi) }}</td>
+            <td>{{ asset('storage/' . $value->ijazah_terakhir) }}</td>
+            <td>{{ asset('storage/' . $value->transkrip_nilai) }}</td>
+            <td>{{ asset('storage/' . $value->akta_kelahiran) }}</td>
+            <td>{{ asset('storage/' . $value->kartu_keluarga) }}</td>
+            <td>{{ asset('storage/' . $value->ktp) }}</td>
+            <td>{{ asset('storage/' . $value->lembar_bimbingan) }}</td>
+            <td>{{ asset('storage/' . $value->slip_pembayaransemesterterakhir) }}</td>
+            <td>{{ asset('storage/' . $value->slip_pembayaranSkripsi) }}</td>
+            <td>{{ asset('storage/' . $value->sertifikat) }}</td>
             <td>{{ $value->keterangan }}</td>
             <td>
                 @if($value->is_verify)
