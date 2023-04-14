@@ -54,7 +54,7 @@
                                                 <span class="badge bg-warning">Berlum Terverifikasi</span>
                                             @endif
                                         </td>
-                                        <td>{{ $kompre->keterangan ?? '-'}}</td>
+                                        <td>{{ $value->keterangan ?? '-'}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
