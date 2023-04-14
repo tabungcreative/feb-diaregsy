@@ -37,4 +37,9 @@ class YudisiumRepositoryImpl implements YudisiumRepository
         $yudisium->save();
         return $yudisium;
     }
+
+    function delete($id)
+    {
+        return Yudisium::where('id', $id)->delete();
+    }
 }

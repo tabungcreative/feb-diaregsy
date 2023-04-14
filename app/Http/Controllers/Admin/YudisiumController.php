@@ -81,4 +81,13 @@ class YudisiumController extends Controller
         $tahun = Carbon::now()->year;
         return Excel::download(new YudisiumExport(), 'daftar-yudisium-' . $tahun . '.xlsx');
     }
+
+    public function delete($id) {
+        try {
+            $this->yudisiumService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus data.');
+        }
+    }
 }

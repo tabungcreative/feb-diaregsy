@@ -11,4 +11,5 @@ interface YudisiumRepository
     function create(array $detailYudisium, $tahunAjaranId): Yudisium;
     function findByNim($nim): ?Yudisium;
     function update(int $id, array $detailYudisium): Yudisium;
+    function delete($id);
 }
