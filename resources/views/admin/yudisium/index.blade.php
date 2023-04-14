@@ -55,6 +55,11 @@
                                     @csrf
                                     <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
                                 </form>
+                                <form method="post" action="{{ route('admin.yudisium.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mx-1">Hapus</button>
+                                </form>
                                 <a href="{{ route('admin.yudisium.detail', $value->id) }}" class="btn btn-info">Detail</a>
                             </td>
                         </tr>

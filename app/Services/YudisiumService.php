@@ -21,4 +21,5 @@ interface YudisiumService
     function addBebasPlagiasi(int $id, $fileBebasPlagiasi);
     function addBuktiPenjilidan(int $id, $fileBuktiPenjilidan);
     function addBuktiPegumpulan(int $id, $fileBuktiPengumpulan);
+    function destroy($id);
 }

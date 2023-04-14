@@ -49,7 +49,7 @@ class YudisiumServiceImpl implements YudisiumService
         $pembimbing2 = $request->input('pembimbing2');
         $noWhatsapp = $request->input('no_whatsapp');
         $ukuranToga = $request->input('ukuran_toga');
-        
+
         $detailYudisium = [
             'nim' => $nim,
             'nama' => $nama,
@@ -124,7 +124,7 @@ class YudisiumServiceImpl implements YudisiumService
     }
 
     function addBuktiPembayaran(int $id, $fileBuktiPembayaran)
-    {   
+    {
         $yudisium = $this->yudisiumRepository->findById($id);
 
         if ($yudisium->bukti_pembayaran != null) {
@@ -267,5 +267,44 @@ class YudisiumServiceImpl implements YudisiumService
         $yudisium->save();
 
         return $yudisium;
+    }
+
+    function destroy($id)
+    {
+        $yudisium = $this->yudisiumRepository->findById($id);
+
+        $this->deleteFileExist($yudisium);
+
+        $this->yudisiumRepository->delete($id);
+    }
+
+    private function deleteFileExist($yudisium){
+        if ($yudisium->bukti_pembayaran != null) {
+            $this->delete($yudisium->bukti_pembayaran);
+        }
+        if ($yudisium->bebas_spp != null) {
+            $this->delete($yudisium->bebas_spp);
+        }
+        if ($yudisium->transkrip_nilai != null) {
+            $this->delete($yudisium->transkrip_nilai);
+        }
+        if ($yudisium->bebas_perpus != null) {
+            $this->delete($yudisium->bebas_perpus);
+        }
+        if ($yudisium->artikel != null) {
+            $this->delete($yudisium->artikel);
+        }
+        if ($yudisium->file_skripsi != null) {
+            $this->delete($yudisium->file_skripsi);
+        }
+        if ($yudisium->bebas_plagiasi != null) {
+            $this->delete($yudisium->bebas_plagiasi);
+        }
+        if ($yudisium->bukti_penjilidan != null) {
+            $this->delete($yudisium->bukti_penjilidan);
+        }
+        if ($yudisium->bukti_pengumpulan != null) {
+            $this->delete($yudisium->bukti_pengumpulan);
+        }
     }
 }
