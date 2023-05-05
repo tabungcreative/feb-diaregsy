@@ -55,6 +55,7 @@
                                     @csrf
                                     <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
                                 </form>
+                                <a href="{{ route('admin.sempro.edit', $value->nim) }}" class="btn btn-primary mx-1">Edit</a>
                                 <form method="post" action="{{ route('admin.sempro.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
                                     @csrf
                                     @method('DELETE')

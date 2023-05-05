@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\SPLExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SPLCreateMessageRequest;
+use App\Http\Requests\SPLUpdateRequest;
 use App\Models\SPL;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SPLRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\SPLService;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -89,6 +91,26 @@ class SPLController extends Controller
             return redirect()->back()->with('success', 'Berhasil menghapus data.');
         } catch (\Exception $e) {
             dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function edit($nim)
+    {
+        $spl = $this->SPLRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+
+        return view('admin.spl.edit', compact('spl', 'mahasiswa'));
+    }
+
+    public function update(SPLUpdateRequest $request, $id)
+    {
+        $filePembayaran = $request->file('bukti_pembayaran');
+        try {
+            $spl = $this->SPLService->update($id, $request);
+            if ($filePembayaran != null) $this->SPLService->addBuktiPembayaran($id, $filePembayaran);
+            return redirect()->route('admin.spl.detail', $spl->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }

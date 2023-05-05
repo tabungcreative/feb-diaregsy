@@ -68,8 +68,8 @@
                             <div class="mb-3">
                                 <label for="no_whatsapp" class="form-label fw-bolder">No Telephone (WA)</label>
                                 <input type="text" name="no_whatsapp"
-                                       class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
-                                       placeholder="ex: 085xx" value="{{ $mengulang->no_whatsapp}}">
+                                    class="form-control @error('no_whatsapp') is-invalid @enderror" id="no_whatsapp"
+                                    placeholder="ex: 085xx" value="{{ $mengulang->no_whatsapp}}">
                                 @error('no_whatsapp')
                                 <div id="no_whatsapp" class="invalid-feedback">
                                     {{ $message }}

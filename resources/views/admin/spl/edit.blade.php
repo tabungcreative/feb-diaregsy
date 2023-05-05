@@ -1,56 +1,12 @@
-@extends("layouts.app")
-
-@section("content")
-    <div class="row">
-        <div class="p-5 bg-danger text-center text-white">
-            <h1>Studi Ekskursi </h1>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row my-5 d-flex justify-content-center">
-            <div class="col-md-8 my-5">
-                <div class="card p-4">
-                    <div class="image mx-auto">
-                        <img src="{{asset('/img/logo-feb.png')}}" class="img-fluid p-2" alt=" logo-diaregsi" width="100px">
-                        <img src="{{asset('/img/logo-diaregsy.png')}}" class="img-fluid" alt="logo-diaregsi" width="200px">
-                    </div>
-                    <h4 class="mx-auto mt-4">Ubah data pendaftaran Studi Ekskrusi</h4>
-
-                    <div class="card-body">
-
-                        @if(Session::has('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ Session::get('error') }}
-                            </div>
-                        @endif
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="inputEmail4">NIM</label>
-                                        <p class="fw-bold"> {{ $mahasiswa['nim'] }} </p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword4">Nama</label>
-                                        <p class="fw-bold"> {{ $mahasiswa['nama'] }} </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="inputEmail4">Prodi</label>
-                                        <p class="fw-bold"> {{ $mahasiswa['prodi'] }} </p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword4">Tempat Lahir</label>
-                                        <p class="fw-bold">{{ $mahasiswa['tempat_lahir'] }} </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <form action="{{ route('spl.update', $spl->id) }}" method="POST" enctype="multipart/form-data">
+@extends('layouts.admin')
+@section('content')
+    <a href="{{ route('admin.spl.index') }}" class="btn btn-primary my-2"> Kembali </a>
+    <div class="row mt-3 mb-5">
+        <div class="col-md-12">
+            <div class="card p-4">
+                <div class="card-body">
+                    <h3 class="font-weight-bold">Ubah Data Studi Ekskursi</h3>
+                    <form action="{{ route('admin.spl.update', $spl->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
@@ -92,11 +48,8 @@
                                 </div>
                                 @enderror
                             </div>
-
                             <button type="submit" class="btn btn-primary">Ubah Data</button>
                         </form>
-
-                    </div>
                 </div>
             </div>
         </div>

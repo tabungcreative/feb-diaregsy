@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\MengulangExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MengulangCreateMessageRequest;
+use App\Http\Requests\MengulangUpdateRequest;
 use App\Models\Mengulang;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\MengulangRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\MengulangService;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -88,6 +90,28 @@ class MengulangController extends Controller
             return redirect()->back()->with('success', 'Berhasil menghapus data.');
         } catch (\Exception $e) {
             dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function edit($nim)
+    {
+        $mengulang = $this->mengulangRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+
+        return view('admin.mengulang.edit', compact('mengulang', 'mahasiswa'));
+    }
+
+    public function update(MengulangUpdateRequest $request, $id)
+    {
+        $fileKhs = $request->file('khs');
+        $filePembayaran = $request->file('bukti_pembayaran');
+        try {
+            $mengulang = $this->mengulangService->update($id, $request);
+            if ($fileKhs != null) $this->mengulangService->addKhs($mengulang->id, $fileKhs);
+            if ($filePembayaran != null) $this->mengulangService->addBuktiPembayaran($mengulang->id, $filePembayaran);
+            return redirect()->route('admin.mengulang.detail', $mengulang->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }

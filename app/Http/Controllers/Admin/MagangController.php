@@ -11,9 +11,11 @@ use Romans\Filter\IntToRoman;
 use App\Services\MagangService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\MagangExport;
+use App\Http\Requests\MagangUpdateRequest;
 use App\Models\Magang;
 use App\Repositories\TahunAjaranRepository;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class MagangController extends Controller
@@ -114,6 +116,29 @@ class MagangController extends Controller
             return redirect()->back()->with('success', 'Berhasil menghapus data.');
         } catch (\Exception $e) {
             dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+    
+    public function edit($nim)
+    {
+        $magang = $this->magangRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+
+        return view('admin.magang.edit', compact('magang', 'mahasiswa'));
+    }
+
+    public function update(MagangUpdateRequest $request, $id)
+    {
+        $lembarPersetujuan = $request->file('lembar_persetujuan');
+        $filePembayaran = $request->file('bukti_pembayaran');
+        try {
+            $magang = $this->magangService->update($id, $request);
+            if ($lembarPersetujuan != null) $this->magangService->addLembarPersetujuan($id, $lembarPersetujuan);
+            if ($filePembayaran != null) $this->magangService->addBuktiPembayaran($id, $filePembayaran);
+            return redirect()->route('admin.magang.detail', $magang->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
+            // dd($exception);
             abort(500, 'terjadi kesalahan pada server');
         }
     }
