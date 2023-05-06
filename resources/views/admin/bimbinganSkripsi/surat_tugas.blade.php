@@ -71,7 +71,7 @@
     <div id="halaman">
         <br>
         <h3 class="text-center"><u>SURAT TUGAS PEMBIMBINGAN TUGAS AKHIR</u></h3>
-        <h3 class="text-center">.../SKP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</h3>
+        <h3 class="text-center">.../S.TA/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</h3>
         <br>
         <p class="fw-bold fst-italic">Assalamu’alaikum Wr. Wb.</p>
         <br>

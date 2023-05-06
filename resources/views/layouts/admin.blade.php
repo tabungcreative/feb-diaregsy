@@ -87,14 +87,14 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ AuthUser::user()->name }}</span>
                             <img class="img-profile rounded-circle"
-                                 src="{{asset('sb-admin/img/undraw_profile.svg')}}">
+                                src="{{asset('sb-admin/img/undraw_profile.svg')}}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
+                            aria-labelledby="userDropdown">
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -128,11 +128,11 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-                @if(Session::has('error'))
+                {{-- @if(Session::has('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ Session::get('error') }}
                     </div>
-                @endif
+                @endif --}}
                 @yield('content')
             </div>
             <!-- /.container-fluid -->
@@ -181,7 +181,7 @@
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

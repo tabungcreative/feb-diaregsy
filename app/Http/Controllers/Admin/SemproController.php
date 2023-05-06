@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\SemproExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SemproCreateMessageRequest;
+use App\Http\Requests\SemproUpdateRequest;
 use App\Models\Sempro;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SemproRepository;
@@ -12,6 +13,7 @@ use App\Repositories\TahunAjaranRepository;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\SemproService;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class SemproController extends Controller
@@ -86,6 +88,30 @@ class SemproController extends Controller
             return redirect()->back()->with('success', 'Berhasil menghapus data.');
         } catch (\Exception $e) {
             dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function edit($nim)
+    {
+        $sempro = $this->semproRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+
+        return view('admin.sempro.edit', compact('sempro', 'mahasiswa'));
+    }
+
+    public function update(SemproUpdateRequest $request, $id)
+    {
+        $notaKaprodi = $request->file('nota_kaprodi');
+        $berkasSempro = $request->file('berkas_sempro');
+        $filePembayaran = $request->file('bukti_pembayaran');
+        try {
+            $sempro = $this->semproService->update($id, $request);
+            if ($notaKaprodi != null) $this->semproService->addNotaKaprodi($sempro->id, $notaKaprodi);
+            if ($berkasSempro != null) $this->semproService->addBerkasSempro($sempro->id, $berkasSempro);
+            if ($filePembayaran != null) $this->semproService->addBuktiPembayaran($sempro->id, $filePembayaran);
+            return redirect()->route('admin.sempro.detail', $sempro->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }

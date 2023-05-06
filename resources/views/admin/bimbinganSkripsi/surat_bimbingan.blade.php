@@ -31,7 +31,7 @@
             margin-bottom: 3cm; 
             margin-top: 0cm; 
             font-size: 12px;
-            max-height: 100vh;
+            max-height: 60vh;
         }
         .kop{
             float: left;
@@ -96,7 +96,6 @@
                 <td style="width: 1px">:</td>
                 <td style="width: 50px;text-align:justify">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
-            <br>
         </table>
         <table class="table bimbingan">
             <thead>
@@ -116,9 +115,7 @@
                 </tr>
             </tbody>
         </table>
-        {{-- <footer>
-            <img src="img/footer-kop.png" width="100%"/>
-        </footer> --}}
+        <img src="img/footer-kop.png" width="100%"/>
     </div>
 
 
@@ -128,7 +125,6 @@
     </header>
     <div id="halaman">
         <h1 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h1>
-        <br>
         <table class="table">
             <tr>
                 <td style="width: 20px">Nama Mahasiswa</td>
@@ -175,9 +171,7 @@
                 </tr>
             </tbody>
         </table>
-        {{-- <footer>
-            <img src="img/footer-kop.png" width="100%"/>
-        </footer> --}}
+        <img src="img/footer-kop.png" width="100%"/>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
