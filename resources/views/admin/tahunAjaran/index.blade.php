@@ -47,7 +47,7 @@
                                             @csrf
                                             <button type="submit" class="btn btn-danger mx-1">Non Aktifkan</button>
                                         </form> --}}
-                                        <a href="{{ route('admin.tahunAjaran.delete', $value->id) }}" class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('admin.tahunAjaran.edit', $value->id) }}" class="btn btn-primary">Edit</a>
                                         <form method="post" action="{{ route('admin.tahunAjaran.delete', $value->id) }}" onSubmit="if(!confirm('Yakin ingin menghapus tahun ajaran ?')){return false;}">
                                             @csrf
                                             @method('DELETE')
