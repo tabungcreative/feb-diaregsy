@@ -54,7 +54,7 @@ class KompreController extends Controller
     {
         $sempro = BimbinganSkripsi::where('is_verify', 1)->where('nim', $nim)->first();
         if ($sempro == null) {
-            return 'Anda belum dapat mendaftar Ujian Komprehensif';
+            return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Ujian Komprehensif']);
         }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);

@@ -48,7 +48,7 @@ class YudisiumController extends Controller
     {
         $ujianAkhir = UjianAkhir::where('is_verify', 1)->where('nim', $nim)->first();
         if ($ujianAkhir == null) {
-            return 'Anda belum dapat mendaftar Yudisium';
+            return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Yudisium']);
         }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);

@@ -50,7 +50,7 @@ class BimbinganSkripsiController extends Controller
     {
         $sempro = Sempro::where('is_verify', 1)->where('nim', $nim)->first();
         if ($sempro == null) {
-            return 'Anda belum dapat mendaftar Bimbingan Tugas Akhir';
+            return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Bimbingan Tugas Akhir']);
         }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $dosen = $this->dosenRepository->getAllDosen();

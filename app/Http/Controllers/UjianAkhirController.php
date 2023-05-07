@@ -48,7 +48,8 @@ class UjianAkhirController extends Controller
     {
         $kompre = Kompre::where('is_verify', 1)->where('nim', $nim)->first();
         if ($kompre == null) {
-            return 'Anda belum dapat mendaftar Ujian Tugas Akhir';
+            return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Ujian Tugas Akhir']);
+
         }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $skripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
