@@ -23,7 +23,7 @@
                         <div class="mb-4">
                             <form method="get" class="input-group mb-3" style="width: 300px">
                                 <input type="text" name="key" class="form-control" value="{{ $_GET['key'] ?? '' }}" placeholder="Cari mahasiswa">
-                                <button class="btn btn-danger" type="button" id="button-addon2">Cari</button>
+                                <button class="btn btn-danger" type="submit" id="button-addon2">Cari</button>
                             </form>
                         </div>
                         <div class="table-responsive">
