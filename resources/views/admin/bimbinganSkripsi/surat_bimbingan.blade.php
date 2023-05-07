@@ -28,8 +28,8 @@
         #halaman{
             margin-left:0.5cm;
             margin-right:0.5cm;
-            margin-bottom: 3cm; 
-            margin-top: 0cm; 
+            margin-bottom: 3cm;
+            margin-top: 0cm;
             font-size: 12px;
             max-height: 60vh;
         }
@@ -47,7 +47,7 @@
             line-height: 0.7cm;
         }
         .isi{
-            margin-left:1cm; 
+            margin-left:1cm;
         }
         .isi p{
             margin: 0;
@@ -68,33 +68,33 @@
         <img src="img/kop-feb.png" width="60%"/>
     </header>
     <div id="halaman">
-        <h1 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h1>
+        <h3 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h3>
         <br>
-        <table class="table">
+        <table class="table" width="100">
             <tr>
-                <td style="width: 20px">Nama Mahasiswa</td>
-                <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['nama']}}</td>
+                <td style="padding-right: 20px">Nama Mahasiswa</td>
+                <td> : </td>
+                <td style="padding-left: 20px">{{$bimbinganSkripsi['nama']}}</td>
             </tr>
             <tr>
-                <td style="width: 20px">NIM</td>
-                <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['nim']}}</td>
+                <td style="padding-right: 20px">NIM</td>
+                <td> : </td>
+                <td style="padding-left: 20px">{{$bimbinganSkripsi['nim']}}</td>
             </tr>
             <tr>
-                <td style="width: 20px">Program Studi</td>
-                <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['prodi']}}</td>
+                <td style="padding-right: 20px">Program Studi</td>
+                <td> : </td>
+                <td style="padding-left: 20px">{{$bimbinganSkripsi['prodi']}}</td>
             </tr>
             <tr>
-                <td style="width: 20px">Pembimbing Utama</td>
-                <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['pembimbing1']}}</td>
+                <td style="padding-right: 20px; white-space: nowrap;">Pembimbing Utama</td>
+                <td> : </td>
+                <td style="padding-left: 20px">{{$bimbinganSkripsi['pembimbing1']}}</td>
             </tr>
             <tr>
-                <td style="width: 20px">Judul Skripsi</td>
-                <td style="width: 1px">:</td>
-                <td style="width: 50px;text-align:justify">{{$bimbinganSkripsi['judul_skripsi']}}</td>
+                <td style="padding-right: 20px">Judul Skripsi</td>
+                <td> : </td>
+                <td style="padding-left: 20px">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
         </table>
         <table class="table bimbingan">
@@ -129,22 +129,22 @@
             <tr>
                 <td style="width: 20px">Nama Mahasiswa</td>
                 <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['nama']}}</td>
+                <td>{{$bimbinganSkripsi['nama']}}</td>
             </tr>
             <tr>
                 <td style="width: 20px">NIM</td>
                 <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['nim']}}</td>
+                <td>{{$bimbinganSkripsi['nim']}}</td>
             </tr>
             <tr>
                 <td style="width: 20px">Program Studi</td>
                 <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['prodi']}}</td>
+                <td>{{$bimbinganSkripsi['prodi']}}</td>
             </tr>
             <tr>
                 <td style="width: 20px">Pembimbing Pendamping</td>
                 <td style="width: 1px">:</td>
-                <td style="width: 50px">{{$bimbinganSkripsi['pembimbing2']}}</td>
+                <td>{{$bimbinganSkripsi['pembimbing2']}}</td>
             </tr>
             <tr>
                 <td style="width: 20px">Judul Skripsi</td>

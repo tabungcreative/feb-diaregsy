@@ -32,8 +32,8 @@
         #halaman{
             margin-left: 2cm;
             margin-right:2cm;
-            margin-bottom: 3cm; 
-            margin-top:3cm; 
+            margin-bottom: 3cm;
+            margin-top:3cm;
             font-size: 12px;
         }
         .kop{
@@ -50,7 +50,7 @@
             line-height: 0.7cm;
         }
         .isi{
-            margin-left:1cm; 
+            margin-left:1cm;
         }
         .isi p{
             margin: 0;
@@ -71,7 +71,7 @@
     <div id="halaman">
         <br>
         <h3 class="text-center"><u>SURAT TUGAS PEMBIMBINGAN TUGAS AKHIR</u></h3>
-        <h3 class="text-center">.../S.TA/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</h3>
+        <h3 class="text-center">{{ str_pad($bimbinganSkripsi['id'] , 3, '0', STR_PAD_LEFT)}}/S.TA/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</h3>
         <br>
         <p class="fw-bold fst-italic">Assalamu’alaikum Wr. Wb.</p>
         <br>
