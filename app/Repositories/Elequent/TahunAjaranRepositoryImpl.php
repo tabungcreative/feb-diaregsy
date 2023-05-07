@@ -44,4 +44,14 @@ class TahunAjaranRepositoryImpl implements TahunAjaranRepository
     {
         DB::table('tahun_ajaran')->update(['is_active' => $isActive]);
     }
+
+    function findById($id)
+    {
+        TahunAjaran::find($id);
+    }
+
+    function delete($id)
+    {
+        return TahunAjaran::where('id', $id)->delete();
+    }
 }

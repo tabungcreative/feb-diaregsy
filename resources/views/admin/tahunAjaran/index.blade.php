@@ -41,11 +41,17 @@
                                     <td class="d-flex ">
                                         <form method="post" action="{{ route('admin.tahunAjaran.active', $value->id) }}" onSubmit="if(!confirm('Yakin ingin aktifkan tahun ajaran ?')){return false;}">
                                             @csrf
-                                            <button type="submit" class="btn btn-primary mx-1">Aktifkan</button>
+                                            <button type="submit" class="btn btn-success mx-1">Aktifkan</button>
                                         </form>
-                                        <form method="post" action="{{ route('admin.tahunAjaran.inActive', $value->id) }}" onSubmit="if(!confirm('Yakin ingin non aktifkan tahun ajaran ?')){return false;}">
+                                        {{-- <form method="post" action="{{ route('admin.tahunAjaran.inActive', $value->id) }}" onSubmit="if(!confirm('Yakin ingin non aktifkan tahun ajaran ?')){return false;}">
                                             @csrf
                                             <button type="submit" class="btn btn-danger mx-1">Non Aktifkan</button>
+                                        </form> --}}
+                                        <a href="{{ route('admin.tahunAjaran.delete', $value->id) }}" class="btn btn-primary">Edit</a>
+                                        <form method="post" action="{{ route('admin.tahunAjaran.delete', $value->id) }}" onSubmit="if(!confirm('Yakin ingin menghapus tahun ajaran ?')){return false;}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger mx-1">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -71,8 +77,17 @@
                                 <input type="number" class="form-control" id="tahun" name="tahun" placeholder="masukkan tahun ajaran">
                             </div>
                             <div class="mb-3">
-                                <label for="semester" class="form-label">Semester</label>
-                                <input type="number" class="form-control" id="semester" name="semester" placeholder="masukkan semester ">
+                                <label for="semester" class="form-label fw-bolder">Jenis Pendaftaran</label>
+                                <select class="form-control" id="semester" name="semester" required="required">
+                                    <option value="">Semester</option>
+                                    <option value="1" {{ old('semester') == "1" ? 'selected' : '' }}>1 / Ganjil</option>
+                                    <option value="2" {{ old('semester') == "2" ? 'selected' : '' }}>2 / Genap </option>
+                                </select>
+                                @error('semester')
+                                <div id="semester" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-primary">Tambah</button>
                         </form>

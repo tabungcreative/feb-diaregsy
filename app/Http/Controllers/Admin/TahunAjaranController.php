@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TahunAjaran as TahunAjaranRequest;
+use App\Http\Requests\TahunAjaranUpdateRequest;
 use App\Models\TahunAjaran;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\TahunAjaranService;
@@ -58,6 +59,30 @@ class TahunAjaranController extends Controller
             return redirect()->back()->with('success', 'Tahun Ajaran Berhasil di non aktifkan');
         } catch (\Exception $exception) {
             abort(500, 'Terjadi masalah pada server');
+        }
+    }
+
+    public function edit($id) {
+        $title = 'Edit Tahun Ajaran';
+        $tahunAjaran = TahunAjaran::find($id);
+        return view('admin.tahunAjaran.edit', compact('title', 'tahunAjaran'));
+    }
+
+    public function update(TahunAjaranUpdateRequest $request, $id){
+        try {
+            $this->tahunAjaranService->updateTahunAjaran($id, $request);
+            return back()->with('success', 'Berhasil mengubah tahun ajaran');
+        } catch (\Exception $th) {
+            abort(500, 'Terjadi masalah pada server');
+        }
+    }
+
+    public function delete($id){
+        try {
+            $this->tahunAjaranService->destroy($id);
+            return redirect()->back()->with('success', 'Berhasil menghapus data.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Tidak dapat menghapus tahun ajaran, karena sudah terdapat mahasiswa terdaftar');
         }
     }
 }

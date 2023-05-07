@@ -4,6 +4,7 @@ namespace App\Services\Impl;
 
 use App\Http\Requests\TahunAjaran;
 use App\Http\Requests\TahunAjaranUpdate;
+use App\Http\Requests\TahunAjaranUpdateRequest;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\TahunAjaranService;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,7 @@ class TahunAjaranServiceImpl implements TahunAjaranService
 
         return $tahunAjaran;
     }
-    function updateTahunAjaran(int $id, TahunAjaranUpdate $request)
+    function updateTahunAjaran(int $id, TahunAjaranUpdateRequest $request)
     {
 
         $tahun = $request->input('tahun');
@@ -79,5 +80,12 @@ class TahunAjaranServiceImpl implements TahunAjaranService
         ];
         $tahunAjaran = $this->tahunAjaranRepository->update($id, $detailTahunAjaran);
         return $tahunAjaran;
+    }
+
+    function destroy($id)
+    {
+        $spl = $this->tahunAjaranRepository->findById($id);
+
+        $this->tahunAjaranRepository->delete($id);
     }
 }
