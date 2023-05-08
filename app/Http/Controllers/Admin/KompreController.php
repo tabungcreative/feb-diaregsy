@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\KompreExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KompreCreateMessageRequest;
+use App\Http\Requests\KompreUpdateRequest;
 use App\Models\Kompre;
 use App\Repositories\DosenRepository;
 use App\Repositories\KompreRepository;
@@ -13,6 +14,7 @@ use App\Repositories\TahunAjaranRepository;
 use App\Services\KompreService;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class KompreController extends Controller
@@ -86,6 +88,27 @@ class KompreController extends Controller
             $this->kompreService->destroy($id);
             return redirect()->back()->with('success', 'Berhasil menghapus data.');
         } catch (\Exception $e) {
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function edit($nim)
+    {
+        $kompre = $this->kompreRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+        $dosen = $this->dosenRepository->getAllDosen();
+
+        return view('admin.kompre.edit', compact('kompre', 'mahasiswa', 'dosen'));
+    }
+
+    public function update(KompreUpdateRequest $request, $id)
+    {
+        $filePembayaran = $request->file('bukti_pembayaran');
+        try {
+            $kompre = $this->kompreService->update($id, $request);
+            if ($filePembayaran != null) $this->kompreService->addBuktiPembayaran($id, $filePembayaran);
+            return redirect()->route('admin.kompre.detail', $kompre->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }

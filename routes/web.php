@@ -205,6 +205,8 @@ Route::middleware('custom-auth')->group(function () {
                     Route::get('/{id}/surat-tugas', 'suratTugas')->name('surat-tugas');
                     Route::get('/{id}/surat-bimbingan', 'suratBimbingan')->name('surat-bimbingan');
                     Route::delete('/{id}', 'delete')->name('delete');
+                    Route::get('/{nim}/edit', 'edit')->name('edit');
+                    Route::put('/{id}', 'update')->name('update');
                 });
             Route::controller(\App\Http\Controllers\Admin\SemproController::class)
                 ->prefix('seminar-proposal')
@@ -229,6 +231,8 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
                     Route::delete('/{id}', 'delete')->name('delete');
+                    Route::get('/{nim}/edit', 'edit')->name('edit');
+                    Route::put('/{id}', 'update')->name('update');
                 });
             Route::controller(\App\Http\Controllers\Admin\MengulangController::class)
                 ->prefix('mengulang')
@@ -254,6 +258,8 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
                     Route::delete('/{id}', 'delete')->name('delete');
+                    Route::get('/{nim}/edit', 'edit')->name('edit');
+                    Route::put('/{id}', 'update')->name('update');
                 });
 
             Route::controller(\App\Http\Controllers\Admin\YudisiumController::class)
@@ -266,6 +272,8 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/create-message', 'createMessage')->name('create-message');
                     Route::get('/export', 'export')->name('export');
                     Route::delete('/{id}', 'delete')->name('delete');
+                    Route::get('/{nim}/edit', 'edit')->name('edit');
+                    Route::put('/{id}', 'update')->name('update');
                 });
 
             Route::controller(\App\Http\Controllers\Admin\TahunAjaranController::class)
