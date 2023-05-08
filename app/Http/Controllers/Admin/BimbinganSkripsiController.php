@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\BimbinganSkripsiExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BimbinganSkripsiCreateMessageRequest;
+use App\Http\Requests\BimbinganSkripsiUpdateRequest;
 use App\Models\BimbinganSkripsi;
 use App\Repositories\BimbinganSkripsiRepository;
 use App\Repositories\MahasiswaRepository;
@@ -15,6 +16,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Romans\Filter\IntToRoman;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class BimbinganSkripsiController extends Controller
@@ -135,6 +137,27 @@ class BimbinganSkripsiController extends Controller
             return redirect()->back()->with('success', 'Berhasil menghapus data.');
         } catch (\Exception $e) {
             dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function edit($nim)
+    {
+        $bimbinganSkripsi = $this->bimbinganSkripsiRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+        $dosen = $this->dosenRepository->getAllDosen();
+
+        return view('admin.bimbinganSkripsi.edit', compact('bimbinganSkripsi', 'mahasiswa', 'dosen'));
+    }
+
+    public function update(BimbinganSkripsiUpdateRequest $request, $id)
+    {
+        $filePembayaran = $request->file('bukti_pembayaran');
+        try {
+            $bimbinganSkripsi = $this->bimbinganSkripsiService->update($id, $request);
+            if ($filePembayaran != null) $this->bimbinganSkripsiService->addBuktiPembayaran($id, $filePembayaran);
+            return redirect()->route('admin.bimbinganSkripsi.detail', $bimbinganSkripsi->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }

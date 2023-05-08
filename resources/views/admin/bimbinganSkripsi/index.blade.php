@@ -56,6 +56,7 @@
                                     <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
                                 </form>
                                 <a href="{{ route('admin.bimbinganSkripsi.detail', $value->id) }}" class="btn btn-info mx-1">Detail</a>
+                                <a href="{{ route('admin.bimbinganSkripsi.edit', $value->nim) }}" class="btn btn-primary mx-1">Edit</a>
                                 <form method="post" action="{{ route('admin.bimbinganSkripsi.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
                                     @csrf
                                     @method('DELETE')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\UjianAkhirExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UjianAkhirCreateMessageRequest;
+use App\Http\Requests\UjianAkhirUpdateRequest;
 use App\Models\UjianAkhir;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\TahunAjaranRepository;
@@ -12,6 +13,7 @@ use App\Repositories\UjianAkhirRepository;
 use App\Services\UjianAkhirService;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class UjianAkhirController extends Controller
@@ -85,6 +87,44 @@ class UjianAkhirController extends Controller
             return redirect()->back()->with('success', 'Berhasil menghapus data.');
         } catch (\Exception $e) {
             dd($e->getMessage());
+            abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function edit($nim)
+    {
+        $ujianAkhir = $this->ujianAkhirRepository->findByNim($nim);
+        $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
+
+        return view('admin.ujianAkhir.edit', compact('ujianAkhir', 'mahasiswa'));
+    }
+
+    public function update(UjianAkhirUpdateRequest $request, $id)
+    {
+        $fileSkripsi = $request->file('berkas_skripsi');
+        $fileIjazahTerakhir = $request->file('ijazah_terakhir');
+        $fileTranskripNilai = $request->file('transkrip_nilai');
+        $fileAkta = $request->file('akta_kelahiran');
+        $fileKK = $request->file('kartu_keluarga');
+        $fileKtp = $request->file('ktp');
+        $fileLembarBimbingan = $request->file('lembar_bimbingan');
+        $fileSlipSemesterTerakhir = $request->file('slip_pembayaransemesterterakhir');
+        $filePembayaranSkripsi = $request->file('slip_pembayaranSkripsi');
+        $fileSertifikat = $request->file('sertifikat');
+        try {
+            $ujianAkhir = $this->ujianAkhirService->update($id, $request);
+            if ($fileSkripsi != null) $this->ujianAkhirService->addBerkasSkripsi($id, $fileSkripsi);
+            if ($fileIjazahTerakhir != null) $this->ujianAkhirService->addIjazahTerakhir($id, $fileIjazahTerakhir);
+            if ($fileTranskripNilai != null) $this->ujianAkhirService->addTranskripNilai($id, $fileTranskripNilai);
+            if ($fileAkta != null) $this->ujianAkhirService->addAkta($id, $fileAkta);
+            if ($fileKK != null) $this->ujianAkhirService->addKK($id, $fileKK);
+            if ($fileKtp != null) $this->ujianAkhirService->addKtp($id, $fileKtp);
+            if ($fileLembarBimbingan != null) $this->ujianAkhirService->addLembarBimbingan($id, $fileLembarBimbingan);
+            if ($fileSlipSemesterTerakhir != null) $this->ujianAkhirService->addSlipSemesterTerakhir($id, $fileSlipSemesterTerakhir);
+            if ($filePembayaranSkripsi != null) $this->ujianAkhirService->addPembayaranSkripsi($id, $filePembayaranSkripsi);
+            if ($fileSertifikat != null) $this->ujianAkhirService->addSertifikat($id, $fileSertifikat);
+            return redirect()->route('admin.ujianAkhir.detail', $ujianAkhir->id)->with('success', 'Berhasil mengubah data pendaftaran');
+        } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
         }
     }
