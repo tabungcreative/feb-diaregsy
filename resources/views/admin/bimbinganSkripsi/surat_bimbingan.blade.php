@@ -12,12 +12,12 @@
             top: 0cm;
             left: 0cm;
             right: 0cm;
-            padding: 30px;
+            padding: 0px;
         }
         /** Define the footer rules **/
         footer {
-            padding: 30px;
-            /* position: fixed; */
+            padding: 0px;
+            position: relative;
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
@@ -28,10 +28,10 @@
         #halaman{
             margin-left:0.5cm;
             margin-right:0.5cm;
-            margin-bottom: 3cm;
+            margin-bottom: 0cm;
             margin-top: 0cm;
             font-size: 12px;
-            max-height: 60vh;
+            max-height: 100vh;
         }
         .kop{
             float: left;
@@ -126,6 +126,7 @@
     </header>
     <div id="halaman">
         <h3 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h3>
+        <br>
         <table class="table" width="100">
             <tr>
                 <td style="padding-right: 20px">Nama Mahasiswa</td>
