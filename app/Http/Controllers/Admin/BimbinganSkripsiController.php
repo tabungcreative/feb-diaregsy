@@ -16,6 +16,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Romans\Filter\IntToRoman;
 use Carbon\Carbon;
+use COM;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -100,7 +101,6 @@ class BimbinganSkripsiController extends Controller
             $filter = new IntToRoman();
             $rbulan = $filter->filter($bulan);
 
-
             $pdf = Pdf::loadView('admin.bimbinganSkripsi.surat_tugas', compact('bimbinganSkripsi', 'mahasiswa', 'bulan', 'tahun', 'rbulan', 'tanggal'));
 
             $pdf->setPaper('A4', 'potrait');
@@ -117,11 +117,12 @@ class BimbinganSkripsiController extends Controller
             $bimbinganSkripsi = $this->bimbinganSkripsiRepository->findById($id);
             $mahasiswa = $this->mahasiswaRepository->findByNim($bimbinganSkripsi->nim);
             $tanggal = Carbon::parse(now())->translatedFormat('d F Y');
+            $masaBerlaku = Carbon::now()->addMonths(12)->translatedFormat('d F Y');
 
             // $kop = base64_encode(file_get_contents(public_path('')));
             // $footerKop = base64_encode(file_get_contents(public_path('')));
 
-            $pdf = Pdf::loadView('admin.bimbinganSkripsi.surat_bimbingan', compact('bimbinganSkripsi', 'mahasiswa', 'tanggal'));
+            $pdf = Pdf::loadView('admin.bimbinganSkripsi.surat_bimbingan', compact('bimbinganSkripsi', 'mahasiswa', 'tanggal', 'masaBerlaku'));
 
             $pdf->setPaper('A4', 'potrait');
             return $pdf->stream($title);

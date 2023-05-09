@@ -117,6 +117,7 @@
             </tbody>
         </table>
         <br>
+        <p>* Masa Berlaku kartu bimbingan sampai {{ $masaBerlaku }}</p>
     </div>
     <footer>
         <img src="img/footer-kop.png" width="100%"/>
@@ -176,6 +177,7 @@
             </tbody>
         </table>
         <br>
+        <p>* Masa Berlaku kartu bimbingan sampai {{ $masaBerlaku }}</p>
     </div>
     <footer>
         <img src="img/footer-kop.png" width="100%"/>
