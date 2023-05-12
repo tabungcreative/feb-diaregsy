@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Http\Requests\SemproCreateMessageRequest;
 use App\Http\Requests\SemproRegisterRequest;
 use App\Http\Requests\SemproUpdateRequest;
+use App\Http\Requests\SemproUpdateStatusRequest;
 
 interface SemproService
 {
@@ -15,5 +16,6 @@ interface SemproService
     function verify(int $id);
     function createMessage(int $id, SemproCreateMessageRequest $request);
     function update(int $id, SemproUpdateRequest $request);
+    function changeStatus(int $id, SemproUpdateStatusRequest $request);
     function destroy($id);
 }

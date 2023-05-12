@@ -32,6 +32,43 @@
             </div>
             <div class="card p-4 mt-4">
                 <div class="card-body">
+                    <h6 class="font-weight-bold">Status Pendaftaran</h6>
+                    <form action="{{ route('admin.sempro.update-status', $sempro->id) }}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <div class="mb-3">
+                            <select class="form-control" name="status" @if (!$sempro->is_verify) disabled @endif>
+                                <option value="Proses Pengajuan" @if($sempro->status == 'Proses Pengajuan') selected @endif>Proses Pengajuan</option>
+                                <option value="Penjadwalan Seminar" @if($sempro->status == 'Penjadwalan Seminar') selected @endif>Penjadwalan Seminar</option>
+                                <option value="Lulus" @if($sempro->status == 'Lulus') selected @endif>Lulus</option>
+                                <option value="Tidak Lulus" @if($sempro->status == 'Tidak Lulus') selected @endif>Tidak Lulus</option>
+                            </select>
+                            @error('jenis_pendaftaran')
+                            <div id="jenis_pendaftaran" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" @if (!$sempro->is_verify) disabled @endif>Ubah Status Pendaftaran</button>
+                    </form>
+
+                    <form action="{{ route('admin.sempro.create-message', $sempro->id) }}" class="mt-3" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="pesan" class="form-label">Jadwal Seminar</label>
+                            <input type="date" class="form-control" @if ($sempro->status != 'Penjadwalan Seminar') disabled @endif>
+                            @error('pesan')
+                            <div id="no_pembayaran" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" @if ($sempro->status != 'Penjadwalan Seminar') disabled @endif data-toggle="tooltip" data-placement="top" title="Tooltip on top">Atur Jadwal</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card p-4 mt-4">
+                <div class="card-body">
                     <h6 class="font-weight-bold">Tambah Ketarangan / Pesan</h6>
                     <form action="{{ route('admin.sempro.create-message', $sempro->id) }}" method="POST">
                         @csrf
@@ -52,6 +89,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
         <div class="col-md-6">
             <div class="card p-4">
@@ -111,6 +149,12 @@
                             <p class="mb-1 font-weight-bold">
                                 <a href="{{asset('storage/' . $sempro->bukti_pembayaran)}}" target="_blank" >File</a>
                             </p>
+                        </div>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <form method="post" action="{{ route('admin.sempro.verify', $sempro->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary mx-1" @if ($sempro->is_verify) disabled @endif>Verifikasi</button>
+                            </form>
                         </div>
                     </div>
                 </div>

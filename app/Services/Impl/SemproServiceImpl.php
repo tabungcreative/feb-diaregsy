@@ -7,6 +7,7 @@ use App\Exceptions\TahunAjaranIsNotFound;
 use App\Http\Requests\SemproCreateMessageRequest;
 use App\Http\Requests\SemproRegisterRequest;
 use App\Http\Requests\SemproUpdateRequest;
+use App\Http\Requests\SemproUpdateStatusRequest;
 use App\Models\Sempro;
 use App\Repositories\SemproRepository;
 use App\Repositories\TahunAjaranRepository;
@@ -84,7 +85,7 @@ class SemproServiceImpl implements SemproService
 
         $sempro->nota_kaprodi = $filePath;
         $sempro->save();
-        
+
         return $sempro;
     }
 
@@ -100,7 +101,7 @@ class SemproServiceImpl implements SemproService
 
         $sempro->berkas_sempro = $filePath;
         $sempro->save();
-        
+
         return $sempro;
     }
 
@@ -165,7 +166,7 @@ class SemproServiceImpl implements SemproService
         if ($sempro->bukti_pembayaran != null) {
             $this->delete($sempro->bukti_pembayaran);
         }
-        
+
         if ($sempro->nota_kaprodi != null) {
             $this->delete($sempro->nota_kaprodi);
         }
@@ -175,5 +176,14 @@ class SemproServiceImpl implements SemproService
         }
 
         $this->semproRepository->delete($id);
+    }
+
+    function changeStatus(int $id, SemproUpdateStatusRequest $request)
+    {
+        $detailSempro = [
+            'status' => $request->status,
+        ];
+        $sempro = $this->semproRepository->update($id, $detailSempro);
+        return $sempro;
     }
 }
