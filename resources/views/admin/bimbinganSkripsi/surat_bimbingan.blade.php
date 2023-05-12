@@ -71,31 +71,31 @@
     <div id="halaman">
         <h3 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h3>
         <br>
-        <table class="table" width="100">
+        <table class="table" width="100%">
             <tr>
-                <td style="padding-right: 20px">Nama Mahasiswa</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['nama']}}</td>
+                <td style="width: 20%">Nama Mahasiswa</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['nama']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px">NIM</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['nim']}}</td>
+                <td style="width: 20%">NIM</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['nim']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px">Program Studi</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['prodi']}}</td>
+                <td style="width: 20%">Program Studi</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['prodi']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px; white-space: nowrap;">Pembimbing Utama</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['pembimbing1']}}</td>
+                <td style="width: 20%">Pembimbing Utama</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['pembimbing1']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px">Judul Skripsi</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['judul_skripsi']}}</td>
+                <td style="width: 20%">Judul Tugas Akhir</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
         </table>
         <table class="table bimbingan">
@@ -131,31 +131,31 @@
     <div id="halaman">
         <h3 class="text-center">KARTU PEMBIMBING TUGAS AKHIR</h3>
         <br>
-        <table class="table" width="100">
+        <table class="table" width="100%">
             <tr>
-                <td style="padding-right: 20px">Nama Mahasiswa</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['nama']}}</td>
+                <td style="width: 20%">Nama Mahasiswa</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['nama']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px">NIM</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['nim']}}</td>
+                <td style="width: 20%">NIM</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['nim']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px">Program Studi</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['prodi']}}</td>
+                <td style="width: 20%">Program Studi</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['prodi']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px; white-space: nowrap;">Pembimbing Pendamping</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['pembimbing2']}}</td>
+                <td style="width: 20%">Pembimbing Pendamping</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['pembimbing2']}}</td>
             </tr>
             <tr>
-                <td style="padding-right: 20px">Judul Skripsi</td>
-                <td> : </td>
-                <td style="padding-left: 20px">{{$bimbinganSkripsi['judul_skripsi']}}</td>
+                <td style="width: 20%">Judul Tugas Akhir</td>
+                <td style="width: 2%"> : </td>
+                <td style="width: 78%">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
         </table>
         <table class="table bimbingan">
