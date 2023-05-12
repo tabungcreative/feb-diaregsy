@@ -6,6 +6,7 @@ use App\Exports\SemproExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SemproCreateMessageRequest;
 use App\Http\Requests\SemproUpdateRequest;
+use App\Http\Requests\SemproUpdateStatusRequest;
 use App\Models\Sempro;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\SemproRepository;
@@ -113,6 +114,15 @@ class SemproController extends Controller
             return redirect()->route('admin.sempro.detail', $sempro->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function updateStatus($id, SemproUpdateStatusRequest $request) {
+        try {
+            $this->semproService->changeStatus($id, $request);
+            return redirect()->back()->with('success', 'Berhasil mengubah status pendaftaran');
+        } catch (\Exception $exception) {
+            abort(500, 'Terjadi masalah pada server');
         }
     }
 }

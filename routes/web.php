@@ -220,6 +220,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::delete('/{id}', 'delete')->name('delete');
                     Route::get('/{nim}/edit', 'edit')->name('edit');
                     Route::put('/{id}', 'update')->name('update');
+                    Route::put('/{id}/status', 'updateStatus')->name('update-status');
                 });
             Route::controller(\App\Http\Controllers\Admin\KompreController::class)
                 ->prefix('ujian-komprehensif')
