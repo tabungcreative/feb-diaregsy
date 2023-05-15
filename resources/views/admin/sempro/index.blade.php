@@ -66,10 +66,14 @@
                                 @endif
                             </td>
                             <td>
-                                @if ($value->tanggal_seminar != null)
-                                    {{ $value->tanggal_seminar }}
+                                @if($value->status == 'Lulus')
+                                    <span class="badge badge-success">{{ $value->status }}</span>
+                                @elseif($value->status == 'Tidak Lulus')
+                                    <span class="badge badge-danger">{{ $value->status }}</span>
+                                @elseif($value->status == 'Penjadwalan Seminar')
+                                    <span class="badge badge-warning">{{ $value->status }}</span>
                                 @else
-                                    Belum Terjadwal
+                                    <span class="badge badge-dark">{{ $value->status }}</span>
                                 @endif
                             </td>
                             <td class="d-flex ">
