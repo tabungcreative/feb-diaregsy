@@ -71,10 +71,12 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($value->tanggal_seminar != null)
-                                                {{ $value->tanggal_seminar }}
-                                            @else
+                                            @if ($value->tanggal_seminar == null)
                                                 Belum Terjadwal
+                                            @elseif ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
+                                                Selesai
+                                            @else
+                                                {{ $value->tanggal_seminar }}
                                             @endif
                                         </td>
                                         <td width="200px">{{ $value->keterangan ?? '-'}}</td>
