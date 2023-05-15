@@ -52,11 +52,12 @@
                         <button type="submit" class="btn btn-primary" @if (!$sempro->is_verify) disabled @endif>Ubah Status Pendaftaran</button>
                     </form>
 
-                    <form action="{{ route('admin.sempro.create-message', $sempro->id) }}" class="mt-3" method="POST">
+                    <form action="{{ route('admin.sempro.add-tanggal-seminar', $sempro->id) }}" class="mt-3" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="mb-3">
                             <label for="pesan" class="form-label">Jadwal Seminar</label>
-                            <input type="date" class="form-control" @if ($sempro->status != 'Penjadwalan Seminar') disabled @endif>
+                            <input type="date" name="tanggal_seminar" class="form-control" value="{{ $sempro->tanggal_seminar }}" @if ($sempro->status != 'Penjadwalan Seminar') disabled @endif>
                             @error('pesan')
                             <div id="no_pembayaran" class="invalid-feedback">
                                 {{ $message }}

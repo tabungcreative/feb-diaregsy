@@ -221,6 +221,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::get('/{nim}/edit', 'edit')->name('edit');
                     Route::put('/{id}', 'update')->name('update');
                     Route::put('/{id}/status', 'updateStatus')->name('update-status');
+                    Route::put('/{id}/tanggal_seminar', 'addTanggalSeminar')->name('add-tanggal-seminar');
                 });
             Route::controller(\App\Http\Controllers\Admin\KompreController::class)
                 ->prefix('ujian-komprehensif')

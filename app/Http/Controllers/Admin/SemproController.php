@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exports\SemproExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SemproAddTanggalSeminarRequest;
 use App\Http\Requests\SemproCreateMessageRequest;
 use App\Http\Requests\SemproUpdateRequest;
 use App\Http\Requests\SemproUpdateStatusRequest;
@@ -37,7 +38,7 @@ class SemproController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Seminar Proposal';
-        $sempro = Sempro::orderBy('is_verify', 'ASC')->paginate(20);
+        $sempro = Sempro::orderBy('is_verify', 'ASC')->orderBy('status', 'ASC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {
@@ -120,6 +121,15 @@ class SemproController extends Controller
     public function updateStatus($id, SemproUpdateStatusRequest $request) {
         try {
             $this->semproService->changeStatus($id, $request);
+            return redirect()->back()->with('success', 'Berhasil mengubah status pendaftaran');
+        } catch (\Exception $exception) {
+            abort(500, 'Terjadi masalah pada server');
+        }
+    }
+
+    public function addTanggalSeminar($id, SemproAddTanggalSeminarRequest $request) {
+        try {
+            $this->semproService->addTanggalSeminar($id, $request);
             return redirect()->back()->with('success', 'Berhasil mengubah status pendaftaran');
         } catch (\Exception $exception) {
             abort(500, 'Terjadi masalah pada server');

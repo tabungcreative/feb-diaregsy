@@ -34,6 +34,7 @@
                         <th>Prodi</th>
                         <th>Verifikasi</th>
                         <th>Status</th>
+                        <th>Tanggal Seminar</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -62,6 +63,13 @@
                                     <span class="badge badge-warning">{{ $value->status }}</span>
                                 @else
                                     <span class="badge badge-dark">{{ $value->status }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($value->tanggal_seminar != null)
+                                    {{ $value->tanggal_seminar }}
+                                @else
+                                    Belum Terjadwal
                                 @endif
                             </td>
                             <td class="d-flex ">
