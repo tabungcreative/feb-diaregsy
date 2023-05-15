@@ -42,7 +42,7 @@
                             <td>{{ $loop->iteration + $ujianAkhir->firstItem() - 1}}</td>
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
-                            <td>{{ $value->prodi }}</td>
+                            <td>{{ ucwords($value->prodi) }}</td>
                             <td>
                                 @if($value->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>

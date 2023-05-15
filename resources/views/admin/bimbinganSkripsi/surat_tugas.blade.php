@@ -128,7 +128,7 @@
             <tr>
                 <td style="width: 20%">Prodi</td>
                 <td style="width: 2%">:</td>
-                <td style="width: 78%">{{$bimbinganSkripsi['prodi']}}</td>
+                <td style="width: 78%">{{ucwords($bimbinganSkripsi['prodi'])}}</td>
             </tr>
             <tr>
                 <td style="width: 20%">Judul TA </td>

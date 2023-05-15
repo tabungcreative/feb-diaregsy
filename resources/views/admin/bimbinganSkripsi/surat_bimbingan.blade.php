@@ -85,7 +85,7 @@
             <tr>
                 <td style="width: 20%">Program Studi</td>
                 <td style="width: 2%"> : </td>
-                <td style="width: 78%">{{$bimbinganSkripsi['prodi']}}</td>
+                <td style="width: 78%">{{ ucwords($bimbinganSkripsi['prodi'])}}</td>
             </tr>
             <tr>
                 <td style="width: 20%">Pembimbing Utama</td>
@@ -98,13 +98,13 @@
                 <td style="width: 78%">{{$bimbinganSkripsi['judul_skripsi']}}</td>
             </tr>
         </table>
-        <table class="table bimbingan">
+        <table class="table bimbingan" width="100%">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Tanggal Pembimbingan</th>
-                    <th>Tanda Tangan Pembimbing Utama</th>
-                    <th>Keterangan</th>
+                    <th style="width: 5%; vertical-align: middle">No</th>
+                    <th style="width: 20%; vertical-align: middle">Tanggal Pembimbingan</th>
+                    <th style="width: 20%; vertical-align: middle">Tanda Tangan Pembimbing Utama</th>
+                    <th style="width: 55%; vertical-align: middle">Keterangan</th>
                 </tr>
             </thead>
             <tbody>
@@ -117,7 +117,7 @@
             </tbody>
         </table>
         <br>
-        <p>* Masa Berlaku kartu bimbingan sampai {{ $masaBerlaku }}</p>
+        <p>* Masa berlaku kartu bimbingan sampai {{ $masaBerlaku }}</p>
     </div>
     <footer>
         <img src="img/footer-kop.png" width="100%"/>
@@ -145,7 +145,7 @@
             <tr>
                 <td style="width: 20%">Program Studi</td>
                 <td style="width: 2%"> : </td>
-                <td style="width: 78%">{{$bimbinganSkripsi['prodi']}}</td>
+                <td style="width: 78%">{{ucwords($bimbinganSkripsi['prodi'])}}</td>
             </tr>
             <tr>
                 <td style="width: 20%">Pembimbing Pendamping</td>
@@ -161,10 +161,10 @@
         <table class="table bimbingan">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Tanggal Pembimbingan</th>
-                    <th>Tanda Tangan Pembimbing Pendamping</th>
-                    <th>Keterangan</th>
+                    <th style="width: 5%; vertical-align: middle">No</th>
+                    <th style="width: 20%; vertical-align: middle">Tanggal Pembimbingan</th>
+                    <th style="width: 20%; vertical-align: middle">Tanda Tangan Pembimbing Utama</th>
+                    <th style="width: 55%; vertical-align: middle">Keterangan</th>
                 </tr>
             </thead>
             <tbody>
@@ -177,7 +177,7 @@
             </tbody>
         </table>
         <br>
-        <p>* Masa Berlaku kartu bimbingan sampai {{ $masaBerlaku }}</p>
+        <p>* Masa berlaku kartu bimbingan sampai {{ $masaBerlaku }}</p>
     </div>
     <footer>
         <img src="img/footer-kop.png" width="100%"/>
