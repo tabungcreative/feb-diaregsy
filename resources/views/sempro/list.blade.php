@@ -36,6 +36,7 @@
                                     <th>Program Studi</th>
                                     <th>Verifikasi</th>
                                     <th>Status</th>
+                                    <th>Jadwal Seminar</th>
                                     <th>Keterangan</th>
                                 </tr>
                                 </thead>
@@ -67,6 +68,13 @@
                                                 <span class="badge bg-warning">{{ $value->status }}</span>
                                             @else
                                                 <span class="badge bg-dark">{{ $value->status }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($value->tanggal_seminar != null)
+                                                {{ $value->tanggal_seminar }}
+                                            @else
+                                                Belum Terjadwal
                                             @endif
                                         </td>
                                         <td width="200px">{{ $value->keterangan ?? '-'}}</td>

@@ -60,7 +60,7 @@ class SemproController extends Controller
             $this->semproService->addBerkasSempro($result->id, $berkasSempro);
             $this->semproService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('sempro.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
-        } catch (TahunAjaranIsNotFound $e) {
+        } catch (TahunAjgiaranIsNotFound $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
         //  catch (PembayaranNotFoundException $e) {

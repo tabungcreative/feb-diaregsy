@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\SemproAddTanggalSeminarRequest;
 use App\Http\Requests\SemproCreateMessageRequest;
 use App\Http\Requests\SemproRegisterRequest;
 use App\Http\Requests\SemproUpdateRequest;
@@ -18,4 +19,5 @@ interface SemproService
     function update(int $id, SemproUpdateRequest $request);
     function changeStatus(int $id, SemproUpdateStatusRequest $request);
     function destroy($id);
+    function addTanggalSeminar($id, SemproAddTanggalSeminarRequest $request);
 }

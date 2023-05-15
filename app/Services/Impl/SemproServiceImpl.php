@@ -4,6 +4,7 @@ namespace App\Services\Impl;
 
 use App\Exceptions\SemproIsExistException;
 use App\Exceptions\TahunAjaranIsNotFound;
+use App\Http\Requests\SemproAddTanggalSeminarRequest;
 use App\Http\Requests\SemproCreateMessageRequest;
 use App\Http\Requests\SemproRegisterRequest;
 use App\Http\Requests\SemproUpdateRequest;
@@ -182,6 +183,15 @@ class SemproServiceImpl implements SemproService
     {
         $detailSempro = [
             'status' => $request->status,
+        ];
+        $sempro = $this->semproRepository->update($id, $detailSempro);
+        return $sempro;
+    }
+
+    function addTanggalSeminar($id, SemproAddTanggalSeminarRequest $request)
+    {
+        $detailSempro = [
+            'tanggal_seminar' => $request->tanggal_seminar,
         ];
         $sempro = $this->semproRepository->update($id, $detailSempro);
         return $sempro;
