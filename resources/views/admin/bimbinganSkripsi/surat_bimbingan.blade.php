@@ -103,7 +103,7 @@
                 <tr>
                     <th style="width: 5%; vertical-align: middle">No</th>
                     <th style="width: 20%; vertical-align: middle">Tanggal Pembimbingan</th>
-                    <th style="width: 20%; vertical-align: middle">Tanda Tangan Pembimbing Utama</th>
+                    <th style="width: 20%; vertical-align: middle">Tanda Tangan Pembimbing</th>
                     <th style="width: 55%; vertical-align: middle">Keterangan</th>
                 </tr>
             </thead>
@@ -163,7 +163,7 @@
                 <tr>
                     <th style="width: 5%; vertical-align: middle">No</th>
                     <th style="width: 20%; vertical-align: middle">Tanggal Pembimbingan</th>
-                    <th style="width: 20%; vertical-align: middle">Tanda Tangan Pembimbing Utama</th>
+                    <th style="width: 20%; vertical-align: middle">Tanda Tangan Pembimbing</th>
                     <th style="width: 55%; vertical-align: middle">Keterangan</th>
                 </tr>
             </thead>
