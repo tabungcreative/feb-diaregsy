@@ -69,7 +69,7 @@
             <tr>
                 <td style="width: 20px">Nomor </td>
                 <td style="width: 20px">:</td>
-                <td style="width: 150px">{{ str_pad($magang['id'] , 3, '0', STR_PAD_LEFT)}}/KP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</td>
+                <td style="width: 150px">{{ str_pad($magang['id'] , 3, '0', STR_PAD_LEFT)}}/SP.KP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
                 <td style="width: 150px">Wonosobo, {{$tanggal}} </td>
