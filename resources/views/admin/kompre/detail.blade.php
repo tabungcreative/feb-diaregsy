@@ -32,6 +32,44 @@
             </div>
             <div class="card p-4 mt-4">
                 <div class="card-body">
+                    <h6 class="font-weight-bold">Status Pendaftaran</h6>
+                    <form action="{{ route('admin.kompre.update-status', $kompre->id) }}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <div class="mb-3">
+                            <select class="form-control" name="status" @if (!$kompre->is_verify) disabled @endif>
+                                <option value="Proses Pengajuan" @if($kompre->status == 'Proses Pengajuan') selected @endif>Proses Pengajuan</option>
+                                <option value="Penjadwalan Ujian" @if($kompre->status == 'Penjadwalan Ujian') selected @endif>Penjadwalan Ujian</option>
+                                <option value="Lulus" @if($kompre->status == 'Lulus') selected @endif>Lulus</option>
+                                <option value="Tidak Lulus" @if($kompre->status == 'Tidak Lulus') selected @endif>Tidak Lulus</option>
+                            </select>
+                            @error('jenis_pendaftaran')
+                            <div id="jenis_pendaftaran" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" @if (!$kompre->is_verify) disabled @endif>Ubah Status Pendaftaran</button>
+                    </form>
+
+                    <form action="{{ route('admin.kompre.add-tanggal-ujian', $kompre->id) }}" class="mt-3" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="pesan" class="form-label">Jadwal Ujian</label>
+                            <input type="date" name="tanggal_ujian" class="form-control" value="{{ $kompre->tanggal_ujian }}" @if ($kompre->status != 'Penjadwalan Ujian') disabled @endif>
+                            @error('pesan')
+                            <div id="no_pembayaran" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" @if ($kompre->status != 'Penjadwalan Ujian') disabled @endif data-toggle="tooltip" data-placement="top" title="Tooltip on top">Atur Jadwal</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card p-4 mt-4">
+                <div class="card-body">
                     <h6 class="font-weight-bold">Tambah Ketarangan / Pesan</h6>
                     <form action="{{ route('admin.kompre.create-message', $kompre->id) }}" method="POST">
                         @csrf
@@ -99,6 +137,12 @@
                                 <h6 class="mb-1">Bukti Pembayaran</h6>
                             </div>
                             <p class="fw-bold"><a href="{{asset('storage/' . $kompre->bukti_pembayaran)}}" target="_blank"><b> preview </b></a></p>
+                        </div>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <form method="post" action="{{ route('admin.kompre.verify', $kompre->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary mx-1" @if ($kompre->is_verify) disabled @endif>Verifikasi</button>
+                            </form>
                         </div>
                     </div>
                 </div>

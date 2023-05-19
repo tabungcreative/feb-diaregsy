@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exports\KompreExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\KompreAddTanggalUjianRequest;
 use App\Http\Requests\KompreCreateMessageRequest;
 use App\Http\Requests\KompreUpdateRequest;
+use App\Http\Requests\KompreUpdateStatusRequest;
 use App\Models\Kompre;
 use App\Repositories\DosenRepository;
 use App\Repositories\KompreRepository;
@@ -61,7 +63,7 @@ class KompreController extends Controller
     {
         try {
             $this->kompreService->verify($id);
-            return redirect()->route('admin.kompre.index')->with('success', 'Pendaftaran Berhasil Terverifikasi');
+            return redirect()->back()->with('success', 'Pendaftaran Berhasil Terverifikasi');
         } catch (\Exception $exception) {
             abort(500, 'Terjadi masalah pada server');
         }
@@ -107,9 +109,27 @@ class KompreController extends Controller
         try {
             $kompre = $this->kompreService->update($id, $request);
             if ($filePembayaran != null) $this->kompreService->addBuktiPembayaran($id, $filePembayaran);
-            return redirect()->route('admin.kompre.detail', $kompre->id)->with('success', 'Berhasil mengubah data pendaftaran');
+            return redirect()->back()->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function updateStatus($id, KompreUpdateStatusRequest $request) {
+        try {
+            $this->kompreService->changeStatus($id, $request);
+            return redirect()->back()->with('success', 'Berhasil mengubah status pendaftaran');
+        } catch (\Exception $exception) {
+            abort(500, 'Terjadi masalah pada server');
+        }
+    }
+
+    public function addTanggalUjian($id, KompreAddTanggalUjianRequest $request) {
+        try {
+            $this->kompreService->addTanggalUjian($id, $request);
+            return redirect()->back()->with('success', 'Berhasil mengubah status pendaftaran');
+        } catch (\Exception $exception) {
+            abort(500, 'Terjadi masalah pada server');
         }
     }
 }
