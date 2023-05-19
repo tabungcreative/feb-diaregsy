@@ -235,6 +235,8 @@ Route::middleware('custom-auth')->group(function () {
                     Route::delete('/{id}', 'delete')->name('delete');
                     Route::get('/{nim}/edit', 'edit')->name('edit');
                     Route::put('/{id}', 'update')->name('update');
+                    Route::put('/{id}/status', 'updateStatus')->name('update-status');
+                    Route::put('/{id}/tanggal_ujian', 'addTanggalUjian')->name('add-tanggal-ujian');
                 });
             Route::controller(\App\Http\Controllers\Admin\MengulangController::class)
                 ->prefix('mengulang')

@@ -4,9 +4,12 @@ namespace App\Services\Impl;
 
 use App\Exceptions\KompreIsExistException;
 use App\Exceptions\TahunAjaranIsNotFound;
+use App\Http\Requests\KompreAddTanggalSeminarRequest;
+use App\Http\Requests\KompreAddTanggalUjianRequest;
 use App\Http\Requests\KompreCreateMessageRequest;
 use App\Http\Requests\KompreRegisterRequest;
 use App\Http\Requests\KompreUpdateRequest;
+use App\Http\Requests\KompreUpdateStatusRequest;
 use App\Repositories\KompreRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Services\KompreService;
@@ -138,5 +141,23 @@ class KompreServiceImpl implements KompreService
         if ($kompre->bukti_pembayaran != null) {
             $this->delete($kompre->bukti_pembayaran);
         }
+    }
+
+    public function changeStatus(int $id, KompreUpdateStatusRequest $request)
+    {
+        $detailKompre = [
+            'status' => $request->status,
+        ];
+        $kompre = $this->kompreRepository->update($id, $detailKompre);
+        return $kompre;
+    }
+
+    public function addTanggalUjian($id, KompreAddTanggalUjianRequest $request)
+    {
+        $detailKompre = [
+            'tanggal_ujian' => $request->tanggal_ujian,
+        ];
+        $kompre = $this->kompreRepository->update($id, $detailKompre);
+        return $kompre;
     }
 }

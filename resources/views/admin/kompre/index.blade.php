@@ -33,6 +33,8 @@
                         <th>Nama</th>
                         <th>Prodi</th>
                         <th>Verifikasi</th>
+                        <th>Status</th>
+                        <th>Tanggal Ujian</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -45,23 +47,51 @@
                             <td>{{ ucwords($value->prodi) }}</td>
                             <td>
                                 @if($value->is_verify)
-                                    <span class="badge badge-success">Terverifikasi</span>
+                                    <span class="badge">
+                                        <i class="fas fa-check"></i>
+                                    </span>
                                 @else
-                                    <span class="badge badge-warning">Belum Terverifikasi</span>
+                                    <span class="badge">Belum Terverifikasi</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($value->status == 'Lulus')
+                                    <span class="badge badge-success">{{ $value->status }}</span>
+                                @elseif($value->status == 'Tidak Lulus')
+                                    <span class="badge badge-danger">{{ $value->status }}</span>
+                                @elseif($value->status == 'Penjadwalan Seminar')
+                                    <span class="badge badge-warning">{{ $value->status }}</span>
+                                @else
+                                    <span class="badge badge-dark">{{ $value->status }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
+                                    Selesai
+                                @elseif($value->tanggal_ujian == null)
+                                    Belum Terjadwal
+                                @else
+                                    {{ $value->tanggal_ujian }}
                                 @endif
                             </td>
                             <td class="d-flex ">
                                 <form method="post" action="{{ route('admin.kompre.verify', $value->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
+                                    <button type="submit" class="btn btn-sm btn-success mx-1" @if ($value->is_verify) disabled @endif>Verifikasi</button>
                                 </form>
-                                <a href="{{ route('admin.kompre.edit', $value->nim) }}" class="btn btn-primary mx-1">Edit</a>
+                                <a href="{{ route('admin.kompre.detail', $value->id) }}" class="btn btn-sm btn-info">
+                                    <i class="fas fa-info"></i>
+                                </a>
+                                <a href="{{ route('admin.kompre.edit', $value->nim) }}" class="btn btn-sm btn-primary mx-1">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                                 <form method="post" action="{{ route('admin.kompre.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger mx-1">Hapus</button>
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </form>
-                                <a href="{{ route('admin.kompre.detail', $value->id) }}" class="btn btn-info">Detail</a>
                             </td>
                         </tr>
                     @endforeach

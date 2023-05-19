@@ -31,11 +31,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="pembimbing1" class="form-label fw-bolder">Pembimbing 1</label>
-                            <select class="form-select" name="pembimbing1" id="pembimbing1">
+                            <select class="form-control" name="pembimbing1" id="pembimbing1">
                                 <option selected>pilih pembimbing</option>
                                 @foreach ($dosen as $data)
-                                <option value="{{ $data['nama'] }}" {{ ($data['nama'] == $kompre->pembimbing1) ? 'selected' : '' }} >{{$data['nama']}}</option>
-                            @endforeach
+                                    <option value="{{ $data['nama'] }}" {{ ($data['nama'] == $kompre->pembimbing1) ? 'selected' : '' }} >{{$data['nama']}}</option>
+                                @endforeach
                             </select>
                             @error('pembimbing1')
                             <div id="pembimbing1" class="invalid-feedback">
@@ -45,7 +45,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="pembimbing2" class="form-label fw-bolder">Pembimbing 2</label>
-                            <select class="form-select" name="pembimbing2" id="pembimbing2">
+                            <select class="form-control" name="pembimbing2" id="pembimbing2">
                                 <option selected>pilih pembimbing</option>
                                 @foreach ($dosen as $data)
                                 <option value="{{ $data['nama'] }}" {{ ($data['nama'] == $kompre->pembimbing2) ? 'selected' : '' }} >{{$data['nama']}}</option>

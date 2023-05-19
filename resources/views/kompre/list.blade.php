@@ -33,7 +33,9 @@
                                     <th>Nim</th>
                                     <th>Nama</th>
                                     <th>Program Studi</th>
+                                    <th>Verifikasi</th>
                                     <th>Status</th>
+                                    <th>Jadwal Seminar</th>
                                     <th>Keterangan</th>
                                 </tr>
                                 </thead>
@@ -49,9 +51,31 @@
                                         <td>{{ ucfirst($value->prodi) }}</td>
                                         <td>
                                             @if($value->is_verify)
-                                                <span class="badge bg-primary">Terverifikasi</span>
+                                                <span class="badge text-dark">
+                                                    <i class="fas fa-check"></i>
+                                                </span>
                                             @else
-                                                <span class="badge bg-warning">Berlum Terverifikasi</span>
+                                                <span class="badge text-dark">Belum Terverifikasi</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($value->status == 'Lulus')
+                                                <span class="badge bg-success">{{ $value->status }}</span>
+                                            @elseif($value->status == 'Tidak Lulus')
+                                                <span class="badge bg-danger">{{ $value->status }}</span>
+                                            @elseif($value->status == 'Penjadwalan Seminar')
+                                                <span class="badge bg-warning">{{ $value->status }}</span>
+                                            @else
+                                                <span class="badge bg-dark">{{ $value->status }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
+                                                Selesai
+                                            @elseif($value->tanggal_seminar == null)
+                                                Belum Terjadwal
+                                            @else
+                                                {{ $value->tanggal_seminar }}
                                             @endif
                                         </td>
                                         <td>{{ $value->keterangan ?? '-'}}</td>
