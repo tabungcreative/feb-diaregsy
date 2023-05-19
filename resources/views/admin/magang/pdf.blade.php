@@ -8,16 +8,16 @@
     <title>Surat Penempatan - {{ $mahasiswa['nama'] }} - {{ $mahasiswa['nim'] }}</title>
     <style>
         header {
-            position: fixed;
             top: 0cm;
             left: 0cm;
             right: 0cm;
-            padding: 30px;
+            padding: 0px;
+            position: relative;
         }
         /** Define the footer rules **/
         footer {
-            padding: 30px;
-            position: fixed;
+            padding: 0px;
+            position: absolute;
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
@@ -25,12 +25,14 @@
         * {
             font-family: 'Times New Roman', Times, serif;
         }
+        body{
+            max-height: 100vh
+        }
         #halaman{
-            margin-left: 2cm;
-            margin-right:2cm;
-            margin-bottom: 3cm;
-            margin-top:3cm;
+            margin-left: 1cm;
+            margin-right:1cm;
             font-size: 12px;
+            margin-top: 50px;
         }
         .kop{
             float: left;
@@ -45,9 +47,7 @@
             color: purple;
             line-height: 0.7cm;
         }
-        .isi{
-            margin-left:1cm;
-        }
+
         .isi p{
             margin: 0;
         }
@@ -69,7 +69,7 @@
             <tr>
                 <td style="width: 20px">Nomor </td>
                 <td style="width: 20px">:</td>
-                <td style="width: 150px">.../KP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</td>
+                <td style="width: 150px">{{ str_pad($magang['id'] , 3, '0', STR_PAD_LEFT)}}/KP/FEB-UNSIQ/{{$rbulan}}/{{$tahun}}</td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
                 <td style="width: 150px">Wonosobo, {{$tanggal}} </td>
@@ -149,7 +149,8 @@
                     <td style="width: 150px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
-                    <td style="width: 150px">Dekan<br>{{$tanggal}}</td>
+                    <td style="width: 150px">Dekan
+                        <br>Wonosobo, {{$tanggal}}</td>
                 </tr>
                 <br>
                 <br>
@@ -161,9 +162,10 @@
                     <td style="width: 150px"></td>
                     <td style="width: 20px"></td>
                     <td style="width: 20px"></td>
-                    <td style="width: 150px"><u>Dr. M. Elfan Kaukab., S.E., M.M., M.H.I.</u>
+                    <td style="width: 150px">
+                        <u><strong> M. Elfan Kaukab., S.E., M.M., M.H.I.</strong></u>
                         <br>
-                        <strong>NIDN : 0627088202 </strong>
+                        <p>NIDN : 0627088202 </p>
                     </td>
                 </tr>
             </table>
