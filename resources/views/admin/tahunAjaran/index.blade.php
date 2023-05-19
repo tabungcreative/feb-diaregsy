@@ -43,10 +43,10 @@
                                             @csrf
                                             <button type="submit" class="btn btn-success mx-1">Aktifkan</button>
                                         </form>
-                                        {{-- <form method="post" action="{{ route('admin.tahunAjaran.inActive', $value->id) }}" onSubmit="if(!confirm('Yakin ingin non aktifkan tahun ajaran ?')){return false;}">
+                                        <form method="post" action="{{ route('admin.tahunAjaran.inActive', $value->id) }}" onSubmit="if(!confirm('Yakin ingin non aktifkan tahun ajaran ?')){return false;}">
                                             @csrf
                                             <button type="submit" class="btn btn-danger mx-1">Non Aktifkan</button>
-                                        </form> --}}
+                                        </form>
                                         <a href="{{ route('admin.tahunAjaran.edit', $value->id) }}" class="btn btn-primary">Edit</a>
                                         <form method="post" action="{{ route('admin.tahunAjaran.delete', $value->id) }}" onSubmit="if(!confirm('Yakin ingin menghapus tahun ajaran ?')){return false;}">
                                             @csrf
