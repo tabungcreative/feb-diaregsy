@@ -35,7 +35,7 @@
                                     <th>Program Studi</th>
                                     <th>Verifikasi</th>
                                     <th>Status</th>
-                                    <th>Jadwal Seminar</th>
+                                    <th>Jadwal Ujian</th>
                                     <th>Keterangan</th>
                                 </tr>
                                 </thead>
@@ -63,7 +63,7 @@
                                                 <span class="badge bg-success">{{ $value->status }}</span>
                                             @elseif($value->status == 'Tidak Lulus')
                                                 <span class="badge bg-danger">{{ $value->status }}</span>
-                                            @elseif($value->status == 'Penjadwalan Seminar')
+                                            @elseif($value->status == 'Penjadwalan Ujian')
                                                 <span class="badge bg-warning">{{ $value->status }}</span>
                                             @else
                                                 <span class="badge bg-dark">{{ $value->status }}</span>
@@ -72,10 +72,10 @@
                                         <td>
                                             @if ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
                                                 Selesai
-                                            @elseif($value->tanggal_seminar == null)
+                                            @elseif($value->tanggal_ujian == null)
                                                 Belum Terjadwal
                                             @else
-                                                {{ $value->tanggal_seminar }}
+                                                {{ $value->tanggal_ujian }}
                                             @endif
                                         </td>
                                         <td>{{ $value->keterangan ?? '-'}}</td>
