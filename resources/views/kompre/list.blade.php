@@ -78,7 +78,7 @@
                                                 {{ $value->tanggal_ujian }}
                                             @endif
                                         </td>
-                                        <td>{{ $value->keterangan ?? '-'}}</td>
+                                        <td width="200px">{{ $value->keterangan ?? '-'}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
