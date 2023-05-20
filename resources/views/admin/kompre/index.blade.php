@@ -59,7 +59,7 @@
                                     <span class="badge badge-success">{{ $value->status }}</span>
                                 @elseif($value->status == 'Tidak Lulus')
                                     <span class="badge badge-danger">{{ $value->status }}</span>
-                                @elseif($value->status == 'Penjadwalan Seminar')
+                                @elseif($value->status == 'Penjadwalan Ujian')
                                     <span class="badge badge-warning">{{ $value->status }}</span>
                                 @else
                                     <span class="badge badge-dark">{{ $value->status }}</span>
