@@ -42,4 +42,9 @@ class MengulangRepositoryImpl implements MengulangRepository
     {
         return Mengulang::where('id', $id)->delete();
     }
+
+    function findByNimAndTahunAjaran($nim, $tahunAjaranId)
+    {
+        return Mengulang::where('nim', $nim)->where('tahun_ajaran_id', $tahunAjaranId)->first();
+    }
 }

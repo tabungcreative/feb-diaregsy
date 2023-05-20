@@ -31,7 +31,7 @@
                                 Pendaftaran {{ $value['nama'] }}
                             </h5>
                             <div class="b-0">
-                                @if (app("App\\Models\\" . $value['model'])::where('nim', $nim)->count() > 0)
+                                @if (app("App\\Models\\" . $value['model'])::where('nim', $nim)->count() > 0 && $value['nama'] != 'Mengulang')
                                     <p class="badge bg-light text-dark">Sudah Terdaftar</p>
                                     <a href="{{ route($value['route'] . ".edit", $nim) }}" class="btn btn-sm btn-outline-light">Update Pendaftaran</a>
                                 @else

@@ -10,6 +10,7 @@ interface MengulangRepository
     function findById($id);
     function create(array $detailMengulang, $tahunAjaranId): Mengulang;
     function findByNim($nim): ?Mengulang;
+    function findByNimAndTahunAjaran($nim, $tahunAjaranId);
     function update(int $id, array $detailMengulang): Mengulang;
     function delete($id);
 }

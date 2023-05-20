@@ -73,7 +73,7 @@ class MengulangController extends Controller
         catch (MengulangIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            dd($e->getMessage());
             abort(500, 'terjadi kesalahan pada server');
         }
     }

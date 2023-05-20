@@ -64,7 +64,7 @@ class MengulangServiceImpl implements MengulangService
         ];
 
         // cek apakah sudah pernah mendaftar magang
-        $mengulang = $this->mengulangRepository->findByNim($nim);
+        $mengulang = $this->mengulangRepository->findByNimAndTahunAjaran($nim, $tahunAjaran->id);
 
         if ($mengulang != null) {
             throw new MengulangIsExistException('anda sudah pernah mendaftar mengulang');
@@ -87,7 +87,7 @@ class MengulangServiceImpl implements MengulangService
 
         $mengulang->khs = $filePath;
         $mengulang->save();
-        
+
         return $mengulang;
     }
 
