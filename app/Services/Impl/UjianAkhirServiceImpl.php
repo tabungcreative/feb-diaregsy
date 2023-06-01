@@ -4,9 +4,11 @@ namespace App\Services\Impl;
 
 use App\Exceptions\TahunAjaranIsNotFound;
 use App\Exceptions\UjianAkhirIsExistException;
+use App\Http\Requests\UjianAkhirAddTanggalUjianRequest;
 use App\Http\Requests\UjianAkhirCreateMessageRequest;
 use App\Http\Requests\UjianAkhirRegisterRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
+use App\Http\Requests\UjianAkhirUpdateStatusRequest;
 use App\Repositories\TahunAjaranRepository;
 use App\Repositories\UjianAkhirRepository;
 use App\Services\PembayaranService;
@@ -335,5 +337,23 @@ class UjianAkhirServiceImpl implements UjianAkhirService
         if ($ujianAkhir->sertifikat != null) {
             $this->delete($ujianAkhir->sertifikat);
         }
+    }
+
+    public function changeStatus(int $id, UjianAkhirUpdateStatusRequest $request)
+    {
+        $detailUjianAkhir = [
+            'status' => $request->status,
+        ];
+        $kompre = $this->ujianAkhirRepository->update($id, $detailUjianAkhir);
+        return $kompre;
+    }
+
+    public function addTanggalUjian($id, UjianAkhirAddTanggalUjianRequest $request)
+    {
+        $detailUjianAkhir = [
+            'tanggal_ujian' => $request->tanggal_ujian,
+        ];
+        $kompre = $this->ujianAkhirRepository->update($id, $detailUjianAkhir);
+        return $kompre;
     }
 }

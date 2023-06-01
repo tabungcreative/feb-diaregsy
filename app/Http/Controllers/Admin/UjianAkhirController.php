@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exports\UjianAkhirExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UjianAkhirAddTanggalUjianRequest;
 use App\Http\Requests\UjianAkhirCreateMessageRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
+use App\Http\Requests\UjianAkhirUpdateStatusRequest;
 use App\Models\UjianAkhir;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\TahunAjaranRepository;
@@ -126,6 +128,24 @@ class UjianAkhirController extends Controller
             return redirect()->route('admin.ujianAkhir.detail', $ujianAkhir->id)->with('success', 'Berhasil mengubah data pendaftaran');
         } catch (Exception $exception) {
             abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function updateStatus($id, UjianAkhirUpdateStatusRequest $request) {
+        try {
+            $this->ujianAkhirService->changeStatus($id, $request);
+            return redirect()->back()->with('success', 'Berhasil mengubah status pendaftaran');
+        } catch (\Exception $exception) {
+            abort(500, 'Terjadi masalah pada server');
+        }
+    }
+
+    public function addTanggalUjian($id, UjianAkhirAddTanggalUjianRequest $request) {
+        try {
+            $this->ujianAkhirService->addTanggalUjian($id, $request);
+            return redirect()->back()->with('success', 'Berhasil mengubah status pendaftaran');
+        } catch (\Exception $exception) {
+            abort(500, 'Terjadi masalah pada server');
         }
     }
 }

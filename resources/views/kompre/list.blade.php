@@ -40,7 +40,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @if($kompre->count() == 0 )
+                                @if($kompre->count() == 0 )
                                     <td class="p-3" colspan="6">Mahasiswa tidak ditemukan</td>
                                 @endif
                                 @foreach($kompre as $value)
