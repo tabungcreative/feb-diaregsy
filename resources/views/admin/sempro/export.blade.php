@@ -61,7 +61,6 @@
                 <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
                 <td>{{ asset('storage/' . $value->nota_kaprodi) }}</td>
                 <td>{{ asset('storage/' . $value->berkas_sempro) }}</td>
-                <td>{{ $value->keterangan }}</td>
             </tr>
         @php($i++)
         @endforeach
