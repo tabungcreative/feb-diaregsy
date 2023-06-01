@@ -56,16 +56,16 @@
                                     <button type="submit" class="btn btn-sm btn-primary mx-1">Verifikasi</button>
                                 </form>
                                 <a href="{{ route('admin.bimbinganSkripsi.detail', $value->id) }}" class="btn btn-sm btn-info mx-1">
-                                    <i class="fas fa-info"></i>
+                                    Detail
                                 </a>
                                 <a href="{{ route('admin.bimbinganSkripsi.edit', $value->nim) }}" class="btn btn-sm btn-primary mx-1">
-                                    <i class="fas fa-edit"></i>
+                                    Edit
                                 </a>
                                 <form method="post" action="{{ route('admin.bimbinganSkripsi.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger mx-1">
-                                        <i class="fas fa-trash"></i>
+                                        Hapus
                                     </button>
                                 </form>
                                 <a href="{{ route('admin.bimbinganSkripsi.surat-tugas', $value->id) }}" class="btn btn-sm btn-warning mx-1 @if(!$value->is_verify) disabled @endif" target="_blank">Cetak Surat</a>

@@ -80,16 +80,16 @@
                                     <button type="submit" class="btn btn-sm btn-success mx-1" @if ($value->is_verify) disabled @endif>Verifikasi</button>
                                 </form>
                                 <a href="{{ route('admin.kompre.detail', $value->id) }}" class="btn btn-sm btn-info">
-                                    <i class="fas fa-info"></i>
+                                    Detail
                                 </a>
                                 <a href="{{ route('admin.kompre.edit', $value->nim) }}" class="btn btn-sm btn-primary mx-1">
-                                    <i class="fas fa-edit"></i>
+                                    Edit
                                 </a>
                                 <form method="post" action="{{ route('admin.kompre.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash"></i>
+                                        Hapus
                                     </button>
                                 </form>
                             </td>
