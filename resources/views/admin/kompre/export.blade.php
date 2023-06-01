@@ -23,9 +23,11 @@
         <th>Nomer Telepon</th>
         <th>Pembimbing 1</th>
         <th>Pembimbing 2</th>
-        <th>Bukti Pembayaran</th>
-        <th>Keterangan</th>
+        <th>Verifikasi</th>
         <th>Status</th>
+        <th>Tanggal Ujian</th>
+        <th>Keterangan</th>
+        <th>Bukti Pembayaran</th>
     </tr>
     </thead>
     <tbody>
@@ -40,8 +42,6 @@
             <td>{{ $value->no_whatsapp }}</td>
             <td>{{ $value->pembimbing1 }}</td>
             <td>{{ $value->pembimbing2 }}</td>
-            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
-            <td>{{ $value->keterangan }}</td>
             <td>
                 @if($value->is_verify)
                     Terverifikasi
@@ -49,6 +49,18 @@
                     Belum Terverifikasi
                 @endif
             </td>
+            <td>{{ $value->status }}</td>
+            <td>
+                @if ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
+                    Selesai
+                @elseif($value->tanggal_ujian == null)
+                    Belum Terjadwal
+                @else
+                    {{ $value->tanggal_ujian }}
+                @endif
+            </td>
+            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
+            <td>{{ $value->keterangan }}</td>
         </tr>
         @php($i++)
     @endforeach

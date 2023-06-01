@@ -32,6 +32,8 @@
                         <th>Nim</th>
                         <th>Nama</th>
                         <th>Prodi</th></th>
+                        <th>Pembimbing 1</th>
+                        <th>Pembimbing 2</th>
                         <th>Verifikasi</th>
                         <th>Status</th>
                         <th>Tanggal Seminar</th>
@@ -45,6 +47,8 @@
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
                             <td>{{ ucwords($value->prodi) }}</td>
+                            <td>{{ $value->pembimbing1 }}</td>
+                            <td>{{ $value->pembimbing2 }}</td>
                             <td>
                                 @if($value->is_verify)
                                     <span class="badge">

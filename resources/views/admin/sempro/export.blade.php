@@ -22,11 +22,12 @@
         <th>Email</th>
         <th>Judul Seminar Proposal</th>
         <th>Nomer Telepon</th>
+        <th>Verifikasi</th>
+        <th>Status</th>
+        <th>Tanggal Seminar</th>
         <th>Bukti Pembayaran</th>
         <th>Nota Dinas Kaprodi</th>
         <th>Berkas Sempro</th>
-        <th>Keterangan</th>
-        <th>Status</th>
     </tr>
     </thead>
     <tbody>
@@ -40,10 +41,6 @@
                 <td>{{ $value->email }}</td>
                 <td>{{ $value->judul_sempro }}</td>
                 <td>{{ $value->no_whatsapp }}</td>
-                <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
-                <td>{{ asset('storage/' . $value->nota_kaprodi) }}</td>
-                <td>{{ asset('storage/' . $value->berkas_sempro) }}</td>
-                <td>{{ $value->keterangan }}</td>
                 <td>
                     @if($value->is_verify)
                         Terverifikasi
@@ -51,6 +48,20 @@
                         Belum Terverifikasi
                     @endif
                 </td>
+                <td>{{ $value->status }}</td>
+                <td>
+                    @if ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
+                        Selesai
+                    @elseif($value->tanggal_ujian == null)
+                        Belum Terjadwal
+                    @else
+                        {{ $value->tanggal_ujian }}
+                    @endif
+                </td>
+                <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
+                <td>{{ asset('storage/' . $value->nota_kaprodi) }}</td>
+                <td>{{ asset('storage/' . $value->berkas_sempro) }}</td>
+                <td>{{ $value->keterangan }}</td>
             </tr>
         @php($i++)
         @endforeach
