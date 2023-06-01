@@ -78,18 +78,19 @@
                                     {{ $value->tanggal_ujian }}
                                 @endif
                             </td>
+
                             <td class="d-flex ">
                                 <form method="post" action="{{ route('admin.ujianAkhir.verify', $value->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary mx-1">Verifikasi</button>
+                                    <button type="submit" class="btn btn-sm btn-success mx-1" @if ($value->is_verify) disabled @endif>Verifikasi</button>
                                 </form>
-                                <a href="{{ route('admin.ujianAkhir.edit', $value->nim) }}" class="btn btn-primary mx-1">Edit</a>
+                                <a href="{{ route('admin.ujianAkhir.edit', $value->nim) }}" class="btn btn-sm btn-primary">Edit</a>
                                 <form method="post" action="{{ route('admin.ujianAkhir.delete', $value->id ) }}" onsubmit="return confirm('Konfirmasi Hapus Data . !!')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger mx-1">Hapus</button>
+                                    <button type="submit" class="btn btn-sm btn-danger mx-1">Hapus</button>
                                 </form>
-                                <a href="{{ route('admin.ujianAkhir.detail', $value->id) }}" class="btn btn-info">Detail</a>
+                                <a href="{{ route('admin.ujianAkhir.detail', $value->id) }}" class="btn btn-sm btn-info">Detail</a>
                             </td>
                         </tr>
                     @endforeach
