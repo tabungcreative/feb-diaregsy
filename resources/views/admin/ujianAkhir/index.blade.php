@@ -33,6 +33,8 @@
                         <th>Nama</th>
                         <th>Prodi</th></th>
                         <th>Verifikasi</th>
+                        <th>Status</th>
+                        <th>Tanggal Seminar</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -45,9 +47,31 @@
                             <td>{{ ucwords($value->prodi) }}</td>
                             <td>
                                 @if($value->is_verify)
-                                    <span class="badge badge-success">Terverifikasi</span>
+                                    <span class="badge">
+                                        <i class="fas fa-check"></i>
+                                    </span>
                                 @else
-                                    <span class="badge badge-warning">Belum Terverifikasi</span>
+                                    <span class="badge">Belum Terverifikasi</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($value->status == 'Lulus')
+                                    <span class="badge badge-success">{{ $value->status }}</span>
+                                @elseif($value->status == 'Tidak Lulus')
+                                    <span class="badge badge-danger">{{ $value->status }}</span>
+                                @elseif($value->status == 'Penjadwalan Ujian')
+                                    <span class="badge badge-warning">{{ $value->status }}</span>
+                                @else
+                                    <span class="badge badge-dark">{{ $value->status }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
+                                    Selesai
+                                @elseif($value->tanggal_ujian == null)
+                                    Belum Terjadwal
+                                @else
+                                    {{ $value->tanggal_ujian }}
                                 @endif
                             </td>
                             <td class="d-flex ">

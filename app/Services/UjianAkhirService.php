@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Http\Requests\UjianAkhirAddTanggalUjianRequest;
 use App\Http\Requests\UjianAkhirCreateMessageRequest;
 use App\Http\Requests\UjianAkhirRegisterRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
+use App\Http\Requests\UjianAkhirUpdateStatusRequest;
 
 interface UjianAkhirService
 {
@@ -23,4 +25,6 @@ interface UjianAkhirService
     function createMessage(int $id, UjianAkhirCreateMessageRequest $request);
     function update(int $id, UjianAkhirUpdateRequest $request);
     function destroy($id);
+    function changeStatus(int $id, UjianAkhirUpdateStatusRequest $request);
+    function addTanggalUjian($id, UjianAkhirAddTanggalUjianRequest $request);
 }

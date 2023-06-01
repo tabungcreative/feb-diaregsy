@@ -27,8 +27,46 @@
                             </div>
                             <p class="mb-1 font-weight-bold">{{ $mahasiswa['prodi'] }}</p>
                         </div>
-                        
+
                     </div>
+                </div>
+            </div>
+            <div class="card p-4 mt-4">
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Status Pendaftaran</h6>
+                    <form action="{{ route('admin.ujianAkhir.update-status', $ujianAkhir->id) }}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <div class="mb-3">
+                            <select class="form-control" name="status" @if (!$ujianAkhir->is_verify) disabled @endif>
+                                <option value="Proses Pengajuan" @if($ujianAkhir->status == 'Proses Pengajuan') selected @endif>Proses Pengajuan</option>
+                                <option value="Penjadwalan Ujian" @if($ujianAkhir->status == 'Penjadwalan Ujian') selected @endif>Penjadwalan Ujian</option>
+                                <option value="Lulus" @if($ujianAkhir->status == 'Lulus') selected @endif>Lulus</option>
+                                <option value="Tidak Lulus" @if($ujianAkhir->status == 'Tidak Lulus') selected @endif>Tidak Lulus</option>
+                            </select>
+                            @error('jenis_pendaftaran')
+                            <div id="jenis_pendaftaran" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" @if (!$ujianAkhir->is_verify) disabled @endif>Ubah Status Pendaftaran</button>
+                    </form>
+
+                    <form action="{{ route('admin.ujianAkhir.add-tanggal-ujian', $ujianAkhir->id) }}" class="mt-3" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="pesan" class="form-label">Jadwal Ujian</label>
+                            <input type="date" name="tanggal_ujian" class="form-control" value="{{ $ujianAkhir->tanggal_ujian }}" @if ($ujianAkhir->status != 'Penjadwalan Ujian') disabled @endif>
+                            @error('pesan')
+                            <div id="no_pembayaran" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" @if ($ujianAkhir->status != 'Penjadwalan Ujian') disabled @endif data-toggle="tooltip" data-placement="top" title="Tooltip on top">Atur Jadwal</button>
+                    </form>
                 </div>
             </div>
             <div class="card p-4 mt-4">
