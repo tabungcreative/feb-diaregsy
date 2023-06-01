@@ -212,6 +212,12 @@
                             </div>
                             <p class="fw-bold"><a href="{{asset('storage/' . $ujianAkhir->sertifikat)}}" target="_blank"><b> preview </b></a></p>
                         </div>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <form method="post" action="{{ route('admin.ujianAkhir.verify', $ujianAkhir->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary mx-1" @if ($ujianAkhir->is_verify) disabled @endif>Verifikasi</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
