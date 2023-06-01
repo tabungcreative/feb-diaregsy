@@ -59,8 +59,8 @@
                     {{ $value->tanggal_ujian }}
                 @endif
             </td>
-            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
             <td>{{ $value->keterangan }}</td>
+            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
         </tr>
         @php($i++)
     @endforeach
