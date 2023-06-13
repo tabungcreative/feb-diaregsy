@@ -192,6 +192,7 @@ Route::middleware('custom-auth')->group(function () {
                     Route::delete('/{id}', 'delete')->name('delete');
                     Route::get('/{nim}/edit', 'edit')->name('edit');
                     Route::put('/{id}', 'update')->name('update');
+                    Route::put('/{id}/tanggal-mulai', 'addTanggalMulai')->name('add-tanggal-mulai');
                 });
             Route::controller(\App\Http\Controllers\Admin\BimbinganSkripsiController::class)
                 ->prefix('bimbingan-skripsi')

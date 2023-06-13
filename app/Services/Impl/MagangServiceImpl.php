@@ -4,6 +4,7 @@ namespace App\Services\Impl;
 
 use App\Exceptions\MagangIsExistException;
 use App\Exceptions\TahunAjaranIsNotFound;
+use App\Http\Requests\MagangAddTanggalMulaiRequest;
 use App\Http\Requests\MagangCreateMessageRequest;
 use App\Http\Requests\MagangRegisterRequest;
 use App\Http\Requests\MagangUpdateRequest;
@@ -165,5 +166,14 @@ class MagangServiceImpl implements MagangService
         }
 
         $this->magangRepository->delete($id);
+    }
+
+    function addTanggalMulai($id, MagangAddTanggalMulaiRequest $request)
+    {
+        $detailMagang = [
+            'tanggal_mulai' => $request->tanggal_mulai,
+        ];
+        $magang = $this->magangRepository->update($id, $detailMagang);
+        return $magang;
     }
 }

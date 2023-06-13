@@ -32,6 +32,35 @@
             </div>
             <div class="card p-4 mt-4">
                 <div class="card-body">
+                    <h6 class="font-weight-bold">Penempatan Magang</h6>
+                    <form action="{{ route('admin.magang.add-tanggal-mulai', $magang->id) }}" class="mt-3" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="pesan" class="form-label">Tanggal Mulai Magang</label>
+                            <input type="date" name="tanggal_mulai" class="form-control" value="{{ $magang->tanggal_mulai }}" @if (!$magang->is_verify) disabled @endif>
+                            @error('pesan')
+                            <div id="no_pembayaran" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary" @if (!$magang->is_verify) disabled @endif data-toggle="tooltip" data-placement="top" title="Tooltip on top">Atur Tanggal</button>
+                    </form>
+                    @if ($magang->tanggal_mulai !== null)
+                        <div class="alert alert-primary mt-3" role="alert">
+                            Penempatan magang dilaksanakan pada tanggal <strong>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->translatedFormat('d F Y') }}</strong>
+                            sampai <strong>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->addMonth(2)->translatedFormat('d F Y') }}</strong>
+                        </div>
+                    @else
+                        <div class="alert alert-warning mt-3" role="alert">
+                            Tanggal Magang Belum Ditetapan
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="card p-4 mt-4">
+                <div class="card-body">
                     <h6 class="font-weight-bold">Tambah Ketarangan / Pesan</h6>
                     <form action="{{ route('admin.magang.create-message', $magang->id) }}" method="POST">
                         @csrf
@@ -111,6 +140,12 @@
                                 <h6 class="mb-1">Lembar Persetujuan</h6>
                             </div>
                             <p class="fw-bold"><a href="{{asset('storage/' . $magang->lembar_persetujuan)}}" target="_blank"><b> preview </b></a></p>
+                        </div>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <form method="post" action="{{ route('admin.magang.verify', $magang->id) }}" onSubmit="if(!confirm('Yakin ingin verifikasi pendaftaran ?')){return false;}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary mx-1" @if ($magang->is_verify) disabled @endif>Verifikasi</button>
+                            </form>
                         </div>
                     </div>
                 </div>
