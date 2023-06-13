@@ -29,9 +29,9 @@
             max-height: 100vh
         }
         #halaman{
-            margin-left: 1cm;
-            margin-right:1cm;
-            font-size: 12px;
+            margin-left: 2cm;
+            margin-right: 2cm;
+            font-size: 13px;
             margin-top: 50px;
         }
         .kop{
@@ -96,7 +96,7 @@
                 <td style="width: 150px"></td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
-                <td style="width: 150px">Pimpinan Kant</td>
+                <td style="width: 150px"><strong>{{ ucwords($magang['pimpinan_instansi']) }}</strong></td>
             </tr>
             <tr>
                 <td style="width: 20px"></td>
@@ -134,11 +134,17 @@
                         <td>1</td>
                         <td>{{$mahasiswa['nama']}}</td>
                         <td>{{$mahasiswa['nim']}}</td>
-                        <td>{{$mahasiswa['prodi']}}</td>
+                        <td>{{ucwords($mahasiswa['prodi'])}}</td>
                     </tr>
                 </tbody>
             </table>
-            <p style="text-indent: 1cm;text-align: justify;">Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal {{$tanggal}} di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang. Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal {{$tanggalAkhir}} di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang.</p>
+            <p style="text-indent: 1cm;text-align: justify;">Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal
+                <strong>
+                    {{ Carbon\Carbon::parse($magang['tanggal_mulai'])->translatedFormat('d F Y') }}
+                    s.d
+                    {{ Carbon\Carbon::parse($magang['tanggal_mulai'])->addMonth(2)->translatedFormat('d F Y') }}
+                </strong>
+                di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang.</p>
             <p style="text-indent: 1cm;text-align: justify;">Demikian surat penempatan ini, atas perhatiannya kami sampaikan terima kasih.</p>
             <p>Wassalamu’alaikum Wr.Wb.</p>
             <br>

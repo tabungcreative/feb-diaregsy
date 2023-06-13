@@ -32,6 +32,8 @@
                         <th>Nim</th>
                         <th>Nama</th>
                         <th>Prodi</th>
+                        <th>Tanggal Mulai</th>
+                        <th>Tanggal Selesai</th>
                         <th>Verifikasi</th>
                         <th>Actions</th>
                     </tr>
@@ -43,6 +45,17 @@
                             <td>{{ $value->nim }}</td>
                             <td>{{ $value->nama }}</td>
                             <td>{{ ucwords($value->prodi) }}</td>
+                            @if ($value->tanggal_mulai !== null)
+                            <td>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->translatedFormat('d F Y') }}</td>
+                            <td>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->addMonth(2)->translatedFormat('d F Y') }}</td>
+                            @else
+                            <td>
+                                <span class="badge badge-warning">Belum Ditetapkan</span>
+                            </td>
+                            <td>
+                                <span class="badge badge-warning">Belum Ditetapkan</span>
+                            </td>
+                            @endif
                             <td>
                                 @if($value->is_verify)
                                     <span class="badge badge-success">Terverifikasi</span>

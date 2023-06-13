@@ -33,6 +33,8 @@
                                     <th>Nama</th>
                                     <th>Program Studi</th>
                                     <th>Instansi Magang</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Selesai</th>
                                     <th>Status</th>
                                     <th>Keterangan</th>
                                 </tr>
@@ -48,6 +50,17 @@
                                         <td>{{ $value->nama }}</td>
                                         <td>{{ ucfirst($value->prodi) }}</td>
                                         <td>{{ $value->instansi_magang }}</td>
+                                        @if ($value->tanggal_mulai !== null)
+                                        <td>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->translatedFormat('d F Y') }}</td>
+                                        <td>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->addMonth(2)->translatedFormat('d F Y') }}</td>
+                                        @else
+                                        <td>
+                                            <span class="badge bg-warning">Belum Ditetapkan</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning">Belum Ditetapkan</span>
+                                        </td>
+                                        @endif
                                         <td>
                                             @if($value->is_verify)
                                                 <span class="badge bg-primary">Terverifikasi</span>

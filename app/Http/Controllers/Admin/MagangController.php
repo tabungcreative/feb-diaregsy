@@ -11,6 +11,7 @@ use Romans\Filter\IntToRoman;
 use App\Services\MagangService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\MagangExport;
+use App\Http\Requests\MagangAddTanggalMulaiRequest;
 use App\Http\Requests\MagangUpdateRequest;
 use App\Models\Magang;
 use App\Repositories\TahunAjaranRepository;
@@ -62,7 +63,7 @@ class MagangController extends Controller
     {
         try {
             $this->magangService->verify($id);
-            return redirect()->route('admin.magang.index')->with('success', 'Pendaftaran Berhasil Terverifikasi');
+            return redirect()->back()->with('success', 'Pendaftaran Berhasil Terverifikasi');
         } catch (\Exception $exception) {
             abort(500, 'Terjadi masalah pada server');
         }
@@ -119,7 +120,7 @@ class MagangController extends Controller
             abort(500, 'terjadi kesalahan pada server');
         }
     }
-    
+
     public function edit($nim)
     {
         $magang = $this->magangRepository->findByNim($nim);
@@ -140,6 +141,15 @@ class MagangController extends Controller
         } catch (Exception $exception) {
             // dd($exception);
             abort(500, 'terjadi kesalahan pada server');
+        }
+    }
+
+    public function addTanggalMulai(MagangAddTanggalMulaiRequest $request, $id) {
+        try {
+            $this->magangService->addTanggalMulai($id, $request);
+            return redirect()->back()->with('success', 'Berhasil menempatkan tanggal magang');
+        } catch (\Exception $exception) {
+            abort(500, 'Terjadi masalah pada server');
         }
     }
 }
