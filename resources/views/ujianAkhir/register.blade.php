@@ -164,11 +164,8 @@
                                 <input type="file" name="berkas_skripsi"
                                     class="form-control @error('berkas_skripsi') is-invalid @enderror" id="berkas_skripsi"
                                     placeholder="file skripsi" value="{{ old('berkas_skripsi') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('berkas_skripsi')
                                 <div id="berkas_skripsi" class="invalid-feedback">
                                     {{ $message }}
@@ -180,11 +177,8 @@
                                 <input type="file" name="ijazah_terakhir"
                                     class="form-control @error('ijazah_terakhir') is-invalid @enderror" id="ijazah_terakhir"
                                     placeholder="file skripsi" value="{{ old('ijazah_terakhir') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('ijazah_terakhir')
                                 <div id="ijazah_terakhir" class="invalid-feedback">
                                     {{ $message }}
@@ -196,11 +190,8 @@
                                 <input type="file" name="transkrip_nilai"
                                     class="form-control @error('transkrip_nilai') is-invalid @enderror" id="transkrip_nilai"
                                     placeholder="file skripsi" value="{{ old('transkrip_nilai') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('transkrip_nilai')
                                 <div id="transkrip_nilai" class="invalid-feedback">
                                     {{ $message }}
@@ -212,11 +203,8 @@
                                 <input type="file" name="akta_kelahiran"
                                     class="form-control @error('akta_kelahiran') is-invalid @enderror" id="akta_kelahiran"
                                     placeholder="file skripsi" value="{{ old('akta_kelahiran') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('akta_kelahiran')
                                 <div id="akta_kelahiran" class="invalid-feedback">
                                     {{ $message }}
@@ -228,11 +216,8 @@
                                 <input type="file" name="kartu_keluarga"
                                     class="form-control @error('kartu_keluarga') is-invalid @enderror" id="kartu_keluarga"
                                     placeholder="file skripsi" value="{{ old('kartu_keluarga') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('kartu_keluarga')
                                 <div id="kartu_keluarga" class="invalid-feedback">
                                     {{ $message }}
@@ -244,11 +229,7 @@
                                 <input type="file" name="ktp"
                                     class="form-control @error('ktp') is-invalid @enderror" id="ktp"
                                     placeholder="file skripsi" value="{{ old('ktp') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
                                 @error('ktp')
                                 <div id="ktp" class="invalid-feedback">
                                     {{ $message }}
@@ -260,11 +241,8 @@
                                 <input type="file" name="lembar_bimbingan"
                                     class="form-control @error('lembar_bimbingan') is-invalid @enderror" id="lembar_bimbingan"
                                     placeholder="file skripsi" value="{{ old('lembar_bimbingan') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('lembar_bimbingan')
                                 <div id="lembar_bimbingan" class="invalid-feedback">
                                     {{ $message }}
@@ -276,11 +254,8 @@
                                 <input type="file" name="slip_pembayaransemesterterakhir"
                                     class="form-control @error('slip_pembayaransemesterterakhir') is-invalid @enderror" id="slip_pembayaransemesterterakhir"
                                     placeholder="file skripsi" value="{{ old('slip_pembayaransemesterterakhir') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('slip_pembayaransemesterterakhir')
                                 <div id="slip_pembayaransemesterterakhir" class="invalid-feedback">
                                     {{ $message }}
@@ -292,11 +267,8 @@
                                 <input type="file" name="slip_pembayaranSkripsi"
                                     class="form-control @error('slip_pembayaranSkripsi') is-invalid @enderror" id="slip_pembayaranSkripsi"
                                     placeholder="file skripsi" value="{{ old('slip_pembayaranSkripsi') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('slip_pembayaranSkripsi')
                                 <div id="slip_pembayaranSkripsi" class="invalid-feedback">
                                     {{ $message }}
@@ -308,11 +280,8 @@
                                 <input type="file" name="sertifikat"
                                     class="form-control @error('sertifikat') is-invalid @enderror" id="sertifikat"
                                     placeholder="file skripsi" value="{{ old('sertifikat') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('sertifikat')
                                 <div id="sertifikat" class="invalid-feedback">
                                     {{ $message }}

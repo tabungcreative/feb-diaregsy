@@ -159,11 +159,7 @@
                             <div class="mb-3">
                                 <label for="bukti_pembayaran" class="form-label fw-bolder">Bukti Pembayaran</label>
                                 <input type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
                                 @error('bukti_pembayaran')
                                 <div id="bukti_pembayaran" class="invalid-feedback">
                                     {{ $message }}
@@ -173,11 +169,8 @@
                             <div class="mb-3">
                                 <label for="bebas_spp" class="form-label fw-bolder">Bebas Spp</label>
                                 <input type="file" name="bebas_spp" class="form-control @error('bebas_spp') is-invalid @enderror" id="bebas_spp">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('bebas_spp')
                                 <div id="bebas_spp" class="invalid-feedback">
                                     {{ $message }}
@@ -187,11 +180,8 @@
                             <div class="mb-3">
                                 <label for="transkrip_nilai" class="form-label fw-bolder">Transkrip Nilai</label>
                                 <input type="file" name="transkrip_nilai" class="form-control @error('transkrip_nilai') is-invalid @enderror" id="transkrip_nilai">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('transkrip_nilai')
                                 <div id="transkrip_nilai" class="invalid-feedback">
                                     {{ $message }}
@@ -201,11 +191,8 @@
                             <div class="mb-3">
                                 <label for="bebas_perpus" class="form-label fw-bolder">Bebas Pepustakaan</label>
                                 <input type="file" name="bebas_perpus" class="form-control @error('bebas_perpus') is-invalid @enderror" id="bebas_perpus">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('bebas_perpus')
                                 <div id="bebas_perpus" class="invalid-feedback">
                                     {{ $message }}
@@ -215,11 +202,8 @@
                             <div class="mb-3">
                                 <label for="artikel" class="form-label fw-bolder">Artikel</label>
                                 <input type="file" name="artikel" class="form-control @error('artikel') is-invalid @enderror" id="artikel">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('artikel')
                                 <div id="artikel" class="invalid-feedback">
                                     {{ $message }}
@@ -229,11 +213,8 @@
                             <div class="mb-3">
                                 <label for="file_skripsi" class="form-label fw-bolder">File Skripsi</label>
                                 <input type="file" name="file_skripsi" class="form-control @error('file_skripsi') is-invalid @enderror" id="file_skripsi">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('file_skripsi')
                                 <div id="artikel" class="invalid-feedback">
                                     {{ $message }}
@@ -243,11 +224,8 @@
                             <div class="mb-3">
                                 <label for="bebas_plagiasi" class="form-label fw-bolder">Bebas Plagiasi</label>
                                 <input type="file" name="bebas_plagiasi" class="form-control @error('bebas_plagiasi') is-invalid @enderror" id="bebas_plagiasi">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('bebas_plagiasi')
                                 <div id="artikel" class="invalid-feedback">
                                     {{ $message }}
@@ -257,11 +235,8 @@
                             <div class="mb-3">
                                 <label for="bukti_penjilidan" class="form-label fw-bolder">Bukti Penjilidan</label>
                                 <input type="file" name="bukti_penjilidan" class="form-control @error('bukti_penjilidan') is-invalid @enderror" id="bukti_penjilidan">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('bukti_penjilidan')
                                 <div id="artikel" class="invalid-feedback">
                                     {{ $message }}
@@ -271,11 +246,8 @@
                             <div class="mb-3">
                                 <label for="bukti_pengumpulan" class="form-label fw-bolder">Bukti Pengumpulan</label>
                                 <input type="file" name="bukti_pengumpulan" class="form-control @error('bukti_pengumpulan') is-invalid @enderror" id="bukti_pengumpulan">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('bukti_pengumpulan')
                                 <div id="artikel" class="invalid-feedback">
                                     {{ $message }}

@@ -106,11 +106,7 @@
                                 <input type="file" name="nota_kaprodi"
                                     class="form-control @error('nota_kaprodi') is-invalid @enderror" id="nota_kaprodi"
                                     placeholder="foto" value="{{ old('nota_kaprodi') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
                                 @error('nota_kaprodi')
                                 <div id="nota_kaprodi" class="invalid-feedback">
                                     {{ $message }}
@@ -123,11 +119,8 @@
                                 <input type="file" name="berkas_sempro"
                                     class="form-control @error('berkas_sempro') is-invalid @enderror" id="berkas_sempro"
                                     placeholder="foto" value="{{ old('berkas_sempro') }}">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+
                                 @error('berkas_sempro')
                                 <div id="berkas_sempro" class="invalid-feedback">
                                     {{ $message }}
@@ -137,11 +130,7 @@
                             <div class="mb-3">
                                 <label for="bukti_pembayaran" class="form-label fw-bolder">Bukti Pembayaran</label>
                                 <input type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
                                 @error('bukti_pembayaran')
                                 <div id="bukti_pembayaran" class="invalid-feedback">
                                     {{ $message }}

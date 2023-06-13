@@ -118,11 +118,7 @@
                                 <input type="file" name="lembar_persetujuan"
                                     class="form-control @error('lembar_persetujuan') is-invalid @enderror" id="lembar_persetujuan"
                                     placeholder="" value="{{ old('lembar_persetujuan') }}">
-                                    <div class="text-danger fs-6 text">
-                                        <strong>
-                                            maximum upload file size : 500kb.
-                                        </strong>
-                                    </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
                                 @error('lembar_persetujuan')
                                 <div id="lembar_persetujuan" class="invalid-feedback">
                                     {{ $message }}
@@ -132,11 +128,7 @@
                             <div class="mb-3">
                                 <label for="bukti_pembayaran" class="form-label fw-bolder">Bukti Pembayaran</label>
                                 <input type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran">
-                                <div class="text-danger fs-6 text">
-                                    <strong>
-                                        maximum upload file size : 500kb.
-                                    </strong>
-                                </div>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
                                 @error('bukti_pembayaran')
                                 <div id="bukti_pembayaran" class="invalid-feedback">
                                     {{ $message }}
