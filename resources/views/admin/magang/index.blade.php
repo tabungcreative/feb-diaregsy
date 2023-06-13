@@ -75,7 +75,7 @@
                                     <button type="submit" class="btn btn-sm btn-danger mx-1">Hapus</button>
                                 </form>
                                 <a href="{{ route('admin.magang.detail', $value->id) }}" class="btn btn-sm btn-info mx-1">Detail</a>
-                                <a href="{{ route('admin.magang.print', $value->id) }}" class="btn btn-sm btn-warning @if(!$value->is_verify) disabled @endif" target="_blank" >Cetak</a>
+                                <a href="{{ route('admin.magang.print', $value->id) }}" class="btn btn-sm btn-warning @if($value->tanggal_mulai == null || !$value->is_verify) disabled @endif" target="_blank" >Cetak</a>
                             </td>
                         </tr>
                     @endforeach
