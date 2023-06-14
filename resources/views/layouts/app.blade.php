@@ -20,7 +20,7 @@
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
-                font-size: 2vmin !important;
+                font-size: 3vw !important;
 
             }
             body {
@@ -28,10 +28,10 @@
             }
 
             h1 {
-                font-size: 3.5vw !important;
+                font-size: 5vw !important;
             }
-            h2, h3, h4 {
-                font-size: 3.0vh !important;
+            h2 {
+                font-size: 3.0vw !important;
             }
             p {
                 font-size: 2vmin !important;
