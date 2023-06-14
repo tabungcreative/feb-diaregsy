@@ -8,12 +8,21 @@
         <span>Dashboard</span></a>
 </li>
 
+<div class="sidebar-heading text-white">
+    Pengaturan
+</div>
 <!-- Nav Item - Dashboard -->
 <li class="nav-item {{ Route::is('admin.tahunAjaran.*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.tahunAjaran.index') }}">
         <i class="fa fa-calendar"></i>
         <span>Tahun Ajaran</span></a>
 </li>
+<li class="nav-item {{ Route::is('admin.group-yudisium.*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.group-yudisium.index') }}">
+        <i class="fa fa-users"></i>
+        <span>Group Yudisium</span></a>
+</li>
+
 
 <!-- Divider -->
 <hr class="sidebar-divider">

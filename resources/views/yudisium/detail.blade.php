@@ -25,6 +25,10 @@
                             </div>
                         @endif
 
+                        <div class="alert alert-warning" role="alert">
+                            Mahasiswa yang telah terdaftar diwajibkan bergabung ke grup Yudisiusm yang telah tersedia, berikut link untuk bergabung : <a href="{{ $groupYudisium->link ?? '#'}}" target="_blank"><i class="fas fa-external-link-alt"></i> {{ $groupYudisium->nama ?? 'link' }}</a>
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-row">
@@ -35,10 +39,6 @@
                                     <div class="form-group">
                                         <label for="inputPassword4">Nama</label>
                                         <p class="fw-bold"> {{ $mahasiswa['nama'] }} </p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword4">Email</label>
-                                        <p class="fw-bold">{{ $yudisium->email }} </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Judul Tugas Akhir</label>
@@ -54,19 +54,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Bukti Pembayaran</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bukti_pembayaran)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bukti_pembayaran)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Bebas Spp</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_spp)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_spp)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Transkrip Nilai</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->transkrip_nilai)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->transkrip_nilai)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Bebas Spp</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_spp)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_spp)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                 </div>
                             </div>
@@ -91,23 +91,23 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Artikel</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->artikel)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->artikel)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Berkas Tugas Akhir</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->file_skripsi)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->file_skripsi)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Bebas Plagiasi</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_plagiasi)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_plagiasi)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Bukti Penjilidan</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bukti_penjilidan)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bukti_penjilidan)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Bebas Perpustakaan</label>
-                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_perpus)}}" target="_blank"> preview </a></p>
+                                        <p class="fw-bold"><a href="{{asset('storage/' . $yudisium->bebas_perpus)}}" target="_blank"><i class="fas fa-external-link-alt"></i> Preview </a></p>
                                     </div>
                                 </div>
                             </div>

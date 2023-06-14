@@ -18,6 +18,9 @@
                     </div>
                     <h4 class="mx-auto mt-4">Mahasiswa Terdaftar Yudisium </h4>
                     <div class="card-body">
+                        <div class="alert alert-warning" role="alert">
+                            Mahasiswa yang telah terdaftar diwajibkan bergabung ke grup Yudisiusm yang telah tersedia, berikut link untuk bergabung : <a href="{{ $groupYudisium->link ?? '#' }}" target="_blank"><i class="fas fa-external-link-alt"></i> {{ $groupYudisium->nama ?? 'link' }}</a>
+                        </div>
                         <div class="mb-4">
                             <form method="get" class="input-group mb-3" style="width: 300px">
                                 <input type="text" name="key" class="form-control" value="{{ $_GET['key'] ?? '' }}" placeholder="Cari mahasiswa">

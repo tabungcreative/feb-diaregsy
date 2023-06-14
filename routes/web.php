@@ -295,5 +295,18 @@ Route::middleware('custom-auth')->group(function () {
                     Route::post('/{id}/active', 'active')->name('active');
                     Route::post('/{id}/inActive', 'inActive')->name('inActive');
                 });
+            Route::controller(\App\Http\Controllers\Admin\GroupYudisiumController::class)
+                ->prefix('group-yudisium')
+                ->as('group-yudisium.')
+                ->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::post('/', 'store')->name('store');
+                    Route::get('/{id}/edit', 'edit')->name('edit');
+                    Route::put('/{id}', 'update')->name('update');
+                    Route::delete('/{id}', 'delete')->name('delete');
+                    Route::post('/{id}/active', 'active')->name('active');
+                    Route::post('/{id}/inActive', 'inActive')->name('inActive');
+                });
+
         });
 });

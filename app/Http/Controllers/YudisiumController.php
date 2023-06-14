@@ -10,6 +10,7 @@ use App\Http\Requests\YudisiumUpdateRequest;
 use App\Models\UjianAkhir;
 use App\Models\Yudisium;
 use App\Repositories\BimbinganSkripsiRepository;
+use App\Repositories\GroupYudisiumRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\YudisiumRepository;
 use App\Services\YudisiumService;
@@ -23,25 +24,28 @@ class YudisiumController extends Controller
     private YudisiumRepository $yudisiumRepository;
     private MahasiswaRepository $mahasiswaRepository;
     private BimbinganSkripsiRepository $bimbinganSkripsiRepository;
+    private GroupYudisiumRepository $groupYudisiumRepository;
 
-    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository)
+    public function __construct(YudisiumService $yudisiumService, YudisiumRepository $yudisiumRepository, MahasiswaRepository $mahasiswaRepository, BimbinganSkripsiRepository $bimbinganSkripsiRepository, GroupYudisiumRepository $groupYudisiumRepository)
     {
         $this->yudisiumService = $yudisiumService;
         $this->yudisiumRepository = $yudisiumRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
         $this->bimbinganSkripsiRepository = $bimbinganSkripsiRepository;
+        $this->groupYudisiumRepository = $groupYudisiumRepository;
     }
 
     public function list(Request $request)
     {
         $yudisium = Yudisium::orderBy('created_at', 'DESC')->paginate(20);
         $key = $request->get('key');
+        $groupYudisium = $this->groupYudisiumRepository->findByIsActive();
         if ($key != null) {
             $yudisium = Yudisium::where('nim', 'LIKE', "%" . $key ."%")
                 ->orWhere('nama', 'LIKE', "%" . $key ."%")
                 ->paginate(20);
         }
-        return view('yudisium.list', compact('yudisium'));
+        return view('yudisium.list', compact('yudisium', 'groupYudisium'));
     }
 
     public function formRegister($nim)
@@ -129,6 +133,8 @@ class YudisiumController extends Controller
     {
         $yudisium = $this->yudisiumRepository->findById($id);
         $mahasiswa = $this->mahasiswaRepository->findByNim($yudisium->nim);
-        return view('yudisium.detail', compact('yudisium', 'mahasiswa'));
+        $groupYudisium = $this->groupYudisiumRepository->findByIsActive();
+
+        return view('yudisium.detail', compact('yudisium', 'mahasiswa', 'groupYudisium'));
     }
 }

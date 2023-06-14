@@ -143,7 +143,7 @@
                             <div class="mb-3">
                                 <label for="ukuran_toga" class="form-label fw-bolder">Ukuran Toga</label>
                                 <select class="form-select" name="ukuran_toga" id="ukuran_toga">
-                                    <option selected>Pilih Ukuran Toga</option>
+                                    <option value="">Pilih Ukuran Toga</option>
                                     <option value="S">S</option>
                                     <option value="M">M</option>
                                     <option value="L">L</option>

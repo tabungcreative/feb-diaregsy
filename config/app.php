@@ -190,6 +190,7 @@ return [
         App\Providers\MengulangProvider::class,
         App\Providers\UjianAkhirProvider::class,
         App\Providers\YudisiumProvider::class,
+        App\Providers\GroupYudisiumProvider::class,
 
         // dompdf
         Barryvdh\DomPDF\ServiceProvider::class,
