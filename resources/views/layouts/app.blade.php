@@ -34,7 +34,7 @@
                 font-size: 5.0vw !important;
             }
             p {
-                font-size: 2vmin !important;
+                font-size: 3.5vmin !important;
             }
         </style>
     </head>

@@ -13,7 +13,7 @@
                         <h3 class="mx-auto mt-4">Cek Mahasiswa Terdaftar</h3>
                     </div>
                     <div class="card-body">
-                        <p>Untuk dapat mendaftar pastikan anda terdaftar sebagai mahasiswa FEB , silahkan masukan <span class="">NIM</span> anda</p>
+                        <p>Untuk dapat mendaftar pastikan anda terdaftar sebagai mahasiswa FEB , silahkan masukan NIM anda</p>
 
                         @if(Session::has('error'))
                             <div class="alert alert-danger" role="alert">
