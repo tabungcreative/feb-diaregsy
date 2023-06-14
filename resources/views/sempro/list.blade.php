@@ -86,7 +86,7 @@
                             </table>
                         </div>
                         <div class="mx-3 my-3">
-                            {{ $sempro->appends($_GET)->links() }}
+                            {{ $sempro->appends($_GET)->onEachSide(2)->links() }}
                         </div>
                     </div>
                 </div>

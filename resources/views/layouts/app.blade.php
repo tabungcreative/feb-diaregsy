@@ -20,21 +20,23 @@
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
-                font-size: 3.5vw !important;
+                /* font-size: 3.5vw !important; */
 
             }
             body {
                 font-family: 'Poppins', sans-serif;
             }
 
-            h1 {
-                font-size: 6vw !important;
-            }
-            h2 {
-                font-size: 5.0vw !important;
-            }
-            p {
-                font-size: 3.5vmin !important;
+            @media only screen and (max-width: 992px) {
+                h1 {
+                    font-size: 5.9vw;
+                }
+                h2 {
+                    font-size: 3.0vh;
+                }
+                p {
+                    font-size: 3vmin;
+                }
             }
         </style>
     </head>
