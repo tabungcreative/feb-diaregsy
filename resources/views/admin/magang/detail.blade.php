@@ -38,7 +38,12 @@
                         @method('PUT')
                         <div class="mb-3">
                             <label for="pesan" class="form-label">Tanggal Mulai Magang</label>
-                            <input type="date" name="tanggal_mulai" class="form-control" value="{{ $magang->tanggal_mulai }}" @if (!$magang->is_verify) disabled @endif>
+                            <div class="input-group input-daterange">
+                                <input type="date" name="tanggal_mulai" class="form-control" value="2012-04-05">
+                                <div class="input-group-addon mx-2">to</div>
+                                <input type="date" name="tanggal_selesai" class="form-control" value="2012-04-19">
+                            </div>
+                            {{-- <input type="date" name="tanggal_mulai" class="form-control" value="{{ $magang->tanggal_mulai }}" @if (!$magang->is_verify) disabled @endif> --}}
                             @error('pesan')
                             <div id="no_pembayaran" class="invalid-feedback">
                                 {{ $message }}
@@ -50,7 +55,7 @@
                     @if ($magang->tanggal_mulai !== null)
                         <div class="alert alert-primary mt-3" role="alert">
                             Penempatan magang dilaksanakan pada tanggal <strong>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->translatedFormat('d F Y') }}</strong>
-                            sampai <strong>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->addMonth(2)->translatedFormat('d F Y') }}</strong>
+                            sampai <strong>{{ Carbon\Carbon::parse($magang['tanggal_selesai'])->translatedFormat('d F Y') }}</strong>
                         </div>
                     @else
                         <div class="alert alert-warning mt-3" role="alert">

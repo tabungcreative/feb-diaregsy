@@ -29,8 +29,8 @@
             max-height: 100vh
         }
         #halaman{
-            margin-left: 2cm;
-            margin-right: 2cm;
+            margin-left: 1.5cm;
+            margin-right: 1.5cm;
             font-size: 13px;
             margin-top: 50px;
         }
@@ -96,7 +96,7 @@
                 <td style="width: 150px"></td>
                 <td style="width: 20px"></td>
                 <td style="width: 20px"></td>
-                <td style="width: 150px"><strong>{{ ucwords($magang['pimpinan_instansi']) }}</strong></td>
+                <td style="width: 150px"><strong>Bapak/Ibu {{ ucwords($magang['pimpinan_instansi']) }}<br>{{ ucwords($magang['instansi_magang']) }}</strong></td>
             </tr>
             <tr>
                 <td style="width: 20px"></td>
@@ -138,11 +138,11 @@
                     </tr>
                 </tbody>
             </table>
-            <p style="text-indent: 1cm;text-align: justify;">Akan melakukan kegiatan magang yang dilaksanakan dalam kurun waktu 2 (Dua) bulan pertanggal
+            <p style="text-indent: 1cm;text-align: justify;">Akan melakukan kegiatan magang yang dilaksanakan pada tanggal
                 <strong>
                     {{ Carbon\Carbon::parse($magang['tanggal_mulai'])->translatedFormat('d F Y') }}
                     s.d
-                    {{ Carbon\Carbon::parse($magang['tanggal_mulai'])->addMonth(2)->translatedFormat('d F Y') }}
+                    {{ Carbon\Carbon::parse($magang['tanggal_selesai'])->translatedFormat('d F Y') }}
                 </strong>
                 di Instansi / Perusahaan yang Bapak/Ibu pimpin. Kami mohon agar mahasiswa tersebut  untuk dapat dibimbing dan diberi pengarahan pada saat kegiatan magang.</p>
             <p style="text-indent: 1cm;text-align: justify;">Demikian surat penempatan ini, atas perhatiannya kami sampaikan terima kasih.</p>

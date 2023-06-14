@@ -172,6 +172,7 @@ class MagangServiceImpl implements MagangService
     {
         $detailMagang = [
             'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_selesai' => $request->tanggal_selesai,
         ];
         $magang = $this->magangRepository->update($id, $detailMagang);
         return $magang;

@@ -24,7 +24,8 @@ class MagangAddTanggalMulaiRequest extends FormRequest
     public function rules()
     {
         return [
-            'tanggal_mulai' => 'required'
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',
         ];
     }
 }

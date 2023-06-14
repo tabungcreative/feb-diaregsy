@@ -46,8 +46,8 @@
                             <td>{{ $value->nama }}</td>
                             <td>{{ ucwords($value->prodi) }}</td>
                             @if ($value->tanggal_mulai !== null)
-                            <td>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->translatedFormat('d F Y') }}</td>
-                            <td>{{ Carbon\Carbon::parse($magang['tanggal_mulai'])->addMonth(2)->translatedFormat('d F Y') }}</td>
+                            <td>{{  Carbon\Carbon::parse($value['tanggal_mulai'])->translatedFormat('d F Y')  }}</td>
+                            <td>{{ Carbon\Carbon::parse($value['tanggal_selesai'])->translatedFormat('d F Y') }}</td>
                             @else
                             <td>
                                 <span class="badge badge-warning">Belum Ditetapkan</span>
