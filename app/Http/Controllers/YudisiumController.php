@@ -37,13 +37,13 @@ class YudisiumController extends Controller
 
     public function list(Request $request)
     {
-        $yudisium = Yudisium::orderBy('created_at', 'DESC')->paginate(20);
+        $yudisium = Yudisium::orderBy('created_at', 'DESC')->simplePaginate(20);
         $key = $request->get('key');
         $groupYudisium = $this->groupYudisiumRepository->findByIsActive();
         if ($key != null) {
             $yudisium = Yudisium::where('nim', 'LIKE', "%" . $key ."%")
                 ->orWhere('nama', 'LIKE', "%" . $key ."%")
-                ->paginate(20);
+                ->simplePaginate(20);
         }
         return view('yudisium.list', compact('yudisium', 'groupYudisium'));
     }

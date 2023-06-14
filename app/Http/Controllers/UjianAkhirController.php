@@ -34,12 +34,12 @@ class UjianAkhirController extends Controller
 
     public function list(Request $request)
     {
-        $ujianAkhir = UjianAkhir::orderBy('created_at','DESC')->paginate(20);
+        $ujianAkhir = UjianAkhir::orderBy('created_at','DESC')->simplePaginate(20);
         $key = $request->get('key');
         if ($key != null) {
             $ujianAkhir = UjianAkhir::where('nim', 'LIKE', "%" . $key ."%")
                 ->orWhere('nama', 'LIKE', "%" . $key ."%")
-                ->paginate(20);
+                ->simplePaginate(20);
         }
         return view('ujianAkhir.list', compact('ujianAkhir'));
     }

@@ -192,6 +192,7 @@ return [
         App\Providers\YudisiumProvider::class,
         App\Providers\GroupYudisiumProvider::class,
 
+
         // dompdf
         Barryvdh\DomPDF\ServiceProvider::class,
         // depend provider

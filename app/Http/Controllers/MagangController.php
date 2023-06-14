@@ -29,12 +29,12 @@ class MagangController extends Controller
 
     public function list(Request $request)
     {
-        $magang = Magang::orderBy('created_at', 'DESC')->paginate(20);
+        $magang = Magang::orderBy('created_at', 'DESC')->simplePaginate(20);
         $key = $request->get('key');
         if ($key != null) {
             $magang = Magang::where('nim', 'LIKE', "%" . $key ."%")
                 ->orWhere('nama', 'LIKE', "%" . $key ."%")
-                ->paginate(20);
+                ->simplePaginate(20);
         }
         return view('magang.list', compact('magang'));
     }

@@ -31,12 +31,12 @@ class SPLController extends Controller
 
     public function list(Request $request)
     {
-        $spl = SPL::orderBy('is_verify', 'DESC')->paginate(20);
+        $spl = SPL::orderBy('is_verify', 'DESC')->simplePaginate(20);
         $key = $request->get('key');
         if ($key != null) {
             $spl = SPL::where('nim', 'LIKE', "%" . $key ."%")
                 ->orWhere('nama', 'LIKE', "%" . $key ."%")
-                ->paginate(20);
+                ->simplePaginate(20);
         }
         return view('spl.list', compact('spl'));
     }

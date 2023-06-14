@@ -33,7 +33,7 @@ class SemproController extends Controller
 
     public function list(Request $request)
     {
-        $sempro = Sempro::orderBy('created_at', 'DESC')->paginate(20);
+        $sempro = Sempro::orderBy('created_at', 'DESC')->simplePaginate(20);
         $key = $request->get('key');
         if ($key != null) {
             $sempro = Sempro::where('nim', 'LIKE', "%" . $key ."%")
@@ -60,7 +60,7 @@ class SemproController extends Controller
             $this->semproService->addBerkasSempro($result->id, $berkasSempro);
             $this->semproService->addBuktiPembayaran($result->id, $filePembayaran);
             return redirect()->route('sempro.detail', $result->id)->with('success', 'Berhasil melakukan pendaftaran');
-        } catch (TahunAjgiaranIsNotFound $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
         //  catch (PembayaranNotFoundException $e) {

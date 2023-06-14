@@ -33,12 +33,12 @@ class MengulangController extends Controller
 
     public function list(Request $request)
     {
-        $mengulang = Mengulang::orderBy('created_at', 'DESC')->paginate();
+        $mengulang = Mengulang::orderBy('created_at', 'DESC')->simplePaginate(20);
         $key = $request->get('key');
         if ($key != null) {
             $mengulang = Mengulang::where('nim', 'LIKE', "%" . $key ."%")
                 ->orWhere('nama', 'LIKE', "%" . $key ."%")
-                ->paginate(20);
+                ->simplePaginate(20);
         }
         return view('mengulang.list', compact('mengulang'));
     }

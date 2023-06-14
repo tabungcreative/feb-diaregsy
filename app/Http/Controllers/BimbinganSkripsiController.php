@@ -35,7 +35,7 @@ class BimbinganSkripsiController extends Controller
 
     public function list(Request $request)
     {
-        $bimbinganSkripsi = BimbinganSkripsi::orderBy('created_at', 'DESC')->paginate(20);
+        $bimbinganSkripsi = BimbinganSkripsi::orderBy('created_at', 'DESC')->simplePaginate(20);
         $key = $request->get('key');
         if ($key != null) {
             $bimbinganSkripsi = BimbinganSkripsi::where('nim', 'LIKE', "%" . $key ."%")
