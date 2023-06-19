@@ -234,7 +234,7 @@
                                 <input type="file" name="file_skripsi" class="form-control @error('file_skripsi') is-invalid @enderror" id="file_skripsi">
                                 <div class="text-danger fs-6 text">
                                     <strong>
-                                        maximum upload file size : 500kb.
+                                        maximum upload file size : 2MB.
                                     </strong>
                                 </div>
                                 <a href="{{asset('storage/' . $yudisium->file_skripsi)}}" target="_blank"> preview </a>

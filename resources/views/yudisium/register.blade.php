@@ -211,9 +211,9 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="file_skripsi" class="form-label fw-bolder">File Skripsi</label>
+                                <label for="file_skripsi" class="form-label fw-bolder">File Tugas Akhir</label>
                                 <input type="file" name="file_skripsi" class="form-control @error('file_skripsi') is-invalid @enderror" id="file_skripsi">
-                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>2MB</strong>.</small>
 
                                 @error('file_skripsi')
                                 <div id="artikel" class="invalid-feedback">

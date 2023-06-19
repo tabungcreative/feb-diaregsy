@@ -41,7 +41,7 @@ class YudisiumRegisterRequest extends FormRequest
             'transkrip_nilai' => 'required|mimes:pdf|file|max:500',
             'bebas_perpus' => 'required|mimes:pdf|file|max:500',
             'artikel' => 'required|mimes:pdf|file|max:500',
-            'file_skripsi' => 'required|mimes:pdf|file|max:500',
+            'file_skripsi' => 'required|mimes:pdf|file|max:2000',
             'bebas_plagiasi' => 'required|mimes:pdf|file|max:500',
             'bukti_penjilidan' => 'required|mimes:pdf|file|max:500',
             'bukti_pengumpulan' => 'required|mimes:pdf|file|max:500',
