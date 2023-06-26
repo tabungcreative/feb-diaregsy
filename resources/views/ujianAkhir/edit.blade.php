@@ -150,7 +150,7 @@
                                     class="form-control @error('berkas_skripsi') is-invalid @enderror" id="berkas_skripsi" placeholder="file skripsi" value="{{ old('berkas_skripsi') }}">
                                 <div class="text-danger fs-6 text">
                                     <strong>
-                                        maximum upload file size : 500kb.
+                                        maximum upload file size : 2MB.
                                     </strong>
                                 </div>
                                 <a href="{{asset('storage/' . $ujianAkhir->berkas_skripsi)}}" target="_blank"> preview </a>

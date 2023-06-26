@@ -36,7 +36,7 @@ class UjianAkhirRegisterRequest extends FormRequest
             'pembimbing1' => 'required',
             'pembimbing2' => 'required',
             'no_whatsapp' => 'required',
-            'berkas_skripsi' => 'required|mimes:pdf|file|max:500',
+            'berkas_skripsi' => 'required|mimes:pdf|file|max:2000',
             'ijazah_terakhir' => 'required|mimes:pdf|file|max:500',
             'transkrip_nilai' => 'required|mimes:pdf|file|max:500',
             'ktp' => 'required|mimes:pdf|file|max:500',

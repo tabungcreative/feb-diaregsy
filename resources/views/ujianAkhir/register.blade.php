@@ -164,7 +164,7 @@
                                 <input type="file" name="berkas_skripsi"
                                     class="form-control @error('berkas_skripsi') is-invalid @enderror" id="berkas_skripsi"
                                     placeholder="file skripsi" value="{{ old('berkas_skripsi') }}">
-                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>500kb</strong>.</small>
+                                <small id="emailHelp" class="form-text text-danger">format <strong>.pdf</strong> , maksimal <strong>2MB</strong>.</small>
 
                                 @error('berkas_skripsi')
                                 <div id="berkas_skripsi" class="invalid-feedback">

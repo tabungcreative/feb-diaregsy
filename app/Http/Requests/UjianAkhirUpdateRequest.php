@@ -33,7 +33,7 @@ class UjianAkhirUpdateRequest extends FormRequest
             'pembimbing1' => 'required',
             'pembimbing2' => 'required',
             'no_whatsapp' => 'required',
-            'berkas_skripsi' => 'mimes:pdf|file|max:500',
+            'berkas_skripsi' => 'mimes:pdf|file|max:2000',
             'ijazah_terakhir' => 'mimes:pdf|file|max:500',
             'transkrip_nilai' => 'mimes:pdf|file|max:500',
             'ktp' => 'mimes:pdf|file|max:500',
