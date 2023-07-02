@@ -57,7 +57,7 @@
                             <label for="judul_skripsi" class="form-label fw-bolder">Judul Skripsi</label>
                             <input type="text" name="judul_skripsi"
                                 class="form-control @error('judul_skripsi') is-invalid @enderror" id="judul_skripsi"
-                                placeholder="ex: 085xx" value="{{ old('judul_skripsi',$ujianAkhir->judul_skripsi) }}" readonly>
+                                placeholder="ex: 085xx" value="{{ old('judul_skripsi',$ujianAkhir->judul_skripsi) }}">
                             @error('judul_skripsi')
                             <div id="judul_skripsi" class="invalid-feedback">
                                 {{ $message }}
@@ -66,9 +66,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="pembimbing1" class="form-label fw-bolder">Pembimbing 1</label>
-                            <input type="text" name="pembimbing1"
-                                class="form-control @error('pembimbing1') is-invalid @enderror" id="pembimbing1"
-                                placeholder="ex: 085xx" value="{{ old('pembimbing1',$ujianAkhir->pembimbing1) }}" readonly>
+                            <select class="form-control" name="pembimbing1" id="pembimbing1">
+                                <option selected>pilih pembimbing</option>
+                                @foreach ($dosen as $data)
+                                    <option value="{{ $data['nama'] }}" {{ ($data['nama'] == $ujianAkhir->pembimbing1) ? 'selected' : '' }} >{{$data['nama']}}</option>
+                                @endforeach
+                            </select>
                             @error('pembimbing1')
                             <div id="pembimbing1" class="invalid-feedback">
                                 {{ $message }}
@@ -77,9 +80,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="pembimbing2" class="form-label fw-bolder">Pembimbing 2</label>
-                            <input type="text" name="pembimbing2"
-                                class="form-control @error('pembimbing2') is-invalid @enderror" id="pembimbing2"
-                                placeholder="ex: 085xx" value="{{ old('pembimbing2',$ujianAkhir->pembimbing2) }}" readonly>
+                            <select class="form-control" name="pembimbing2" id="pembimbing2">
+                                <option selected>pilih pembimbing</option>
+                                @foreach ($dosen as $data)
+                                    <option value="{{ $data['nama'] }}" {{ ($data['nama'] == $ujianAkhir->pembimbing2) ? 'selected' : '' }} >{{$data['nama']}}</option>
+                                @endforeach
+                            </select>
                             @error('pembimbing2')
                             <div id="pembimbing2" class="invalid-feedback">
                                 {{ $message }}

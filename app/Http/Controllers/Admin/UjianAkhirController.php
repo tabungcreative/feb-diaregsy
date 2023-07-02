@@ -9,6 +9,7 @@ use App\Http\Requests\UjianAkhirCreateMessageRequest;
 use App\Http\Requests\UjianAkhirUpdateRequest;
 use App\Http\Requests\UjianAkhirUpdateStatusRequest;
 use App\Models\UjianAkhir;
+use App\Repositories\DosenRepository;
 use App\Repositories\MahasiswaRepository;
 use App\Repositories\TahunAjaranRepository;
 use App\Repositories\UjianAkhirRepository;
@@ -25,14 +26,16 @@ class UjianAkhirController extends Controller
     private UjianAkhirRepository $ujianAkhirRepository;
     private MahasiswaRepository $mahasiswaRepository;
     private TahunAjaranRepository $tahunAjaranRepository;
+    private DosenRepository $dosenRepository;
 
 
-    public function __construct(UjianAkhirService $ujianAkhirService, UjianAkhirRepository $ujianAkhirRepository, MahasiswaRepository $mahasiswaRepository,TahunAjaranRepository $tahunAjaranRepository)
+    public function __construct(UjianAkhirService $ujianAkhirService, UjianAkhirRepository $ujianAkhirRepository, MahasiswaRepository $mahasiswaRepository,TahunAjaranRepository $tahunAjaranRepository, DosenRepository $dosenRepository)
     {
         $this->ujianAkhirService = $ujianAkhirService;
         $this->ujianAkhirRepository = $ujianAkhirRepository;
         $this->mahasiswaRepository = $mahasiswaRepository;
         $this->tahunAjaranRepository = $tahunAjaranRepository;
+        $this->dosenRepository = $dosenRepository;
     }
 
     public function index(Request $request)
@@ -95,10 +98,12 @@ class UjianAkhirController extends Controller
 
     public function edit($nim)
     {
+        $dosen = $this->dosenRepository->getAllDosen();
         $ujianAkhir = $this->ujianAkhirRepository->findByNim($nim);
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
 
-        return view('admin.ujianAkhir.edit', compact('ujianAkhir', 'mahasiswa'));
+
+        return view('admin.ujianAkhir.edit', compact('ujianAkhir', 'mahasiswa','dosen'));
     }
 
     public function update(UjianAkhirUpdateRequest $request, $id)
