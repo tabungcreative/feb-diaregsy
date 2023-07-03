@@ -46,7 +46,7 @@ class UjianAkhirController extends Controller
 
     public function formRegister($nim)
     {
-        $kompre = Kompre::where('is_verify', 1)->where('nim', $nim)->first();
+        $kompre = Kompre::where('is_verify', 1)->where('status', 'Lulus')->where('nim', $nim)->first();
         if ($kompre == null) {
             return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Ujian Tugas Akhir']);
 
@@ -88,8 +88,8 @@ class UjianAkhirController extends Controller
         } catch (UjianAkhirIsExistException $e) {
             return redirect()->back()->with('update', $e->getMessage())->withInput($request->all());
         } catch (Exception $e) {
-            dd($e);
-            // abort(500, 'terjadi kesalahan pada server');
+            // dd($e);
+            abort(500, 'terjadi kesalahan pada server');
         }
     }
 

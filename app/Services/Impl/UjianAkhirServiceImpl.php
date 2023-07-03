@@ -72,6 +72,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
             'pembimbing1' => $pembimbing1,
             'pembimbing2' => $pembimbing2,
             'judul_skripsi' => $judulSkripsi,
+            'status' => 'Proses Pengajuan'
         ];
 
         // cek apakah sudah pernah mendaftar spl

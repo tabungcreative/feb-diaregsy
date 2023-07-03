@@ -50,7 +50,7 @@ class YudisiumController extends Controller
 
     public function formRegister($nim)
     {
-        $ujianAkhir = UjianAkhir::where('is_verify', 1)->where('nim', $nim)->first();
+        $ujianAkhir = UjianAkhir::where('is_verify', 1)->where('status', 'Lulus')->where('nim', $nim)->first();
         if ($ujianAkhir == null) {
             return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Yudisium']);
         }

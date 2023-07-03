@@ -48,10 +48,13 @@ class BimbinganSkripsiController extends Controller
 
     public function formRegister($nim)
     {
-        $sempro = Sempro::where('is_verify', 1)->where('nim', $nim)->first();
+        $sempro = Sempro::where('is_verify', 1)->where('status', 'Lulus')->where('nim', $nim)->first();
         if ($sempro == null) {
             return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Bimbingan Tugas Akhir']);
         }
+        // if($sempro->status != 'Lulus') {
+        //     return view('pendaftaran.not-registered', ['message' => 'Anda belum dapat mendaftar Bimbingan Tugas Akhir']);
+        // }
         $mahasiswa = $this->mahasiswaRepository->findByNim($nim);
         $dosen = $this->dosenRepository->getAllDosen();
         return view('bimbinganSkripsi.register', compact('mahasiswa', 'dosen'));
