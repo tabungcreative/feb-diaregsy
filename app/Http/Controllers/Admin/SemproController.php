@@ -38,7 +38,7 @@ class SemproController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Seminar Proposal';
-        $sempro = Sempro::orderBy('is_verify', 'ASC')->orderBy('status', 'ASC')->paginate(20);
+        $sempro = Sempro::orderBy('is_verify', 'ASC')->orderBy('status', 'DESC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {

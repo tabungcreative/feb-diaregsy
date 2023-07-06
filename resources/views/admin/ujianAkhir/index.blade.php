@@ -34,7 +34,7 @@
                         <th>Prodi</th>
                         <th>Verifikasi</th>
                         <th>Status</th>
-                        <th>Tanggal Seminar</th>
+                        <th>Tanggal Ujian</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
