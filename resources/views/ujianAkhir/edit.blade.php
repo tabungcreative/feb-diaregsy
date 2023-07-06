@@ -104,7 +104,7 @@
                                 <label for="judul_skripsi" class="form-label fw-bolder">Judul Skripsi</label>
                                 <input type="text" name="judul_skripsi"
                                     class="form-control @error('judul_skripsi') is-invalid @enderror" id="judul_skripsi"
-                                    placeholder="ex: 085xx" value="{{ old('judul_skripsi',$ujianAkhir->judul_skripsi) }}" readonly>
+                                    placeholder="ex: 085xx" value="{{ old('judul_skripsi',$ujianAkhir->judul_skripsi) }}">
                                 @error('judul_skripsi')
                                 <div id="judul_skripsi" class="invalid-feedback">
                                     {{ $message }}

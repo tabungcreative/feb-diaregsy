@@ -291,7 +291,7 @@ class UjianAkhirServiceImpl implements UjianAkhirService
 
         $ujianAkhir = $this->ujianAkhirRepository->findById($id);
 
-        $this->deleteFileExist($ujianAkhir);
+        // $this->deleteFileExist($ujianAkhir);
 
         $ujianAkhir = $this->ujianAkhirRepository->update($id, $detailUjianAkhir);
 

@@ -41,7 +41,7 @@ class UjianAkhirController extends Controller
     public function index(Request $request)
     {
         $title = 'Pendaftaran Ujian Tugas Akhir';
-        $ujianAkhir = UjianAkhir::orderBy('is_verify', 'ASC')->paginate(20);
+        $ujianAkhir = UjianAkhir::orderBy('is_verify', 'ASC')->orderBy('status', 'ASC')->paginate(20);
 
         $key = $request->get('key');
         if ($key != null) {
