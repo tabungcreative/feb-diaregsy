@@ -51,7 +51,7 @@
             <td>{{ $value->nama }}</td>
             <td>{{ $value->prodi }}</td>
             <td>{{ $value->no_whatsapp }}</td>
-            <td>{{ $value->nik }}</td>
+            <td>{{ "'".$value->nik }}</td>
             <td>{{ $value->tempat_lahir }}</td>
             <td>{{ $value->tanggal_lahir }}</td>
             <td>{{ $value->judul_skripsi }}</td>

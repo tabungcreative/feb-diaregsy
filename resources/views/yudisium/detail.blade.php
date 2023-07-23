@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail4">Prodi</label>
-                                        <p class="fw-bold"> {{ $mahasiswa['prodi'] }} </p>
+                                        <p class="fw-bold"> {{ ucwords($mahasiswa['prodi']) }} </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Pembimbing</label>

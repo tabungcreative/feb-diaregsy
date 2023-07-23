@@ -25,7 +25,7 @@
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-1">Prodi</h6>
                             </div>
-                            <p class="mb-1 font-weight-bold">{{ $mahasiswa['prodi'] }}</p>
+                            <p class="mb-1 font-weight-bold">{{ ucwords($mahasiswa['prodi']) }}</p>
                         </div>
                     </div>
                 </div>
