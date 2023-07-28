@@ -39,9 +39,9 @@
                         <div class="mb-3">
                             <label for="pesan" class="form-label">Tanggal Mulai Magang</label>
                             <div class="input-group input-daterange">
-                                <input type="date" name="tanggal_mulai" class="form-control" value="2012-04-05">
+                                <input type="date" name="tanggal_mulai" class="form-control" value="{{ $magang->tanggal_mulai }}">
                                 <div class="input-group-addon mx-2">to</div>
-                                <input type="date" name="tanggal_selesai" class="form-control" value="2012-04-19">
+                                <input type="date" name="tanggal_selesai" class="form-control" value="{{ $magang->tanggal_selesai }}">
                             </div>
                             {{-- <input type="date" name="tanggal_mulai" class="form-control" value="{{ $magang->tanggal_mulai }}" @if (!$magang->is_verify) disabled @endif> --}}
                             @error('pesan')

@@ -23,6 +23,8 @@
         <th>Email</th>
         <th>Instansi Magang</th>
         <th>Pimpinan Instansi</th>
+        <th>Tanggal Mulai</th>
+        <th>Tanggal Selesai</th>
         <th>Nomer Telepon</th>
         <th>Bukti Pembayaran</th>
         <th>Lembar Persetujuan</th>
@@ -38,6 +40,17 @@
             <td>{{ $value->nim }}</td>
             <td>{{ $value->nama }}</td>
             <td>{{ $value->prodi }}</td>
+            @if ($value->tanggal_mulai !== null)
+                <td>{{  Carbon\Carbon::parse($value['tanggal_mulai'])->translatedFormat('d F Y')  }}</td>
+                <td>{{ Carbon\Carbon::parse($value['tanggal_selesai'])->translatedFormat('d F Y') }}</td>
+            @else
+                <td>
+                    <span class="badge badge-warning">Belum Ditetapkan</span>
+                </td>
+                <td>
+                    <span class="badge badge-warning">Belum Ditetapkan</span>
+                </td>
+            @endif
             <td>{{ $value->alamat }}</td>
             <td>{{ $value->email }}</td>
             <td>{{ $value->instansi_magang }}</td>
