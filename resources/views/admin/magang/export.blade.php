@@ -40,6 +40,10 @@
             <td>{{ $value->nim }}</td>
             <td>{{ $value->nama }}</td>
             <td>{{ $value->prodi }}</td>
+            <td>{{ $value->alamat }}</td>
+            <td>{{ $value->email }}</td>
+            <td>{{ $value->instansi_magang }}</td>
+            <td>{{ $value->pimpinan_instansi }}</td>
             @if ($value->tanggal_mulai !== null)
                 <td>{{  Carbon\Carbon::parse($value['tanggal_mulai'])->translatedFormat('d F Y')  }}</td>
                 <td>{{ Carbon\Carbon::parse($value['tanggal_selesai'])->translatedFormat('d F Y') }}</td>
@@ -51,10 +55,6 @@
                     <span class="badge badge-warning">Belum Ditetapkan</span>
                 </td>
             @endif
-            <td>{{ $value->alamat }}</td>
-            <td>{{ $value->email }}</td>
-            <td>{{ $value->instansi_magang }}</td>
-            <td>{{ $value->pimpinan_instansi }}</td>
             <td>{{ $value->no_whatsapp }}</td>
             <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
             <td>{{ asset('storage/' . $value->lembar_persetujuan) }}</td>
