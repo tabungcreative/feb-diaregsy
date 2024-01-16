@@ -1,31 +1,31 @@
 <html>
 <table>
     <tr>
-        <th>No</th>
-        <th>Nim</th>
-        <th>Nama</th>
-        <th>Prodi</th>
-        <th>Nomer Telepon</th>
-        <th>NIK</th>
-        <th>Tempat Lahir</th>
-        <th>Tanggal Lahir</th>
-        <th>Judul Tugas Akhir</th>
-        <th>Pembimbing 1</th>
-        <th>Pembimbing 2</th>
-        <th>Verifikasi</th>
-        <th>Status</th>
-        <th>Tanggal Ujian</th>
-        <th>Keterangan</th>
-        <th>Bukti Pembayaran</th>
-        <th>File Skripsi</th>
-        <th>Ijazah Terakhir</th>
-        <th>Transkrips Nilai</th>
-        <th>Akta Kelahiran</th>
-        <th>Kartu Keluarga</th>
-        <th>KTP</th>
-        <th>Lembar Bimbingan</th>
-        <th>Pembayaran Semester Akhir</th>
-        <th>Sertifikat</th>
+        <td>No</td>
+        <td>Nim</td>
+        <td>Nama</td>
+        <td>Prodi</td>
+        <td>Nomer Telepon</td>
+        <td>NIK</td>
+        <td>Tempat Lahir</td>
+        <td>Tanggal Lahir</td>
+        <td>Judul Tugas Akhir</td>
+        <td>Pembimbing 1</td>
+        <td>Pembimbing 2</td>
+        <td>Verifikasi</td>
+        <td>Status</td>
+        <td>Tanggal Ujian</td>
+        <td>Keterangan</td>
+        <td>Bukti Pembayaran</td>
+        <td>File Skripsi</td>
+        <td>Ijazah Terakhir</td>
+        <td>Transkrips Nilai</td>
+        <td>Akta Kelahiran</td>
+        <td>Kartu Keluarga</td>
+        <td>KTP</td>
+        <td>Lembar Bimbingan</td>
+        <td>Pembayaran Semester Akhir</td>
+        <td>Sertifikat</td>
     </tr>
     @php($i = 1);
     @foreach($ujianAkhir as $value)
