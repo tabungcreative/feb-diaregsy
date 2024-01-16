@@ -75,7 +75,7 @@
                 @endif
             </td>
             <td>{{ $value->keterangan }}</td>
-            <td>{{ asset('storage/' . $value->spli_pembayaranSkripsi) }}</td>
+            <td>{{ asset('storage/' . $value->slip_pembayaranSkripsi) }}</td>
             <td>{{ asset('storage/' . $value->berkas_skripsi) }}</td>
             <td>{{ asset('storage/' . $value->ijazah_terakhir) }}</td>
             <td>{{ asset('storage/' . $value->transkrip_nilai) }}</td>
