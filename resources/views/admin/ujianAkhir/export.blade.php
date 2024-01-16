@@ -1,4 +1,4 @@
-<html>
+{{-- <html>
 <table>
     <tr>
         <td>No</td>
@@ -76,4 +76,4 @@
     @endforeach
 </table>
 
-</html>
+</html> --}}
