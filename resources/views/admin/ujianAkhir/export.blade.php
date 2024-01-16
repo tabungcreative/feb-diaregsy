@@ -1,6 +1,5 @@
 <html>
 <table>
-    <thead>
     <tr>
         <th>No</th>
         <th>Nim</th>
@@ -28,8 +27,6 @@
         <th>Pembayaran Semester Akhir</th>
         <th>Sertifikat</th>
     </tr>
-    </thead>
-    <tbody>
     @php($i = 1);
     @foreach($ujianAkhir as $value)
         <tr>
@@ -77,7 +74,6 @@
         </tr>
         @php($i++)
     @endforeach
-    </tbody>
 </table>
 
 </html>
