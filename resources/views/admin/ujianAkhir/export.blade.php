@@ -27,6 +27,53 @@
         <td>Pembayaran Semester Akhir</td>
         <td>Sertifikat</td>
     </tr>
+    @php($i = 1);
+    @foreach($ujianAkhir as $value)
+        <tr>
+            <td>{{ $i }}</td>
+            <td>{{ $value->nim }}</td>
+            <td>{{ $value->nama }}</td>
+            <td>{{ $value->prodi }}</td>
+            <td>{{ $value->no_whatsapp }}</td>
+            <td>{{ "'".$value->nik }}</td>
+            <td>{{ $value->tempat_lahir }}</td>
+            <td>{{ $value->tanggal_lahir }}</td>
+            <td>{{ $value->judul_skripsi }}</td>
+            <td>{{ $value->pembimbing1 }}</td>
+            <td>{{ $value->pembimbing2 }}</td>
+            <td>
+                @if($value->is_verify)
+                    Terverifikasi
+                @else
+                    Belum Terverifikasi
+                @endif
+            </td>
+            <td>{{ $value->status }}</td>
+            <td>
+                @if ($value->status == 'Lulus' || $value->status == 'Tidak Lulus')
+                    Selesai
+                @elseif($value->tanggal_ujian == null)
+                    Belum Terjadwal
+                @else
+                    {{ $value->tanggal_ujian }}
+                @endif
+            </td>
+            <td>{{ $value->keterangan }}</td>
+            <td>{{ asset('storage/' . $value->bukti_pembayaran) }}</td>
+            <td>{{ asset('storage/' . $value->berkas_skripsi) }}</td>
+            <td>{{ asset('storage/' . $value->ijazah_terakhir) }}</td>
+            <td>{{ asset('storage/' . $value->transkrip_nilai) }}</td>
+            <td>{{ asset('storage/' . $value->akta_kelahiran) }}</td>
+            <td>{{ asset('storage/' . $value->kartu_keluarga) }}</td>
+            <td>{{ asset('storage/' . $value->ktp) }}</td>
+            <td>{{ asset('storage/' . $value->lembar_bimbingan) }}</td>
+            <td>{{ asset('storage/' . $value->slip_pembayaransemesterterakhir) }}</td>
+            <td>{{ asset('storage/' . $value->slip_pembayaranSkripsi) }}</td>
+            <td>{{ asset('storage/' . $value->sertifikat) }}</td>
 
+        </tr>
+        @php($i++)
+    @endforeach
 </table>
+
 </html>
