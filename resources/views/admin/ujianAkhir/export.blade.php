@@ -1,17 +1,4 @@
 <html>
-<style>
-    table {
-        width: 100%;
-        border: 1px solid #000;
-    }
-    th {
-        text-align: center;
-        color: #e9aa0b;
-    }
-</style>
-<br>
-<br>
-<br>
 <table>
     <thead>
     <tr>
